@@ -1,0 +1,548 @@
+% Chapter Template
+
+\chapter{Classification of Entanglement} % Main chapter title
+
+\label{Chapter6-classification of entanglement} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+\begin{prop}
+\label{rank prop}
+Let $\ket{X}$ be a state in $\mathbb{C}^n \otimes \mathbb{C}^{n}$, and let $S=\{\ket{e_i}\}$ be the standard basis for $\mathbb{C}^n$. Let the coefficient matrix $M_{S \otimes S}(\ket{X})=(a_{i,j})$, where $\ket{X}=\sum\limits_{i,j}a_{i,j}|e_i e_j\rangle$.  Define $S(\ket{X})=\{m\in \mathbb{N}: \ket{X}=\sum_{i=1}^m\ket{v_i w_i}, for \ket{v_i}, \ket{w_i} \in \mathbb{C}^n\}$.  Then, $rank(M_{S \otimes S}(\ket{X}))=\textrm{min} (S(\ket{X})$.
+% Thus in particular, the state $\ket{X}$ is a tensor product (not entangled) if and only if the matrix $M_{\ket{X}}$ is singular with rank one.
+\end{prop}
+First, we prove the following lemma.
+
+\begin{lemma}
+\label{independence lemma}
+Let $k=min S(\ket{X})$, and suppose $\ket{X}=\sum\limits_{i=0}^k \ket{v_iw_i}$.  Then $\{\ket{v_1}, \ket{v_2},...,\ket{v_k}\}$ and $\{\ket{w_1}, \ket{w_2},...,\ket{w_k}\}$ must both be linearly independent.
+\end{lemma}
+
+\begin{proof}
+For a contradiction, let $k, \ket{X}, \ket{v_i}, \ket{w_i}$ be as above, and suppose that $\{\ket{v_1}, \ket{v_2},...,\ket{v_k}\}$ is linearly dependent. Then without the loss of generality, say $\ket{v_k} \in span\{\ket{v_1}, \ket{v_2},...\ket{v_{k-1}}\}$. Then, $\ket{v_k}=\sum_i^{k-1} a_i \ket{v_i}$, for constants $a_i \in \mathbb{C}$.  Then, 
+\begin{eqnarray*}
+\ket{X}&=&\sum_{i=1}^{k-1} \ket{v_i w_i} + \ket{v_k w_k}\\
+&=&\sum_{i=1}^{k-1} \ket{v_i w_i} + \sum_{i=1}^{k-1} a_i\ket{v_iw_k}\\
+&=&\sum_{i=1}^{k-1} \ket{v_i} \otimes (\ket{w_i}+a_i\ket{w_k}).\\
+\end{eqnarray*}
+
+Apparently, $(k-1) \in S(\ket{X})$, contradicting the minimality of $k$.  Thus, $\{\ket{v_1}, \ket{v_2},...,\ket{v_k}\}$ and $\{\ket{w_1}, \ket{w_2},...,\ket{w_m}\}$ are linearly independent.
+\end{proof}
+
+\bigskip
+Now we are reading to prove Proposition \ref{rank prop}.
+
+\begin{proof}
+Say $k=min(S(\ket{X}))$. Then, $\ket{X}=\sum_{i=1}^k \ket{v_i w_i}$, where $\{\ket{v_1}, \ket{v_2},...,\ket{v_k}\}$ and $\{\ket{w_1}, \ket{w_2},...,\ket{w_k}\}$ are linearly independent by Lemma \ref{independence lemma}.  Thus, we can extend each linearly independent set to bases for $\mathbb{C}^n$. Thus, let $B=\{\ket{v_1}, \ket{v_2},...,\ket{v_k}, \ket{v_{k+1}},...,\ket{v_n}\}$ and $B'=\{\ket{w_1}, \ket{w_2},...,\ket{w_n}\}$ be bases, and let $M_{B \otimes B'}(\ket{X})$ denote the coefficient matrix of $\ket{X}=\sum_{i=1}^{n}\ket{v_i w_i}$ with respect to the basis $B \otimes B'$. By inspection, 
+$$M_{B \otimes B'}(\ket{X})=\begin{pmatrix}
+\mathbb{I}_k && 0 \\
+0 && 0
+\end{pmatrix}$$
+so $rank(M_{B \otimes B'}(\ket{X}))$ is k.
+
+Thus, to show $rank(M_{B \otimes B'}(\ket{X}))=rank(M_{S \otimes S}(\ket{X})$, we will find two invertible $n \times n$ matrices P, Q with $PM_{B \otimes B'}(\ket{X})Q^{-1}=M_{S \otimes S}(X)$.
+
+To do this, say $\ket{v_i}=\sum_{j=1}^n v_{ji}\ket{e_j}$, and
+$\ket{w_i}=\sum_{j=1}^n w_{ji}\ket{e_j}$.  Since B and B' are both linearly independent, $P=(v_{i,j})$ and $Q=(w_{i,j})$ are both invertible.
+% $P=\begin{pmatrix}
+% \vert && \vert && \hdots && \vert\\
+% \ket{v_1} && \ket{v_2} && \hdots && \ket{v_n}\\
+% \vert && \vert && \hdots && \vert\\
+% \end{pmatrix}$,\\
+% $Q^{-1}=\begin{pmatrix}
+% \text{---} && \ket{w_1}^T &&\text{---} \\
+% \text{---} && \ket{w_2}^T &&\text{---} \\
+% \vdots && \vdots && \vdots \\
+% \text{---} && \ket{w_n}^T &&\text{---} \\
+% \end{pmatrix}$.
+
+
+Then, set $(b_{i,j})=PM_{B \otimes B'}(\ket{X})Q^{-1}$.  By direct computation, we have that
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+=\begin{pmatrix}
+\ket{v_1} && \ket{v_2} && \hdots && \ket{v_n}
+\end{pmatrix}
+\begin{pmatrix}
+\text{---} && \ket{w_1}^T &&\text{---} \\
+\text{---} && \ket{w_2}^T &&\text{---} \\
+\vdots && \vdots && \vdots \\
+\text{---} && \ket{w_k}^T &&\text{---} \\
+\text{---} && 0 &&\text{---}
+\end{pmatrix}\\
+=\begin{pmatrix}
+v_{11}w_{11}+\hdots+v_{1k}w_{1k} && v_{11}w_{21}+\hdots+v_{1k}w_{2k} && \hdots && v_{11}w_{n1}+\hdots+v_{1k}w_{nk}\\
+v_{21}w_{11}+\hdots+v_{2k}w_{1k} && v_{21}w_{21}+\hdots+v_{2k}w_{2k} && \hdots && v_{21}w_{n1}+\hdots+v_{2k}w_{nk}\\
+\vdots && \vdots && \vdots && \vdots\\
+v_{n1}w_{11}+\hdots+v_{nk}w_{1k} && v_{n1}w_{21}+\hdots+v_{nk}w_{2k} && \hdots && v_{n1}w_{n1}+\hdots+v_{nk}w_{nk}
+\end{pmatrix}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{gather*}
+    b_{ij}=\sum_{t=1}^k v_{it}w_{jt}
+\end{gather*}
+
+
+On the other hand,
+\begin{eqnarray*}
+\ket{X}&=&\sum_{i=1}^k \ket{v_i w_i}\\
+&=&\sum_{i=1}^k \left(\sum_{j=1}^{n} v_{ji} \ket{e_j}) \otimes (\sum_{s=1}^n w_{si}\ket{e_s}\right)\\
+&=&\sum_{i=1}^k \sum_{j=1}^{n} \sum_{s=1}^n v_{ji} w_{si} \ket{e_j e_s}\\
+\end{eqnarray*}
+
+\noindent
+Thus, if $M_{S \otimes S}(X)=(a_{lr})$, then $a_{lr}=\sum_{i=1}^k v_{lk} w_{rk}=b_{lr}$.
+So $PM_{B \otimes B'}(\ket{X})Q^{-1}=M_{S \otimes S}(X)$.  Therefore, $rank(M_{S \otimes S}(X))=rank(M_{B \otimes B'}(\ket{X}))=k$.
+\end{proof}
+
+\begin{example}
+
+Consider the case where $k=2, n=3$.
+
+Then 
+$$M_{B \otimes B'}(\ket{X})=\begin{pmatrix}
+\mathbb{I}_2 && 0 \\
+0 && 0
+\end{pmatrix}$$.
+
+We want to show $rank(M_{B \otimes B'}(\ket{X}))=rank(M_{S \otimes S}(\ket{X})=2$ by finding two $3\  \times 3$ invertible matrices P,Q such that $PM_{B \otimes B'}(\ket{X})Q^{-1}=M_{S \otimes S}(X)$.
+Let
+\begin{gather*}
+\ket{v_i}=\sum_{j=1}^3 v_{ji}\ket{e_j}\\
+\ket{w_i}=\sum_{j=1}^3 w_{ji}\ket{e_j}\\
+P=(\ket{v_1}, \ket{v_2}, \ket{v_3})\\
+Q^{-1}=(\ket{w_1}, \ket{w_2}, \ket{w_3})^T
+\end{gather*}
+
+Then
+\begin{eqnarray*}
+P M_{B \otimes B'}(\ket{X}) Q^{-1}&=&\begin{pmatrix}
+v_{11} && v_{12} && v_{13}\\
+v_{21} && v_{22} && v_{23}\\
+v_{31} && v_{32} && v_{33}
+\end{pmatrix}
+\begin{pmatrix}
+1 && 0 && 0\\
+0 && 1 && 0\\
+0 && 0 && 0\\
+\end{pmatrix}
+\begin{pmatrix}
+w_{11} && w_{21} && w_{31}\\
+w_{12} && w_{22} && w_{32}\\
+w_{13} && w_{23} && w_{33}
+\end{pmatrix}\\
+&=&\begin{pmatrix}
+v_{11} && v_{12} && 0\\
+v_{21} && v_{22} && 0\\
+v_{31} && v_{32} && 0
+\end{pmatrix}
+\begin{pmatrix}
+w_{11} && w_{21} && w_{31}\\
+w_{12} && w_{22} && w_{32}\\
+w_{13} && w_{23} && w_{33}
+\end{pmatrix}\\
+&=&\begin{pmatrix}
+v_{11}w_{11}+v_{12}w_{12} && v_{11}w_{21}+v_{12}w_{22} && v_{11}w_{31}+v_{12}w_{32}\\
+v_{21}w_{11}+v_{22}w_{12} && v_{21}w_{21}+v_{22}w_{22} && v_{21}w_{31}+v_{22}w_{32} \\
+v_{31}w_{11}+v_{32}w_{12} && v_{31}w_{21}+v_{32}w_{22} && v_{31}w_{31}+v_{32}w_{32} \\
+\end{pmatrix}
+\end{eqnarray*}
+
+
+% \ket{v_i}=\sum_{j=1}^3 v_{ji}\ket{e_j}\\
+% \ket{w_i}=\sum_{j=1}^3 w_{ji}\ket{e_j}\\
+
+We also have
+\begin{eqnarray*}
+\ket{X}&=&\ket{v_1 w_1}+\ket{v_2 w_2}\\
+&=& (v_{11}\ket{e_1}+v_{21}\ket{e_2}+v_{31}\ket{e_3}) \otimes (w_{11}\ket{e_1}+w_{21}\ket{e_2}+w_{31}\ket{e_3}) \\
+&+& (v_{12}\ket{e_1}+v_{22}\ket{e_2}+v_{32}\ket{e_3}) \otimes (w_{12}\ket{e_1}+w_{22}\ket{e_2}+w_{32}\ket{e_1})\\
+&=&\begin{pmatrix}
+v_{11}w_{11}+v_{12}w_{12} && v_{11}w_{21}+v_{12}w_{22} && v_{11}w_{31}+v_{12}w_{32}\\
+v_{21}w_{11}+v_{22}w_{12} && v_{21}w_{21}+v_{22}w_{22} && v_{21}w_{31}+v_{22}w_{32} \\
+v_{31}w_{11}+v_{32}w_{12} && v_{31}w_{21}+v_{32}w_{22} && v_{31}w_{31}+v_{32}w_{32} 
+\end{pmatrix}
+\end{eqnarray*}
+So $PM_{B \otimes B'}(\ket{X})Q^{-1}=M_{S \otimes S}(X)$ and $rank(M_{S \otimes S}(X))=rank(M_{B \otimes B'}(\ket{X}))=2$.
+\end{example}
+
+\bigskip
+By setting $k=1$ in Proposition \ref{rank prop}, we get the following classification of tensor products.
+
+\begin{corollary}
+If $rank(M(\ket{X}))=1$, then the state $\ket{X}$ is separable. Otherwise, $\ket{X}$ is entangled.
+\end{corollary}
+
+Thus, we may make the following definition.
+\begin{definition}
+ Let $\ket{X}$ be  a state in ${\mathbb{C}}^{(n^2)}$.  Then, the entanglement degree of $\ket{X}$ is $rank(M_{S \otimes S}(X))$.  If the entanglement degree of $\ket{X}$ is $n$, we say $\ket{X}$ is maximally entangled.
+\end{definition}
+
+\textcolor{red}{conventional definition of maximally entangled: when we trace over the state B then the reduced density operator $\rho_A$ of the system will be a multiple of the identity operator. This means that if we measure in system A in any basis the result will be completely random (0 or 1 with equal probability 1/2)}.
+
+In quantum mechanics one envisions Alice and Bob {\emph{sharing}} a potential entangled state.  When this happens we think of Alice's {\emph{part}} of the shared state as being the part on the {\emph{left-hand side}} of the tensor product, while Bob has the {\emph{right-hand side}}.  Note that we do not assume that the shared state is separable.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.8]{"alice bob entanglement".png}
+    \caption{Alice and Bob sharing an entangled state}
+    \label{fig:entanglement}
+\end{figure}
+
+When Alice and Bob share a state, Alice may measure her piece of the state, and if it is entangled, her measurement necessarily effects Bob's piece.
+
+\begin{prop}
+\label{entanglement-rank}
+Let $|X\rangle$ be as above and suppose Alice and Bob share the density matrix $|X\rangle\langle X|$. Say Alice observes $\ket{\psi}\bra{\psi}$. Suppose Bob then observes $\ket{\theta}\bra{\theta}$ as a result. Then the following statements hold.
+\begin{enumerate}
+    \item $rank(M(\ket{X}))=1$ if and only if $\ket{\theta}\bra{\theta}$ is a constant matrix that doesn't depend on $\ket{\psi}$. This means that Bob can obtain no information about Alice.
+    \item $rank(M(\ket{X}))=n$ if and only if $\ket{X}$ is maximally entangled. This means that Bob can infer exactly the state Alice measured ($\ket{\psi}$).
+    \item If $1<rank(M(\ket{X}))<n$, Bob can only partially infer information about Alice.
+\end{enumerate}
+\end{prop}
+
+First, let's prove the following lemma.
+
+
+
+% We now consider the use of the shared state $|X\rangle$ in message transmission.  Our goal is to classify exactly to what extent information can be transmitted remotely between two parties by use of shared states. The following lemma will tell us what happens in this situation when one of Alice or Bob observes a state $|\psi\rangle$.
+
+\begin{lemma}
+\label{end state lemma}
+Let $\ket{X}_{AB} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a valid quantum state representing a composite system of Alice and Bob.  The shared density matrix is $\rho = \ket{X}\bra{X}$. Then,
+\begin{enumerate}
+\item Say Alice makes a measurement and observes $\ket{\psi}\bra{\psi}_A$, then Bob's post-measurement state is $\ket{\theta}\bra{\theta}_B$, where $\ket{\theta}=\frac{1}{\sqrt{C}} M_{\ket{X}}^T \overline{\ket{\psi}}$.
+\item Say Bob makes a measurement and observes observes $\ket{\psi}\bra{\psi}_B$, then Alice's post-measurement state is $\ket{\theta}\bra{\theta}_A$.where $\ket{\theta}=\frac{1}{\sqrt{C}} M_{\ket{X}}^T \overline{\ket{\psi}}$.
+
+C is a scalar that normalizes $\ket{\theta}$.
+
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+$\rho=\ket{X}\bra{X}=(\sum_{i,j} a_{ij}\ket{e_i e_j}(\sum_{i',j'} \overline{a_{i'j'}}\bra{e_{i'} e_{j'}})=\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}\ket{e_i e_j}\bra{e_{i'} e_{j'}}$.\\
+Let $\ket{\psi}=\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_n
+\end{pmatrix}$.\\
+Say Alice observes $\ket{\psi}\bra{\psi}_A$.
+Then the post-measurement state conditioned on obtaining the outcome $\ket{\psi}_A$ is $\rho_{\ket{\psi}_A}^{AB}=\frac{(\ket{\psi}\bra{\psi}_A \otimes I_B)\rho_{AB}(\ket{\psi}\bra{\psi}_A \otimes I_B)}{tr((\ket{\psi}\bra{\psi}_A \otimes I_B)\rho_{AB})}$.
+The denominator is just a scalar. Call it C. Then \\
+$\rho_{\ket{\psi}_A}^{AB}=\frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\ket{\psi}\braket{\psi|e_i}\braket{e_{i'}|\psi}\bra{\psi}_A \otimes \ket{e_j}\bra{e_{j'}}_B\\
+=\frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\overline{b_i}b_{i'}\ket{e_j}\bra{e_{j'}}_B\\
+=\ket{\psi}\bra{\psi}_A \otimes \frac{1}{c} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\overline{b_i}b_{i'}\ket{e_j}\bra{e_{j'}}$
+
+So Bob will observe $\ket{\theta}\bra{\theta}=\sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\overline{b_i}b_{i'}\ket{e_j}\bra{e_{j'}}\\
+=>\ket{\theta}=\frac{1}{\sqrt{C}} M_{\ket{X}}^T \overline{\ket{\psi}}$,\\
+where $\overline{\ket{\psi}}=\begin{pmatrix}
+\overline{b_1}\\
+\vdots\\
+\overline{b_n}
+\end{pmatrix}$.
+
+Now let's compute C:\\
+$tr((\ket{\psi}\bra{\psi}_A \otimes I_B)\rho_{AB})\\
+=tr((\ket{\psi}\bra{\psi}_A \otimes I_B)(\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}\ket{e_i e_j}_A \otimes \bra{e_{i'} e_{j'}}_B))\\
+=\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}tr(\ket{\psi}\braket{\psi|e_i}\bra{e_{i'}})tr(\ket{e_j}\bra{e_{j'}})  $ (by Proposition \ref{trace of tensor product})\\
+$=\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}tr(\braket{e_{i'}|\psi}\braket{\psi|e_i})tr(\braket{e_{j'}|e_j})$ (since trace is commutable)\\
+$=\sum_j \sum_i \sum_{i'} a_{ij} \overline{a_{i'j}}\overline{b_i}b_{i'}$ (since $\braket{e_{j'}|e_j}=0$ when $j' \ne j$)\\
+$=|\ket{\theta}|^2$.
+
+So $\ket{\theta}$ is normalized.
+
+Similarly, say Bob observes $\ket{\psi}\bra{\psi}$. Then the post-measurement state conditioned on obtaining the outcome $\ket{\psi}_B$ is $\rho_{\ket{\psi}_B}^{AB}=\frac{(I_A \otimes \ket{\psi}\bra{\psi}_B  )\rho_{AB}(I_A \otimes \ket{\psi}\bra{\psi}_B)}{tr((I_A \otimes \ket{\psi}\bra{\psi}_B)\rho_{AB})}$.
+Then Alice will observe $\ket{\theta}\bra{\theta}$, where
+$\ket{\theta}=\frac{1}{\sqrt{C}} M_{\ket{X}}^T \overline{\ket{\psi}}$. C is a scalar that normalize $\ket{\theta}$.
+\end{proof}
+
+Now we are ready to prove Proposition \ref{entanglement-rank}.
+
+
+\begin{proof}
+Let $M(\ket{X})=
+\begin{pmatrix}
+\vert && \vert && \hdots && \vert\\
+\ket{v_1} && \ket{v_2} && \hdots && \ket{v_n}\\
+\vert && \vert && \hdots && \vert\\
+\end{pmatrix}$\\
+Suppose $rank(M(\ket{X}))=m$. Without loss of generality, let $\ket{v_{m+1}}, \ket{v_{m+2}},...,\ket{v_n} \in span(\ket{v_1},\ket{v_2},...,\ket{v_m})$. Then there exist scalar sets $\{\lambda_{(m+1),1}, \lambda_{(m+1),2},..., \lambda_{(m+1),m}\}, \{\lambda_{(m+2),1}, \lambda_{(m+2),2},..., \lambda_{(m+2),m}\},...,\{\lambda_{n,1}, \lambda_{n,2},..., \lambda_{n,m}\}$ such that $\ket{v_{m+1}}=\sum_{i=1}^m \lambda_{(m+1), i}\ket{v_i},...,\ket{v_n}=\sum_{i=1}^m \lambda_{n, i}\ket{v_i}$.\\
+Then $M(\ket{X})^T=\begin{pmatrix}
+\text{---} && \ket{v_1}^T &&\text{---} \\
+\vdots && \vdots && \vdots\\
+\text{---} && \ket{v_m}^T && \text{---} \\
+\text{---} && \sum_{i=1}^m \lambda_{(m+1), i}\ket{v_i}^T  &&\text{---} \\
+\vdots && \vdots && \vdots \\
+\text{---} && \sum_{i=1}^m \lambda_{n, i}\ket{v_i}^T &&\text{---} \\
+\end{pmatrix}$.
+
+When Alice observes $\ket{\psi}$, Bob is essentially trying to solve for the equation\\
+$\ket{\theta}= \frac{1}{\sqrt{C}}\begin{pmatrix}
+\text{---} && \ket{v_1}^T &&\text{---} \\
+\vdots && \vdots && \vdots\\
+\text{---} && \ket{v_m}^T && \text{---} \\
+\text{---} && \sum_{i=1}^m \lambda_{(m+1), i}\ket{v_i}^T  &&\text{---} \\
+\vdots && \vdots && \vdots \\
+\text{---} && \sum_{i=1}^m \lambda_{n, i}\ket{v_i}^T &&\text{---} \\
+\end{pmatrix}\overline{\ket{\psi}}$.\\
+Apparently, there are (n-m) free variables in $\overline{\ket{\psi}}$. This implies that the second statement and the third statement in Proposition \ref{entanglement-rank} are correct.
+
+\bigskip
+Let's prove the first statement in Proposition \ref{entanglement-rank}.
+
+$(=>):$ When $m=1$, $\ket{\theta}=\frac{1}{\sqrt{C}}\begin{pmatrix}
+\text{---} && \ket{v_1}^T &&\text{---} \\
+\text{---} && \lambda_2\ket{v_1}^T &&\text{---} \\
+\vdots && \vdots && \vdots\\
+\text{---} && \lambda_n\ket{v_1}^T &&\text{---} \\
+\end{pmatrix}
+\overline{\ket{\psi}}\\
+=\frac{1}{\sqrt{C}}\begin{pmatrix}
+\braket{\psi|v_1}\\
+\lambda_2 \braket{\psi|v_1}\\
+\vdots\\
+\lambda_n \braket{\psi|v_1}
+\end{pmatrix}$.\\
+Notice $C=(1+\lambda_2^2+\hdots+\lambda_n^2)n(\braket{\psi|v_1})^2$.\\
+So $\ket{\theta}=\frac{1}{\sqrt{n(1+\lambda_2^2+\hdots+\lambda_n^2)}\braket{\psi|v_1}}
+\begin{pmatrix}
+\braket{\psi|v_1}\\
+\lambda_2 \braket{\psi|v_1}\\
+\vdots\\
+\lambda_n \braket{\psi|v_1}
+\end{pmatrix}\\
+=\begin{pmatrix}
+\frac{1}{\sqrt{n(1+\lambda_2^2+\hdots+\lambda_n^2)}}\\
+\frac{\lambda_2}{\sqrt{n(1+\lambda_2^2+\hdots+\lambda_n^2)}}\\
+\vdots\\
+\frac{\lambda_n}{\sqrt{n(1+\lambda_2^2+\hdots+\lambda_n^2)}}
+\end{pmatrix}$, which is a constant vector that does not depend on $\ket{\psi}$.
+
+\bigskip
+$(<=):$ Suppose $\ket{\theta}\bra{\theta}$ is a constant matrix that doesn't depend on $\ket{\psi}$. This means for an arbitrary $\ket{\psi}$, the normalized $M(\ket{X})^T \overline{\ket{\psi}}$ should always be equal to $\ket{\theta}$.
+
+For contradiction, assume $rank(M(\ket{X})) \ge 2$. 
+
+Let $\ket{\psi}=\ket{e_1}$.Then\\
+$\ket{\theta} = \frac{1}{\sqrt{C_1}}
+\begin{pmatrix}
+\text{---} && \ket{v_1}^T &&\text{---} \\
+\vdots && \vdots && \vdots\\
+\text{---} && \ket{v_m}^T && \text{---} \\
+\text{---} && \sum_{i=1}^m \lambda_{(m+1), i}\ket{v_i}^T  &&\text{---} \\
+\vdots && \vdots && \vdots \\
+\text{---} && \sum_{i=1}^m \lambda_{n, i}\ket{v_i}^T &&\text{---} \\
+\end{pmatrix}\ket{e_1}
+=\frac{1}{\sqrt{C_1}}
+\begin{pmatrix}
+v_{11}\\
+v_{12}\\
+\vdots\\
+v_{1m}\\
+\sum_{i=1}^m \lambda_{(m+1), i} v_{1i}\\
+\vdots\\
+\sum_{i=1}^m \lambda_{n, i} v_{1i}
+\end{pmatrix}\\
+=\begin{pmatrix}
+\frac{1}{\sqrt{C_1}}v_{11}\\
+\frac{1}{\sqrt{C_1}}v_{12}\\
+\vdots\\
+\frac{1}{\sqrt{C_1}}v_{1m}\\
+\frac{1}{\sqrt{C_1}}\sum_{i=1}^m \lambda_{(m+1), i} v_{1i}\\
+\vdots\\
+\frac{1}{\sqrt{C_1}}\sum_{i=1}^m \lambda_{n, i} v_{1i}
+\end{pmatrix}$.
+
+Let $\ket{\psi}=\ket{e_2}$. Then\\
+$\ket{\theta}=
+\begin{pmatrix}
+\frac{1}{\sqrt{C_2}}v_{21}\\
+\frac{1}{\sqrt{C_2}}v_{22}\\
+\vdots\\
+\frac{1}{\sqrt{C_2}}v_{2m}\\
+\frac{1}{\sqrt{C_2}}\sum_{i=1}^m \lambda_{(m+1), i} v_{2i}\\
+\vdots\\
+\frac{1}{\sqrt{C_2}}\sum_{i=1}^m \lambda_{n, i} v_{2i}
+\end{pmatrix}$.
+
+Repeat the process until $\ket{\psi}=\ket{e_n}$. Then we get\\
+$\ket{\theta}
+=\begin{pmatrix}
+\frac{1}{\sqrt{C_1}}v_{11}\\
+\frac{1}{\sqrt{C_1}}v_{12}\\
+\vdots\\
+\frac{1}{\sqrt{C_1}}v_{1m}\\
+\frac{1}{\sqrt{C_1}}\sum_{i=1}^m \lambda_{(m+1), i} v_{1i}\\
+\vdots\\
+\frac{1}{\sqrt{C_1}}\sum_{i=1}^m \lambda_{n, i} v_{1i}
+\end{pmatrix}
+=\begin{pmatrix}
+\frac{1}{\sqrt{C_2}}v_{21}\\
+\frac{1}{\sqrt{C_2}}v_{22}\\
+\vdots\\
+\frac{1}{\sqrt{C_2}}v_{2m}\\
+\frac{1}{\sqrt{C_2}}\sum_{i=1}^m \lambda_{(m+1), i} v_{2i}\\
+\vdots\\
+\frac{1}{\sqrt{C_2}}\sum_{i=1}^m \lambda_{n, i} v_{2i}
+\end{pmatrix}
+=\hdots
+=\begin{pmatrix}
+\frac{1}{\sqrt{C_n}}v_{n1}\\
+\frac{1}{\sqrt{C_n}}v_{n2}\\
+\vdots\\
+\frac{1}{\sqrt{C_n}}v_{nm}\\
+\frac{1}{\sqrt{C_n}}\sum_{i=1}^m \lambda_{(m+1), i} v_{ni}\\
+\vdots\\
+\frac{1}{\sqrt{C_n}}\sum_{i=1}^m \lambda_{n, i} v_{ni}
+\end{pmatrix}$\\
+So $v_{11}:v_{21}:\hdots:v_{n1}=v_{12}:v_{22}:\hdots:v_{n2}=\hdots=v_{1m}:v_{2m}:\hdots:v_{nm}$.\\
+Therefore $\{\ket{v_1}, \ket{v_2},\hdots, \ket{v_m}\}$ is linearly dependent.\\
+So $rank(M(\ket{X})) = 1$. Contradiction!\\
+So when $\ket{\theta}$ is a constant, the rank must be at least 2.\\
+\end{proof}
+
+\begin{example}
+\textcolor{red}{include example for computing bob's end state after alice makes her measurement in $C^3$}
+\end{example}
+
+\begin{example}
+n=3, k=2. what will happen probabilistically for bob after alice makes her measurement?
+\end{example}
+It's very important to use an orthonormal basis for measurement because non-orthogonal states can't be reliably distinguished. So ideally $M(\ket{X})$ should preserve the orthogonality. Otherwise, say Alice makes a measurement on her part of $\ket{X}_{AB}$ using an orthonormal basis and gets an outcome with certainty, Bob will not be able to observe any outcome with certainty. \textcolor{red}{maybe add a little proof that non-orthogonal states cannot be reliably distinguished}
+
+\begin{prop} \label{orthogonality preserving character}
+$\{M(\ket{X})|M(\ket{X})$ is a scalar multiple of a $n \times n$ unitary matrix$\}$ is a characterization of all states in $\mathbb{C}^n \otimes \mathbb{C}^n$ such that orthoganality is preserved. i.e. if $\braket{u|v}=0$, then $\braket{M(\ket{X})u|M(\ket{X}v}=0$.
+\end{prop}
+
+Let's first prove the following lemma.
+
+\begin{lemma}
+Any nonzero singular n by n matrix does not preserve orthogonality. In other words, for a nonzero singular $n \times n$ matrix M, there exist $\ket{u}, \ket{v} \in \mathbb{C}^n$ such that $\braket{u|v}=0$ but $\braket{Mu|Mv} \ne 0$.
+\end{lemma}
+
+\begin{proof}
+
+Let the dimension of $ker(M)$ be m, and let $\{\ket{x_1}, \ket{x_2},\hdots, \ket{x_m}\}$ be a basis of $ker(M)$. Extend that basis to $\{\ket{x_1}, \ket{x_2},\hdots, \ket{x_m}, \hdots, \ket{x_n}\}$. Let
+\begin{gather*}
+    \ket{u}=\ket{x_1}+\ket{x_n}\\
+    \ket{v}=\ket{x_1}-\ket{x_n}
+\end{gather*}
+
+Then $\braket{u|v}=(\bra{x_1}+\bra{x_n})(\ket{x_1}-\ket{x_n})=\braket{x_1|x_1}+\braket{x_n|x_1}-\braket{x_1|x_n}-\braket{x_n|x_n}=1+0-0-1=0$.
+
+Since $\ket{x_1} \in ker(M)$, we also have
+\begin{gather*}
+    \ket{Mu}=M\ket{x_1}+M\ket{x_n}=M\ket{x_n}\\
+    \ket{Mv}=M\ket{x_1}-M\ket{x_n}=-M\ket{x_n}    
+\end{gather*}
+
+Since $\ket{x_n} \notin ker(M)$, $\ket{\sigma}=M\ket{x_n} \ne 0$. So $\braket{Mu|Mv}=-\braket{\sigma|\sigma} \ne 0$.
+\end{proof}
+
+\bigskip
+Now we are ready to prove Proposition \ref{orthogonality preserving character}.
+\begin{proof}
+Say $M(\ket{X})=\lambda U$, where $\lambda$ is a scalar and $U$ is a unitary matrix.
+Then if $\braket{u|v}=0$, $\braket{M(\ket{X}u|M(\ket{X}v}=\braket{\lambda Uu|\lambda Uv}=\lambda^2 \braket{u|(U^\dagger U)v}=\lambda^2 \braket{u|v}=0$. So orthogonality is preserved.
+
+\bigskip
+Let's prove the other direction. Call $M(X)$ M (note that $M \ne 0$). Say $\braket{Mu|Mv}=0$ when $\braket{u|v}=0$. Then by the lemma, M must be a nonzero invertible matrix. 
+
+Fix an arbitrary $v \in \mathbb{C}^n, v \ne 0$. Since M is a nonzero invertible matrix, $M^\dagger M v \ne 0$.
+
+$\forall u \in \mathbb{C}^n$, if $\braket{u|v}=0$, then $\braket{Mu|Mv}=0$, so $\braket{u|M^\dagger Mv}=0$.
+
+So $\forall u \in v^\perp, u \in (M^\dagger Mv)^\perp$. So $v^\perp \subseteq (M^\dagger Mv)^\perp$.
+
+Since $v^\perp$ and $(M^\dagger Mv)^\perp$ both have dimension $n-1$, $v^\perp = (M^\dagger Mv)^\perp$.
+
+So $\exists \lambda_v$ such that $\lambda_v v = M^\dagger M v$. We want to show that regardless of what v we pick initially, $\lambda_v$ stays the same. In other words, if we fix $v' \in \mathbb{C}^n, v' \ne 0, \lambda_{v'} v' = M^\dagger M v', \lambda_v = \lambda_{v'}$
+\begin{gather*}
+\braket{v|v'}-\braket{v|v'}=0\\
+=>\braket{M^\dagger M v|v'}-\braket{M^\dagger M v|v'}=0\\
+=>\braket{M^\dagger M v|v'}-\braket{v|M^\dagger M v'}=0\\
+=>\lambda_v \braket{v|v'}-\lambda_{v'} \braket{v|v'}=0\\
+=>(\lambda_v -\lambda_{v'}) \braket{v|v'}=0\\
+=> \lambda_v = \lambda_{v'} if \braket{v|v'} \ne 0
+\end{gather*}
+
+If $\braket{v|v'}=0$, $\exists \ket{v''}$ such that $\braket{v|v''} \ne 0$ and $\braket{v'|v''} \ne 0$. Then $\lambda_v =\lambda_{v''}, \lambda_{v'}=\lambda_{v''}$. So $\lambda_v=\lambda_{v'}$ even when $\braket{v|v'}=0$.
+
+So for an arbitrary $\ket{v} \in \mathbb{C}^n, \ket{v} \ne 0$, $\exists \lambda$ that's independent of $\ket{v}$ such that $M^\dagger M v = \lambda v$. So $M^\dagger M=\lambda \mathbb{I}_n=>\frac{1}{\sqrt{\lambda}}M^\dagger \frac{1}{\sqrt{\lambda}} M=\mathbb{I}_n=>M$ is a scalar multiple of a unitary matrix.
+\end{proof}
+
+What this theorem says is that if the coefficient matrix of a given shared quantum state $\ket{X}$ is a scalar multiplication of a unitary matrix, then if Alice picked the basis $\{\ket{u}, \ket{v}\}$ to measure on her qubit, Bob can measure his part with respect to the basis $\{M(\ket{X})\ket{u}, M(\ket{X})\ket{v}\}$. When $M(\ket{X})$ is a scalar multiple of a unitary matrix, it is also invertible and has full rank, so it's entangled as well. Therefore, Bob can infer Alice's measured outcome once he knows which specific basis Alice picked.
+
+Otherwise, Bob can only measure with respect to some basis $\{M(\ket{X})\ket{u}, (M(\ket{X})\ket{u})^\perp \}$ and can only infer something meaningful of Alice within certain probability.
+
+
+\begin{corollary}
+$\ket{X}=\frac{1}{\sqrt{2}}(a\ket{00}+(-e^{i\theta})\Bar{b}\ket{01}+b\ket{10}+e^{i\theta}\Bar{a}\ket{11})$, where $a^2+b^2=1$ is a characterization of all states in $\mathbb{C}^2 \otimes \mathbb{C}^2$ such that if $\braket{u|v}=0$, then $\braket{M(\ket{X}u|M(\ket{X})v)}=0$.
+\end{corollary}
+
+\begin{example}
+Consider a two-qubit joint state to be $\ket{X}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$. Say Alice chooses to measure on the standard basis $\{\ket{0}, \ket{1}\}$.
+\end{example}
+Then Bob will choose to measure on $\{M(\ket{X})\ket{0}, M(\ket{X})\ket{1}\}=\{\ket{1}, \ket{0}\}$. By Lemma \ref{end state lemma}, after Alice's measurement, if her outcome is $\ket{0}$, then Bob's post-measurement state will be $\ket{1}$. If her outcome is $\ket{1}
+$, then Bob's post-measurement state will be $\ket{0}$. Because Bob chooses to measure on the standard basis, he will be able to observe the correct outcome $\ket{1}, \ket{0}$ respectively with certainty (by Definition \ref{simple measurement}).
+text
+
+\begin{example}
+Consider a two-qubit state not within the characterization in Proposition \ref{orthogonality preserving character} $\ket{X}=\frac{1}{\sqrt{3}}(\ket{00}+\ket{01}+\ket{10})$. Say Alice chooses to measure on the standard basis $\{\ket{0}, \ket{1}\}$.
+\end{example}
+Bob will not be able to measure on $\{M(\ket{X})\ket{0}, M(\ket{X})\ket{1}\}=\{\begin{pmatrix}
+\frac{1}{\sqrt{3}}\\
+\frac{1}{\sqrt{3}}
+\end{pmatrix},\begin{pmatrix}
+\frac{1}{\sqrt{3}}\\
+0
+\end{pmatrix}\}$ because it's not orthogonal.
+
+Bob will only be able to choose to measure on $\{M(\ket{X})\ket{0}, (M(\ket{X})\ket{0})^\perp \}$ or $\{(M(\ket{X})\ket{1})^\perp, M(\ket{X})\ket{1} \}$.
+Without the loss of generality, let's say Bob chooses to measure on $\{M(\ket{X})\ket{0}, (M(\ket{X})\ket{0})^\perp \}=\{\begin{pmatrix}
+\frac{1}{\sqrt{3}}\\
+\frac{1}{\sqrt{3}}
+\end{pmatrix}, \begin{pmatrix}
+\frac{1}{\sqrt{3}}\\
+-\frac{1}{\sqrt{3}}
+\end{pmatrix}\}$.
+We normalize the two vectors and call them $\ket{u}'$ and $\ket{v}'$, respectively. So the orthonormal basis for Bob is $\{\ket{u'}, \ket{v'}\}$, where $\ket{u}'=\begin{pmatrix}
+\frac{1}{\sqrt{2}}\\
+\frac{1}{\sqrt{2}}
+\end{pmatrix}$, $\ket{v}'=\begin{pmatrix}
+\frac{1}{\sqrt{2}}\\
+-\frac{1}{\sqrt{2}}
+\end{pmatrix}$. \textcolor{red}{to be continued}
+
+\bigskip
+Just by looking at Lemma \ref{end state lemma}, it seems that Alice can pick an arbitrary basis to make her measurement, and Bob shall receive a corresponding post-measurement state. However, what if the basis Alice picks contains a vector $\ket{u}$ that's within the kernel of coefficient matrix $M(\ket{X})$? Then according to the lemma, the post-measurement state will be a zero matrix, which is not a valid quantum state at all. Such incoherence is resolved by the following proposition.
+
+\begin{prop} \label{null space}
+Say Alice and Bob share a two-qudit quantum state $\ket{\psi}$. Alice can never observe an outcome $\ket{u}$ such that $\ket{\Bar{u}} \in Nul(M(\ket{\psi}))$.
+\end{prop}
+\begin{proof}
+The shared density matrix is 
+\begin{gather*}
+\rho=\ket{\psi}\bra{\psi}=(\sum_{i,j} a_{ij}\ket{e_i e_j}(\sum_{i',j'} \overline{a_{i'j'}}\bra{e_{i'} e_{j'}})=\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}\ket{e_i e_j}\bra{e_{i'} e_{j'}}.  
+\end{gather*}
+
+Let $\ket{u}=\sum_1^n b_i \ket{e_i}$. Then
+\begin{equation*} \tag{$\star$}
+    \braket{u|i}=\overline{b_i}, \braket{i|u}=b_i
+\end{equation*}
+
+Since $\ket{\Bar{u}} \in Nul(M(\ket{\psi}))$, we have 
+\begin{equation*} \tag{$\star \star$}
+    \forall i, \sum_{j=1}^n a_{ij} \overline{b_i}=0
+\end{equation*}
+
+The probability of Alice observing $\ket{u}$, and Bob observing some $\ket{v}$ is
+\begin{eqnarray*}
+p(\ket{u}_A, \ket{v}_B)&=&\braket{u v | \rho |u v}\\
+&=&\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}\braket{u|i}\braket{i'|u}_A \otimes \braket{v|j}\braket{j'|v}_B\\
+&=&\sum_i \sum_{i'} \sum_j \sum_{j'}  a_{ij} \overline{a_{i'j'}} \braket{u|i}\braket{i'|u}_A \otimes \braket{v|j}\braket{j'|v}_B\\
+&=&(\sum_i \sum_j a_{ij} \overline{b_i})(\sum_{i'} \sum_{j'} \overline{a_{i'j'}} b_{i'})_A \otimes \braket{v|j}\braket{j'|v}_B   \; \; \;  (by (\star))\\ 
+&=& 0 \; \; \; (by (\star \star))
+\end{eqnarray*}
+So Alice can never observe an outcome who's conjugate is in the kernel of $M(\ket{\psi})$.
+\end{proof}
+
+What the above proposition implies is that Alice can indeed choose an arbitrary orthonormal basis to make her measurement. Yet the possible outcomes she can observe are restricted to those not within the kernel of the coefficient matrix $M(\ket{X})$.

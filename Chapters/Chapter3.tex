@@ -1,0 +1,143 @@
+% Chapter Template
+
+\chapter{Postulates of Quantum Mechanics} % Main chapter title
+
+\label{Chapter3-postulates} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\begin{quote}
+"I, at any rate, am convinced that [God] does not throw dice."--Albert Einstein
+\end{quote}
+
+\textcolor{red}{add a few big names in quantum mechanics, more background/history, and a few crucial properties in quantum mechanics.}
+In the 20th century, quantum mechanics fundamentally changed our understanding of the physical world.  Previously, physicists viewed the universe deterministically.  Any physical attribute of an object could be measured to, in principle, any degree of accuracy.  A moving object through space possessed an exact location, velocity and momentum at a time $t$.  Quantum mechanics would shatter this {\emph{classical}} view of the universe, forever creating the classical vs. quantum dichotomy.  Quantum mechanics tells us that ...
+
+
+See \cite{Nielsen} for a more extensive introduction.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Postulate 1: State space}
+
+The first postulate of quantum mechanics is as followed: 
+\begin{quote}
+    \textbf{Postulate 1}: Associated to any isolated physical system is a complex vector space with inner product (that is, a Hilbert space) known as the state space of the system. The system is completely described by its state vector, which is a unit vector in the system's state space.
+\end{quote}
+
+This postulate does not tell us what \textit{specific} state space is given a physical system. It therefore also does not tell what the state vector is. Physicists have developed tools such as quantum electrodynamics (QED), which describes how atoms and light interact, to help solve this problem. For our purpose, it's enough to assume a $C^n$ state vector space. In fact, it's sufficient to just assume a 2-dimensional complex space most of the time, in which the state vector is \textit{qubit}, which we have already introduced in section \ref{section-preliminaries} as a superposition of $\ket{0}$ and $\ket{1}$.
+
+In fact, there are real physical systems that can be described in terms of qubits, validated by various experiments. As the two different polarizations of a photon; as the alignment of a nuclear spin in a uniform magnetic field; as two states of an electron orbiting a single atom. In the atom model, the electron can exist in either the so-called "ground" or "excited" states, which can be called $\ket{0}$ and $\ket{1}$ respectively. By shining light on the atom with appropriate energy and for an appropriate length of time, it is possible to move the electron from the $\ket{0}$ state to the $\ket{1}$ state and vice versa. More interestingly, reducing the time we shine the light, an electron initially in the state $\ket{0}$ can be moved "halfway" between $\ket{0}$ and $\ket{1}$ into the $\ket{+}$ state\cite{Nielsen}.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+\section{Postulate 2: Evolution}
+
+\begin{quote}
+    \textbf{Postulate 2}: The evolution of a closed quantum system is described by a unitary transformation. That is, the state $\ket{\psi}$ of the system at time $t_1$ is related to the state $\ket{\psi'}$ of the system at time $t_2$ by a unitary operator U which depends only on the times $t_1$ and $t_2$, $\ket{\psi'}=U\ket{\psi}$.
+\end{quote}
+
+This postulate does not tell us which particular unitary operator describes a given real-world quantum dynamics, but it assures us that the evolution of any closed quantum system may be described in such way. What unitary operators are natural to consider then? For single qubits, any unitary operator can be realized in realistic systems. 
+
+\begin{example} [Hadamard gate]
+A commonly used unitary operator is the Hadarmard gate, denoted by H, that satisfies $H\ket{0}=\ket{+}\\
+H\ket{1}=\ket{-}$.
+\begin{equation}
+   H=\frac{1}{\sqrt{2}}\begin{pmatrix}
+1 && 1\\
+1 && -1
+\end{pmatrix} 
+\end{equation}
+\end{example}
+
+\begin{example} [Pauli Matrices]
+
+\end{example}
+Postulate 2 also requires the system to be closed, which is mostly impossible in reality. However, it turns out that for scenarios discussed in the thesis, we can often describe the evolution of quantum system that are not perfectly closed with unitary operators, except for quantum measurement, which we will talk more in detail later.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+\section{Postulate 3: Quantum Measurement}
+When an external physical system such as some experimental equipment observes a given quantum system, the quantum system is no longer closed, and thus not necessarily subject to unitary evolution. The third postulate describes the effects of measurements on quantum system. 
+
+\begin{quote}
+    \textbf{Postulate 3}: Quantum measurements are described by a collection $\{M_m\}$ of measurement operators. These are operators acting on the state space of the system being measured. The index m refers to the measurement outcomes that may occur in the experiment. If the state of the quantum system is $\ket{\psi}$ immediately before the measurement then the probability that result m occurs is given by 
+    \begin{gather*}
+        p(m)=\ket{\psi}M_m^\dagger M_m \bra{\psi}
+    \end{gather*}
+    and the state of the system after the measurement is
+    \begin{gather*}
+        \frac{M_m \ket{\psi}}{\sqrt{\ket{\psi}M_m^\dagger M_m \bra{\psi}}}
+    \end{gather*}
+    The measurement operators satisfy the completeness equation $\sum_m M_m^\dagger M_m =I$
+\end{quote}
+
+\begin{example} [Distinguishing orthogonal quantum states]
+Alice chooses a state $\ket{\psi_i} (1 \le i \le n)$ from some fixed set of states known to both Alice and Bob. She gives $\ket{\psi_i}$ to Bob, whose task is to identify the index i of the state Alice has given him. Suppose the states $\{\ket{\psi_i}\}_{i=1}^n$ are orthonormal. Then Bob can do a quantum measurement to distinguish these states by first defining measurement operators $M_i=\ket{\psi_i}\bra{\psi_i}$ for each possible i. He defines an additional measurement operators $M_0$ as the positive square root of $I-\sum_{i \ne 0} \ket{\psi_i}\bra{\psi_i}$. Since the completeness relation is satisfied, if Alice prepares $\ket{\psi_i}$, then $p(i)=\braket{\psi_i | M_i |\psi_i}$. So the result i occurs with certainty, meaning Bob can reliably distinguish the orthonormal states $\{\ket{\psi}\}_{i=1}^n$.
+\end{example}
+
+A very important special case of the general measurement postulate given above is known as \textit{projective measurements}. Projective measurements turn out to be \textit{equivalent} to the general measurement postulate, when they are augmented with the ability to perform unitary transformations as described in Postulate 2 \footnote{see \cite{Wehner:notes} 93. \textcolor{red}{maybe i will add more explanation here.}}. The measurement postulate for projective measurements is superficially rather different from the general postulate above.
+\begin{quote}
+    \textbf{Projective Measurements}: A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
+    \begin{equation}
+        M=\sum_m m P_m
+    \end{equation},
+    where $P_m$ is the projector onto the eigenspace of M with eigenvalue m. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable. Upon measuring the state $\ket{\psi}$, the probability of getting result m is given by 
+    \begin{equation}
+        p(m)=\braket{\psi|P_m|\psi}
+    \end{equation}.
+    Givemm that outcome m occurred, the state of the quantum system immediately after the measurement is 
+    \begin{equation}
+        \frac{P_m \ket{\psi}}{\sqrt{p(m)}}.
+    \end{equation}
+\end{quote}
+% \textcolor{blue}{Let's do definitions \ref{simple measurement}, \ref{projective measurement} as one definition first.  Then as a first example let's show that they agree}
+
+\bigskip
+\textcolor{red}{talk about some properties of projective measurements}.
+
+% Another feature that distinguishes quantum from classical is that that we can measure a qubit in basis aside from the standard basis. 
+To measure in a basis $\ket{m}$, where $\ket{m}$ form an orthonormal basis, simply means to perform the projective measurement with projectors $P_m=\ket{m}\bra{m}$.
+
+ Suppose that we measure a quantum state $\ket{\psi}$ in the orthonormal basis $\{\ket{b_j}\}_{j=1}^d$, the probability of observing outcome "$b_j$" can be found by computing $p_j=|\braket{b_j|\psi}|^2$. The post-measurement state when obtaining outcome "$b_j$" is given by $\ket{b_j}$.
+
+% \textcolor{blue}{computation: $\ket{e_i}$ an orthonormal basis. $\ket{x}$ a state. $\ket{x}=\sum_i \bra{x}\ket{e_i}e_i$. Then the probability of end result $e_i$ is $|{\bra{x}\ket{e_i}|}^2 $.}
+
+A very simple measurement is to measure a qubit in the standard basis. 
+
+\begin{example} [Measurement of a qubit in the standard basis]
+This is a measurement on a single qubit with two outcomes defined by the two measurement operators $M_0=\ket{0}\bra{0}, M_1=\ket{1}\bra{1}$. Each measurement operator is Hermitian, and that $M_0^2=M_0, M_1^2=M_1$. 
+\begin{equation*}
+    M_0^\dagger M_0+M_1^\dagger M_1 = M_0 + M_1 = I
+\end{equation*}.
+So the completeness relation is obeyed. Suppose the state being measured is $\ket{\psi}=a\ket{0}+b\ket{1}$. Then the probability of obtaining measurement outcome 0 is
+\begin{equation*}
+    p(0) = \ket{\psi}M_0^\dagger M_0 \bra{\psi} = \braket{\psi | M_0 | \psi}=|a|^2.
+\end{equation*}
+Similarly, the probability of obtaining measurement outcome 1 is $b^2$.
+The state after measurement in the two cases is therefore
+\begin{gather*}
+    \frac{M_0 \ket{\psi}}{|a|}=\frac{a}{|a|}\ket{0}\\
+    \frac{M_1 \ket{\psi}}{|a|}=\frac{a}{|a|}\ket{0}\\   
+\end{gather*}
+\end{example}
+
+\begin{example}
+
+\end{example}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+\section{Postulate 4: Composite Systems}
+\begin{quote}
+    \textbf{Postulate 4}:The state space of a composite physical system is the tensor product of the component physical systems. Moreover, if we have systems numbered 1 through n, and system number i is prepared in the state $\ket{\psi_i}$, then the joint state of the total system is $\ket{\psi_1} \otimes \ket{\psi_1} \otimes \hdots \otimes \ket{\psi_n}$
+\end{quote}
+
+This postulate also enables us to define one of the most interesting ideas associated with composite quantum systems, \textit{entanglement}. Consider the two qubit state 
+\begin{equation}
+    \ket{\psi}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}
+\end{equation}
+There are no single qubit states $\ket{a}, \ket{b}$ such that $\ket{\psi}=\ket{a}\otimes \ket{b}$. We say that a state of a composite system having this property of not being a tensor product of its component states is an \textit{entangled} state. We will define entanglement more formally in a later section.

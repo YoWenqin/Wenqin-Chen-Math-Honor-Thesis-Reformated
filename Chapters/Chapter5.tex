@@ -1,0 +1,139 @@
+% Chapter Template
+
+\chapter{Classical and Quantum Cryptography} % Main chapter title
+
+\label{Chapter5-cryptography} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\textcolor{red}{maybe i should insert something about one-time pad here as well}.
+\textcolor{blue}{How about one-time pad here first.  Also this is a good place for a picture of Alice and Bob.  We should be able to find a schematic with Alice and Bob somewhere}
+
+Broadly speaking, cryptography is the problem of doing communication or computation involving two or more parties who may not trust one another. To transmit a secret message from Alice to Bob, we deploy either private key cryptosystems or public key cryptosystems. In private key cryptosystems, a private key is used by Alice to encrypt the secret message she wants to send to Bob, who will also need the private key to decrypt the message. Distributing the private key from Alice to Bob is rather difficult because a third party Eve might be eavesdropping on the key distribution. Certain quantum mechanics principles, on the other hand, can be exploited in the private key distribution. Pubic key cryptosystems such as the RSA cryptosystem is the most widely used cryptographic protocol now. The security of RSA relies on classical computers' difficulty in solving the problem of factoring. However, Shor's fast algorithm on a quantum computer can easily break RSA.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Bell-Nonlocality and CHSH game}
+
+Bell proved that the predictions of quantum theory are incompatible with those of any classical theory satisfying a natural notion of locality \cite{bell1964}. The bell-nonlocality can be understood by a non-local game between Alice and Bob, in which they are asked questions $x,y \in \{0,1\}$ respectively. They respond with asnwers $a, b \in \{0,1\}$ respectively. They are allowed to agree on a strategy beforehand, but are not allowed to communicate during the game. Alice and Bob win the game if and only if 
+\begin{equation*}
+ a+b (mod 2)=xy    
+\end{equation*}
+
+The winning probability is given by 
+\begin{equation*}
+    p^{CHSH}_{win} = \frac{1}{4}\sum_{x,y \in \{0,1\}} \sum_{a, b \: such \: that \: a+b \: mod 2 = xy} p(a,b|x,y)
+\end{equation*}
+where $p(a,b|x,y)$ is the probability that Alice and Bob answer a and b given questions x and y.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.8]{"non-local game".png}
+    \caption{Alice and Bob in a non-local CHSH guessing game}
+    \label{fig:entanglement}
+\end{figure}
+
+It turns out that for many games, a quantum strategy can achieve a higher winning probability. In addition, observing a higher winning probability is a signature of entanglement: quantumly, Alice and Bob can achieve a higher winning proabbility only if they are entangled, making such games into tests for entanglement and therefore play a key role in quantum key distribution. Specifically, a \textit{quantum strategy} means that Alice and Bob can pick a state $\rho_{AB}$ to share, and agree on measurements to perform depending on their respectively questions. That is, x and y will label a choice of measurement, and a and b are outcomes of that measurement.
+
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+\subsection{Classical Strategy}
+
+A classical strategy is simply given by functions $f_A(x)=a$ and $f_B(y)=b$. By checking all possible classical strategies in the following table, we see the maximum winning probability is $\frac{3}{4}$.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ $p(a,b|x,y)$ & \begin{tabular}[c]{@{}l@{}}a=0 if x=0\\ a=1 if x=1\end{tabular} & \begin{tabular}[c]{@{}l@{}}a=1 if x=0\\ a=0 if x=1\end{tabular} & a=1 & a=0 \\ \hline
+\begin{tabular}[c]{@{}l@{}}b=0 if y=0\\ b=1 if y=1\end{tabular} & $\frac{1}{4}$ & $\frac{3}{4}$ & $\frac{1}{4}$ & $\frac{3}{4}$ \\ \hline
+\begin{tabular}[c]{@{}l@{}}b=1 if y=0\\ b=0 if y=1\end{tabular} & $\frac{3}{4}$ & $\frac{1}{4}$ & $\frac{3}{4}$ & $\frac{1}{4}$ \\ \hline
+b=1 & $\frac{1}{4}$ & $\frac{3}{4}$ & $\frac{3}{4}$ & $\frac{1}{4}$ \\ \hline
+b=0 & $\frac{3}{4}$ & $\frac{1}{4}$ & $\frac{1}{4}$ & $\frac{3}{4}$ \\ \hline
+\end{tabular}
+\end{table}
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+\subsection{Quantum Strategy}
+Suppose Alice and Bob share an EPR pair, where we label the qubit held by Alice A and the one held by Bob B: 
+\begin{equation*}
+    \ket{\psi_{AB}}=\frac{1}{\sqrt{2}}(\ket{0}_A \ket{0}_B+\ket{1}_A \ket{1}_B)
+\end{equation*}
+
+Suppose now that when x = 0, Alice measures her qubit in the standard basis $\{\ket{0}, \ket{1}\}$. When x = 1, Alice measures her qubit in the Hadarmard basis $\{\ket{+}, \ket{-}\}$, where
+\begin{gather*}
+    \ket{+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})\\
+    \ket{-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})
+\end{gather*}
+
+Suppose when y=0, Bob measures his qubit in the basis $\{\ket{v_1}, \ket{v_2}\}$, where
+\begin{gather*}
+    \ket{v_1}=cos(\frac{\pi}{8})\ket{0}+sin(\frac{\pi}{8})\ket{1}\\
+    \ket{v_2}=-sin(\frac{\pi}{8})\ket{0}+cos(\frac{\pi}{8})\ket{1}  
+\end{gather*}
+and when y = 1, Bob measures her qubit in $\{\ket{w_1}, \ket{w_2}\}$, where
+\begin{gather*}
+    \ket{w_1}=cos(\frac{\pi}{8})\ket{0}-sin(\frac{\pi}{8})\ket{1}\\
+    \ket{w_2}=sin(\frac{\pi}{8})\ket{0}+cos(\frac{\pi}{8})\ket{1}   
+\end{gather*}
+Then consider the probability of winning, conditioned on the four different possible combinations of x, y:
+\begin{eqnarray*}
+p_{win|x=0,y=0}&=&p(a=0, b=0|x=0, y=0)+p(a=1, b=1|x=0, y=0)\\
+&=&\braket{0 v_1|\psi}\braket{\psi|0v_1}+\braket{1 v_2|\psi}\braket{\psi|1v_2}\\
+&=&|\braket{0 v_1|\psi}|^2 + |\braket{1 v_2|\psi}|^2\\
+&=&|\frac{1}{\sqrt{2}}(\braket{0v_1|00}+\braket{0v_1|11})|^2+|\frac{1}{\sqrt{2}}(\braket{1v_2|00}+\braket{1v_2|11})|^2\\
+&=&\frac{1}{2}|cos(\frac{\pi}{8})\braket{00|00}+sin(\frac{\pi}{8})\braket{01|00}+cos(\frac{\pi}{8})\braket{00|11}+cos(\frac{\pi}{8})\braket{01|11}|^2\\
+&+&\frac{1}{2}|-sin(\frac{\pi}{8})\braket{10|00}+cos(\frac{\pi}{8})\braket{11|00}-sin(\frac{\pi}{8})\braket{10|11}+cos(\frac{\pi}{8})\braket{11|11}|^2\\
+&=&cos^2(\frac{\pi}{8})
+\end{eqnarray*}
+
+Similarly,
+\begin{eqnarray*}
+p_{win|x=0,y=1}&=&p(a=0, b=0|x=0, y=1)+p(a=1, b=1|x=0, y=1)\\
+&=&|\braket{0 w_1|\psi}|^2 + |\braket{1 w_2|\psi}|^2\\
+&=&(\frac{1}{\sqrt{2}}cos\frac{\pi}{8})^2+(\frac{1}{\sqrt{2}}cos\frac{\pi}{8})^2\\
+&=&cos^2 \frac{\pi}{8}
+\end{eqnarray*}
+\begin{eqnarray*}
+p_{win|x=1,y=0}&=&p(a=0, b=0|x=1, y=0)+p(a=1, b=1|x=1, y=0)\\
+&=&|\braket{+ v_1|\psi}|^2 + |\braket{- v_2|\psi}|^2\\
+&=&\frac{1}{2}(\frac{1}{\sqrt{2}}cos\frac{\pi}{8}+\frac{1}{\sqrt{2}}sin\frac{\pi}{8})^2+\frac{1}{2}(\frac{1}{\sqrt{2}}cos\frac{\pi}{8}+\frac{1}{\sqrt{2}}sin\frac{\pi}{8})^2\\
+&=&\frac{1}{2}(cos\frac{\pi}{8}+sin\frac{\pi}{8})^2\\
+&=&cos^2 \frac{\pi}{8}
+\end{eqnarray*}
+\begin{eqnarray*}
+p_{win|x=1,y=1}&=&p(a=1, b=0|x=1, y=1)+p(a=0, b=1|x=1, y=1)\\
+&=&|\braket{- w_1|\psi}|^2 + |\braket{+ w_2|\psi}|^2\\
+&=&\frac{1}{2}(cos\frac{\pi}{8}+sin\frac{\pi}{8})^2\\
+&=&cos^2 \frac{\pi}{8}
+\end{eqnarray*}
+So the probability of winning is the average of the four above:
+\begin{equation*}
+    p_{win}=\frac{1}{4}\sum_{x,y}p_{win|x,y}=cos^2 \frac{\pi}{8} \approx 0.85
+\end{equation*}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Monogamy of Entanglement}
+\textcolor{red}{put it say a property right after introducing entanglement}
+\cite{Toner2006}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+\section{BB84 Protocol}
+\cite{Bennett1984}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+
+\section{E91 Protocol}
+\cite{Ekert1991}

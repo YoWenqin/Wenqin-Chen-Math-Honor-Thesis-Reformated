@@ -1,0 +1,234 @@
+% Chapter Template
+
+\chapter{Preliminaries} % Main chapter title
+
+\label{Chapter2-preliminaries} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Complex Vector Spaces}
+
+Mathematically, a {\emph{qubit}} is a unit vector in a two-dimensional complex vector space.  In the same way that the bit is the fundamental unit of classical computation and information, the quantum bit, or qubit is the basic unit of quantum information.  With this motivation in mind, we sometimes write $\ket{0} = \icol{1\\0}$, and $\ket{1} = \icol{0\\1}$. Note that the symbols "$\ket{0}$" and "$\ket{1}$" are read "ket one" and "ket two".\footnote{We are using so-called Bra-ket notation common in quantum mechanics}  While bits may only take the values $0$ or $1$, a qubit is a complex linear combination, or \textit{superposition} of $\ket{0}$ and $\ket{1}$ with norm equal to one. 
+
+Thus, formally we have the following definitions:
+\begin{definition}[Qubit]
+A qubit $\ket{\psi}$ is a two-dimensional "ket" vector, $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$, 
+where $\alpha,\beta\in\mathbb{C}$, with $|\alpha|^2+|\beta|^2=1$.
+More generally, a qudit is a unit vector in ${\mathbb{C}}^d$.
+\end{definition}
+
+
+
+As we have seen in ${\mathbb{C}}^2$, in ${\mathbb{C}}^d$ the standard basis $\{\ket{e_1}, \ket{e_2}, ... \ket{e_d} \}$ is sometimes written $\{\ket{0}, \ket{1}, ...\ket{d\textrm{-}1}\}$.  In what follows we will pass freely between both these two notations.
+
+
+Recall that if $V$ is a complex vector space, a {\emph{Hermitian inner product}} $\langle\hspace{.1cm},\hspace{.1cm}\rangle$ is a function from $V \times V$ to $\mathbb{C}$ which satisfies: 
+
+\begin{enumerate}
+\item $\langle\ket{v}, \sum_i \lambda_i \ket{w_i}\rangle=\sum_i \lambda_i \langle\ket{v}, \ket{w_i}\rangle$
+\item $\langle\ket{v}, \ket{w}\rangle=\overline{\langle\ket{w}, \ket{v}\rangle}$
+\item $\langle\ket{v}, \ket{v}\rangle \ge 0$ \textrm{ with quality if and only if }$\ket{v}=0$
+\end{enumerate}
+for all $\ket{v}$ and $\ket{w}$.\footnote{Note that in the above, $\overline{z}$ denotes the conjugate of the complex number $z$.} 
+
+One easily checks that $\mathbb{C}^d$ has inner product given by the formula
+\begin{equation} \label{inner product defn}
+  \langle \ket{v},\ket{w}\rangle=\sum\limits_{i=1}^d \overline{v_i} w_i \textrm{, where }
+  \ket{v}=\icol{v_1\\ \vdots\\v_d} \textrm{ and }\ket{w}=\icol{w_1\\ \vdots\\w_d}.
+\end{equation}
+
+With this inner product, ${\mathbb{C}}^d$ is a {\emph{Hilbert space.}\footnote{A Hilbert space is an inner product space where Cauchy sequences converge.}  If $L:V \to W$ is a linear transformation between two inner product spaces, the {\emph{adjoint of }}$L$, $L^\dagger$ is the linear transformation from $W$ to $V$ characterized by the property that, \textrm{ for all } $\ket{v} \in V$, \textrm{ for all }$\ket{w} \in W$. \footnote{Note that the left inner product on the left is taken in $W$, while the one on the right is taken in $V$}
+\begin{equation}
+    \langle\ket{w}, L\ket{v}\rangle=\langle L^\dagger \ket{w}, \ket{v}\rangle 
+\end{equation}
+Note that in the equation above, the inner product on the left is taken in $W$, while the one on the right is taken in $V$.  When $V={\mathbb{C}}^n, W={\mathbb{C}}^m$ and $L(\ket{v})=A\ket{v}$ for some matrix $A \in M_{m.n}(\mathbb{C})$, the adjoint of $L$ is left multiplication by the conjugate transpose of $A$.  When this is the case, in a slight abuse of notation we'll write $A^\dagger=(\overline{A})^T$.\footnote{The superscrip "T" denotes the transpose, and $\overline{A}$ is the entry by entry conjugate of the matrix $A$} One special case is when the matrix $A$ is a column vector $\ket{v}$.  Then, clearly $\ket{v}^\dagger$ is just the conjugate of the $\ket{v}$, written as a row vector.  It is convenient to write $\bra{v}={\ket{v}}^\dagger$, the symbol "$\bra{v}$" being read "bra v".\footnote{See footnote 1}  With this convention,
+\begin{equation}
+\bra{v}\cdot \ket{w}=\sum_i \overline{v_i}w_i=\langle \ket{v},\ket{w}\rangle,
+\end{equation}
+where the dot on the left-hand side is just matrix multiplication.  Since the inner product agrees with matrix multiplication using this notation, as is customary we will write the inner product of $\ket{v}$ and $\ket{w}$ as $\braket{v|w}$, and refer to the inner product as the "bra-ket" of v and w.
+
+Below are a few easily checked properties of adjoints:
+\begin{enumerate}
+    \item $(AB)^\dagger=B^\dagger A^\dagger$,
+    \item in particular $(\ket{w}\bra{v})^\dagger=\ket{v}\bra{w}$,
+    \item $(\sum_i a_i A_i)^\dagger=\sum_i \overline{a_i} A_i^\dagger$ and 
+    \item $(A^\dagger)^\dagger=A$.
+\end{enumerate}
+
+An operator A is called \textit{hermitian} if $A^\dagger = A$, and \textit{unitary} if $A^\dagger =A^{-1}$. We will see shortly that unitary matrices and hermitian matrices play an important role in quantum mechanics.
+
+The \textit{length} or \textit{norm} of a vector $\ket{v}$ in an inner product space is defined by
+\begin{equation}
+    |\ket{v}|=\sqrt{\braket{v|v}},
+\end{equation}
+and we say two vectors $\ket{w}, \ket{v}$ are \textit{orthogonal} if their inner product is 0.  We say that a collection of vectors $\{\ket{v_1},\hdots,\ket{v_d}\}$  are \textit{orthonormal} if $\braket{v_i | v_j}={\delta}_{i,j}$ where 
+$${\delta}_{i,j}=
+\begin{cases} 0 & \textrm{ if }i\neq j\\
+1 & \textrm{ if } i=j.
+\end{cases}$$
+
+
+By using the \textit{Gram-Schmidt} procedure, an arbitrary basis $\{\ket{w_1},\hdots,\ket{w_k}\}$ can be replaced with an orthonormal basis $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$.  If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for $V$ and $\ket{v} \in V$ then, 
+$$\ket{v}=\sum\limits_i\braket{u_i|v}\ket{u_i} .$$
+Moreover, orthornormal vectors satisfy the \textit{completeness relation}.  That is, 
+\begin{eqnarray*}
+    (\sum_i \ket{u_i}\bra{u_i})\ket{v}&=&
+    \sum_i \ket{u_i}\bra{u_i}\sum_j \braket{u_j|v} \ket{u_j}\\
+    &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\braket{u_i|u_j}\\
+    &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\delta_{i,j}\\
+    &=&\sum_i \braket{u_i|v}\ket{u_i}\\
+    &=&\ket{v}.
+\end{eqnarray*}
+
+
+Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.
+
+
+% by defining
+% \begin{equation*}
+%     \ket{v_1}=\frac{\ket{w_1}}{||\ket{w_1}||}
+% \end{equation*}
+% and for $1 \le k \le d-1$ define $\ket{v_{k+1}}$ inductively by
+% \begin{equation*}
+%     \ket{v_{k+1}}=\frac{\ket{w_{k+1}}-\sum_{i=1}^k \}{}
+% \end{equation*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+Conventionally, for a ket $\ket{v}$, there is a corresponding dual vector \textit{"bra"} $\bra{v}$ such that
+\begin{equation} \label{bra defn}
+    \bra{v}(\ket{w}):=\braket{v|w}:=(\ket{v}, \ket{w})
+\end{equation}
+It turns out that the matrix representation of dual vectors is just a row vector as illustrated below:\\
+Let $\{\ket{u_i}\}_{i=1}^{i=n}$ be some orthonormal basis of an inner product space V. Let $ \ket{v}=\sum_j v_j \ket{u_j}, \ket{w}=\sum_i w_i \ket{u_i}$. Since $(\ket{u_i},\ket{u_j})=\delta_{ij}$, using \eqref{inner product defn} and \eqref{bra defn}, we get
+\begin{equation} \label{eqn: braket}
+    \braket{v|w}=(\sum_j v_j \ket{u_j}, \sum_i w_i \ket{u_i})=\sum_i \sum_j v_i^* w_j \delta_{ij} = \sum_i v_i^* w_i = (v_1^*,\hdots, v_n^*)
+    \icol{w_1\\ \vdots \\ w_n }
+\end{equation}
+
+As we can see, the bra vector $\bra{v}$ can be interpreted as the conjugate transpose of $\ket{v}$. 
+
+In addition, a useful way of representing linear operators which makes use of the inner product is called the \textit{outer product} representation. Suppose $\ket{v} \in V, \ket{w} \in W$, where $V, W$ are both inner product space. Define $\ket{w}, \ket{v}$ to be the linear operator from V to W such that
+\begin{equation}
+    (\ket{w}\ket{v})(\ket{v'}):=\ket{w}\braket{v|v'}=\braket{v|v'}\ket{w}
+\end{equation}
+
+In other words, the bra-ket notation convention allows us to interpret $\ket{w}\braket{v|v'}$ in two ways: the operator $\ket{w}\bra{v}$ acting on $\ket{v'}$, or multiplying $\ket{w}$ by the complex number $\braket{v|v'}$.
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+one can check that any hermitian operator $M \in M_{k,k}(\mathbb{C})$ is diagonalizable, with real eigenvalues.  Also, two eigenvectors corresponding to different eigenvalues are necessarily orthogonal.  Thus, there exists an orthonormal basis $\{\ket{v_1},...\ket{v_k}\}$ for $\mathbb{C}^k$ where $\ket{v_i}$ is an eigenvector corresponding to eigenvalue $\lambda_i$  Then, the matrix $\sum\limits_j \lambda_j \ket{v_j}\bra{v_j}$ satisfies
+
+\begin{eqnarray}
+\left(\sum\limits_j \lambda_j\ket{v_j}\bra{v_j}\right)\ket{v_i}&=&\sum\limits_j \lambda_j\ket{v_j}\bra{v_j}\ket{v_i}\\
+&=&\sum\limits_j \lambda_j\braket{v_j|v_i}\ket{v_j}\\
+&=&\sum\limits_j \lambda_j\delta_{i,j}\ket{v_j}\\
+&=&\lambda_i\ket{v_i}\\
+&=&M\ket{v_i}.\\
+\end{eqnarray}
+Since left multiplication by the two matrices agrees on a basis,
+\begin{equation}
+M=\sum\limits_j \lambda_j \ket{v_j}\bra{v_j}.    
+\end{equation}
+This says that {\emph{any}} hermitian matrix can be written in the above form.
+\begin{example}
+\begin{equation}
+    Z=\left(\begin{smallmatrix}
+    1 & 0\\
+    0 & -1
+    \end{smallmatrix}\right)
+    =\ket{0}\bra{0}-\ket{1}\bra{1}
+\end{equation}
+\end{example}
+
+One important class of hermitian operators are the \textit{projectors}. Suppose W is a k-dimensional vector subspace of the d-dimensional vector space V. By Gram-Schmidt, we may choose an orthonormal basis $\{\ket{u_1}, \hdots, \ket{u_d}\}$ for V such that $\{\ket{u_1}, \hdots, \ket{u_k}\}$ is a basis for W.  
+\begin{definition}
+The matrix $P=\sum_{i=1}^k \ket{u_i} \bra{u_i}$ is the projector onto the subspace $W$.
+\end{definition}
+By inspection, projectors are hermitian.  In addition,
+\begin{eqnarray}
+    P^2&=&\left(\sum_{i=1}^k \ket{u_i} \bra{u_i}\right)\left(\sum_{j=1}^k \ket{u_j} \bra{u_j}\right)\\
+    &=&\sum_{i=1}^k \sum_{j=1}^k \ket{u_i} \braket{u_i|u_j} \bra{u_j}\\
+    &=&\sum_{i=1}^k \sum_{j=1}^k\delta_{i,j}\bra{u_i}\ket{u_j}\\
+    &=&\sum_{i=1}^k \ket{u_i} \bra{u_i}\\
+    &=&P
+    \end{eqnarray}
+
+Thus, a projector is a projection in the sense of linear algebra, so its eigenvalues are $0$ and $1$.  Also, if $\ket{w} \in W$, then $P\ket{w}=\ket{w}$.
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Tensor Product}
+
+The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces and their vectors. This will be useful because laws of quantum mechanics tell us that the state space of two quantum systems is formed by taking a tensor product. If V and W are inner product spaces of dimension m and n respectively, then their tensor product $V \otimes W$ is an $mn$ dimensional vector space. The elements of $V \otimes W$ are linear combinations of "simple tensors" of the form $\ket{v} \otimes \ket{w}$, where $\ket{v} \in V, \ket{w} \in W$. In particular, if $\{\ket{a_1}, \ket{a_2}...\ket{a_m}\}, \{\ket{b_1},\ket{b_2}, ...\ket{b_n}\}$ are bases for V and W respectively, then the collection $\{\ket{a_i}\otimes\ket{b_j}\}$ is a basis for $V \otimes W$ for $1\leq i \leq m$ and $1 \leq j \leq n$.
+
+******************************************************
+\begin{definition} [Tensor Product of Two Matrices]
+For an $m_a \times m_b$ matrix $A=(a_{ij})$, an $m_b \times n_b$ matrix $B=(b_{i'j'})$, the tensor product is given by
+\begin{equation}
+A \otimes B=\begin{pmatrix}
+a_{11}B && \hdots && a_{1n_a}B\\
+&& \vdots && \\ 
+a_{m_a1}B && \hdots && a_{m_a n_a}B
+\end{pmatrix}    
+\end{equation}
+\end{definition}
+
+\begin{example}
+Say $A=\begin{pmatrix}
+a && b\\
+c && d
+\end{pmatrix},
+B=\begin{pmatrix}
+e && f && g
+\end{pmatrix}$.\\
+Then $A \otimes B
+=\begin{pmatrix}
+aB && bB\\
+cB && dB
+\end{pmatrix}
+=\begin{pmatrix} 
+ae && af && ag && be && bf && bg\\
+ce && cf && cg && de && df && dg
+\end{pmatrix}$
+\end{example}
+
+We are mostly concerned with the special case of doing the tensor product of two ket vectors. Given two vectors $\ket{\psi_1}\in\mathbb{C}^{d_1}$ and $\ket{\psi_2}\in\mathbb{C}^{d_2}$, the tensor product is given by $\ket{\psi_1} \otimes\ket{\psi_2} = \begin{pmatrix}a_1\\ \vdots \\a_{d_1}\end{pmatrix} \otimes \ket{\psi_2} = \begin{pmatrix}a_1\ket{\psi_2}\\ \vdots \\a_{d_1}\ket{\psi_2}\end{pmatrix}$, and $\ket{\psi_1} \otimes\ket{\psi_2}$ lies in the state space $\mathbb{C}^{d_1}\otimes\mathbb{C}^{d_2}$.
+
+
+We often omit the tensor product symbol, and just write $\ket{v}\ket{w}$, or $\ket{vw}$ for the tensor product $\ket{v} \otimes \ket{w}$. For example, $\ket{10}=\ket{1} \otimes \ket{0}= \icol{0\\1} \otimes \icol{1\\0}
+=\begin{pmatrix}
+0\icol{1\\0}\\
+1\icol{1\\0}
+\end{pmatrix}
+=\begin{pmatrix}
+0\\
+0\\
+1\\
+0
+\end{pmatrix}$.
+
+For reasons that will become clear later, we sometimes say the vector on the left side of a tensor product sign to be on slot A, and vector on the right side of a tensor product to be on slot B.
+
+% \begin{notation}
+% We can omit the tensor product symbol: $\ket{\psi} \otimes\ket{\phi}=\ket{\psi}\ket{\phi}$.\\
+% We can also write classical bits as a string: $\ket{0} \otimes\ket{1}=\ket{0}\ket{1}=\ket{01}$.
+% \end{notation}
+
+Tensor product between ket vectors satisfies certain properties:
+for any $\ket{v_1}, \ket{v_2}, \ket{v_3}, \ket{v_4}$,
+\begin{itemize}
+    \item Distributive: $\ket{v_1} \otimes (\ket{v_2}+\ket{v_3})=\ket{v_1} \otimes \ket{v_2} + \ket{v_1} \otimes \ket{v_3}$;\\
+    Also, $\ket{v_1} \otimes (\ket{v_2}+\ket{v_3})=\ket{v_1} \otimes \ket{v_2} + \ket{v_1} \otimes \ket{v_3}$.
+    \item Associative: $\ket{v_1} \otimes (\ket{v_2} \otimes \ket{v_3})=(\ket{v_1} \otimes \ket{v_2}) \otimes \ket{v_3}$.
+    \item NOT commutative: in general, $\ket{v_1} \otimes \ket{v_2} \ne \ket{v_2} \otimes \ket{v_1}$.
+    \item $(\ket{v_1} \otimes \ket{v_2})(\ket{v_3} \otimes \ket{v_4})=\ket{v_1 v_3} \otimes \ket{v_2 v_4}$.
+\end{itemize}
+The above relations hold for both kets and bras.
+
+**************************************************
