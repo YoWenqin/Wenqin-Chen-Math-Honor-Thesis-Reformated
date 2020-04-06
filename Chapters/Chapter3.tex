@@ -5,14 +5,12 @@
 \label{Chapter3-postulates} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
 \begin{quote}
-"I, at any rate, am convinced that [God] does not throw dice."--Albert Einstein
+\textit{"[T]he atoms or elementary particles themselves are not real; they form a world of potentialities or possibilities rather than one of things or facts."}
+\bigskip
+\hfill \textit{--Werner Heisenberg}
 \end{quote}
 
-\textcolor{red}{add a few big names in quantum mechanics, more background/history, and a few crucial properties in quantum mechanics.}
-In the 20th century, quantum mechanics fundamentally changed our understanding of the physical world.  Previously, physicists viewed the universe deterministically.  Any physical attribute of an object could be measured to, in principle, any degree of accuracy.  A moving object through space possessed an exact location, velocity and momentum at a time $t$.  Quantum mechanics would shatter this {\emph{classical}} view of the universe, forever creating the classical vs. quantum dichotomy.  Quantum mechanics tells us that ...
-
-
-See \cite{Nielsen} for a more extensive introduction.
+In the 20th century, quantum mechanics fundamentally changed our understanding of the physical world.  Previously, physicists viewed the universe deterministically.  Any physical attribute of an object could be measured to, in principle, any degree of accuracy.  A moving object through space possessed an exact location, velocity and momentum at a time $t$. Famous quantum mechanists such as Niels Bohr, Max Planck and Albert Einstein shattered this {\emph{classical}} view of the universe, forever creating the classical vs. quantum dichotomy. Quantum mechanics tells us that Schrödinger's cat is simultaneously alive and dead with a certain probability distribution until one observes it. Further, there can exist certain non-local relationships between two distant objects in a way that cannot be explained using signals traveling at the speed of light. See \cite{dorai2018} for a more extensive introduction to the history of quantum mechanics.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -51,82 +49,143 @@ H\ket{1}=\ket{-}$.
 \end{equation}
 \end{example}
 
-\begin{example} [Pauli Matrices]
+% \begin{example} [Pauli Matrices]
 
-\end{example}
+% \end{example}
 Postulate 2 also requires the system to be closed, which is mostly impossible in reality. However, it turns out that for scenarios discussed in the thesis, we can often describe the evolution of quantum system that are not perfectly closed with unitary operators, except for quantum measurement, which we will talk more in detail later.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
 \section{Postulate 3: Quantum Measurement}
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+\subsection{General Measurement}
 When an external physical system such as some experimental equipment observes a given quantum system, the quantum system is no longer closed, and thus not necessarily subject to unitary evolution. The third postulate describes the effects of measurements on quantum system. 
 
 \begin{quote}
     \textbf{Postulate 3}: Quantum measurements are described by a collection $\{M_m\}$ of measurement operators. These are operators acting on the state space of the system being measured. The index m refers to the measurement outcomes that may occur in the experiment. If the state of the quantum system is $\ket{\psi}$ immediately before the measurement then the probability that result m occurs is given by 
     \begin{gather*}
-        p(m)=\ket{\psi}M_m^\dagger M_m \bra{\psi}
+        p(m)=\bra{\psi}M_m^\dagger M_m \ket{\psi}
     \end{gather*}
     and the state of the system after the measurement is
     \begin{gather*}
-        \frac{M_m \ket{\psi}}{\sqrt{\ket{\psi}M_m^\dagger M_m \bra{\psi}}}
+        \frac{M_m \ket{\psi}}{\sqrt{\bra{\psi}M_m^\dagger M_m \ket{\psi}}}
     \end{gather*}
     The measurement operators satisfy the completeness equation $\sum_m M_m^\dagger M_m =I$
 \end{quote}
 
-\begin{example} [Distinguishing orthogonal quantum states]
-Alice chooses a state $\ket{\psi_i} (1 \le i \le n)$ from some fixed set of states known to both Alice and Bob. She gives $\ket{\psi_i}$ to Bob, whose task is to identify the index i of the state Alice has given him. Suppose the states $\{\ket{\psi_i}\}_{i=1}^n$ are orthonormal. Then Bob can do a quantum measurement to distinguish these states by first defining measurement operators $M_i=\ket{\psi_i}\bra{\psi_i}$ for each possible i. He defines an additional measurement operators $M_0$ as the positive square root of $I-\sum_{i \ne 0} \ket{\psi_i}\bra{\psi_i}$. Since the completeness relation is satisfied, if Alice prepares $\ket{\psi_i}$, then $p(i)=\braket{\psi_i | M_i |\psi_i}$. So the result i occurs with certainty, meaning Bob can reliably distinguish the orthonormal states $\{\ket{\psi}\}_{i=1}^n$.
-\end{example}
-
-A very important special case of the general measurement postulate given above is known as \textit{projective measurements}. Projective measurements turn out to be \textit{equivalent} to the general measurement postulate, when they are augmented with the ability to perform unitary transformations as described in Postulate 2 \footnote{see \cite{Wehner:notes} 93. \textcolor{red}{maybe i will add more explanation here.}}. The measurement postulate for projective measurements is superficially rather different from the general postulate above.
-\begin{quote}
-    \textbf{Projective Measurements}: A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
-    \begin{equation}
-        M=\sum_m m P_m
-    \end{equation},
-    where $P_m$ is the projector onto the eigenspace of M with eigenvalue m. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable. Upon measuring the state $\ket{\psi}$, the probability of getting result m is given by 
-    \begin{equation}
-        p(m)=\braket{\psi|P_m|\psi}
-    \end{equation}.
-    Givemm that outcome m occurred, the state of the quantum system immediately after the measurement is 
-    \begin{equation}
-        \frac{P_m \ket{\psi}}{\sqrt{p(m)}}.
-    \end{equation}
-\end{quote}
-% \textcolor{blue}{Let's do definitions \ref{simple measurement}, \ref{projective measurement} as one definition first.  Then as a first example let's show that they agree}
-
-\bigskip
-\textcolor{red}{talk about some properties of projective measurements}.
-
-% Another feature that distinguishes quantum from classical is that that we can measure a qubit in basis aside from the standard basis. 
-To measure in a basis $\ket{m}$, where $\ket{m}$ form an orthonormal basis, simply means to perform the projective measurement with projectors $P_m=\ket{m}\bra{m}$.
-
- Suppose that we measure a quantum state $\ket{\psi}$ in the orthonormal basis $\{\ket{b_j}\}_{j=1}^d$, the probability of observing outcome "$b_j$" can be found by computing $p_j=|\braket{b_j|\psi}|^2$. The post-measurement state when obtaining outcome "$b_j$" is given by $\ket{b_j}$.
-
-% \textcolor{blue}{computation: $\ket{e_i}$ an orthonormal basis. $\ket{x}$ a state. $\ket{x}=\sum_i \bra{x}\ket{e_i}e_i$. Then the probability of end result $e_i$ is $|{\bra{x}\ket{e_i}|}^2 $.}
-
-A very simple measurement is to measure a qubit in the standard basis. 
-
-\begin{example} [Measurement of a qubit in the standard basis]
+Below is a simple example.
+\begin{example} \label{measurement-standard basis}
 This is a measurement on a single qubit with two outcomes defined by the two measurement operators $M_0=\ket{0}\bra{0}, M_1=\ket{1}\bra{1}$. Each measurement operator is Hermitian, and that $M_0^2=M_0, M_1^2=M_1$. 
 \begin{equation*}
     M_0^\dagger M_0+M_1^\dagger M_1 = M_0 + M_1 = I
 \end{equation*}.
 So the completeness relation is obeyed. Suppose the state being measured is $\ket{\psi}=a\ket{0}+b\ket{1}$. Then the probability of obtaining measurement outcome 0 is
 \begin{equation*}
-    p(0) = \ket{\psi}M_0^\dagger M_0 \bra{\psi} = \braket{\psi | M_0 | \psi}=|a|^2.
+    p(0) = \bra{\psi}M_0^\dagger M_0 \ket{\psi} = \braket{\psi | M_0 | \psi}=|a|^2.
 \end{equation*}
-Similarly, the probability of obtaining measurement outcome 1 is $b^2$.
+Similarly, the probability of obtaining measurement outcome 1 is $|b|^2$.
 The state after measurement in the two cases is therefore
 \begin{gather*}
-    \frac{M_0 \ket{\psi}}{|a|}=\frac{a}{|a|}\ket{0}\\
-    \frac{M_1 \ket{\psi}}{|a|}=\frac{a}{|a|}\ket{0}\\   
+    \frac{M_0 \ket{\psi}}{\sqrt{|a|^2}}=\frac{\ket{0}\bra{0}\ket{\psi}}{|a|}=\frac{a}{|a|}\ket{0}\\
+    \frac{M_1 \ket{\psi}}{\sqrt{|b|^2}}=\frac{\ket{1}\bra{1}\ket{\psi}}{|b|}=\frac{b}{|b|}\ket{1}\\   
 \end{gather*}
+We can effectively ignore $\frac{a}{|a|}, \frac{b}{|b|}$ for reasons that will be explained next. The two post-measurement states are essentially $\ket{0}, \ket{1}$ respectively.
 \end{example}
 
+Say two quantum states $\ket{\psi}, \ket{\sigma}$ satisfy $\ket{\psi}=e^{i\theta}\ket{\sigma}$. Then we say $\ket{\psi}$ is equal to $\ket{\sigma}$ up to the \textit{global phase factor $e^{i\theta}$}. We consider them equal because the probability distribution of the outcomes is the same. Let $M_m$ be a measurement operator used in an arbitrary quantum measurement. Then the probability of outcome m for $\ket{\psi}$ is $\braket{\psi|M_m^\dagger M_m|\psi}$, for $\ket{\sigma}$ is $\braket{\sigma|M_m^\dagger M_m|\sigma}=\braket{e^{-i\theta}\psi|M_m^\dagger M_m|e^{i\theta}\psi}=\braket{\psi|M_m^\dagger M_m|\psi}$.
+So the global phase factors such as $\frac{a}{|a|}, \frac{b}{|b|}$ in the example above are irrelevant from an observational point of view.
+% \begin{prop}
+% $\ket{\psi}\bra{\psi}=\ket{\sigma}\bra{\sigma} =>$ there exists an angle $\theta$ such that $\ket{\psi}=e^{i\theta}\ket{\sigma}$.
+% \textcolor{red}{what's this proposition for?}
+% \end{prop}
+
+\bigskip
+One implication of Postulate 3 is that we cannot reliably distinguish non-orthogonal states in the quantum world. This is fundamental different from the classical world, in which we can certainly identify when a coin lands on its head or tail. 
+
+\begin{theorem} \label{theorem-distinguishing orthogonal states}
+Orthogonal states can be reliably distinguished. In other words, suppose Alice chooses a state $\ket{\psi_i} (1 \le i \le n)$ from some fixed set of states known to both Alice and Bob. She gives $\ket{\psi_i}$ to Bob, whose task is to identify the index i of the state Alice has given him. Suppose the states $\{\ket{\psi_i}\}_{i=1}^n$ are orthonormal. Then Bob can guess the index i correctly with certainty.
+\end{theorem}
+\begin{proof}
+Construct the following procedure for Bob to conduct a quantum measurement.
+Define measurement operators $M_i=\ket{\psi_i}\bra{\psi_i}$ for each possible i. Define an additional measurement operator $M_0$ as the positive square root of $I-\sum_{i \ne 0} \ket{\psi_i}\bra{\psi_i}$.
+
+Since the completeness relation is satisfied, if Alice prepares $\ket{\psi_i}$, then $p(i)=\braket{\psi_i | M_i |\psi_i}=\braket{\psi_i |\psi_i}\braket{\psi_i |\psi_i}=1$, so Bob will be able to get the correct outcome i with certainty.
+\end{proof}
+
+On the other hand, \textit{non-orthogonal states cannot be reliably distinguished}. A rigorous proof can be found at page 87 Box 2.3 in \cite{Nielsen}. Here we will given an example to demonstrate.
 \begin{example}
+Say Alice prepare states $\ket{\psi_1}=\ket{0}, \ket{\psi_2}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$. Obviously they are not orthogonal.
 
+Now Bob attempts to distinguish $\ket{\psi_1}, \ket{\psi_2}$ with measurement operators $M_0=\ket{0}\bra{0}, M_1=\ket{1}\bra{1}$. Then if Alice prepares $\ket{\psi_1}$, then $p(0)=\braket{0 |0}\braket{0|0}=1$. However, if Alice prepares $\ket{\psi_2}$, then the probabilities of the measurement outcomes being 0 and 1 are
+\begin{gather*}
+    p(0)=\braket{\psi_2|0}\braket{0|\psi_2}=|\braket{0|\psi_2}|^2=|\frac{\braket{0|0}+\braket{0|1}}{\sqrt{2}}|^2=\frac{1}{2}\\
+    p(1)=\braket{\psi_2|1}\braket{1|\psi_2}=\frac{1}{2}
+\end{gather*}
+What this means is that if Bob's measurement outcome is 1, Alice must have prepared $\ket{\psi_2}$, so Bob will be able to guess correctly with certainty. However, if the measurement outcome is 0, Alice could have prepared either $\ket{\psi_1}$ or $\ket{\psi_2}$.
+Bob will not be able to tell with certainty.\\
+In fact, say Alice prepares $\ket{\psi_1}$ and $\ket{\psi_2}$ with equal probability. Then if Bob guess Alice has prepared $\ket{\psi_1}$, the probability of him being correct is $\frac{\frac{1}{2}}{\frac{1}{2}+\frac{1}{2}\frac{1}{2}}=\frac{2}{3}$
 \end{example}
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+\subsection{Projective Measurement}
+A very important special case of the general measurement postulate given above is known as \textit{projective measurements}. Projective measurements turn out to be \textit{equivalent} to the general measurement postulate, when they are augmented with the ability to perform unitary transformations as described in Postulate 2 \footnote{See \cite{Wehner:notes} 93}. 
+Suppose the measurement operators in \textbf{Postulate 3}, in addition to satisfying the completeness relation  $\sum_m M_m^\dagger M_m =I$, also satisfying the condition that $M_m$ are orthogonal projectors, 
+The measurement postulate for projective measurements is superficially rather different from the general postulate above.
+\begin{quote}
+    \textbf{Projective Measurements}: A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
+    \begin{equation}
+        M=\sum_m m P_m
+    \end{equation}
+    where $P_m$ is the projector onto the eigenspace of M with eigenvalue m \footnote{The eigenspace corresponding to an eigenvalue m is the set of vectors which have eigenvalue m}. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable. Upon measuring the state $\ket{\psi}$, the probability of getting result m is given by 
+    \begin{equation}
+        p(m)=\braket{\psi|P_m|\psi}
+    \end{equation}
+    Given that outcome m occurred, the state of the quantum system immediately after the measurement is 
+    \begin{equation}
+        \frac{P_m \ket{\psi}}{\sqrt{p(m)}}.
+    \end{equation}
+\end{quote}
+
+Here is an example of projective measurements on single qubits.
+\begin{example}
+Consider the Pauli-Z matrix introduced in \textbf{Example} \ref{example-pauli z diagonal rep}.
+\begin{equation}
+    Z=\ket{0}\bra{0}-\ket{1}\bra{1}
+\end{equation}
+Take Z as the observable for out projective measurement. Here $P_{+1}=\ket{0}\bra{0}$ is the projector onto the eigenspace of Z with eigenvalue 1. $P_{-1}=\ket{1}\bra{1}$ is the projector onto the eigenspace of Z with eigenvalue -1.
+
+Thus the measurement of Z on the state $\ket{\psi}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$ yields the outcome 1 with probability $\braket{\psi|0}\braket{0|\psi}=\frac{1}{2}$. Similarly, the outcome -1 has probability $\frac{1}{2}$.
+\end{example}
+
+% Another feature that distinguishes quantum from classical is that that we can measure a qubit in basis aside from the standard basis. 
+It turns out we are mostly discussing projective measurements in quantum mechanics. The convention is to use the phrase \textit{"to measure in a basis $\ket{m}$"} where $\ket{m}$ form an orthonormal basis to refer to the projective measurement with projectors $P_m=\ket{m}\bra{m}$. Therefore \textbf{Example} \ref{measurement-standard basis} is called "a measurement in the standard basis". 
+
+\bigskip
+
+In fact, measurements in an orthonormal basis give some particularly nice properties:
+\begin{theorem}[Measurement in an Orthonormal Basis]
+ Suppose that we measure a quantum state $\ket{\psi}$ in the orthonormal basis $\{\ket{b_j}\}_{j=1}^d$, the probability of observing outcome "$b_j$" can be found by computing $p_j=|\braket{b_j|\psi}|^2$. The post-measurement state when obtaining outcome "$b_j$" is given by $\ket{b_j}$.
+\end{theorem}
+
+Let's apply the theorem to \textbf{Example} \ref{measurement-standard basis} and check the results are consistent.
+\begin{example}
+We measure a quantum state $\ket{\psi}=a\ket{0}+b\ket{1}$ in the standard basis $\{\ket{0},\ket{1}\}$.
+
+Then the probability of observing outcome $\ket{0}$ is $p_1=|\braket{0|\psi}|^2=|a\braket{0|0}+b\braket{0|1}|^2=|b|^2$. The probability of observing outcome $\ket{1}$ is $p_2=|\braket{1|\psi}|^2=|a|^2$. The post-measurement states when obtaining outcomes $\ket{0}, \ket{1}$ are $\ket{0}$ and $\ket{1}$ respectively. The results are the same as we obtained in \textbf{Example} \ref{measurement-standard basis} using the general measurement postulate.
+\end{example}
+
+Another very nice property of projective measurements is that it is very easy to calculate the expected value of a given the observable M of a projective measurement:
+\begin{eqnarray}
+E(M)&=&\sum_m mp(m)\\
+&=&\sum_m m \braket{\psi|P_m|\psi}\\
+&=&\braket{\psi|(\sum_m mP_m)|\psi}\\
+&=&\braket{\psi|M|\psi}
+\end{eqnarray}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
@@ -140,4 +199,4 @@ This postulate also enables us to define one of the most interesting ideas assoc
 \begin{equation}
     \ket{\psi}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}
 \end{equation}
-There are no single qubit states $\ket{a}, \ket{b}$ such that $\ket{\psi}=\ket{a}\otimes \ket{b}$. We say that a state of a composite system having this property of not being a tensor product of its component states is an \textit{entangled} state. We will define entanglement more formally in a later section.
+There are no single qubit states $\ket{a}, \ket{b}$ such that $\ket{\psi}=\ket{a}\otimes \ket{b}$. We say that a state of a composite system having this property of not being a tensor product of its component states is an \textit{entangled} state. We will define entanglement using a tool named density matrix in the next section.

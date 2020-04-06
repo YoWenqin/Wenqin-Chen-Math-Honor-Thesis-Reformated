@@ -119,7 +119,7 @@ In addition, a useful way of representing linear operators which makes use of th
 In other words, the bra-ket notation convention allows us to interpret $\ket{w}\braket{v|v'}$ in two ways: the operator $\ket{w}\bra{v}$ acting on $\ket{v'}$, or multiplying $\ket{w}$ by the complex number $\braket{v|v'}$.
 \end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-one can check that any hermitian operator $M \in M_{k,k}(\mathbb{C})$ is diagonalizable, with real eigenvalues.  Also, two eigenvectors corresponding to different eigenvalues are necessarily orthogonal.  Thus, there exists an orthonormal basis $\{\ket{v_1},...\ket{v_k}\}$ for $\mathbb{C}^k$ where $\ket{v_i}$ is an eigenvector corresponding to eigenvalue $\lambda_i$  Then, the matrix $\sum\limits_j \lambda_j \ket{v_j}\bra{v_j}$ satisfies
+One can check that any hermitian operator $M \in M_{k,k}(\mathbb{C})$ is diagonalizable, with real eigenvalues.  Also, two eigenvectors corresponding to different eigenvalues are necessarily orthogonal.  Thus, there exists an orthonormal basis $\{\ket{v_1},...\ket{v_k}\}$ for $\mathbb{C}^k$ where $\ket{v_i}$ is an eigenvector corresponding to eigenvalue $\lambda_i$  Then, the matrix $\sum\limits_j \lambda_j \ket{v_j}\bra{v_j}$ satisfies
 
 \begin{eqnarray}
 \left(\sum\limits_j \lambda_j\ket{v_j}\bra{v_j}\right)\ket{v_i}&=&\sum\limits_j \lambda_j\ket{v_j}\bra{v_j}\ket{v_i}\\
@@ -132,14 +132,16 @@ Since left multiplication by the two matrices agrees on a basis,
 \begin{equation}
 M=\sum\limits_j \lambda_j \ket{v_j}\bra{v_j}.    
 \end{equation}
-This says that {\emph{any}} hermitian matrix can be written in the above form.
-\begin{example}
-\begin{equation}
-    Z=\left(\begin{smallmatrix}
+
+This says that {\emph{any}} hermitian matrix can be written in the above form. We call it the \textit{diagonal representation} or \textit{orthonormal decomposition} of M.
+\begin{example} \label{example-pauli z diagonal rep}
+This matrix $Z=\left(\begin{smallmatrix}
     1 & 0\\
     0 & -1
-    \end{smallmatrix}\right)
-    =\ket{0}\bra{0}-\ket{1}\bra{1}
+    \end{smallmatrix}\right)$
+    is referred to as the Pauli-Z matrix and is apparently Hermitian. Z has eigenvalues 1, -1 with corresponding eigenvetors $\ket{0}, \ket{1}$ which are obviously diagonal to each other. The diagonal representation of Z is therefore given by:
+\begin{equation}
+    Z=\ket{0}\bra{0}-\ket{1}\bra{1}
 \end{equation}
 \end{example}
 
@@ -156,7 +158,7 @@ By inspection, projectors are hermitian.  In addition,
     &=&P
     \end{eqnarray}
 
-Thus, a projector is a projection in the sense of linear algebra, so its eigenvalues are $0$ and $1$.  Also, if $\ket{w} \in W$, then $P\ket{w}=\ket{w}$.
+Thus, a projector is a projection in the sense of linear algebra, so its eigenvalues are $0$ and $1$ (Let $\lambda$ be an eigenvalue for P for the eigenvector v. Then $P^2 v = \lambda Pv=\lambda^2 v = Pv =\lambda v$, so $\lambda^2=\lambda$. So $\lambda=0$ or 1).  Also, if $\ket{w} \in W$, then $P\ket{w}=\ket{w}$.
 
 
 %----------------------------------------------------------------------------------------
