@@ -9,39 +9,120 @@ We formulated quantum mechanics using the language of state vectors in the previ
     \rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i}
 \end{equation}
 
+All the same postulates still apply for density matrices. Here's \textbf{Postulate 2} in terms of density matrices:
+\begin{quote}
+    Say the evolution of a closed quantum system is described by a unitary transformation U. Then the evolution of the density operator is described by the equation
+    \begin{equation}
+        \rho=\sum_i p_i \ket{\psi_i}\bra{\psi_i}	\underrightarrow{U}\sum_i p_i U \ket{\psi_i}\bra{\psi_i}U^\dagger=U \rho U^\dagger
+    \end{equation}
+\end{quote}
+
+Here's how we will describe measurements (\textbf{Postulate 3}) in terms of density matrices:
+\begin{quote}
+    Suppose we perform a measurement described by measurement operators $M_m$ on an ensemble of pure states $\{p_i, \ket{\psi_i}\}$. If the initial state prepared was $\ket{\psi_i}$, then the probability of getting result m is
+    \begin{equation}
+        p(m|i)=\braket{\psi_i|M_m^\dagger M_m|\psi_i}=tr(\braket{\psi_i|M_m^\dagger M_m|\psi_i})=tr(M_m^\dagger M_m \ket{\psi_i}\bra{\psi_i})
+    \end{equation}
+    The post-measurement state given the initial state being $\ket{\psi_i}$ is
+    \begin{equation}
+        \ket{\psi_i^m}=\frac{M_m \ket{\psi_i}}{\sqrt{\bra{\psi_i}M_m^\dagger M_m \ket{\psi_i}}}
+    \end{equation}
+    So the probability of obtaining result m is
+    \begin{equation}
+        p(m)=\sum_i p(m|i)p_i=\sum_i p_i tr(M_m^\dagger M_m \ket{\psi_i}\bra{\psi_i})=tr(M_m^\dagger M_m \rho)
+    \end{equation}
+    The post-measurement state upon result m is an ensemble of states $\ket{\psi_i^m}$ with respective probabilities $p(i|m)$
+    \begin{equation}
+        \rho_m = \sum_i p(i|m)\ket{\psi_i^m}\bra{\psi_i^m}=\sum_i p(i|m)\frac{M_m \ket{\psi_i}\bra{\psi_i}M_m^\dagger}{\bra{\psi_i}M_m^\dagger M_m \ket{\psi_i}}
+    \end{equation}
+    By probability theory, we have $p(i|m)=\frac{p(m,i)}{p(m)}=\frac{p(m|i)p_i}{p(m)}$. So
+    \begin{equation}
+        \rho_m=\sum_i \frac{p(m|i)p_i}{p(m)}\frac{M_m \ket{\psi_i}\bra{\psi_i}M_m^\dagger}{\bra{\psi_i}M_m^\dagger M_m \ket{\psi_i}}=\frac{M_m M_m (\sum_i p_i \ket{\psi_i}\bra{\psi_i})M_m^\dagger}{p(m)}=\frac{M_m \rho M_m^\dagger}{tr(M_m^\dagger M_m \rho)}
+    \end{equation}
+\end{quote}
+
+A quantum system whose state $\ket{\psi}$ is known exactly is said to be in a \textit{pure state}. In this case the density matrix representation is simply $\rho=\ket{\psi}\bra{\psi}$. Otherwise, we say $\rho$ is in a \textit{mixed state}. It is a \textit{mixture} of the different pure states in the ensemble for $\rho$. We will mostly only discuss pure states.
+
+
 \textcolor{red}{add an example of density matrix with probability distribution and its outcome probability}.
 
-\begin{definition}[Density Matrix]
- Consider a quantum system with state space $\mathbb{C}^d$. A density matrix, commonly denoted as $\rho$, is a linear operator $\rho \in \mathbb{L}(\mathbb{C}^d, \mathbb{C}^d)$ such that:
- \begin{enumerate}
-     \item $\rho \geq 0$, and
-     \item $tr(\rho)=1$.
- \end{enumerate}
+\begin{theorem}[Characterization of density matrix]
+A matrix $\rho$ is the density matrix associated to some ensemble $\{p_i, \ket{\psi_i}\}$ if and only if it satisfies the conditions:
+\begin{enumerate}
+    \item (\textbf{Trace condition}) $tr(\rho)=1$
+    \item (\textbf{Positive condition}) $\rho$ is a positive matrix \footnote{Positive operators is a special subclass of Hermitian operators. A positive operator A is definined to be an operator such that for any vector $\ket{v}$, $\langle \ket{v}, A\ket{v} \rangle \in \mathbb{R}_{\ge 0}$. It turns out that any positive operator has diagonal representation $\sum_i \lambda_i \ket{i}\bra{i}$ with non-negative eigenvalues $\lambda_i$.} 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Given a density matrix $\rho=\sum_i p_i \ket{\psi_i}\bra{\psi_i}$. Then
+\begin{equation}
+    tr(\rho)=\sum_i p_i tr(\ket{\psi_i}\bra{\psi_i})=\sum_i p_i =1
+\end{equation}
+So the trace condition is satisfied. Notice here from section \ref{section:complex vector space} we know all eigenvalues of a projector like $\ket{\psi_i}\bra{\psi_i}$ are 0 or 1. Since trace is equal to the sum of eigenvalues, we have $tr(\ket{\psi_i}\bra{\psi_i})=1$. Now suppose $\ket{\varphi}$ is an arbitrary vector in state space. Then
+\begin{equation}
+    \braket{\varphi|\rho|\varphi}=\sum_i p_i \braket{\varphi|\psi_i} \braket{\psi_i|\varphi}=\sum_i p_i |\braket{\varphi|\psi_i}|^2 \ge 0
+\end{equation}
+So the positivity condition is satisfied.
+
+Conversely, suppose $\rho$ is any operator satisfying the two conditions. Because of the positive condition, we have $\rho=\sum_j \lambda_j \ket{j}\bra{j}$, where the vectors $\ket{j}$ are orthogonal, and $\lambda_j$ are real, non-negative eigenvalues of $\rho$. Because of the trace condition, we have $\sum_j \lambda_j=1$. Let $p_i=\lambda_i$, so the probability of each $\ket{j}$ sums up to 1. So $\rho$ is essentially representing an ensemble of states $\{\lambda_j, \ket{j}\}$.
+\end{proof}
+
+Also by inspection, if $rank(\rho)=1$, then $\rho$ is a pure state. Otherwise, $\rho$ is mixed.
+
+We therefore are able to describe the four postulates in the language of density matrices. For the complete reformulated postulates, see \textbf{Appendix} \ref{AppendixA}.
+
+% \begin{definition}[Density Matrix]
+%  Consider a quantum system with state space $\mathbb{C}^d$. A density matrix, commonly denoted as $\rho$, is a linear operator $\rho \in \mathbb{L}(\mathbb{C}^d, \mathbb{C}^d)$ such that:
+%  \begin{enumerate}
+%      \item $\rho \geq 0$, and
+%      \item $tr(\rho)=1$.
+%  \end{enumerate}
  
- If $rank(\rho)=1$, then $\rho$ is called a pure state, otherwise $\rho$ is mixed.
-\end{definition}
+%  If $rank(\rho)=1$, then $\rho$ is called a pure state, otherwise $\rho$ is mixed.
+% \end{definition}
 
-\begin{definition}[Measuring a Density Matrix in a Basis]
+A few theorems that we introduced using state vectors back in Chapter \ref{Chapter3-postulates} can be reformulated using density matrices.
+\textbf{Theorem} \ref{theorem: measurement in an orthonormal basis} becomes the following:
+\begin{theorem} [Measuring a Density Matrix in an Orthonormal Basis]
 Consider a quantum system in the state $\rho$. Measuring $\rho$ in the basis $\{\ket{b_j}\}_j$ results in outcome $j$ with probability $q_j=\braket{b_j | \rho |b_j}$.
-\end{definition}
+\end{theorem}
 
-\begin{definition}[Projective Measurement] \label{projective measurement}
-A projective measurement, also called a von Neumann measurement, is given by a set of orthogonal projectors $M_x=\Pi_x$ such that $\sum_x \Pi_x=\mathbb{I}$. For such a measurement, unless otherwise specified we will always use the default Kraus decomposition $A_x=\Pi_x$. The probability $q_x$ of observing measurement outcome x can then be expressed as\\
-$q_x=tr(\Pi_x)$,
-and the post-measurement states are \\
-$\rho_{\ket{x}}=\frac{\Pi_x \rho \Pi_x}{tr(\Pi_x \rho)}$.
-\end{definition}
+\bigskip
+Under projective measurement defined in section \ref{subsection:projective measurement}, now written in terms of density matrices upon measuring the state $\rho$, the probability of getting result m is given by
+\begin{equation}
+    p(m)=tr(P_m \rho),
+\end{equation}
+and the post-measurement states are
+\begin{equation}
+    \rho_{|m}=\frac{P_m \rho P_m}{tr(P_m \rho)}
+\end{equation}
+% \begin{definition}[Projective Measurement On Density Matrix] 
+% A projective measurement is given by a set of orthogonal projectors $M_x=\Pi_x$ such that $\sum_x \Pi_x=\mathbb{I}$. For such a measurement, unless otherwise specified we will always use the default Kraus decomposition $A_x=\Pi_x$. 
+
+% The probability $q_x$ of observing measurement outcome x can then be expressed as
+% \begin{equation}
+%     q_x=tr(\Pi_x)
+% \end{equation}
+% and the post-measurement states are
+% \begin{equation}
+%     \rho_{\ket{x}}=\frac{\Pi_x \rho \Pi_x}{tr(\Pi_x \rho)}
+% \end{equation}
+
+% \end{definition}
 
 
 
 % We can simply examine a classical bit to determine whether it is in the state 0 or 1. However, we cannot examine a qubit to determine its quantum state, that is, the value of $\alpha$ and $\beta$. Quantum mechanics tells us that we can only acquire much more restricted information about the quantum state. When we measure a qubit we get either the result 0, with probability $|\alpha|^2$, or the result 1, with probability $|\beta|^2$. Since the probabilities must sum to 1, $|\alpha|^2+|\beta|^2=1$. Thus, a qubit's state is a unit vector in a two-dimensional complex vector space. 
 
-Measurement changes the state of a qubit, collapsing it from its superposition of $\ket{0}$ and $\ket{1}$ to the specific state consistent with the measurement result.  
+% Measurement changes the state of a qubit, collapsing it from its superposition of $\ket{0}$ and $\ket{1}$ to the specific state consistent with the measurement result.  
 
-
-
+\bigskip
+Further, the definition of entanglement in definition \ref{definition: entanglement with state vector} becomes 
 \begin{definition}[Entanglement]
- Consider two quantum systems A and B. The joint state $\rho_{AB}$ is separable if there exists a probability distribution $\{p_i\}_i$, and sets of density matrices $\{\rho_i^A\}_i$, $\{\rho_i^B\}_i$ such that $\rho_{AB}=\sum_i p_i\rho_i^A\otimes\rho_i^B$.
+ Consider two quantum systems A and B and their joint state $\rho_{AB}$. If $\rho_{AB}$.
+ 
+ The joint state $\rho_{AB}$ is separable if there exists a probability distribution $\{p_i\}_i$, and sets of density matrices $\{\rho_i^A\}_i$, $\{\rho_i^B\}_i$ such that $\rho_{AB}=\sum_i p_i\rho_i^A\otimes\rho_i^B$.
  If there exists no such decomposition $\rho_{AB}$ is called entangled.
  If $\rho_{AB}=\ket{\psi}\bra{\psi}$ is a pure state, then $\psi_{AB}$ is separable if and only if there exists $\ket{\psi}_A, \ket{\psi}_B$ such that $\ket{\psi}_{AB}=\ket{\psi}_A \otimes \ket{\psi}_B$.
 \end{definition}

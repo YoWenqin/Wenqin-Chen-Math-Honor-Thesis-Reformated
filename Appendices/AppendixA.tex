@@ -1,25 +1,22 @@
 % Appendix A
 
-\chapter{Frequently Asked Questions} % Main appendix title
+\chapter{Four Postulates of Quantum Mechanics With Density Matrices} % Main appendix title
 
 \label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
 
-\section{How do I change the colors of links?}
+\textbf{Postulate 1}: Associated to any isolated physical system is a complex vector space with inner product (that is, a Hilbert space) known as the \textit{state space} of the system. The system is completely described by its \textit{density matrix}, which is a positive matrix with trace one, acting on the state space of the system. If a quantum system is in the state $\rho_i$ with probability $p_i$, then the density matrix for the system is $\sum_i p_i \rho_i$
 
-The color of links can be changed to your liking using:
+\textbf{Postulate 2}: The evolution of a closed quantum system is described by a \textit{unitary transformation}. That is, the state $\rho$ of the system at time $t_1$ is related to the state $\rho'$ of the system at time $t_2$ by a unitary operator U which depends only on the times $t_1$ and $t_2$, $\rho'=U\rho U^\dagger$.
 
-{\small\verb!\hypersetup{urlcolor=red}!}, or
+\textbf{Postulate 3}: Quantum measurements are described by a collection $\{M_m\}$ of \textit{measurement operators}. These are operators acting on the state space of the system being measured. The index m refers to the measurement outcomes that may occur in the experiment. If the state of the quantum system is $\ket{\psi}$ immediately before the measurement then the probability that result m occurs is given by 
+    \begin{equation}
+        p(m)=tr(M_m^\dagger M_m \rho)
+    \end{equation}
+    and the state of the system after the measurement is
+    \begin{equation}
+        \frac{M_m \rho M_m^\dagger}{tr(M_m^\dagger M_m \rho)}
+    \end{equation}
+    The measurement operators satisfy the completeness equation $\sum_m M_m^\dagger M_m =I$
+    
+\textbf{Postulate 4}:The state space of a composite physical system is the tensor product of the component physical systems. Moreover, if we have systems numbered 1 through n, and system number i is prepared in the state $\rho_i$, then the joint state of the total system is $\rho_1 \otimes \ket{\psi_1} \otimes \hdots \otimes \rho_n$
 
-{\small\verb!\hypersetup{citecolor=green}!}, or
-
-{\small\verb!\hypersetup{allcolor=blue}!}.
-
-\noindent If you want to completely hide the links, you can use:
-
-{\small\verb!\hypersetup{allcolors=.}!}, or even better: 
-
-{\small\verb!\hypersetup{hidelinks}!}.
-
-\noindent If you want to have obvious links in the PDF but not the printed text, use:
-
-{\small\verb!\hypersetup{colorlinks=false}!}.

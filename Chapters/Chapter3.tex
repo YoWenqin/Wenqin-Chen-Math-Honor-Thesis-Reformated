@@ -10,7 +10,9 @@
 \hfill \textit{--Werner Heisenberg}
 \end{quote}
 
-In the 20th century, quantum mechanics fundamentally changed our understanding of the physical world.  Previously, physicists viewed the universe deterministically.  Any physical attribute of an object could be measured to, in principle, any degree of accuracy.  A moving object through space possessed an exact location, velocity and momentum at a time $t$. Famous quantum mechanists such as Niels Bohr, Max Planck and Albert Einstein shattered this {\emph{classical}} view of the universe, forever creating the classical vs. quantum dichotomy. Quantum mechanics tells us that Schrödinger's cat is simultaneously alive and dead with a certain probability distribution until one observes it. Further, there can exist certain non-local relationships between two distant objects in a way that cannot be explained using signals traveling at the speed of light. See \cite{dorai2018} for a more extensive introduction to the history of quantum mechanics.
+In the 20th century, quantum mechanics fundamentally changed our understanding of the physical world.  Previously, physicists viewed the universe deterministically.  Any physical attribute of an object could be known, in principle, to an arbitrary degree of accuracy.  An object moving through space possessed an exact location, velocity and momentum at a time $t$. In contrast, in the quantum mechanical universe Schrödinger's famous cat is simultaneously alive and dead subject to a certain probability distribution.  Only when we actually opens the chamber to see whether the cat is alive or dead is it's ultimate state determined. If an object is moving, the certainty wit which we know its position, constrains how much we can know about its velocity.  Perhaps even more alarmingly, an observer cannot even measure an object without changing it.
+
+Famous physicists like Niels Bohr, Max Planck, Paul Dirac, Werner Heisenberg, Richard Feynman and many others relegated the previously held {\emph{classical}} view of the universe to only one side of a coin.  In this chapter we go through the postulates of quantum mechanics.  In each instance, after stating a postulate precisely, we summarize the key ideas, making explicit what the reader should take from the postulate moving forward.  This summary is by no means complete.  See ... \textcolor{red}{add more references that provide introductions to quantum mechanics for non-physicists} for a more extensive introduction to the subject and \cite{dorai2018} for a more extensive introduction to the history of quantum mechanics.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -18,14 +20,15 @@ In the 20th century, quantum mechanics fundamentally changed our understanding o
 
 \section{Postulate 1: State space}
 
-The first postulate of quantum mechanics is as followed: 
+
 \begin{quote}
-    \textbf{Postulate 1}: Associated to any isolated physical system is a complex vector space with inner product (that is, a Hilbert space) known as the state space of the system. The system is completely described by its state vector, which is a unit vector in the system's state space.
+    \textbf{Postulate 1}: Associated to any isolated physical system is a Hilbert space\footnote{a complete inner product space} known as the state space of the system. The system is completely described by its state vector, which is a unit vector in the system's state space.
 \end{quote}
 
-This postulate does not tell us what \textit{specific} state space is given a physical system. It therefore also does not tell what the state vector is. Physicists have developed tools such as quantum electrodynamics (QED), which describes how atoms and light interact, to help solve this problem. For our purpose, it's enough to assume a $C^n$ state vector space. In fact, it's sufficient to just assume a 2-dimensional complex space most of the time, in which the state vector is \textit{qubit}, which we have already introduced in section \ref{section-preliminaries} as a superposition of $\ket{0}$ and $\ket{1}$.
+\textcolor{blue}{This postulate does not tell us what \textit{specific} state space is given a physical system. It therefore also does not tell what the state vector is. Physicists have developed tools such as quantum electrodynamics (QED), which describes how atoms and light interact, to help solve this problem.} For our purposes, one can assume the Hilbert space is $C^n$. In fact, most of the time $n=2$, so the state vector is a qubit (see Definition \ref{def qubit} and more generally Chapter \ref{Chapter2-preliminaries}).  Thus, for us, typically a state vector is a superposition of $\ket{0}$ and $\ket{1}$.
 
-In fact, there are real physical systems that can be described in terms of qubits, validated by various experiments. As the two different polarizations of a photon; as the alignment of a nuclear spin in a uniform magnetic field; as two states of an electron orbiting a single atom. In the atom model, the electron can exist in either the so-called "ground" or "excited" states, which can be called $\ket{0}$ and $\ket{1}$ respectively. By shining light on the atom with appropriate energy and for an appropriate length of time, it is possible to move the electron from the $\ket{0}$ state to the $\ket{1}$ state and vice versa. More interestingly, reducing the time we shine the light, an electron initially in the state $\ket{0}$ can be moved "halfway" between $\ket{0}$ and $\ket{1}$ into the $\ket{+}$ state\cite{Nielsen}.
+We wish to emphasize that there are {\emph{real}} physical systems that can be described in terms of qubits.  \textcolor{red}{move these other two examples to the end of the paragraph: These include for example the \textcolor{blue}{two different} polarizations of a photon, the alignment of a nuclear spin in a uniform magnetic field, the \textcolor{blue}{two} state of an electron orbiting a single atom.} In the last example, the electron can exist in either the so-called "ground" or "excited" states, which can be identified with $\ket{0}$ and $\ket{1}$ respectively. By shining light on the atom with appropriate energy and for an appropriate length of time, it is possible to move the electron from the $\ket{0}$ state to the $\ket{1}$, state and vice versa. More interestingly, by reducing the time we shine the light, we may move the electron from the state $\ket{0}$ to $\ket{+}$, an (honest) superposition\footnote{$\ket{+}=\frac{\sqrt{2}}{2}\ket{0}+\frac{\sqrt{2}}{2}\ket{1}$, hence $\ket{+}$ can be viewed as being "halfway" between $\ket{0}$ and $\ket{1}$} of $\ket{0}$ and $\ket{1}$ (see \cite{Nielsen}).
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
@@ -33,10 +36,12 @@ In fact, there are real physical systems that can be described in terms of qubit
 \section{Postulate 2: Evolution}
 
 \begin{quote}
-    \textbf{Postulate 2}: The evolution of a closed quantum system is described by a unitary transformation. That is, the state $\ket{\psi}$ of the system at time $t_1$ is related to the state $\ket{\psi'}$ of the system at time $t_2$ by a unitary operator U which depends only on the times $t_1$ and $t_2$, $\ket{\psi'}=U\ket{\psi}$.
+    \textbf{Postulate 2}: The evolution of a closed quantum system is described by a unitary transformation. That is, the state $\ket{\psi}$ of the system at time $t_1$, $\ket{\psi}$ is related to the state of the system at time $t_2$, $\ket{\psi'}$ by a unitary operator U.  Moreover, $U$ depends only on the times $t_1$ and $t_2$, and $\ket{\psi'}=U\ket{\psi}$.
 \end{quote}
 
-This postulate does not tell us which particular unitary operator describes a given real-world quantum dynamics, but it assures us that the evolution of any closed quantum system may be described in such way. What unitary operators are natural to consider then? For single qubits, any unitary operator can be realized in realistic systems. 
+Note that this postulate does not tell us what unitary operator describes the evolution of the system, it only assures that the evolution can be described in such way. 
+
+\textcolor{blue}{What unitary operators are natural to consider?  For single qubits, any operator can be realized in realistic systems.}
 
 \begin{example} [Hadamard gate]
 A commonly used unitary operator is the Hadarmard gate, denoted by H, that satisfies $H\ket{0}=\ket{+}\\
@@ -47,12 +52,13 @@ H\ket{1}=\ket{-}$.
 1 && -1
 \end{pmatrix} 
 \end{equation}
+Note that since $H$ is unitary, $H$ maps an orthonormal set to an orthonormal set as we have seen.
 \end{example}
 
 % \begin{example} [Pauli Matrices]
 
 % \end{example}
-Postulate 2 also requires the system to be closed, which is mostly impossible in reality. However, it turns out that for scenarios discussed in the thesis, we can often describe the evolution of quantum system that are not perfectly closed with unitary operators, except for quantum measurement, which we will talk more in detail later.
+It's worth pointing out that Postulate 2 applies to a {\emph{closed} system.  While this is nearly an impossible in reality, in many of the scenarios discussed in the thesis it is reasonable to describe the evolution via unitary operators nonetheless (see \textcolor{red}{...}).   \footnote{One notable exception is that of quantum measurement, which will be discusses next}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
@@ -62,27 +68,32 @@ Postulate 2 also requires the system to be closed, which is mostly impossible in
 %	SUBSECTION 1
 %-----------------------------------
 \subsection{General Measurement}
-When an external physical system such as some experimental equipment observes a given quantum system, the quantum system is no longer closed, and thus not necessarily subject to unitary evolution. The third postulate describes the effects of measurements on quantum system. 
+
 
 \begin{quote}
-    \textbf{Postulate 3}: Quantum measurements are described by a collection $\{M_m\}$ of measurement operators. These are operators acting on the state space of the system being measured. The index m refers to the measurement outcomes that may occur in the experiment. If the state of the quantum system is $\ket{\psi}$ immediately before the measurement then the probability that result m occurs is given by 
+    \textbf{Postulate 3}: Quantum measurements are described by a collection $\{M_m\}$ of measurement operators. These operators act on the state space of the system being measured, and the index {\emph{m}} refers to the measurement outcomes that may occur in the experiment. If the quantum system is in state $\ket{\psi}$ immediately prior to measurement, then the probability that result {\emph{m}} occurs is given by 
     \begin{gather*}
-        p(m)=\bra{\psi}M_m^\dagger M_m \ket{\psi}
+        p(m)=\bra{\psi}M_m^\dagger M_m \ket{\psi},
     \end{gather*}
     and the state of the system after the measurement is
     \begin{gather*}
-        \frac{M_m \ket{\psi}}{\sqrt{\bra{\psi}M_m^\dagger M_m \ket{\psi}}}
+        \frac{M_m \ket{\psi}}{\sqrt{\bra{\psi}M_m^\dagger M_m \ket{\psi}}}.
     \end{gather*}
-    The measurement operators satisfy the completeness equation $\sum_m M_m^\dagger M_m =I$
+    The measurement operators satisfy the completeness equation $\sum_m M_m^\dagger M_m =I$.
 \end{quote}
 
-Below is a simple example.
+
+This postulate is of some importance going forward, so we will provide lots of examples.  We should point out that when {\emph{any}} external object (including measuring equipment) observes a quantum system, the quantum system is no longer closed, and hence is not necessarily subject to unitary evolution as in Postulate 2. Postulate 3 describes the effects of these measurements on quantum system. 
+
+We start with a simple but important example.
 \begin{example} \label{measurement-standard basis}
-This is a measurement on a single qubit with two outcomes defined by the two measurement operators $M_0=\ket{0}\bra{0}, M_1=\ket{1}\bra{1}$. Each measurement operator is Hermitian, and that $M_0^2=M_0, M_1^2=M_1$. 
+We measure a single qubit with two outcomes given by the two measurement operators 
+$$M_0=\ket{0}\bra{0}\textrm{ and }M_1=\ket{1}\bra{1}.$$ 
+Each measurement operator is projector, and that, by our previous computation,
 \begin{equation*}
-    M_0^\dagger M_0+M_1^\dagger M_1 = M_0 + M_1 = I
+    M_0^\dagger M_0+M_1^\dagger M_1 = (M_0)^2+(M_1)^2=M_0 + M_1 = I
 \end{equation*}.
-So the completeness relation is obeyed. Suppose the state being measured is $\ket{\psi}=a\ket{0}+b\ket{1}$. Then the probability of obtaining measurement outcome 0 is
+Now, suppose the state being measured is $\ket{\psi}=a\ket{0}+b\ket{1}$. Then the probability of obtaining measurement outcome 0 is
 \begin{equation*}
     p(0) = \bra{\psi}M_0^\dagger M_0 \ket{\psi} = \braket{\psi | M_0 | \psi}=|a|^2.
 \end{equation*}
@@ -92,47 +103,63 @@ The state after measurement in the two cases is therefore
     \frac{M_0 \ket{\psi}}{\sqrt{|a|^2}}=\frac{\ket{0}\bra{0}\ket{\psi}}{|a|}=\frac{a}{|a|}\ket{0}\\
     \frac{M_1 \ket{\psi}}{\sqrt{|b|^2}}=\frac{\ket{1}\bra{1}\ket{\psi}}{|b|}=\frac{b}{|b|}\ket{1}\\   
 \end{gather*}
-We can effectively ignore $\frac{a}{|a|}, \frac{b}{|b|}$ for reasons that will be explained next. The two post-measurement states are essentially $\ket{0}, \ket{1}$ respectively.
+Since $\ket{\psi}$ is a unit vector, $p(0)+p(1)=1$.  Thus, the measurement outcome is $0$ with probability $|a|$, in which case the post-measurement state is a unit vector in the direction of $\ket{0}$.  Similarly, the measurement outcome is $1$ with probability $|b|$, in which case the post-measurement state is a unit vector in the direction of $\ket{1}$.
 \end{example}
 
-Say two quantum states $\ket{\psi}, \ket{\sigma}$ satisfy $\ket{\psi}=e^{i\theta}\ket{\sigma}$. Then we say $\ket{\psi}$ is equal to $\ket{\sigma}$ up to the \textit{global phase factor $e^{i\theta}$}. We consider them equal because the probability distribution of the outcomes is the same. Let $M_m$ be a measurement operator used in an arbitrary quantum measurement. Then the probability of outcome m for $\ket{\psi}$ is $\braket{\psi|M_m^\dagger M_m|\psi}$, for $\ket{\sigma}$ is $\braket{\sigma|M_m^\dagger M_m|\sigma}=\braket{e^{-i\theta}\psi|M_m^\dagger M_m|e^{i\theta}\psi}=\braket{\psi|M_m^\dagger M_m|\psi}$.
-So the global phase factors such as $\frac{a}{|a|}, \frac{b}{|b|}$ in the example above are irrelevant from an observational point of view.
+\textcolor{blue}{INCLUDE SCHEMATIC HERE describing the outcome, probability, direction}
+
+We now point out that the complex numbers $\frac{a}{|a|}$ and $\frac{b}{|b|}$ in Example \ref{measurement-standard basis} can in fact be neglected. 
+
+If two quantum states $\ket{\psi}, \ket{\sigma}$ satisfy $\ket{\psi}=e^{i\theta}\ket{\sigma}$, we say $\ket{\psi}$ is equal to $\ket{\sigma}$ up to the \textit{global phase factor $e^{i\theta}$}. For quantum mechanical purposes, they are considered equal because the probability distribution corresponding to either outcome is the same. This is because if $M_m$ is a measurement operator used in an arbitrary quantum measurement, then the probability of observing outcome $m$ for $\ket{\psi}$ is 
+\begin{eqnarray}
+\braket{\psi|M_m^\dagger M_m|\psi} &=& \braket{e^{i\theta}\sigma|M_m^\dagger M_m|e^{i\theta} \sigma} \\
+&=& |e^{i\theta}|^2\braket{\sigma|M_m^\dagger M_m| \sigma} \\
+&=& 1^2\braket{\sigma|M_m^\dagger M_m| \sigma} \\
+&=& \braket{\sigma|M_m^\dagger M_m| \sigma} ,
+\end{eqnarray}
+which equals the probability of observing outcome $m$ for $\ket{\sigma}$.  Therefore, the global phase factors $\frac{a}{|a|}, \frac{b}{|b|}$ are irrelevant from an observational point of view.
 % \begin{prop}
 % $\ket{\psi}\bra{\psi}=\ket{\sigma}\bra{\sigma} =>$ there exists an angle $\theta$ such that $\ket{\psi}=e^{i\theta}\ket{\sigma}$.
 % \textcolor{red}{what's this proposition for?}
 % \end{prop}
 
 \bigskip
-One implication of Postulate 3 is that we cannot reliably distinguish non-orthogonal states in the quantum world. This is fundamental different from the classical world, in which we can certainly identify when a coin lands on its head or tail. 
+It follows from Postulate 3 is that only orthogonal states can be reliably distinguished. \textcolor{blue}{This is fundamental different from the classical world, in which we can certainly identify when a coin lands on its head or tail. \\ALSO,SAY SOMETHING ABOUT ALICE AND BOB}
 
 \begin{theorem} \label{theorem-distinguishing orthogonal states}
-Orthogonal states can be reliably distinguished. In other words, suppose Alice chooses a state $\ket{\psi_i} (1 \le i \le n)$ from some fixed set of states known to both Alice and Bob. She gives $\ket{\psi_i}$ to Bob, whose task is to identify the index i of the state Alice has given him. Suppose the states $\{\ket{\psi_i}\}_{i=1}^n$ are orthonormal. Then Bob can guess the index i correctly with certainty.
+Orthogonal states can be reliably distinguished. In other words, suppose Alice chooses a state $\ket{\psi_i}$ from some fixed set of states known to both Alice and Bob. She gives the state to Bob, whose task is to identify the index $i$ from the state Alice has given him. If the states $\{\ket{\psi_j}\}_{j=1}^n$ are orthonormal, then Bob can guess the index i correctly with certainty.
 \end{theorem}
 \begin{proof}
 Construct the following procedure for Bob to conduct a quantum measurement.
-Define measurement operators $M_i=\ket{\psi_i}\bra{\psi_i}$ for each possible i. Define an additional measurement operator $M_0$ as the positive square root of $I-\sum_{i \ne 0} \ket{\psi_i}\bra{\psi_i}$.
+Define measurement operators $M_j=\ket{\psi_j}\bra{\psi_j}$ for each $j$, and \textcolor{blue}{additional measurement operator $M_0$ as the positive square root of $I-\sum_{j \ne i} \ket{\psi_j}\bra{\psi_j}$.}
 
-Since the completeness relation is satisfied, if Alice prepares $\ket{\psi_i}$, then $p(i)=\braket{\psi_i | M_i |\psi_i}=\braket{\psi_i |\psi_i}\braket{\psi_i |\psi_i}=1$, so Bob will be able to get the correct outcome i with certainty.
+Since the completeness relation is satisfied and Alice prepared $\ket{\psi_i}$, the probability of observing $i$ is given by
+\begin{equation}
+p(i)=\braket{\psi_i | M_i |\psi_i}=\braket{\psi_i |\psi_i}\braket{\psi_i |\psi_i}=1.
+\end{equation}
+The idea is that since Bob {\emph{knows}} the orthonormal bases Alice selects from, he can measure with respect to the {\emph{appropriate collection of measurement operators.}} 
 \end{proof}
 
-On the other hand, \textit{non-orthogonal states cannot be reliably distinguished}. A rigorous proof can be found at page 87 Box 2.3 in \cite{Nielsen}. Here we will given an example to demonstrate.
+On the other hand, non-orthogonal states cannot be reliably distinguished. A rigorous proof can be found at page 87 Box 2.3 in \cite{Nielsen}, but we demonstrate the idea with the following example.
 \begin{example}
-Say Alice prepare states $\ket{\psi_1}=\ket{0}, \ket{\psi_2}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$. Obviously they are not orthogonal.
+Now, say Alice selects from the states $\ket{\psi_1}=\ket{0}$ and  $\ket{\psi_2}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$. Suppose Bob attempts to distinguish $\ket{\psi_1}, \ket{\psi_2}$ with measurement operators $M_1=\ket{0}\bra{0}, M_2=\ket{1}\bra{1}$.
 
-Now Bob attempts to distinguish $\ket{\psi_1}, \ket{\psi_2}$ with measurement operators $M_0=\ket{0}\bra{0}, M_1=\ket{1}\bra{1}$. Then if Alice prepares $\ket{\psi_1}$, then $p(0)=\braket{0 |0}\braket{0|0}=1$. However, if Alice prepares $\ket{\psi_2}$, then the probabilities of the measurement outcomes being 0 and 1 are
-\begin{gather*}
-    p(0)=\braket{\psi_2|0}\braket{0|\psi_2}=|\braket{0|\psi_2}|^2=|\frac{\braket{0|0}+\braket{0|1}}{\sqrt{2}}|^2=\frac{1}{2}\\
-    p(1)=\braket{\psi_2|1}\braket{1|\psi_2}=\frac{1}{2}
-\end{gather*}
-What this means is that if Bob's measurement outcome is 1, Alice must have prepared $\ket{\psi_2}$, so Bob will be able to guess correctly with certainty. However, if the measurement outcome is 0, Alice could have prepared either $\ket{\psi_1}$ or $\ket{\psi_2}$.
-Bob will not be able to tell with certainty.\\
-In fact, say Alice prepares $\ket{\psi_1}$ and $\ket{\psi_2}$ with equal probability. Then if Bob guess Alice has prepared $\ket{\psi_1}$, the probability of him being correct is $\frac{\frac{1}{2}}{\frac{1}{2}+\frac{1}{2}\frac{1}{2}}=\frac{2}{3}$
+Then if Alice prepares $\ket{\psi_1}$, then $p(1)=\braket{0 |0}\braket{0|0}=1$, so Bob picks the correct index. 
+
+However, if Alice prepares $\ket{\psi_2}$, then the probabilities of the measurement outcomes being $1$ and $2$ are given by;
+\begin{eqnarray}
+    p(1)&=&\braket{\psi_2|0}\braket{0|\psi_2}=|\braket{0|\psi_2}|^2=|\frac{\braket{0|0}+\braket{0|1}}{\sqrt{2}}|^2=\frac{1}{2}\textrm{ and}\\
+    p(2)&=&\braket{\psi_2|1}\braket{1|\psi_2}={\frac{1}{2}}_.
+\end{eqnarray}
+This means is that if Bob's measurement outcome is $2$, Alice must have prepared $\ket{\psi_2}$, so Bob will be able to guess correctly with certainty. However, if the measurement outcome is $1$, Alice could have prepared either $\ket{\psi_1}$ or $\ket{\psi_2}$.  Thus, Bob will not be able to tell with certainty.  In fact, suppose that Alice prepares $\ket{\psi_1}$ and $\ket{\psi_2}$ with equal probability.  Then if Bob guess Alice has prepared $\ket{\psi_1}$, the probability of him being correct is $\frac{\frac{1}{2}}{\frac{1}{2}+\frac{1}{2}\frac{1}{2}}=\frac{2}{3}$.
 \end{example}
 
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
-\subsection{Projective Measurement}
+
+**************************************************************
+\subsection{Projective Measurement}\label{subsection:projective measurement}
 A very important special case of the general measurement postulate given above is known as \textit{projective measurements}. Projective measurements turn out to be \textit{equivalent} to the general measurement postulate, when they are augmented with the ability to perform unitary transformations as described in Postulate 2 \footnote{See \cite{Wehner:notes} 93}. 
 Suppose the measurement operators in \textbf{Postulate 3}, in addition to satisfying the completeness relation  $\sum_m M_m^\dagger M_m =I$, also satisfying the condition that $M_m$ are orthogonal projectors, 
 The measurement postulate for projective measurements is superficially rather different from the general postulate above.
@@ -168,7 +195,7 @@ It turns out we are mostly discussing projective measurements in quantum mechani
 \bigskip
 
 In fact, measurements in an orthonormal basis give some particularly nice properties:
-\begin{theorem}[Measurement in an Orthonormal Basis]
+\begin{theorem}[Measurement in an Orthonormal Basis] \label{theorem: measurement in an orthonormal basis}
  Suppose that we measure a quantum state $\ket{\psi}$ in the orthonormal basis $\{\ket{b_j}\}_{j=1}^d$, the probability of observing outcome "$b_j$" can be found by computing $p_j=|\braket{b_j|\psi}|^2$. The post-measurement state when obtaining outcome "$b_j$" is given by $\ket{b_j}$.
 \end{theorem}
 
@@ -192,11 +219,16 @@ E(M)&=&\sum_m mp(m)\\
 %----------------------------------------------------------------------------------------
 \section{Postulate 4: Composite Systems}
 \begin{quote}
-    \textbf{Postulate 4}:The state space of a composite physical system is the tensor product of the component physical systems. Moreover, if we have systems numbered 1 through n, and system number i is prepared in the state $\ket{\psi_i}$, then the joint state of the total system is $\ket{\psi_1} \otimes \ket{\psi_1} \otimes \hdots \otimes \ket{\psi_n}$
+    \textbf{Postulate 4}:  The state space of a composite physical system is the tensor product of the component physical systems. Moreover, if we have systems numbered 1 through n, and system number i is prepared in the state $\ket{\psi_i}$, then the joint state of the total system is $\ket{\psi_1} \otimes \ket{\psi_1} \otimes \hdots \otimes \ket{\psi_n}$
 \end{quote}
 
-This postulate also enables us to define one of the most interesting ideas associated with composite quantum systems, \textit{entanglement}. Consider the two qubit state 
+Postulate 4 makes clear the crucial role tensor products play in quantum mechanics.  This postulate also enables us to define one of the most interesting ideas associated with composite quantum systems, \textit{entanglement}. Consider the two qubit state 
 \begin{equation}
     \ket{\psi}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}
 \end{equation}
-There are no single qubit states $\ket{a}, \ket{b}$ such that $\ket{\psi}=\ket{a}\otimes \ket{b}$. We say that a state of a composite system having this property of not being a tensor product of its component states is an \textit{entangled} state. We will define entanglement using a tool named density matrix in the next section.
+
+There are no single qubit states $\ket{a}, \ket{b}$ such that $\ket{\psi}=\ket{a}\otimes \ket{b}$. We will define entanglement using a tool named density matrix in the next section.
+
+\begin{definition}\label{definition: entanglement with state vector}
+We say that a state of a composite system having this property of not being a tensor product of its component states is an \textit{entangled} state. 
+\end{definition}
