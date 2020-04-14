@@ -27,7 +27,7 @@ As we have seen in ${\mathbb{C}}^2$, in ${\mathbb{C}}^d$ the standard basis $\{\
 
 
 \begin{definition}
-If $V$ is a complex vector space, a {\emph{Hermitian inner product}} $\langle\hspace{.1cm},\hspace{.1cm}\rangle$ is a function from $V \times V$ to $\mathbb{C}$ which satisfies: 
+If $V$ is a complex vector space, a Hermitian inner product $\langle\hspace{.1cm},\hspace{.1cm}\rangle$ is a function from $V \times V$ to $\mathbb{C}$ which satisfies: 
 
 \begin{enumerate}
 \item $\langle\ket{v}, \sum_i \lambda_i \ket{w_i}\rangle=\sum_i \lambda_i \langle\ket{v}, \ket{w_i}\rangle$
@@ -65,9 +65,9 @@ Below are a few easily checked properties of adjoints:
 
 \begin{definition}
 \label{def herm}
-An operator A is called \textit{hermitian} if $A^\dagger = A$, and \textit{unitary} if $A^\dagger =A^{-1}$. 
+An operator A is called \textit{Hermitian} if $A^\dagger = A$, and \textit{unitary} if $A^\dagger =A^{-1}$. 
 \end{definition}
-We will see shortly that unitary matrices and hermitian matrices play an important role in quantum mechanics.  Unitary matrices preserve inner products, since if $A$ is unitary,
+We will see shortly that unitary matrices and Hermitian matrices play an important role in quantum mechanics.  Unitary matrices preserve inner products, since if $A$ is unitary,
 \begin{eqnarray}
 \braket{u|v} &=& \braket{u|Iv}\\
 &=& \braket{u|A^{-1}Av}\\
@@ -182,7 +182,7 @@ Thus, a projector is a projection in the sense of linear algebra, so its eigenva
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-
+\pagebreak
 \section{Tensor Product}
 
 The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces and their vectors. This will prove useful as the laws of quantum mechanics tell us that the state space of two quantum systems is formed by taking a tensor product. If V and W are inner product spaces of dimension m and n respectively, then their tensor product $V \otimes W$ is an $mn$ dimensional vector space. The elements of $V \otimes W$ are linear combinations of "simple tensors" of the form $\ket{v} \otimes \ket{w}$, where $\ket{v} \in V, \ket{w} \in W$. In particular, if $\{\ket{a_1}, \ket{a_2}...\ket{a_m}\}, \{\ket{b_1},\ket{b_2}, ...\ket{b_n}\}$ are bases for V and W respectively, then the collection $\{\ket{a_i}\otimes\ket{b_j}\}$ is a basis for $V \otimes W$ for $1\leq i \leq m$ and $1 \leq j \leq n$.

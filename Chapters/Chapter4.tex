@@ -1,25 +1,66 @@
 % Chapter Template
 
-\chapter{Density Matrix as a More Useful Representation} % Main chapter title
+\chapter{Density Matrices} % Main chapter title
 
 \label{Chapter4-density matrix} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-We formulated quantum mechanics using the language of state vectors in the previous section. An alternative way is to use a tool called the \textit{density matrix}. It turns out to be equivalent to the state vector approach, but allows us to leverage tools in linear algebra more conveniently. It also allows for describing a quantum system whose state is not completely known, i.e. a quantum system which is in one of states $\{\ket{\psi_1},\hdots,\ket{\psi_n}\}$, with respective probabilities $\{p_1, p_2, \hdots, p_n\}$. We then call $\{p_i, \ket{\psi_i}\}$ an \textit{ensemble of pure states} and define the density matrix for the quantum system to be
-\begin{equation}
-    \rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i}
-\end{equation}
+In the last chapter we formulated the postulates of quantum mechanics using the language of state vectors. These could have been stated using \textit{density matrices} as well. We have already seen that a {\emph{fixed}} state vector for a system gives rise to a probability distribution when it is measured.  Density matrices allows one to describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}.  Thus with density matrices probability enters the discussion at another level altogether.
 
-All the same postulates still apply for density matrices. Here's \textbf{Postulate 2} in terms of density matrices:
+This additional wrinkle is very interesting, but is not used significantly in future chapters.  In the interest of completeness, we summarize some key ideas in the "density matrix" formulation.  The reader may choose to skip everything in the chapter after {\bf{Lemma}} \ref{lemma state into density}.
+
+\begin{definition}
+Let $\{\ket{\psi_1},\hdots,\ket{\psi_n}\}$ be states.  Suppose that a quantum system is in the state $\ket{\psi_i}$ with probability $p_i$, where  
+\begin{equation}
+\sum\limits_i^n p_i, p_i \geq 0.
+\end{equation}
+Then, we define the density matrix for the quantum system$\rho$, by 
+\begin{equation}
+    \rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i}.
+\end{equation}
+\end{definition}
+
+Note that density matrices can be viewed as generalizing state vectors.  Let $\psi$ be a state vector and consider the assignment
+$$\psi \xrightarrow{\iota} \ket{\psi}\bra{\psi}.$$
+
+Clearly, the matrix $\ket{\psi}\bra{\psi}$ can be regarded as the density matrix for the system that is in the state $\ket{\psi}$ with probability $1$, i.e. the state vector $\ket{\psi}$.  The following Lemma shows that this function is an inclusion for our purposes.
+
+********************************************
+
+\begin{lemma}
+\label{lemma state into density}
+Let $\ket{\psi_1}, \ket{\psi_2}$ be state vectors in ${\mathbb{C}}^n$ with $\iota({\ket{\psi_1}})=\iota(\ket{\psi_2})$.\\
+Then $\ket{\psi_1}=\ket{\psi_2}$ up to a global phase.
+\end{lemma}
+\begin{proof}
+Insert proof
+\end{proof}
+
+*****************************************************
+
+Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices.  If we wish to emphasize that a state is given by a proper density matrix, we say the state is {\enph{mixed}}.  In similar fashion, states given by vectors are sometimes called {\emph{pure}}.  The material in this Chapter past this point will not be used in subsequent Chapters of the thesis, so the reader can freely skip ahead.
+
+
+***************************************************************
+
+The four Postulates from the preceding Chapter can be reworked with density matrices in place of state vectors. For example, here's \textbf{Postulate 2} reworked for density matrices:
 \begin{quote}
-    Say the evolution of a closed quantum system is described by a unitary transformation U. Then the evolution of the density operator is described by the equation
+    {\bf{Postulate 2'}}: Say the evolution of a closed quantum system is described by a unitary transformation U. Then the evolution of the density operator is described by the equation
     \begin{equation}
         \rho=\sum_i p_i \ket{\psi_i}\bra{\psi_i}	\underrightarrow{U}\sum_i p_i U \ket{\psi_i}\bra{\psi_i}U^\dagger=U \rho U^\dagger
     \end{equation}
 \end{quote}
 
-Here's how we will describe measurements (\textbf{Postulate 3}) in terms of density matrices:
+Note that this computation is consistent with Lemma \ref{lemma state into density} and {\bf{Postulate 2}} since
+\begin{eqnarray}
+\ket{U \psi_i}\bra{U \psi_i}&=& \ket{U \psi_i}(\ket{U \psi_i}^\dagger)\\
+&=& \ket{U\psi_i}(\ket{\psi_i})^\dagger U^\dagger\\
+&=& \ket{U \psi_i} \bra{\psi_i}U^\dagger\\
+&=& U \ket{\psi_i}\bra{\psi_i}U^\dagger.
+\end{eqnarray}
+
+Similarly, (\textbf{Postulate 3}) can be translated to density matrices:
 \begin{quote}
-    Suppose we perform a measurement described by measurement operators $M_m$ on an ensemble of pure states $\{p_i, \ket{\psi_i}\}$. If the initial state prepared was $\ket{\psi_i}$, then the probability of getting result m is
+    {\bf{Postulate 3'}}: Suppose we perform a measurement described by measurement operators $M_m$ on an ensemble of pure states $\{p_i, \ket{\psi_i}\}$. If the initial state prepared was $\ket{\psi_i}$, then the probability of getting result m is
     \begin{equation}
         p(m|i)=\braket{\psi_i|M_m^\dagger M_m|\psi_i}=tr(\braket{\psi_i|M_m^\dagger M_m|\psi_i})=tr(M_m^\dagger M_m \ket{\psi_i}\bra{\psi_i})
     \end{equation}
@@ -41,7 +82,6 @@ Here's how we will describe measurements (\textbf{Postulate 3}) in terms of dens
     \end{equation}
 \end{quote}
 
-A quantum system whose state $\ket{\psi}$ is known exactly is said to be in a \textit{pure state}. In this case the density matrix representation is simply $\rho=\ket{\psi}\bra{\psi}$. Otherwise, we say $\rho$ is in a \textit{mixed state}. It is a \textit{mixture} of the different pure states in the ensemble for $\rho$. We will mostly only discuss pure states.
 
 
 \textcolor{red}{add an example of density matrix with probability distribution and its outcome probability}.
