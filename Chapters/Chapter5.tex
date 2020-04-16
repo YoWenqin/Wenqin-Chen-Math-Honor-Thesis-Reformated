@@ -5,7 +5,29 @@
 \label{Chapter5-cryptography} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
 \textcolor{red}{maybe i should insert something about one-time pad here as well}.
-\textcolor{blue}{How about one-time pad here first.  Also this is a good place for a picture of Alice and Bob.  We should be able to find a schematic with Alice and Bob somewhere}
+\textcolor{blue}{How about one-time pad here first.  Also this is a good place for a picture of Alice and Bob.  We should be able to find a schematic with Alice and Bob somewhere} developed in \cite{shannon1949communication}.
+
+Any encryption consists of some encryption function Enc(k,m)=e that takes the key k and the message m and maps it to some encrypted message e. The original message m is also called the plaint text, and e the ciphertext. We also have a decryption function Dec(k,e)=m that takes the key k and the ciphertext e back to the plaintext. 
+\begin{definition}
+An encryption scheme (Enc, Dec) is \textit{secret}, or \textit{secure} if an only if for all prior distributions p(m) over messages, and all messages m, we have
+\begin{equation}
+    p(m)=p(m|e),
+\end{equation}
+where $e=Enc(k,m)$
+\end{definition}
+
+\begin{definition}
+An encryption scheme (Enc, Dec) is correct if and only if for all possible messages m, and all possible keys k, we have m=Dec(k, Enc(k,m)).
+\end{definition}
+
+Cryptography is the problem of designing protocols that are both secure and correct.
+\begin{theorem}
+An encryption scheme (Enc, Dec) can only be secure and correct if the number of possible keys |K| is at least as large as the number of possible messages |M|, that is, $|K| \ge |M|$.
+\end{theorem}
+For the proof, see p.18 of \cite{Wehner:notes}. 
+
+\textcolor{red}{finish introducing one time pad}
+-----------------------------------------
 
 Broadly speaking, cryptography is the problem of doing communication or computation involving two or more parties who may not trust one another. To transmit a secret message from Alice to Bob, we deploy either private key cryptosystems or public key cryptosystems. In private key cryptosystems, a private key is used by Alice to encrypt the secret message she wants to send to Bob, who will also need the private key to decrypt the message. Distributing the private key from Alice to Bob is rather difficult because a third party Eve might be eavesdropping on the key distribution. Certain quantum mechanics principles, on the other hand, can be exploited in the private key distribution. Pubic key cryptosystems such as the RSA cryptosystem is the most widely used cryptographic protocol now. The security of RSA relies on classical computers' difficulty in solving the problem of factoring. However, Shor's fast algorithm on a quantum computer can easily break RSA.
 
@@ -13,7 +35,7 @@ Broadly speaking, cryptography is the problem of doing communication or computat
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Bell-Nonlocality and CHSH game}
+\section{Bell-Nonlocality and CHSH game} \label{section: bell-nonlocality}
 
 Bell proved that the predictions of quantum theory are incompatible with those of any classical theory satisfying a natural notion of locality \cite{bell1964}. The bell-nonlocality can be understood by a non-local game between Alice and Bob, in which they are asked questions $x,y \in \{0,1\}$ respectively. They respond with asnwers $a, b \in \{0,1\}$ respectively. They are allowed to agree on a strategy beforehand, but are not allowed to communicate during the game. Alice and Bob win the game if and only if 
 \begin{equation*}
@@ -123,17 +145,58 @@ So the probability of winning is the average of the four above:
 \section{Monogamy of Entanglement}
 \textcolor{red}{put it say a property right after introducing entanglement}
 \cite{Toner2006}
+'''Monogamy ''' is one of the most fundamental properties of entanglement and can, in its extremal form, be expressed as follows: If two qubits A and B are maximally quantumly correlated they cannot be correlated at all with a third qubit C. In general, there is a trade-off between the amount of entanglement between qubits A and B and the same qubit A and qubit C.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
 
 \section{BB84 Protocol}
-\cite{Bennett1984}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{"bb84 encoding".png}
+    \caption{BB84 Bit Encoding \protect\footnotemark}
+    \label{fig:BB84 bit encoding}
+\end{figure}
+\footnotetext{Figure from \url{https://www.cse.wustl.edu/~jain/cse571-07/ftp/quantum/\#Gisin02}}
+
+In 1984 Charles Bennett and Gilles Brassard published the first Quantum Key Distribution protocol \cite{Bennett1984} now referred to as the BB84 Protocol. For Alice to transmit a message to Bob, she not only chooses the bit to send, but also a basis out of the standard basis and the Hadamard basis. In other words, if she chooses the standard basis (rectilinear basis), she will encode the classical bit 0 with $\ket{0}$ ($0^\circ$ in rectilinear basis), and the bit 1 with $\ket{1}$ ($90^\circ$ in rectilinear basis). If she chooses the Hadamard basis (diagonal basis), she will encode the bit 0 with $\ket{+}$ ($45^\circ$ in the diagonal basis), and the bit 1 with $\ket{-}$ ($135^\circ$ in the diagonal basis). 
+
+In the first phase, Alice attempts to send a random string of bits to Bob by encoding each bit with a photon of the corresponding polorization as described in \ref{fig:BB84 bit encoding} over a quantum channel. For each photon received, Bob will measure the photon with a randomly chosen basis between the rectilinear basis and the diagonal basis. As explained in Chapter \ref{Chapter3-postulates}, only if Bob chose the same basis as Alice would he be able to get for certainty the same measurement result as what Alice sent. Otherwise, the result he get would be random.
+
+In the second phase, Bob notifies Alice over any channel (can totally be an insecure classical channel) which basis he picked for each incoming photon. In response, Alice reports back to Bob whether he chose the correct basis for each photon. Then, Alice and Bob both discard bits corresponding to photons measured with different bases. Assuming no errors occurred and no one manipulated the photons, Bob and Alice now have the same string of bits, and that is the private key distributed from Alice to Bob. The process is illustrated in \ref{fig:BB84 bit example}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.35]{"bb84 example".png}
+    \caption{An example of distributing a key of bits from Alice to Bob. The result of secret key established is 0101.\protect\footnotemark}
+    \label{fig:BB84 bit example}
+\end{figure}
+\footnotetext{Figure from \url{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}}
+
+To verify whether an eavesdropper Eve has tapped into the communication, Alice and Bob picked a random subset of their shared secret key and compare if they actually agree. If yes, they can discard those bits and have the remaining bits be the shared secret key. Otherwise, it means Eve attempts to infer the key. Because of the no-cloning theorem, she has to measure the photons sent by Alice before passing them on to Bob. She cannot replicate the photon, pass the original photon to Bob and keep the replicated photon to herself. Since Eve does not know which basis Alice picked to encode the bit, Eve has to guess. If she guesses wrongly and measures on the wrong basis, the information encoded on the other basis is lost. So when the photon reaches Bob, his measurement result will be random and he infer the wrong bit. Say Eve chooses the measurement basis incorrectly on average $\frac{1}{2}$ of the time, then Bob (using the same basis as Alice) will get the bit wrong $\frac{1}{2} \times \frac{1}{2}=\frac{1}{4}$ of the time (\textcolor{red}{maybe i can add more explanation here}). If m bits are compared, the probability of Eve being undetected is $(\frac{3}{4})^m$, which approaches 0 as m gets bigger.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
 %----------------------------------------------------------------------------------------
 
 \section{E91 Protocol}
-\cite{Ekert1991}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{"e91 illustrated".png}
+    \caption{An illustration of a Quantum Crypto Protocol Utilizing Entanglement: E91 Protocol \protect\footnotemark}
+    \label{fig:E91 Illustrated}
+\end{figure}
+\footnotetext{Figure from \url{https://www.cse.wustl.edu/~jain/cse571-07/ftp/quantum/\#Gisin02}}
+In 1991, Eckert describes a quantum channel where there is a single source that emits pairs of entangled particles \cite{Ekert1991}. As shown in figure \ref{fig:E91 Illustrated}, Alice and Bob then each receive one particle from every pair emitted from the source. Then they each choose a random basis out of three bases to measure on their received particles. 
+
+The three bases to choose from are $Z_0, Z_{\frac{\pi}{4}}, Z_{\frac{\pi}{2}}$, where $Z_\theta$ is the standard basis rotated counterclockwise by $\theta$. In other words, if Alice or Bob choose $Z_0$, she will encode the classical bit 0 with  $0^\circ$ in $Z_0$ and encode the bit 1 with $90^\circ$ in $Z_0$. If they choose $Z_{\frac{\pi}{4}}$, classical bits 0, 1 will be encoded with $45^\circ$ and $135^\circ$ respectively. If they choose $Z_{\frac{\pi}{2}}$, 0 and 1 will be encoded with $90^\circ$ and $180^\circ$ respectively.
+
+Alice and Bob each keeps the choice of basis private until the measurements are completed. As in BB84, they would then discuss in a classical channel that doesn't need to be secure bases they used for their measurements and divide the photons received into two groups: the first consists of photons measured in the same basis by Alice and Bob, and the second contains photons measured in different bases. 
+
+The first group makes use of properties of entanglement. For each measurement Alice and Bob made using the same basis, there exists this perfect anti-correlation between Alice and Bob's photon. This means that they end up each having a bit string which is the binary complement of each other. Then Bob can just invert his bits and obtain a shared secret key with Alice to use for one-time pad. 
+
+The second group is used to detect eavesdropping, they can compute the test statistic S(\textcolor{red}{explain more what test statistic is here}). It turns out that without eavesdropping, $S=-2\sqrt{2}$. Yet if Eve tapped into the communication, then $-\sqrt{2} \le S \le \sqrt{2}$. Such way of statistically testing for eavesdropping originated from the generalized Bell's theorem (CHSH inequalities) \cite{bell1964}, the concept of which was illustrated in \textbf{Section \ref{section: bell-nonlocality}}.
+
+% This protocol is based on the Bohm's version of the Einsteain-Podolsky-Rosen gedanken experiment, and the generalized Bell's theorem (CHSH inequalities) is used to test for eavesdropping. From a theoretical points of view, E91 protocol extends BB84. 

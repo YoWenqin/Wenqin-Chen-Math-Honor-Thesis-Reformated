@@ -25,7 +25,7 @@ Famous physicists like Niels Bohr, Max Planck, Paul Dirac, Werner Heisenberg, Ri
     \textbf{Postulate 1}: Associated to any isolated physical system is a Hilbert space\footnote{a complete inner product space} known as the state space of the system. The system is completely described by its state vector, which is a unit vector in the system's state space.
 \end{quote}
 
-For our purposes, typically the Hilbert space is $C^n$. In fact, most of the time $n=2$, so the state vector is a qubit (see Definition \ref{def qubit} and more generally Chapter \ref{Chapter2-preliminaries}).  Thus, unless otherwise specified, in what follows a state vector is a superposition of $\ket{0}$ and $\ket{1}$.
+For our purposes, typically the Hilbert space is $C^n$. In fact, most of the time $n=2$, so the state vector is a qubit (see \textbf{Definition \ref{def qubit}} and more generally Chapter \ref{Chapter2-preliminaries}).  Thus, unless otherwise specified, in what follows a state vector is a superposition of $\ket{0}$ and $\ket{1}$.
 
 There are {\emph{real}} physical systems that can be described in terms of qubits.  These include, for example, the polarization of a photon, the alignment of nuclear spin in a uniform magnetic field, and the state of an electron orbiting a single atom.  In the last case, the orbiting electron can exist in either the "ground" or "excited" states, which can be identified with $\ket{0}$ and $\ket{1}$ respectively. By shining light on the atom for an appropriate length of time, it is possible to move the electron from the $\ket{0}$ state to the $\ket{1}$. Interestingly, by reducing the time we shine the light, we may move the electron from the state $\ket{0}$ to $\ket{+}$, a (nontrivial) superposition\footnote{$\ket{+}=\frac{\sqrt{2}}{2}\ket{0}+\frac{\sqrt{2}}{2}\ket{1}$, hence $\ket{+}$ can be viewed as being "halfway" between $\ket{0}$ and $\ket{1}$} of $\ket{0}$ and $\ket{1}$ (see \cite{Nielsen}).
 
@@ -97,10 +97,10 @@ We start with a simple but important example.
 \begin{example} \label{measurement-standard basis}
 We measure a single qubit with two outcomes given by the two measurement operators 
 $$M_0=\ket{0}\bra{0}\textrm{ and }M_1=\ket{1}\bra{1}.$$ 
-Each measurement operator is projector, and that, by our previous computation,
+Each measurement operator is projector, and thus, by our previous computation,
 \begin{equation*}
-    M_0^\dagger M_0+M_1^\dagger M_1 = (M_0)^2+(M_1)^2=M_0 + M_1 = I
-\end{equation*}.
+    M_0^\dagger M_0+M_1^\dagger M_1 = (M_0)^2+(M_1)^2=M_0 + M_1 = I.
+\end{equation*}
 Now, suppose the state being measured is $\ket{\psi}=a\ket{0}+b\ket{1}$. Then the probability of obtaining measurement outcome 0 is
 \begin{equation*}
     p(0) = \bra{\psi}M_0^\dagger M_0 \ket{\psi} = \braket{\psi | M_0 | \psi}=\braket{\psi|0}\braket{0|\psi}=\braket{\psi|o}\overline{\braket{\psi|0}}=|a|^2.
@@ -132,7 +132,7 @@ which equals the probability of observing outcome $m$ for $\ket{\sigma}$.  There
 % \end{prop}
 
 \bigskip
-It follows from Postulate 3 that only orthogonal states can be reliably distinguished. To illustrate this property, we consider two situation where Alice and Bob have access to a known collection of states.  In both situations, Alice chooses a state and we examine whether Bob can reliably determine which state Alice picked by measuring.
+It follows from Postulate 3 that only orthogonal states can be reliably distinguished. To illustrate this property, we consider two situation where Alice and Bob have access to a known collection of states.  In both situations, Alice chooses a state and we examine whether Bob can reliably determine which state Alice picked by measuring it.
 
 \begin{example} \label{theorem-distinguishing orthogonal states}
 Orthogonal states can be reliably distinguished. More precisely, suppose Alice chooses a state $\ket{\psi_i}$ from some fixed set of states known to both herself and to Bob. She gives the state to Bob, whose task is to identify the index $i$ from the state Alice has given him by measuring. If the collection of states $\{\ket{\psi_j}\}_{j=1}^n$ is orthonormal, then Bob can determine the index i correctly with certainty.
@@ -145,7 +145,7 @@ Thus, if Alice picked $\ket{\psi_i}$, the probability of observing $i$ and $j\ne
 p(i)=\braket{\psi_i | M_i |\psi_i}=\braket{\psi_i |\psi_i}\braket{\psi_i |\psi_i}=1^2=1\\
 p(j)=\braket{\psi_i | M_j |\psi_i}=\braket{\psi_i |\psi_j}\braket{\psi_j |\psi_i}=0^2=0\\
 \end{align}
-Thus, Bob can detect the outcome $i$ with probability $1$.  Once again the crucial point is that the set of vectors from which Alice selects is known to Bob and is {\emph{orthonormal}} Because of this, he can measure with respect to the {\emph{appropriate collection of measurement operators.}} 
+Thus, Bob can detect the outcome $i$ with probability $1$.  Once again the crucial point is that the set of vectors from which Alice selects is known to Bob and is {\emph{orthonormal}}. Because of this, he can measure with respect to the {\emph{appropriate collection of measurement operators.}} 
 \end{proof}
 
 On the other hand, {\emph{even when they are known to Bob,}} non-orthogonal states cannot be reliably distinguished (see page 87 Box 2.3 in \cite{Nielsen} for a rigoroous proof).  We demonstrate this phenomenon with another example.
@@ -154,7 +154,7 @@ This time, say Alice selects from the states $\ket{\psi_1}=\ket{0}$ and  $\ket{\
 
 Now, if Alice prepares $\ket{\psi_1}$, then $p(1)=\braket{0 |0}\braket{0|0}=1$, so Bob picks the correct index. 
 
-However, if Alice prepares $\ket{\psi_2}$, then the probabilities of the measurement outcomes being $1$ and $2$ are given by;
+However, if Alice prepares $\ket{\psi_2}$, then the probabilities of the measurement outcomes being $1$ and $2$ respectively are given by;
 \begin{eqnarray}
     & &p(1)=\braket{\psi_2|0}\braket{0|\psi_2}=|\braket{0|\psi_2}|^2=|\frac{\braket{0|0}+\braket{0|1}}{\sqrt{2}}|^2=\frac{1}{2}\textrm{  and}\\
     & &p(2)=\braket{\psi_2|1}\braket{1|\psi_2}={\frac{1}{2}}_.
@@ -167,7 +167,7 @@ This means is that if Bob's measurement outcome is $2$, Alice must have prepared
 %-----------------------------------
 
 \label{subsection:projective measurement}
-The measurement operators used in the last two examples are by far the most important type kind for the purposes of this thesis.  Such measurements are known as \textit{projective measurements}, and they will turn out to be \textit{equivalent} to the general measurements, when coupled with unitary transformations as described in Postulate 2 \footnote{See \cite{Wehner:notes} 93}. 
+The measurement operators used in the last two examples are by far the most important kind for the purposes of this thesis.  Such measurements are known as \textit{projective measurements}, and they will turn out to be \textit{equivalent} to the general measurements, when coupled with unitary transformations as described in Postulate 2 \footnote{See \cite{Nielsen} Section 2.2.8 for why they are equivalent}. 
 
 
 To perform projective measurements, the measurement operators in \textbf{Postulate 3}, must be orthogonal projectors, in which case the completeness condition becomes
@@ -175,7 +175,13 @@ To perform projective measurements, the measurement operators in \textbf{Postula
 \sum\limits_m M_m^\dagger M_m = I = \sum\limits_m M_m M_m = \sum\limits_m M_m.
 \end{equation}
 
-Postulate 3 can be restated in the context of projective measurements, which we present in the Appendix.
+We will define projective measurements rigorously in the Appendix, but for our purposes projective measurements can be made with respect to an orthonormal basis.
+
+\begin{definition}
+Let
+\end{definition}
+
+Postulate 3 can be completely restated in the context of projective measurements, which we present in the Appendix.
 
 **************************************************
 
@@ -258,7 +264,7 @@ Consider the two qubit state
     \ket{\psi}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}.
 \end{equation}
 
-There are no single qubit states $\ket{a}, \ket{b}$ such that $\ket{\psi}=\ket{a}\otimes \ket{b}$, hence $\psi$ is entangled.
+There are no single qubit states $\ket{a}, \ket{b}$ such that $\ket{\psi}=\ket{a}\otimes \ket{b}$, hence $\ket{\psi}$ is entangled.
 \begin{proof}
 Suppose for a contradiction, $\psi = \ket{a} \otimes \ket{b}.$  Then, 
 $$\ket{a}=\alpha \ket{0}+\beta \ket{1}, \ket{b}=\gamma\ket{0}+\delta\ket{1}.$$
@@ -274,4 +280,5 @@ Therefore $\alpha \gamma \neq 0$ and $\beta \delta \neq 0$, so all are nonzero. 
 \end{example}
 In {\bf{Chapter}} \ref{Chapter6-classification of entanglement} we classify entanglement completely.
 
+\textcolor{red}{maybe add a few properties of entanglements just to give more intuition for the readers what will happen next}
 

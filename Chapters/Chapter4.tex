@@ -11,16 +11,16 @@ This additional wrinkle is very interesting, but is not used significantly in fu
 \begin{definition}
 Let $\{\ket{\psi_1},\hdots,\ket{\psi_n}\}$ be states.  Suppose that a quantum system is in the state $\ket{\psi_i}$ with probability $p_i$, where  
 \begin{equation}
-\sum\limits_i^n p_i, p_i \geq 0.
+\sum\limits_i^n p_i=1, p_i \geq 0.
 \end{equation}
-Then, we define the density matrix for the quantum system$\rho$, by 
+Then, we define the density matrix for the quantum system $\rho$, by 
 \begin{equation}
     \rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i}.
 \end{equation}
 \end{definition}
 
-Note that density matrices can be viewed as generalizing state vectors.  Let $\psi$ be a state vector and consider the assignment
-$$\psi \xrightarrow{\iota} \ket{\psi}\bra{\psi}.$$
+Note that density matrices can be viewed as generalizing state vectors.  Let $\ket{\psi}$ be a state vector and consider the assignment
+$$\ket{\psi} \xrightarrow{\iota} \ket{\psi}\bra{\psi}.$$
 
 Clearly, the matrix $\ket{\psi}\bra{\psi}$ can be regarded as the density matrix for the system that is in the state $\ket{\psi}$ with probability $1$, i.e. the state vector $\ket{\psi}$.  The following Lemma shows that this function is an inclusion for our purposes.
 
@@ -37,7 +37,7 @@ Insert proof
 
 *****************************************************
 
-Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices.  If we wish to emphasize that a state is given by a proper density matrix, we say the state is {\enph{mixed}}.  In similar fashion, states given by vectors are sometimes called {\emph{pure}}.  The material in this Chapter past this point will not be used in subsequent Chapters of the thesis, so the reader can freely skip ahead.
+Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices.  If we wish to emphasize that a state is given by a proper density matrix, we say the state is \textit{mixed}.  In similar fashion, states given by vectors are sometimes called {\emph{pure}}.  The material in this Chapter past this point will not be used in subsequent Chapters of the thesis, so the reader can freely skip ahead.
 
 
 ***************************************************************
