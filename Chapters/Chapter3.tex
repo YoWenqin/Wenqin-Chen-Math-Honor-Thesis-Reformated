@@ -134,7 +134,7 @@ which equals the probability of observing outcome $m$ for $\ket{\sigma}$.  There
 \bigskip
 It follows from Postulate 3 that only orthogonal states can be reliably distinguished. To illustrate this property, we consider two situation where Alice and Bob have access to a known collection of states.  In both situations, Alice chooses a state and we examine whether Bob can reliably determine which state Alice picked by measuring it.
 
-\begin{example} \label{theorem-distinguishing orthogonal states}
+\begin{example} \label{example: orthogonal states for measurements}
 Orthogonal states can be reliably distinguished. More precisely, suppose Alice chooses a state $\ket{\psi_i}$ from some fixed set of states known to both herself and to Bob. She gives the state to Bob, whose task is to identify the index $i$ from the state Alice has given him by measuring. If the collection of states $\{\ket{\psi_j}\}_{j=1}^n$ is orthonormal, then Bob can determine the index i correctly with certainty.
 \end{example}
 \begin{proof}
@@ -149,7 +149,7 @@ Thus, Bob can detect the outcome $i$ with probability $1$.  Once again the cruci
 \end{proof}
 
 On the other hand, {\emph{even when they are known to Bob,}} non-orthogonal states cannot be reliably distinguished (see page 87 Box 2.3 in \cite{Nielsen} for a rigoroous proof).  We demonstrate this phenomenon with another example.
-\begin{example}
+\begin{example} \label{example: non-orthogonal states for measurements}
 This time, say Alice selects from the states $\ket{\psi_1}=\ket{0}$ and  $\ket{\psi_2}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$. Suppose Bob attempts to distinguish $\ket{\psi_1}, \ket{\psi_2}$ with measurement operators $M_1=\ket{0}\bra{0}, M_2=\ket{1}\bra{1}$ as before.
 
 Now, if Alice prepares $\ket{\psi_1}$, then $p(1)=\braket{0 |0}\braket{0|0}=1$, so Bob picks the correct index. 
@@ -245,7 +245,7 @@ E(M)&=&\sum_m mp(m)\\
 %	SECTION 4
 %----------------------------------------------------------------------------------------
 \pagebreak
-\section{Postulate 4: Composite Systems}
+\section{Postulate 4: Composite Systems} \label{section: composite systems}
 \begin{quote}
     \textbf{Postulate 4}:  The state space of a composite physical system is the tensor product of the component physical systems. Moreover, if we have $n$ systems numbered $1$ through $n$, where system $i$ is in the state $\ket{\psi_i}$, then the joint state of the total system is $\ket{\psi_1} \otimes \ket{\psi_1} \otimes \hdots \otimes \ket{\psi_n}$
 \end{quote}
@@ -254,7 +254,7 @@ Postulate 4 makes clear the crucial role tensor products play in quantum mechani
 
 
 \begin{definition}\label{definition: entanglement with state vector}
-We say that a state of a composite system is \textit{entangled} if it is {\bf{not}} the tensor product of two vectors in its component systems.
+We say that a state of a composite system is \textit{separable} if it is the tensor product of two vectors in its component systems. Otherwise, we say the composite system is \textit{entangled}.
 \end{definition}
 
 
