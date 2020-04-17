@@ -32,7 +32,34 @@ Let $\ket{\psi_1}, \ket{\psi_2}$ be state vectors in ${\mathbb{C}}^n$ with $\iot
 Then $\ket{\psi_1}=\ket{\psi_2}$ up to a global phase.
 \end{lemma}
 \begin{proof}
-Insert proof
+Let $\ket{\psi_1}=\icol{a_1\\ \vdots \\ a_n}, \ket{\psi_2}=\icol{b_1\\ \vdots \\ b_n}$. Then
+\begin{gather}
+\iota({\ket{\psi_1}})=\iota(\ket{\psi_2})\\
+\Rightarrow \begin{pmatrix}
+a_1 \Bar{a_1} && a_1 \Bar{a_2} && \hdots && a_1 \Bar{a_n}\\
+&& && \vdots && \\
+a_n \Bar{a_1} && a_n \Bar{a_2} && \hdots && a_n \Bar{a_n}\\              
+\end{pmatrix}=\begin{pmatrix}
+b_1 \Bar{b_1} && b_1 \Bar{b_2} && \hdots && b_1 \Bar{b_n}\\
+&& && \vdots && \\
+b_n \Bar{b_1} && b_n \Bar{b_2} && \hdots && b_n \Bar{b_n}\\ 
+\end{pmatrix}\\
+\Rightarrow 
+\begin{cases}
+a_1 \Bar{a_1}=b_1 \Bar{b_1}\\
+a_2 \Bar{a_2}=b_2 \Bar{b_2}\\
+\hdots\\
+a_n \Bar{a_n}=b_n \Bar{b_n}\\
+a_1 \Bar{a_2}=b_1 \Bar{b_2}\\
+\hdots
+\end{cases}
+\Rightarrow \begin{cases}
+a_1 = e^{i\theta}b_1\\
+\hdots\\
+a_n = e^{i\theta}b_n
+\end{cases}
+\Rightarrow\ket{\psi_1}=e^{i\theta}\ket{\psi_2}
+\end{gather}
 \end{proof}
 
 *****************************************************
@@ -41,6 +68,7 @@ Since state vectors can only be determined up to a global phase, from a quantum 
 
 
 ***************************************************************
+\section{Postulates of Quantum Mechanics Reformulated with Density Matrieces}
 
 The four Postulates from the preceding Chapter can be reworked with density matrices in place of state vectors. For example, here's \textbf{Postulate 2} reworked for density matrices:
 \begin{quote}
@@ -169,6 +197,20 @@ Further, the definition of entanglement in definition \ref{definition: entanglem
 
 \textcolor{red}{for most of what follows, we are only interested in pure states. maybe put the general definition in footnote.}
 
+\section{Reduced Density Matrix}
+One very important application of density matrices is the reduced density matrix, a tool to describe sub-systems of a composite quantum system.
+\begin{definition}
+ Suppose we have a composite system shared by A and B described by $\rho$. The reduced density matrix for A is defined by
+\begin{equation}
+    \rho^A=tr_B (\rho)
+\end{equation}
+where $tr_B$ is known as the \textit{partial trace} over system B. The partial trace is defined by
+\begin{equation}
+tr_B(\ket{a_1}\bra{a_2} \otimes \ket{b_1} \bra{b_2})=\ket{a_1}\bra{a_2}tr(\ket{b_1}\bra{b_2})
+\end{equation}
+where $\ket{a_1}, \ket{a_2}$ are any two vectors in the state space of A, and $\ket{b_1}, \ket{b_2}$ are two arbitrary vectors in the state space of Bob.
+\end{definition}
+Note that $tr(\ket{b_1}\bra{b_2})=\braket{b_2|b_1}$
 \textcolor{blue}{The No Cloning Theorem seems a bit out of place here.  Also, do we need this for something later?}
 \begin{theorem}[No Cloning Theorem] \label{no-cloning thm}
 Arbitrary qubits (or quantum states), unlike classical bits, cannot be copied. 
