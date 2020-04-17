@@ -10,7 +10,9 @@
     \label{fig:actual entanglemen}
 \end{figure}
 
-Entanglement is such a fascinating phenomenon in quantum mechanics that Albert Einstein described it as "spooky action at a distance". Quantum entanglement occurs when two particles become linked in way as if there's an invisible tunnel between them, and whatever happens to one immediately affects the other, regardless of how far apart they are. We briefly introduced entanglement in \textbf{Section \ref{section: composite systems}}. It is also used in the E91 Protocol laid out in \textbf{Section \ref{section: e91}}. A natural question that arises is how to classify entanglement for general 2-party composite systems in $\mathbb{C}^n \otimes \mathbb{C}^n$? Is there a notion of quantifying entanglement, i.e. the strength of the link between two particles?
+Entanglement is such a fascinating phenomenon in quantum mechanics that Albert Einstein described it as "spooky action at a distance". Quantum entanglement occurs when two particles become linked in way as if there's an invisible tunnel between them, and whatever happens to one immediately affects the other, regardless of how far apart they are. We briefly introduced entanglement and some of its signature properties in \textbf{Section \ref{section: composite systems}} and formally defined it with density matrices in \textbf{Definition \ref{def: entanglement with density matrix}}. It is also used in the E91 Protocol laid out in \textbf{Section \ref{section: e91}}. A natural question that arises is when is a general 2-party composite system in $\mathbb{C}^n \otimes \mathbb{C}^n$.
+% How to classify entanglement for general 2-party composite systems in $\mathbb{C}^n \otimes \mathbb{C}^n$?
+Is there a notion of quantifying entanglement, i.e. the strength of the link between two particles?
 
 % In quantum mechanics one envisions Alice and Bob {\emph{sharing}} a potential entangled state.  When this happens we think of Alice's {\emph{part}} of the shared state as being the part on the {\emph{left-hand side}} of the tensor product, while Bob has the {\emph{right-hand side}}.  Note that we do not assume that the shared state is separable.
 
@@ -204,13 +206,15 @@ When Alice and Bob share a state, Alice may measure her piece of the state, and 
 
 \begin{prop}
 \label{entanglement-rank}
-Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a 2-qudit quantum state shared by Alice and Bob. Say Alice first makes a measurement and observes $\ket{\varphi}$. Then Bob picks a basis that might not be the same as Alice's and observes $\ket{\theta}$ as a result. Then the following statements hold.
+Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a 2-qudit quantum state shared by Alice and Bob. Say Alice first makes a measurement and observes $\ket{\varphi}$. Then the state of Bob's system \textit{after} Alice has performed the measurement but \textit{before} Bob has learned the measurement result is $\ket{\theta}\bra{\theta}$. Then the following statements about $\ket{\theta}$ hold.
 \begin{enumerate}
-    \item $rank(M(\ket{\psi}))=1$ if and only if $\ket{\theta}\bra{\theta}$ is a constant matrix that doesn't depend on $\ket{\varphi}$. This means that Bob can obtain no information about Alice.
-    \item $rank(M(\ket{\psi}))=n$ if and only if $\ket{\psi}$ is maximally entangled. This means that Bob can infer exactly the state Alice measured ($\ket{\varphi}$).
-    \item If $1<rank(M(\ket{\psi}))<n$, Bob can only partially infer information about Alice.
+    \item $rank(M(\ket{\psi}))=1$ if and only if $\ket{\theta}\bra{\theta}$ is a constant matrix that doesn't depend on $\ket{\varphi}$. The state of Bob's system contains no information about Alice.
+    \item $rank(M(\ket{\psi}))=n$ if and only if $\ket{\psi}$ is maximally entangled. Then the state of Bob's system contains "maximal" information about Alice.
+    \item If $1<rank(M(\ket{\psi}))<n$, then the state of Bob's system only contains some information about Alice.
 \end{enumerate}
 \end{prop}
+
+This means in particular that if the rank is $n$, that what is on Bob's side of the tensor product is perfectly correlated with what is on Alice's side.  Thus, information about one side {\emph{in principle}} provides information about the other side. 
 
 First, let's prove the following lemma.
 
@@ -440,7 +444,7 @@ So when $\ket{\theta}$ is a constant, the rank must be at least 2.\\
 \end{proof}
 
 \begin{example}
-\textcolor{red}{include example for computing bob's end state after alice makes her measurement in $C^3$. what will happen probabilistically for bob after alice makes her measurement?}
+\textcolor{red}{include example for computing bob's end state after alice makes her measurement in $C^3$. what will happen probabilistically for bob after alice makes her measurement? also refer this back to postulate 3}
 Say Alice and Bob share a state $\ket{\psi}=\frac{1}{2\sqrt{2}}(\ket{e_1 e_1}+\ket{e_2 e_3}+\ket{e_3 e_1}+\ket{e_3 e_3}$). Then Alice makes a measurement and yields $\ket{\varphi}$. 
 
 Then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is $\ket{\theta}\bra{\theta}$, $\ket{\theta}=\frac{1}{\sqrt{C}}\begin{pmatrix}
@@ -450,12 +454,20 @@ Then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is 
 \end{pmatrix}\overline{\ket{\varphi}}$
 \end{example}
 
+------------------------------
+
+
 \bigskip
-Now we know how Alice and Bob are correlated mathematically during the "spooky action at a distance". However, there seems to be loophole. What if the coefficient matrix $M(\ket{\psi})$ does not preserve orthogonality? Recall from \textbf{Section \ref{subsection:projective measurement}} and specifically \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}} that it's very important to use an orthonormal basis for measurement because non-orthogonal states cannot be reliably distinguished.
+Now we know how Alice's and Bob's states are correlated mathematically during the "spooky action at a distance". We wish to apply this to the situation discussed previously in which Alice and Bob share an orthonormal basis.  Now instead of Alice picking a state, she instead measures $\ket{\psi}$ with respect to this system.  
+
+\textcolor{red}{first do a case that's within the characterization of proposition 6, and then do the opposite case and compare it with example 6 and 7. the minute bob starts to measure, an error is introduced.}
+
+
+However, there seems to be loophole. What if the coefficient matrix $M(\ket{\psi})$ does not preserve orthogonality? Recall from \textbf{Section \ref{subsection:projective measurement}} and specifically \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}} that it's very important to use an orthonormal basis for measurement because non-orthogonal states cannot be reliably distinguished.
 So ideally $M(\ket{\psi})$ should preserve the orthogonality. Otherwise, say Alice makes a measurement on her part of $\ket{\psi}_{AB}$ using an orthonormal basis and gets an outcome with certainty, Bob will not be able to observe any outcome with certainty. So what is the characterization of matrices that preserve orthogonality?
 
 \begin{prop} \label{orthogonality preserving character}
-$\{M(\ket{\psi})|M(\ket{\psi})$ is a scalar multiple of a $n \times n$ unitary matrix$\}$ is a characterization of all states in $\mathbb{C}^n \otimes \mathbb{C}^n$ such that orthoganality is preserved. i.e. if $\braket{u|v}=0$, then $\braket{M(\ket{\psi})u|M(\ket{\psi}v}=0$.
+$\{M(\ket{\psi})|M(\ket{\psi})$ is a scalar multiple of a $n \times n$ unitary matrix$\}$ is a characterization of all states in $\mathbb{C}^n \otimes \mathbb{C}^n$ such that orthogonality is preserved. i.e. if $\braket{u|v}=0$, then $\braket{M(\ket{\psi})u|M(\ket{\psi}v}=0$.
 \end{prop}
 
 Let's first prove the following lemma.
@@ -589,3 +601,5 @@ So Alice can never observe an outcome who's conjugate is in the kernel of $M(\ke
 \end{proof}
 
 What the above proposition implies is that Alice can indeed choose an arbitrary orthonormal basis to make her measurement. Yet the possible outcomes she can observe are restricted to those not within the kernel of the coefficient matrix $M(\ket{\psi})$.
+
+\textcolor{red}{add a complete story of how the classification of entanglement can be applied to making a private key for the one-time pad}

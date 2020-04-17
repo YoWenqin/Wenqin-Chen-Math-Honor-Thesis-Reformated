@@ -60,6 +60,32 @@ The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice a
 \end{equation}
 \end{definition}
 
+\begin{theorem}[No Cloning Theorem] \label{no-cloning thm}
+Arbitrary qubits (or quantum states), unlike classical bits, cannot be copied. 
+\end{theorem} 
+
+\begin{proof} \cite{Wehner:notes}
+For contradiction, assume there exists such unitary operation C that can copy any arbitrary qubits $\ket{\psi_1}, \ket{\psi_2}$. Then
+\begin{equation*}
+    C(\ket{\psi_1} \otimes \ket{0})=\ket{\psi_1} \otimes \ket{\psi_1}
+\end{equation*}
+
+\begin{equation*}
+C(\ket{\psi_2} \otimes \ket{0})=\ket{\psi_2} \otimes \ket{\psi_2}  
+\end{equation*}
+    
+
+Since C is unitary, we have $C^\dagger C=\mathbb{I}$, so
+\begin{eqnarray*}
+\braket{\psi_1|\psi_2}&=&\braket{\psi_1|\psi_2}\braket{0|0}\\
+&=&(\ket{\psi_1} \otimes \ket{0})(\ket{\psi_2} \otimes \ket{0})\\
+&=&(\ket{\psi_1} \otimes \ket{0})C^\dagger C(\ket{\psi_2} \otimes \ket{0})\\
+&=&(\bra{\psi_1} \otimes \bra{\psi_1})(\ket{\psi_2} \otimes \ket{\psi_2})\\
+&=&(\braket{\psi_1 |\psi_2})^2
+\end{eqnarray*}
+
+So $\braket{\psi_1 | \psi_2}=0$ or $1$. So $\ket{\psi_1}$ and $\ket{\psi_2}$ are either equal or othorgonal. So we can only clone states which are orthogonal to one another, but cloning an arbitrary quantum state is impossible. 
+\end{proof}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
