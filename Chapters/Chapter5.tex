@@ -3,12 +3,20 @@
 \chapter{Classical and Quantum Cryptography} % Main chapter title
 
 \label{Chapter5-cryptography} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+Broadly speaking, cryptography is the problem of doing communication or computation involving two or more parties who may not trust one another. To transmit a secret message from Alice to Bob, we deploy either private key cryptosystems or public key cryptosystems.  Pubic key cryptosystems such as the RSA cryptosystem is the most widely used cryptographic protocol now. The security of RSA relies on classical computers' difficulty in solving the problem of factoring. However, Shor's fast algorithm on a quantum computer can easily break RSA.
 
-\textcolor{red}{maybe i should insert something about one-time pad here as well}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{"schematic of a general crypto system".png}
+    \caption{Schematic of a general secrecy system from \cite{shannon1949communication}}
+    \label{fig:general crypto schematic}
+\end{figure}
+
+In private key cryptosystems, a private key is used by Alice to encrypt the secret message she wants to send to Bob, who will also need the private key to decrypt the message. Distributing the private key from Alice to Bob is rather difficult because a third party Eve might be eavesdropping on the key distribution. In this chapter, we will introduce why we want to exploit quantum mechanics to establish secure protocols for private key distribution. The shared key can then be used for one-time pad for message transmission. But before that, let's go over some basics of cryptography.
 \textcolor{blue}{How about one-time pad here first.  Also this is a good place for a picture of Alice and Bob.  We should be able to find a schematic with Alice and Bob somewhere} developed in \cite{shannon1949communication}.
 
 Any encryption consists of some encryption function Enc(k,m)=e that takes the key k and the message m and maps it to some encrypted message e. The original message m is also called the plaint text, and e the ciphertext. We also have a decryption function Dec(k,e)=m that takes the key k and the ciphertext e back to the plaintext. 
-\begin{definition}
+\begin{definition} \label{def: shannon}
 An encryption scheme (Enc, Dec) is \textit{secret}, or \textit{secure} if an only if for all prior distributions p(m) over messages, and all messages m, we have
 \begin{equation}
     p(m)=p(m|e),
@@ -26,10 +34,32 @@ An encryption scheme (Enc, Dec) can only be secure and correct if the number of 
 \end{theorem}
 For the proof, see p.18 of \cite{Wehner:notes}. 
 
-\textcolor{red}{finish introducing one time pad}
------------------------------------------
+\begin{definition}
+The classical one-time pad is an encryption scheme in which the encryption of a message $m \in \{0, 1\}^n$ using the key $k \in \{0, 1\}^n$ is given by
+\begin{equation}
+    Enc(k,m)=(m \oplus k)=(m_1 \oplus k_1, m_2 \oplus k_2, \hdots, m_n \oplus k_n)=(e_1, \hdots, e_n)=e
+\end{equation}
+where $m_i \oplus k_i = m_i + k_i mod 2$. The decryption is given by
+\begin{equation}
+Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
+\end{equation}
+\end{definition}
+Dec(k,e) is apparently the inverse of Enc(k,m) since $m_i \oplus k_i \oplus k_i=m_i$, so the one-time pad scheme is correct. It also satisfies Shannon's \textbf{Definition \ref{def: shannon}} for security. The proof can be found in section 1.8.1 of \cite{Wehner:notes}.
 
-Broadly speaking, cryptography is the problem of doing communication or computation involving two or more parties who may not trust one another. To transmit a secret message from Alice to Bob, we deploy either private key cryptosystems or public key cryptosystems. In private key cryptosystems, a private key is used by Alice to encrypt the secret message she wants to send to Bob, who will also need the private key to decrypt the message. Distributing the private key from Alice to Bob is rather difficult because a third party Eve might be eavesdropping on the key distribution. Certain quantum mechanics principles, on the other hand, can be exploited in the private key distribution. Pubic key cryptosystems such as the RSA cryptosystem is the most widely used cryptographic protocol now. The security of RSA relies on classical computers' difficulty in solving the problem of factoring. However, Shor's fast algorithm on a quantum computer can easily break RSA.
+\begin{definition}
+The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice applies $X^{k_1} Z^{k_2}$ to qubit $\rho$ and sends the resulting state to Bob. To decrypt, BOb applies the inverse $(X^{k_1} Z^{k_2})^\dagger$ to obtain $\rho$, where X and Z are the Pauli-X and Pauli-Z matrix respectively. i.e.
+\begin{equation}
+    X=\begin{pmatrix}
+    0 && 1\\
+    1 && 0
+    \end{pmatrix}, 
+    Z=\begin{pmatrix}
+    1 && 0\\
+    0 && -1
+    \end{pmatrix}
+\end{equation}
+\end{definition}
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
