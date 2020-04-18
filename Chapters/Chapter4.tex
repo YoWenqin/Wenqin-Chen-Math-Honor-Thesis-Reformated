@@ -6,7 +6,7 @@
 
 In the last chapter we formulated the postulates of quantum mechanics using the language of state vectors. These could have been stated using \textit{density matrices} as well. We have already seen that a {\emph{fixed}} state vector for a system gives rise to a probability distribution when it is measured.  Density matrices allows one to describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}.  Thus with density matrices probability enters the discussion at another level altogether.
 
-This additional wrinkle is very interesting, but is not used significantly in future chapters.  In the interest of completeness, we summarize some key ideas in the "density matrix" formulation.  The reader may choose to skip everything in the chapter after {\bf{Lemma}} \ref{lemma state into density}.
+This additional wrinkle is interesting, but is not used significantly in future Chapters.  In the interest of completeness, we summarize some key ideas in the "density matrix" formulation.  The reader may choose to skip everything in the chapter after {\bf{Lemma}} \ref{lemma state into density}.
 
 \begin{definition}
 Let $\{\ket{\psi_1},\hdots,\ket{\psi_n}\}$ be states.  Suppose that a quantum system is in the state $\ket{\psi_i}$ with probability $p_i$, where  
@@ -24,7 +24,8 @@ $$\ket{\psi} \xrightarrow{\iota} \ket{\psi}\bra{\psi}.$$
 
 Clearly, the matrix $\ket{\psi}\bra{\psi}$ can be regarded as the density matrix for the system that is in the state $\ket{\psi}$ with probability $1$, i.e. the state vector $\ket{\psi}$.  The following Lemma shows that this function is an inclusion for our purposes.
 
-********************************************
+\textcolor{blue}{ADD LINES TO PROOF BELOW}
+
 
 \begin{lemma}
 \label{lemma state into density}
@@ -62,13 +63,18 @@ a_n = e^{i\theta}b_n
 \end{gather}
 \end{proof}
 
-*****************************************************
+
 
 Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices.  If we wish to emphasize that a state is given by a proper density matrix, we say the state is \textit{mixed}.  In similar fashion, states given by vectors are sometimes called {\emph{pure}}.  The material in this Chapter past this point will not be used in subsequent Chapters of the thesis, so the reader can freely skip ahead.
 
+\textcolor{blue}{THE ABOVE IS WRITTEN FOR SUBSEQUENT SECTIONS.  IF THEY GET MOVED TO AN APPENDIX, THE SENTENCE ABOVE MUST BE REWRITTEN}
 
-***************************************************************
-\section{Postulates of Quantum Mechanics Reformulated with Density Matrieces}
+\pagebreak
+
+\section{Postulates of Quantum Mechanics Reformulated with Density Matrices}
+
+
+\textcolor{blue}{I THINK EVERYTHING BELOW THIS SHOULD BE IN AN APPENDIX EXCEPT FOR THEOREM 2.  I think this is literally the only thing we use going forward.  I don't think we even use Postulate 3'}
 
 The four Postulates from the preceding Chapter can be reworked with density matrices in place of state vectors. For example, here's \textbf{Postulate 2} reworked for density matrices:
 \begin{quote}
@@ -88,7 +94,7 @@ Note that this computation is consistent with Lemma \ref{lemma state into densit
 
 Similarly, (\textbf{Postulate 3}) can be translated to density matrices:
 \begin{quote}
-    {\bf{Postulate 3'}}: Suppose we perform a measurement described by measurement operators $M_m$ on an ensemble of pure states $\{p_i, \ket{\psi_i}\}$. If the initial state prepared was $\ket{\psi_i}$, then the probability of getting result m is
+    {\bf{Postulate 3'}}: Suppose we perform a measurement described by measurement operators $M_m$ on an ensemble of pure states $\{p_i, \ket{\psi_i}\}$. If the initial state prepared was $\ket{\psi_i}$, then the probability of outcome $m$ is
     \begin{equation}
         p(m|i)=\braket{\psi_i|M_m^\dagger M_m|\psi_i}=tr(\braket{\psi_i|M_m^\dagger M_m|\psi_i})=tr(M_m^\dagger M_m \ket{\psi_i}\bra{\psi_i})
     \end{equation}

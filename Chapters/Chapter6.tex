@@ -23,8 +23,13 @@ Is there a notion of quantifying entanglement, i.e. the strength of the link bet
     \label{fig:entanglement}
 \end{figure}
 
-In this chapter we will talk about Alice and Bob sharing arbitrary 2-qudit quantum state in $\mathbb{C}^n \otimes \mathbb{C}^n$. Call the standard basis in $\mathbb{C}^n$ S. The convention is to think of the \textit{left} qudit of the 2-qudit quantum state as representing Alice's component system or particle, and the \textit{right} qudit of the shared 2-qudit state to be of Bob's. We can write $\ket{\psi}$ in terms of $S \otimes S$ and denote the coeffcients with a certain coefficient matrix. The next proposition serves to answer whether the rank of that coefficient matrix can be a well-defined tool to test if the state $\ket{\psi}$ is entangled and even further quantify the strength of entanglement.
+In this chapter we will talk about Alice and Bob sharing arbitrary 2-qudit quantum state in $\mathbb{C}^n \otimes \mathbb{C}^n$. Call the standard basis in $\mathbb{C}^n$ S. The convention is to think of the \textit{left} qudit of the 2-qudit quantum state as representing Alice's component system or particle, and the \textit{right} qudit of the shared 2-qudit state to be of Bob's. We can write $\ket{\psi}$ in terms of $S \otimes S$ and denote the coeffcients with a certain coefficient matrix. The next section serves to answer whether the rank of that coefficient matrix can be a well-defined tool to test if the state $\ket{\psi}$ is entangled and even further quantify the strength of entanglement.
 
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Rank of Coefficient Matrix and the Strength of Entanglement}
 \begin{prop}
 \label{rank prop}
 Let $\ket{\psi}$ be a state in $\mathbb{C}^n \otimes \mathbb{C}^n$, and let $S=\{\ket{e_i}\}$ be the standard basis for $\mathbb{C}^n$. Let the coefficient matrix $M_{S \otimes S}(\ket{\psi})=(a_{i,j})$, where $\ket{\psi}=\sum\limits_{i,j}a_{i,j}|e_i e_j\rangle$.  Define $S(\ket{\psi})=\{m\in \mathbb{N}: \ket{\psi}=\sum_{i=1}^m\ket{v_i w_i}, for \ket{v_i}, \ket{w_i} \in \mathbb{C}^n\}$.  Then, $rank(M_{S \otimes S}(\ket{\psi}))=\textrm{min} (S(\ket{\psi})$.
@@ -454,10 +459,12 @@ Then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is 
 \end{pmatrix}\overline{\ket{\varphi}}$
 \end{example}
 
-------------------------------
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
 
+\section{Restrictions on Measurements?}
 
-\bigskip
 Now we know how Alice's and Bob's states are correlated mathematically during the "spooky action at a distance". We wish to apply this to the situation discussed previously in which Alice and Bob share an orthonormal basis.  Now instead of Alice picking a state, she instead measures $\ket{\psi}$ with respect to this system.  
 
 \textcolor{red}{first do a case that's within the characterization of proposition 6, and then do the opposite case and compare it with example 6 and 7. the minute bob starts to measure, an error is introduced.}
@@ -567,7 +574,11 @@ We normalize the two vectors and call them $\ket{u}'$ and $\ket{v}'$, respective
 -\frac{1}{\sqrt{2}}
 \end{pmatrix}$. Therefore to Bob, if he measures with basis $\ket{u'}, \ket{v'}$ and yields $\ket{v'}$, he can infer with certainty that Alice observes $\ket{1}$. However, if Bob yields $\ket{u'}$, then he is not able to tell what Alice observes.
 
-\bigskip
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+\section{Is it possible to end up with an illegal "0" state?}
 \textcolor{red}{there needs to be some transition here.} Just by looking at \textbf{Lemma \ref{end state lemma}}, it seems that Alice can pick an arbitrary basis to make her measurement, and Bob shall receive a corresponding post-measurement state. However, what if the basis Alice picks contains a vector $\ket{u}$ that's within the kernel of coefficient matrix $M(\ket{\psi})$? Then according to the lemma, the post-measurement state will be a zero matrix, which is not a valid quantum state at all. Such incoherence is resolved by the following proposition.
 
 \begin{prop} \label{null space}
