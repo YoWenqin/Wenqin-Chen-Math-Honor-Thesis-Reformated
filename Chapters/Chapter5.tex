@@ -15,7 +15,7 @@
 
 Broadly speaking, cryptography is the practice of communication secretly in the presence of third parties who wish to intercept or corrupt the messages sent. In our discussion, two parties, Alice and Bob wish to exchange information, while Eve wants to hack their transmissions.
 
-Broadly speaking, we can classify encryption schemes as either {\emph{private key cryptosgraphy}} or {\emph{public key cryptography}}.  {\textcolor{blue}{Include sentence stating the difference}}  
+Generally, we can classify encryption schemes as either {\emph{private key cryptography}} or {\emph{public key cryptography}}.  {\textcolor{blue}{Include sentence stating the difference}}  
 
 Currently, pubic key cryptosystems such as the {\emph{RSA cryptosystem}} are the most widely used cryptographic protocol now.  {\textcolor{blue}{Include sentence similar to the first sentence in the next paragraph}} The security of RSA relies on classical (as opposed to quantum) computers' difficulty in solving the problem of factoring when large primes are involved. It's worth noting that {\emph{Shor's fast algorithm}} on a quantum computer can easily break RSA.
 
@@ -64,7 +64,7 @@ Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
 \end{definition}
 Dec(k,e) is apparently the inverse of Enc(k,m) since $m_i \oplus k_i \oplus k_i=m_i$, so the one-time pad scheme is correct. It also satisfies Shannon's \textbf{Definition \ref{def: shannon}} for security. The proof can be found in section 1.8.1 of \cite{Wehner:notes}.
 
-\begin{definition}
+\begin{definition} \label{def: quantum one-time pad}
 The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice applies $X^{k_1} Z^{k_2}$ to qubit $\rho$ and sends the resulting state to Bob. To decrypt, BOb applies the inverse $(X^{k_1} Z^{k_2})^\dagger$ to obtain $\rho$, where X and Z are the Pauli-X and Pauli-Z matrix respectively. i.e.
 \begin{equation}
     X=\begin{pmatrix}

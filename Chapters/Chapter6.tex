@@ -10,9 +10,9 @@
     \label{fig:actual entanglemen}
 \end{figure}
 
-Entanglement is such a fascinating phenomenon in quantum mechanics that Albert Einstein described it as "spooky action at a distance". Quantum entanglement occurs when two particles become linked in way as if there's an invisible tunnel between them, and whatever happens to one immediately affects the other, regardless of how far apart they are. We briefly introduced entanglement and some of its signature properties in \textbf{Section \ref{section: composite systems}} and formally defined it with density matrices in \textbf{Definition \ref{def: entanglement with density matrix}}. It is also used in the E91 Protocol laid out in \textbf{Section \ref{section: e91}}. A natural question that arises is when is a general 2-party composite system in $\mathbb{C}^n \otimes \mathbb{C}^n$.
+When two particles are entangled, interacting with one immediately affects the other, regardless of how far apart they are in space.  It is no wonder that Albert Einstein once described entanglement as "spooky action at a distance". While we have defined entanglement (for states in {\bf{Definition}} \ref{definition: entanglement with state vector} and for density matrices in \textbf{Definition \ref{def: entanglement with density matrix}}) and used its properties (in the E91 Protocol laid out in \textbf{Section \ref{section: e91}}) it is natural to wonder {\emph{exactly}} when a composite system in $\mathbb{C}^n \otimes \mathbb{C}^n$ is entangled.
 % How to classify entanglement for general 2-party composite systems in $\mathbb{C}^n \otimes \mathbb{C}^n$?
-Is there a notion of quantifying entanglement, i.e. the strength of the link between two particles?
+Also, are all entangled systems the same, or are some more entangled than others?  In this Chapter we answer these questions.
 
 % In quantum mechanics one envisions Alice and Bob {\emph{sharing}} a potential entangled state.  When this happens we think of Alice's {\emph{part}} of the shared state as being the part on the {\emph{left-hand side}} of the tensor product, while Bob has the {\emph{right-hand side}}.  Note that we do not assume that the shared state is separable.
 
@@ -23,7 +23,12 @@ Is there a notion of quantifying entanglement, i.e. the strength of the link bet
     \label{fig:entanglement}
 \end{figure}
 
-In this chapter we will talk about Alice and Bob sharing arbitrary 2-qudit quantum state in $\mathbb{C}^n \otimes \mathbb{C}^n$. Call the standard basis in $\mathbb{C}^n$ S. The convention is to think of the \textit{left} qudit of the 2-qudit quantum state as representing Alice's component system or particle, and the \textit{right} qudit of the shared 2-qudit state to be of Bob's. We can write $\ket{\psi}$ in terms of $S \otimes S$ and denote the coeffcients with a certain coefficient matrix. The next section serves to answer whether the rank of that coefficient matrix can be a well-defined tool to test if the state $\ket{\psi}$ is entangled and even further quantify the strength of entanglement.
+We will begin with a mathematical classification of when a vector in a tensor product of two vector spaces is a product of two vectors.  We apply this to the situation when Alice and Bob share a $2$-qudit quantum state in $\mathbb{C}^n \otimes \mathbb{C}^n$.  When this is the case, we first determine exactly when and to what extent the vectors on Alice's and Bob's side of the tensor product are correlated.  We then use this idea to ....  Lastly, we describe a procedure for using this machinery to make a one-time pad.
+
+*****************************************************
+
+
+Let $S$ denote the standard basis in $\mathbb{C}^n$. The convention is to think of the \textit{left} qudit of the 2-qudit quantum state as representing Alice's component system or particle, and the \textit{right} qudit of the shared 2-qudit state to be of Bob's. We can write $\ket{\psi}$ in terms of $S \otimes S$ and denote the coeffcients with a certain coefficient matrix. The next section serves to answer whether the rank of that coefficient matrix can be a well-defined tool to test if the state $\ket{\psi}$ is entangled and even further quantify the strength of entanglement.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -199,15 +204,13 @@ If the rank of the coefficient matrix associated with the standard basis is 1, i
 If $rank(M(\ket{\psi}))=1$, then the state $\ket{\psi}$ is separable. Otherwise, $\ket{\psi}$ is entangled.
 \end{corollary}
 
-If the rank being 1 implies the joint quantum state is not entangled, what if the coefficent matrix has full rank? We now may make the following definition.
-\begin{definition}
- Let $\ket{\psi}$ be  a state in ${\mathbb{C}}^{(n^2)}$.  Then, the entanglement degree of $\ket{\psi}$ is $rank(M_{S \otimes S}(\ket{\psi}))$.  If the entanglement degree of $\ket{\psi}$ is $n$, we say $\ket{\psi}$ is maximally entangled.
+If the rank being 1 implies the joint quantum state is not entangled, what if the coefficent matrix has full rank? We now may make the following definition and proceed to classify the strength of entanglement in terms of the rank of the coefficient matrix. Here by strength, we mean how much information Bob has about Alice once Alice measures on her part of the composite system.
+
+\begin{definition} \label{def: maximally entangled}
+ Let $\ket{\psi}$ be a state in ${\mathbb{C}}^{(n^2)}$.  Then, the entanglement degree of $\ket{\psi}$ is $rank(M_{S \otimes S}(\ket{\psi}))$.  If the entanglement degree of $\ket{\psi}$ is $n$, we say $\ket{\psi}$ is maximally entangled \footnote{In some other literature, being maximally entangled means something different: A maximally entangled state is a quantum state which has maximum von Neumann entropy for each bipartition. This is equivalent to saying that the reduced density matrix $\rho_A, \rho_B$ are both a multiple of the identity matrix}.
 \end{definition}
 
-\textcolor{red}{conventional definition of maximally entangled: when we trace over the state B then the reduced density operator $\rho_A$ of the system will be a multiple of the identity operator. This means that if we measure in system A in any basis the result will be completely random (0 or 1 with equal probability 1/2)}.
-
-
-When Alice and Bob share a state, Alice may measure her piece of the state, and if it is entangled, her measurement necessarily affects Bob's piece.
+% When Alice and Bob share a state, Alice may measure her piece of the state, and if it is entangled, her measurement necessarily affects Bob's piece.
 
 \begin{prop}
 \label{entanglement-rank}
@@ -464,14 +467,9 @@ Then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is 
 %----------------------------------------------------------------------------------------
 
 \section{Restrictions on Measurements?}
+Now we know how Alice's and Bob's states are correlated mathematically during the "spooky action at a distance". Recall that in a previous \textbf{Section \ref{subsection:projective measurement}} , particularly in \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}}, we say that we only want to make measurements on orthonormal basis, because otherwise states cannot be reliably distinguished. Before, the setup is that Alice chooses a state $\ket{\psi}_{i=1}^n$ from some fixed set of states known to both herself and to Bob. She then gives the state to Bob, whose task is to identify the index of that state. Now our task is different. Alice and Bob share a composite 2-qudit state $\ket{\psi}$. Suppose Bob knows the coefficient matrix of $\ket{\psi}$, $M_{\ket{\psi}}$, and the basis Alice measures with, $\ket{\psi}_{i=1}^n$. After Alice has made a measurement on her part of the system, the task is for Bob to infer Alice's result by only measuring on his part of the system. By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M_{\ket{\psi}}$ preserves orthogonality, then Bob can measure with respect to the basis $M_{\ket{\psi}}^T \ket{\psi}_{i=1}^n$, which is automatically orthonormal. 
 
-Now we know how Alice's and Bob's states are correlated mathematically during the "spooky action at a distance". We wish to apply this to the situation discussed previously in which Alice and Bob share an orthonormal basis.  Now instead of Alice picking a state, she instead measures $\ket{\psi}$ with respect to this system.  
-
-\textcolor{red}{first do a case that's within the characterization of proposition 6, and then do the opposite case and compare it with example 6 and 7. the minute bob starts to measure, an error is introduced.}
-
-
-However, there seems to be loophole. What if the coefficient matrix $M(\ket{\psi})$ does not preserve orthogonality? Recall from \textbf{Section \ref{subsection:projective measurement}} and specifically \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}} that it's very important to use an orthonormal basis for measurement because non-orthogonal states cannot be reliably distinguished.
-So ideally $M(\ket{\psi})$ should preserve the orthogonality. Otherwise, say Alice makes a measurement on her part of $\ket{\psi}_{AB}$ using an orthonormal basis and gets an outcome with certainty, Bob will not be able to observe any outcome with certainty. So what is the characterization of matrices that preserve orthogonality?
+However, what would happen if $M_{\ket{\psi}}^T$ does not preserve orthogonality? Then $M_{\ket{\psi}}^T \ket{\psi}_{i=1}^n$ would no longer be orthonormal, and Bob will not be able to make a meaningful measurement. Therefore, in this section, we look to address what's the characterization of coefficient matrices that preserve orthogonality and explore what happens if orthogonality is not preserved.
 
 \begin{prop} \label{orthogonality preserving character}
 $\{M(\ket{\psi})|M(\ket{\psi})$ is a scalar multiple of a $n \times n$ unitary matrix$\}$ is a characterization of all states in $\mathbb{C}^n \otimes \mathbb{C}^n$ such that orthogonality is preserved. i.e. if $\braket{u|v}=0$, then $\braket{M(\ket{\psi})u|M(\ket{\psi}v}=0$.
@@ -579,7 +577,7 @@ We normalize the two vectors and call them $\ket{u}'$ and $\ket{v}'$, respective
 %----------------------------------------------------------------------------------------
 
 \section{Is it possible to end up with an illegal "0" state?}
-\textcolor{red}{there needs to be some transition here.} Just by looking at \textbf{Lemma \ref{end state lemma}}, it seems that Alice can pick an arbitrary basis to make her measurement, and Bob shall receive a corresponding post-measurement state. However, what if the basis Alice picks contains a vector $\ket{u}$ that's within the kernel of coefficient matrix $M(\ket{\psi})$? Then according to the lemma, the post-measurement state will be a zero matrix, which is not a valid quantum state at all. Such incoherence is resolved by the following proposition.
+Just by looking at \textbf{Lemma \ref{end state lemma}}, it seems that Alice can pick an arbitrary basis to make her measurement, and Bob shall receive a corresponding post-measurement state. However, what if the basis Alice picks contains a vector $\ket{u}$ that's within the kernel of coefficient matrix $M(\ket{\psi})$? Then according to the lemma, the post-measurement state will be a zero matrix, which is not a valid quantum state at all. Such incoherence is resolved by the following proposition.
 
 \begin{prop} \label{null space}
 Say Alice and Bob share a two-qudit quantum state $\ket{\psi}$. Alice can never observe an outcome $\ket{u}$ such that $\ket{\Bar{u}} \in Nul(M(\ket{\psi}))$.
@@ -613,4 +611,9 @@ So Alice can never observe an outcome who's conjugate is in the kernel of $M(\ke
 
 What the above proposition implies is that Alice can indeed choose an arbitrary orthonormal basis to make her measurement. Yet the possible outcomes she can observe are restricted to those not within the kernel of the coefficient matrix $M(\ket{\psi})$.
 
-\textcolor{red}{add a complete story of how the classification of entanglement can be applied to making a private key for the one-time pad}
+The above classification of entanglement can potentially be used in the following cryptographic scheme.
+\begin{enumerate}
+    \item Bob creates a series of maximally entangled (as defined in \textbf{Definition \ref{def: maximally entangled}}) 2-qudit states $L={\ket{\psi_1}, \ket{\psi_2}, \hdots, \ket{\psi_m}}$, where $\ket{\psi_i} \in \mathbb{C}^n \otimes \mathbb{C^n}$. He sends the left qudit of each state to Alice via a quantum communication channel and keep the right side to himself.
+    \item Via a classical communication channel that doesn't have to be secure, Alice notify Bob in order the set of orthonormal bases that she is going to make measurements with. In other words, for each $\ket{\psi_i}$, Alice randomly chooses an orthonormal basis $B_i=\{\ket{b_1}, \ket{b_2}, \hdots, \ket{b_n}\}$ and sends the elements in the basis in order to Bob.
+    \item For each qudit received from L, Alice makes a measurement and saves her result locally. With the knowledge of L and $B_1, B_2, \hdots, B_m$, Bob will be able to infer Alice's measurement result by measuring with respect to basis $\{M_{\ket{\psi_i}}^T \ket{b_1}, M_{\ket{\psi_i}}^T \ket{b_2}, \hdots, M_{\ket{\psi_i}}^T \ket{b_n}\}$. He saves the result for each $\ket{\psi_i}$ and in the end get an m-digit long key that can be used for one-time pad introduced in \textbf{Definition \ref{def: quantum one-time pad}}.
+\end{enumerate}

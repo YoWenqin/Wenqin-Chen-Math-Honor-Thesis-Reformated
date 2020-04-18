@@ -32,7 +32,7 @@ If $V$ is a complex vector space, a Hermitian inner product $\langle\hspace{.1cm
 \begin{enumerate}
 \item $\langle\ket{v}, \sum_i \lambda_i \ket{w_i}\rangle=\sum_i \lambda_i \langle\ket{v}, \ket{w_i}\rangle$
 \item $\langle\ket{v}, \ket{w}\rangle=\overline{\langle\ket{w}, \ket{v}\rangle}$
-\item $\langle\ket{v}, \ket{v}\rangle \ge 0$ \textrm{ with quality if and only if }$\ket{v}=0$
+\item $\langle\ket{v}, \ket{v}\rangle \ge 0$ \textrm{ with equality if and only if }$\ket{v}=0$
 \end{enumerate}
 for all $\ket{v}$ and $\ket{w}$.\footnote{Note that in the above, $\overline{z}$ denotes the conjugate of the complex number $z$.} 
 \end{definition}
@@ -42,8 +42,7 @@ One easily checks that $\mathbb{C}^d$ has inner product given by the formula
   \langle \ket{v},\ket{w}\rangle=\sum\limits_{i=1}^d \overline{v_i} w_i \textrm{, where }
   \ket{v}=\icol{v_1\\ \vdots\\v_d} \textrm{ and }\ket{w}=\icol{w_1\\ \vdots\\w_d}.
 \end{equation}
-
-With this inner product, ${\mathbb{C}}^d$ is a {\emph{Hilbert space.}\footnote{A Hilbert space is an inner product space where Cauchy sequences converge.}  
+With this inner product, ${\mathbb{C}}^d$ is a \emph{Hilbert space.}\footnote{A Hilbert space is an inner product space where Cauchy sequences converge.}  
 
 If $L:V \to W$ is a linear transformation between two inner product spaces, the {\emph{adjoint of }}$L$, $L^\dagger$ is the linear transformation from $W$ to $V$ characterized by the property that, \textrm{ for all } $\ket{v} \in V$, \textrm{ for all }$\ket{w} \in W$, \footnote{Note that the left inner product on the left is taken in $W$, while the one on the right is taken in $V$}
 \begin{equation}
