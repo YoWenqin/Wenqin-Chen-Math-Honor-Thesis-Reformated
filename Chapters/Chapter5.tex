@@ -6,18 +6,16 @@
 
 
 \begin{quote}
-\textit{"Three may keep a secret, if two of them are dead."} \textit{--Benjamin Franklin}
+\textit{"The enemy knows the system."} 
+\bigskip
+\hfill \textit{-- Claude Shannon}
 \end{quote}
-
-\textcolor{blue}{Insert better quote or picture}
-
-
 
 Broadly speaking, cryptography is the practice of communication secretly in the presence of third parties who wish to intercept or corrupt the messages sent. In our discussion, two parties, Alice and Bob wish to exchange information, while Eve wants to hack their transmissions.
 
-Generally, we can classify encryption schemes as either {\emph{private key cryptography}} or {\emph{public key cryptography}}.  {\textcolor{blue}{Include sentence stating the difference}}  
+Generally, we can classify encryption schemes as either \emph{private key cryptography} or \emph{public key cryptography}. In private key cryptography, the same secret key is used for Alice's encryption and Bob's decryption, whereas in public key cryptography, one key is used to encrypt and is made available to the public, a different secret key is used to decrypt.
 
-Currently, pubic key cryptosystems such as the {\emph{RSA cryptosystem}} are the most widely used cryptographic protocol now.  {\textcolor{blue}{Include sentence similar to the first sentence in the next paragraph}} The security of RSA relies on classical (as opposed to quantum) computers' difficulty in solving the problem of factoring when large primes are involved. It's worth noting that {\emph{Shor's fast algorithm}} on a quantum computer can easily break RSA.
+Currently, pubic key cryptosystems such as the \emph{RSA cryptosystem} are the most widely used cryptographic protocol now.  Public key cryptosystems don't rely on Alice and Bob sharing a secret key in advance. Instead, Bob generates a pair of keys, and makes one of them available to the public. Alice can then use that public key to encrypt her message, which Bob can easily decipher with his other key that remains private. It is extremely difficult for Eve to guess the Bob's other private key with access only to the public key. Such security relies on classical computer's difficulty in solving the problem of factoring when large primes are involved. It's worth noting that {\emph{Shor's fast algorithm}} on a quantum computer can easily break RSA.
 
 \begin{figure}[h]
     \centering
@@ -261,7 +259,14 @@ To verify whether an eavesdropper Eve has tapped into the communication, Alice a
 \footnotetext{Figure from \url{https://www.cse.wustl.edu/~jain/cse571-07/ftp/quantum/\#Gisin02}}
 In 1991, Eckert describes a quantum channel where there is a single source that emits pairs of entangled particles \cite{Ekert1991}. As shown in figure \ref{fig:E91 Illustrated}, Alice and Bob then each receive one particle from every pair emitted from the source. Then they each choose a random basis out of three bases to measure on their received particles. 
 
-The three bases to choose from are $Z_0, Z_{\frac{\pi}{4}}, Z_{\frac{\pi}{2}}$, where $Z_\theta$ is the standard basis rotated counterclockwise by $\theta$. In other words, if Alice or Bob choose $Z_0$, she will encode the classical bit 0 with  $0^\circ$ in $Z_0$ and encode the bit 1 with $90^\circ$ in $Z_0$. If they choose $Z_{\frac{\pi}{4}}$, classical bits 0, 1 will be encoded with $45^\circ$ and $135^\circ$ respectively. If they choose $Z_{\frac{\pi}{2}}$, 0 and 1 will be encoded with $90^\circ$ and $180^\circ$ respectively.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{"e91 bases annotated".png}
+    \caption{E91 Encoding}
+    \label{fig:e91 encoding}
+\end{figure}
+
+The three bases to choose from are $Z_0, Z_{\frac{\pi}{4}}, Z_{\frac{\pi}{2}}$, where $Z_\theta$ is the standard basis rotated counterclockwise by $\theta$ (See \textbf{Figure \ref{fig:e91 encoding}}). In other words, if Alice or Bob choose $Z_0$, she will encode the classical bit 0 with  $0^\circ$ in $Z_0$ and encode the bit 1 with $90^\circ$ in $Z_0$. If they choose $Z_{\frac{\pi}{4}}$, classical bits 0, 1 will be encoded with $45^\circ$ and $135^\circ$ respectively. If they choose $Z_{\frac{\pi}{2}}$, 0 and 1 will be encoded with $90^\circ$ and $180^\circ$ respectively.
 
 Alice and Bob each keeps the choice of basis private until the measurements are completed. As in BB84, they would then discuss in a classical channel that doesn't need to be secure bases they used for their measurements and divide the photons received into two groups: the first consists of photons measured in the same basis by Alice and Bob, and the second contains photons measured in different bases. 
 
