@@ -24,7 +24,7 @@ Also, are all entangled systems the same, or are some more entangled than others
 \end{figure}
 
 
-We will begin with a mathematical classification of when a 2-qudit state is a tensor product of two ket vectors and determine to what extent Alice's vector and Bob's vector are correlated. If Alice's vector and Bob's vector are highly correlated, we then look to address when is Bob's actually make a measurement to benefit from that correlation. In particular, we know that if the basis for the measurement is not orthonormal, states cannot be reliably distinguished. We also know that $\icol{0\\ \hdots \\0}$ is not a valid quantum state, so is it possible that Bob will somehow end up getting an invalid quantum state as a measurement outcome? 
+We will begin with a mathematical classification of when a 2-qudit state is a tensor product of two ket vectors and determine to what extent Alice's vector and Bob's vector are correlated. If Alice's vector and Bob's vector are highly correlated, we then look to address when is Bob's actually make a measurement to benefit from that correlation. In particular, we know that if the basis for the measurement is not orthonormal, states cannot be reliably distinguished. We also know that $\icol{0\\ \vdots \\0}$ is not a valid quantum state, so is it possible that Bob will somehow end up getting an invalid quantum state as a measurement outcome? 
 % We will begin with a mathematical classification of when a vector in a tensor product of two vector spaces is a product of two vectors. We apply this to the situation when Alice and Bob share a $2$-qudit quantum state in $\mathbb{C}^n \otimes \mathbb{C}^n$. When this is the case, we first determine exactly when and to what extent the vectors on Alice's and Bob's side of the tensor product are correlated. If Alice and Bob's side of 
 % We then use this idea to 
 Lastly, we describe a procedure for using this machinery to make a one-time pad.
@@ -39,12 +39,17 @@ Let $S$ denote the standard basis in $\mathbb{C}^n$. The convention is to think 
 %----------------------------------------------------------------------------------------
 
 \section{Rank of Coefficient Matrix and the Strength of Entanglement}
+
+\textcolor{blue}{Probably best to define the matrix without a mention to the standard basis.  Later when we effectively use a different basis we can comment}
 \begin{prop}
 \label{rank prop}
 Let $\ket{\psi}$ be a state in $\mathbb{C}^n \otimes \mathbb{C}^n$, and let $S=\{\ket{e_i}\}$ be the standard basis for $\mathbb{C}^n$. Let the coefficient matrix $M_{S \otimes S}(\ket{\psi})=(a_{i,j})$, where $\ket{\psi}=\sum\limits_{i,j}a_{i,j}|e_i e_j\rangle$.  Define $S(\ket{\psi})=\{m\in \mathbb{N}: \ket{\psi}=\sum_{i=1}^m\ket{v_i w_i}, for \ket{v_i}, \ket{w_i} \in \mathbb{C}^n\}$.  Then, $rank(M_{S \otimes S}(\ket{\psi}))=\textrm{min} (S(\ket{\psi})$.
 % Thus in particular, the state $\ket{\psi}$ is a tensor product (not entangled) if and only if the matrix $M_{\ket{\psi}}$ is singular with rank one.
 \end{prop}
 This proposition shows that even though we can write $\ket{\psi}$ in different bases, the rank of the coefficient matrix associated with the standard basis is the smallest among all other coefficient matrices associated with other bases. To prove the proposition, we first prove the following lemma.
+
+
+\textcolor{blue}{Change above to a discussion of the connection between rank and entanglement of states.  Also add Corollary 1 here}
 
 \begin{lemma}
 \label{independence lemma}
@@ -208,6 +213,7 @@ If the rank of the coefficient matrix associated with the standard basis is 1, i
 If $rank(M(\ket{\psi}))=1$, then the state $\ket{\psi}$ is separable. Otherwise, $\ket{\psi}$ is entangled.
 \end{corollary}
 
+\textcolor{blue}{Discussion: Since we have now connected entanglement to the rank of the matrix, we now need to show this idea is consistent with the correlation of the two states in a composite system }
 If the rank being 1 implies the joint quantum state is not entangled, what if the coefficent matrix has full rank? We now may make the following definition and proceed to classify the strength of entanglement in terms of the rank of the coefficient matrix. Here by strength, we mean how much information Bob has about Alice once Alice measures on her part of the composite system.
 
 \begin{definition} \label{def: maximally entangled}
