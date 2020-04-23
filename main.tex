@@ -44,12 +44,9 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage{amsmath, amssymb, amscd, amsthm, amsfonts, braket, inputenc,xcolor,setspace, graphicx, hyperref,comment, gensymb}
 
-\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
-
 \usepackage{mathtools}  
 \mathtoolsset{showonlyrefs}
 
-\addbibresource{example.bib} % The filename of the bibliography
 
 
 %----------------------------------------------------------------------------------------
@@ -271,8 +268,9 @@ $\omega$ & angular frequency & \si{\radian} \\
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
-
-\printbibliography[heading=bibintoc]
+\bibliographystyle{alpha}
+\bibliography{example}
+% \printbibliography[heading=bibintoc]
 
 %----------------------------------------------------------------------------------------
 
