@@ -24,7 +24,7 @@ $$\ket{\psi} \xrightarrow{\iota} \ket{\psi}\bra{\psi}.$$
 
 Clearly, the matrix $\ket{\psi}\bra{\psi}$ can be regarded as the density matrix for the system that is in the state $\ket{\psi}$ with probability $1$, i.e. the state vector $\ket{\psi}$.  The following Lemma shows that this function is an inclusion for our purposes.
 
-\textcolor{blue}{ADD LINES TO PROOF BELOW}
+\textcolor{blue}{ADD LINES TO PROOF BELOW} \textcolor{green}{done}
 
 
 \begin{lemma}
@@ -55,11 +55,18 @@ a_1 \Bar{a_2}=b_1 \Bar{b_2}\\
 \hdots
 \end{cases}
 \Rightarrow \begin{cases}
-a_1 = e^{i\theta}b_1\\
+a_1 = e^{i\theta_1}b_1\\
 \hdots\\
-a_n = e^{i\theta}b_n
+a_n = e^{i\theta_n}b_n\\
+a_1 \Bar{a_2}=b_1 \Bar{b_2}\\
+\hdots
 \end{cases}
-\Rightarrow\ket{\psi_1}=e^{i\theta}\ket{\psi_2}
+\Rightarrow \begin{cases}
+e^{i\theta_1}b_1 e^{-i\theta_2}\Bar{b_2}=b_1 \Bar{b_2}\\
+\hdots\\
+\end{cases}\\
+\Rightarrow \theta_1 = \theta_2 = \hdots = \theta_n
+\Rightarrow\ket{\psi_1}=e^{i\theta_1}\ket{\psi_2}
 \end{gather}
 \end{proof}
 
