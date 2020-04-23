@@ -11,11 +11,11 @@
 \hfill \textit{-- Claude Shannon}
 \end{quote}
 
-Broadly speaking, cryptography is the practice of communication secretly in the presence of third parties who wish to intercept or corrupt the messages sent. In our discussion, two parties, Alice and Bob wish to exchange information, while Eve wants to hack their transmissions.
+Broadly speaking, cryptography is the practice of communication secretly in the presence of third parties who wish to intercept or corrupt the communications. The two communicating parties, Alice and Bob wish to exchange information, while Eve attempts to read their messages.
 
-Generally, we can classify encryption schemes as either \emph{private key cryptography} or \emph{public key cryptography}. In private key cryptography, the same secret key is used for Alice's encryption and Bob's decryption, whereas in public key cryptography, one key is used to encrypt and is made available to the public, a different secret key is used to decrypt.
+Encryption schemes can be classified grossly as either \emph{private key cryptography} or \emph{public key cryptography}. The distinction being that in private key cryptography, the same secret key is used for Alice's encryption and Bob's decryption, whereas in public key cryptography, one key is used to encrypt and is made available to the public, a different secret key is used to decrypt.
 
-Currently, pubic key cryptosystems such as the \emph{RSA cryptosystem} are the most widely used cryptographic protocol now.  Public key cryptosystems don't rely on Alice and Bob sharing a secret key in advance. Instead, Bob generates a pair of keys, and makes one of them available to the public. Alice can then use that public key to encrypt her message, which Bob can easily decipher with his other key that remains private. It is extremely difficult for Eve to guess the Bob's other private key with access only to the public key. Such security relies on classical computer's difficulty in solving the problem of factoring when large primes are involved. It's worth noting that {\emph{Shor's fast algorithm}} on a quantum computer can easily break RSA.
+Currently, pubic key cryptosystems such as the \emph{RSA cryptosystem} are the most widely used cryptographic protocol.  Public key cryptosystems don't rely on Alice and Bob sharing a secret key {\emph{in advance}}. Instead, Bob generates a pair of keys, and makes one of them available to the public. Alice can use that public key to encrypt her message, which Bob can decipher with the use of his other key, which remains private. Security in this situation, depends on it being extremely difficult for Eve to guess Bob's other private key, even with access to the public key.  In practice, this typcially relies on a classical computer's difficulty in solving the problem of factoring when large primes are involved. It's worth noting that {\emph{Shor's fast algorithm}} on a quantum computer can easily break RSA.
 
 \begin{figure}[h]
     \centering
@@ -24,16 +24,20 @@ Currently, pubic key cryptosystems such as the \emph{RSA cryptosystem} are the m
     \label{fig:general crypto schematic}
 \end{figure}
 
-In private key cryptosystems, a private key is used by Alice to encrypt the secret message she wants to send to Bob, who will also need the private key to decrypt the message. 
-
-
-Of course, the very act of distributing a key from Alice to Bob is dangerous because Eve might be eavesdropping on the very acto of key distribution. In this chapter, we will introduce some of the main concepts in cryptography.  Then we will illustrate some ways in which Alice and Bob can exploit the laws of quantum mechanics to establish better security. 
+In private key cryptosystems, a private key is used by Alice to encrypt the secret message she wants to send to Bob, who will also need the private key to decrypt the message. Of course, in this situation, the very act of distributing a key from Alice to Bob is dangerous because Eve might be eavesdropping at the moment the key is distributed. In this chapter, we will introduce some of the main concepts in cryptography.  Then we will illustrate some ways in which Alice and Bob can exploit the laws of quantum mechanics to establish better security. 
 
 % \textcolor{blue}{How about one-time pad here first.  Also this is a good place for a picture of Alice and Bob.  We should be able to find a schematic with Alice and Bob somewhere} developed in \cite{shannon1949communication}.
 
-Any encryption consists of some encryption function Enc(k,m)=e that takes the key k and the message m and maps it to some encrypted message e. The original message m is also called the plaint text, and e the ciphertext. We also have a decryption function Dec(k,e)=m that takes the key k and the ciphertext e back to the plaintext. 
+We begin with some preliminary concepts.  Formally, an {\emph{encryption}} is given by an encryption function 
+$$Enc(k,m)=e ,$$
+which takes a key $k$ and the message $m$ and maps it to some encrypted message $e$. The original message $m$ is also called the {\emph{plain text}}, whereas $e$ is refered to as the {\emph{ciphertext}}. Similarly, a {\emph{decryption function}} $$Dec(k,e)=m$$
+that takes the key $k$ and the ciphertext $e$ as arguments, and returns the plaintext. 
+
+\textcolor{blue}{We have to define the terms we're using in the definition below.  Also, I would combine the next two definitions into one defintion}
+
+
 \begin{definition} \label{def: shannon}
-An encryption scheme (Enc, Dec) is \textit{secret}, or \textit{secure} if an only if for all prior distributions p(m) over messages, and all messages m, we have
+An encryption scheme (Enc, Dec) is \textit{secret}, or \textit{secure} if and only if for all prior distributions p(m) over messages, and all messages m, we have
 \begin{equation}
     p(m)=p(m|e),
 \end{equation}
@@ -44,11 +48,14 @@ where $e=Enc(k,m)$
 An encryption scheme (Enc, Dec) is correct if and only if for all possible messages m, and all possible keys k, we have m=Dec(k, Enc(k,m)).
 \end{definition}
 
-Cryptography is the problem of designing protocols that are both secure and correct.
+Thus, in Cryptography the goal is to design protocols that are both secure and correct.  The following Theorem shows that this is only possible when the number of possible keys is large relative to the number of possible messages.
 \begin{theorem}
-An encryption scheme (Enc, Dec) can only be secure and correct if the number of possible keys |K| is at least as large as the number of possible messages |M|, that is, $|K| \ge |M|$.
+If the encryption scheme (Enc, Dec) is secure and correct, then the number of possible keys |K| is at least as large as the number of possible messages |M|, that is, $|K| \ge |M|$.
 \end{theorem}
 For the proof, see p.18 of \cite{Wehner:notes}. 
+
+
+\textcolor{blue}{Insert a couple of sentences on one-time pads here.  Basically say that if Alice and Bob use a one-time pad that is created securely, their message is unbreakable}
 
 \begin{definition}
 The classical one-time pad is an encryption scheme in which the encryption of a message $m \in \{0, 1\}^n$ using the key $k \in \{0, 1\}^n$ is given by
@@ -62,8 +69,11 @@ Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
 \end{definition}
 Dec(k,e) is apparently the inverse of Enc(k,m) since $m_i \oplus k_i \oplus k_i=m_i$, so the one-time pad scheme is correct. It also satisfies Shannon's \textbf{Definition \ref{def: shannon}} for security. The proof can be found in section 1.8.1 of \cite{Wehner:notes}.
 
+
+\textcolor{blue}{Include example of a short message like "hello" transmitted with the classical one-time pad}
+
 \begin{definition} \label{def: quantum one-time pad}
-The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice applies $X^{k_1} Z^{k_2}$ to qubit $\rho$ and sends the resulting state to Bob. To decrypt, BOb applies the inverse $(X^{k_1} Z^{k_2})^\dagger$ to obtain $\rho$, where X and Z are the Pauli-X and Pauli-Z matrix respectively. i.e.
+The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice applies $X^{k_1} Z^{k_2}$ to qubit $\rho$ and sends the resulting state to Bob. To decrypt, Bob applies the inverse $(X^{k_1} Z^{k_2})^\dagger$ to obtain $\rho$, where X and Z are the Pauli-X and Pauli-Z matrix respectively. i.e.
 \begin{equation}
     X=\begin{pmatrix}
     0 && 1\\
@@ -75,6 +85,8 @@ The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice a
     \end{pmatrix}
 \end{equation}
 \end{definition}
+
+\textcolor{blue}{Include example of this computation.  How does this compare to the classical one-time pad?  Also, does the No Cloning Theorem get used for something later?}
 
 \begin{theorem}[No Cloning Theorem] \label{no-cloning thm}
 Arbitrary qubits (or quantum states), unlike classical bits, cannot be copied. 
@@ -111,6 +123,13 @@ So $\braket{\psi_1 | \psi_2}=0$ or $1$. So $\ket{\psi_1}$ and $\ket{\psi_2}$ are
 
 \section{Bell-Nonlocality and CHSH game} \label{section: bell-nonlocality}
 
+\textcolor{blue}{What is locality?}
+
+\textcolor{blue}{I changed this part around.  Definitely something like the current first paragraph should come first, but I'm not sure where to include what the rules are for such a game.  The next two paragramphs should be synthesized a bit }
+
+
+In many collaborative games, two players using a {\emph{quantum strategy}} can achieve a higher winning probability than if they use a {\emph{classical strategy}}. Because of this, many probabilistic games can be thought of as tests for entanglement, and therefore play a key role in quantum key distribution. In this context, when using a \textit{quantum strategy}, Alice and Bob can pick a state $\rho_{AB}$ to share, and agree on measurements to perform depending on their respective questions. In a classical game ...
+
 Bell proved that the predictions of quantum theory are incompatible with those of any classical theory satisfying a natural notion of locality \cite{bell1964}. The bell-nonlocality can be understood by a non-local game between Alice and Bob, in which they are asked questions $x,y \in \{0,1\}$ respectively. They respond with asnwers $a, b \in \{0,1\}$ respectively. They are allowed to agree on a strategy beforehand, but are not allowed to communicate during the game. Alice and Bob win the game if and only if 
 \begin{equation*}
  a+b (mod 2)=xy    
@@ -122,6 +141,10 @@ The winning probability is given by
 \end{equation*}
 where $p(a,b|x,y)$ is the probability that Alice and Bob answer a and b given questions x and y.
 
+
+
+\textcolor{blue}{The equation above looks funny}
+
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.8]{"non-local game".png}
@@ -129,7 +152,7 @@ where $p(a,b|x,y)$ is the probability that Alice and Bob answer a and b given qu
     \label{fig:non-local game}
 \end{figure}
 
-It turns out that for many games, a quantum strategy can achieve a higher winning probability. In addition, observing a higher winning probability is a signature of entanglement: quantumly, Alice and Bob can achieve a higher winning proabbility only if they are entangled, making such games into tests for entanglement and therefore play a key role in quantum key distribution. Specifically, a \textit{quantum strategy} means that Alice and Bob can pick a state $\rho_{AB}$ to share, and agree on measurements to perform depending on their respectively questions. That is, x and y will label a choice of measurement, and a and b are outcomes of that measurement.
+
 
 %-----------------------------------
 %	SUBSECTION 1
@@ -215,6 +238,12 @@ So the probability of winning is the average of the four above:
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
+
+The increased probability of winning by making use of a quantum strategy suggests that quantum mechanics could be exploited by either side of the cryptography arms race.  In the next section, we discuss a famous example of this.
+
+
+
+
 \pagebreak
 
 \section{BB84 Protocol}

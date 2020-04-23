@@ -10,9 +10,9 @@
     \label{fig:actual entanglemen}
 \end{figure}
 
-When two particles are entangled, interacting with one immediately affects the other, regardless of how far apart they are in space.  It is no wonder that Albert Einstein once described entanglement as "spooky action at a distance". While we have defined entanglement (for states in {\bf{Definition}} \ref{definition: entanglement with state vector} and for density matrices in \textbf{Definition \ref{def: entanglement with density matrix}}) and used its properties (in the E91 Protocol laid out in \textbf{Section \ref{section: e91}}) it is natural to wonder {\emph{exactly}} when a composite system in $\mathbb{C}^n \otimes \mathbb{C}^n$ is entangled.
+When two particles are entangled, interacting with one immediately affects the other, even if they are far apart in space.  Considering this, it is no wonder that Albert Einstein once described entanglement as "spooky action at a distance". While we have defined entanglement (for states in {\bf{Definition}} \ref{definition: entanglement with state vector} and for density matrices in \textbf{Definition \ref{def: entanglement with density matrix}}) and used its properties (in the E91 Protocol laid out in \textbf{Section \ref{section: e91}}), it is natural to wonder {\emph{exactly}} when a composite system in $\mathbb{C}^n \otimes \mathbb{C}^n$ is entangled?
 % How to classify entanglement for general 2-party composite systems in $\mathbb{C}^n \otimes \mathbb{C}^n$?
-Also, are all entangled systems the same, or are some more entangled than others?  In this Chapter we answer these questions.
+We may also wonder whether all entangled systems the equal, or if some are some more entangled than others?  In this Chapter we answer these questions.
 
 % In quantum mechanics one envisions Alice and Bob {\emph{sharing}} a potential entangled state.  When this happens we think of Alice's {\emph{part}} of the shared state as being the part on the {\emph{left-hand side}} of the tensor product, while Bob has the {\emph{right-hand side}}.  Note that we do not assume that the shared state is separable.
 
@@ -37,19 +37,24 @@ Let $S$ denote the standard basis in $\mathbb{C}^n$. The convention is to think 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
+We begin by proving a Proposition which characterizes precisely when a vector in the tensor product of two vector spaces is entangled.
+
 
 \section{Rank of Coefficient Matrix and the Strength of Entanglement}
-
-\textcolor{blue}{Probably best to define the matrix without a mention to the standard basis.  Later when we effectively use a different basis we can comment}
+\textcolor{blue}{Probably best to define the matrix without a mention to the standard basis.  Later when we effectively use a different basis we can comment.} \textcolor{green}{done}
 \begin{prop}
 \label{rank prop}
-Let $\ket{\psi}$ be a state in $\mathbb{C}^n \otimes \mathbb{C}^n$, and let $S=\{\ket{e_i}\}$ be the standard basis for $\mathbb{C}^n$. Let the coefficient matrix $M_{S \otimes S}(\ket{\psi})=(a_{i,j})$, where $\ket{\psi}=\sum\limits_{i,j}a_{i,j}|e_i e_j\rangle$.  Define $S(\ket{\psi})=\{m\in \mathbb{N}: \ket{\psi}=\sum_{i=1}^m\ket{v_i w_i}, for \ket{v_i}, \ket{w_i} \in \mathbb{C}^n\}$.  Then, $rank(M_{S \otimes S}(\ket{\psi}))=\textrm{min} (S(\ket{\psi})$.
+Let $\ket{\psi}$ be a state in $\mathbb{C}^n \otimes \mathbb{C}^n$, and let $S=\{\ket{e_i}\}$ be the standard basis for $\mathbb{C}^n$. Define the coefficient matrix $M(\ket{\psi})$ by $M(\ket{\psi})=(a_{i,j})$, where $\ket{\psi}=\sum\limits_{i,j}a_{i,j}|e_i e_j\rangle$.  Also, set $S(\ket{\psi})=\{m\in \mathbb{N}: \ket{\psi}=\sum_{i=1}^m\ket{v_i w_i}, for \ket{v_i}, \ket{w_i} \in \mathbb{C}^n\}$.  Then, $rank(M(\ket{\psi}))=\textrm{min} (S(\ket{\psi})$.
 % Thus in particular, the state $\ket{\psi}$ is a tensor product (not entangled) if and only if the matrix $M_{\ket{\psi}}$ is singular with rank one.
 \end{prop}
-This proposition shows that even though we can write $\ket{\psi}$ in different bases, the rank of the coefficient matrix associated with the standard basis is the smallest among all other coefficient matrices associated with other bases. To prove the proposition, we first prove the following lemma.
+This proposition shows that even though we can write $\ket{\psi}$ in different bases, the rank of the coefficient matrix associated with the standard basis is the smallest among all other coefficient matrices associated with other bases. This means that the rank of a coefficient matrix can be a well-defined measure of a joint 2-qudit quantum state independent of the basis chosen for the measurement. We will later show the connection between the rank and the strength of entanglement, thereby linking the rank to how well the information Alice can obtain from her side is correlated to the information Bob can obtain from his side. Notice in particular that if $rank(M(\ket{\psi}))=1$, then there exist certain $\ket{v_1}, \ket{w_1} \in \mathbb{C}^n$ such that $\ket{\psi}=\ket{v_1}\ket{w_1}$:
 
+\begin{corollary}
+If $rank(M(\ket{\psi}))=1$, then the state $\ket{\psi}$ is separable. Otherwise, $\ket{\psi}$ is entangled.
+\end{corollary}
 
-\textcolor{blue}{Change above to a discussion of the connection between rank and entanglement of states.  Also add Corollary 1 here}
+But before we proceed to the rest of the discussion on the connection between rank and entanglement, let's first prove the following lemma to prove the above \textbf{Proposition \ref{rank prop}}.
+\textcolor{blue}{Change above to a discussion of the connection between rank and entanglement of states.  Also add Corollary 1 here.} \textcolor{green}{done}
 
 \begin{lemma}
 \label{independence lemma}
@@ -78,7 +83,7 @@ $$M_{B \otimes B'}(\ket{\psi})=\begin{pmatrix}
 \end{pmatrix}$$
 so $rank(M_{B \otimes B'}(\ket{\psi}))$ is k.
 
-Thus, to show $rank(M_{B \otimes B'}(\ket{\psi}))=rank(M_{S \otimes S}(\ket{\psi})$, we will find two invertible $n \times n$ matrices P, Q with $PM_{B \otimes B'}(\ket{\psi})Q^{-1}=M_{S \otimes S}(\ket{\psi})$.
+Thus, to show $rank(M_{B \otimes B'}(\ket{\psi}))=rank(M(\ket{\psi})$, we will find two invertible $n \times n$ matrices P, Q with $PM_{B \otimes B'}(\ket{\psi})Q^{-1}=M(\ket{\psi})$.
 
 To do this, say $\ket{v_i}=\sum_{j=1}^n v_{ji}\ket{e_j}$, and
 $\ket{w_i}=\sum_{j=1}^n w_{ji}\ket{e_j}$.  Since B and B' are both linearly independent, $P=(v_{i,j})$ and $Q=(w_{i,j})$ are both invertible.
@@ -131,8 +136,8 @@ On the other hand,
 \end{eqnarray*}
 
 \noindent
-Thus, if $M_{S \otimes S}(\ket{\psi})=(a_{lr})$, then $a_{lr}=\sum_{i=1}^k v_{lk} w_{rk}=b_{lr}$.
-So $PM_{B \otimes B'}(\ket{\psi})Q^{-1}=M_{S \otimes S}(\ket{\psi})$.  Therefore, $rank(M_{S \otimes S}(\ket{\psi}))=rank(M_{B \otimes B'}(\ket{\psi}))=k$.
+Thus, if $M(\ket{\psi})=(a_{lr})$, then $a_{lr}=\sum_{i=1}^k v_{lk} w_{rk}=b_{lr}$.
+So $PM_{B \otimes B'}(\ket{\psi})Q^{-1}=M(\ket{\psi})$.  Therefore, $rank(M(\ket{\psi}))=rank(M_{B \otimes B'}(\ket{\psi}))=k$.
 \end{proof}
 
 The computation above looks a bit complicated. You can verify it with the following example, the case when k=2, n=3.
@@ -145,7 +150,7 @@ $$M_{B \otimes B'}(\ket{\psi})=\begin{pmatrix}
 0 && 0
 \end{pmatrix}$$.
 
-We want to show $rank(M_{B \otimes B'}(\ket{\psi}))=rank(M_{S \otimes S}(\ket{\psi})=2$ by finding two $3\  \times 3$ invertible matrices P,Q such that $PM_{B \otimes B'}(\ket{\psi})Q^{-1}=M_{S \otimes S}(\ket{\psi})$.
+We want to show $rank(M_{B \otimes B'}(\ket{\psi}))=rank(M(\ket{\psi})=2$ by finding two $3\  \times 3$ invertible matrices P,Q such that $PM_{B \otimes B'}(\ket{\psi})Q^{-1}=M(\ket{\psi})$.
 Let
 \begin{gather*}
 \ket{v_i}=\sum_{j=1}^3 v_{ji}\ket{e_j}\\
@@ -203,21 +208,21 @@ v_{21}w_{11}+v_{22}w_{12} && v_{21}w_{21}+v_{22}w_{22} && v_{21}w_{31}+v_{22}w_{
 v_{31}w_{11}+v_{32}w_{12} && v_{31}w_{21}+v_{32}w_{22} && v_{31}w_{31}+v_{32}w_{32} 
 \end{pmatrix}
 \end{eqnarray*}
-So $PM_{B \otimes B'}(\ket{\psi})Q^{-1}=M_{S \otimes S}(\ket{\psi})$ and $rank(M_{S \otimes S}(\ket{\psi}))=rank(M_{B \otimes B'}(\ket{\psi}))=2$.
+So $PM_{B \otimes B'}(\ket{\psi})Q^{-1}=M(\ket{\psi})$ and $rank(M(\ket{\psi}))=rank(M_{B \otimes B'}(\ket{\psi}))=2$.
 \end{example}
 
-\bigskip
-If the rank of the coefficient matrix associated with the standard basis is 1, it follows from the \textbf{Proposition \ref{rank prop}} this corollary:
+% \bigskip
+% If the rank of the coefficient matrix associated with the standard basis is 1, it follows from the \textbf{Proposition \ref{rank prop}} this corollary:
 
-\begin{corollary}
-If $rank(M(\ket{\psi}))=1$, then the state $\ket{\psi}$ is separable. Otherwise, $\ket{\psi}$ is entangled.
-\end{corollary}
+\textcolor{blue}{Discussion: Since we have now connected entanglement to the rank of the matrix, we now need to show this idea is consistent with the correlation of the two states in a composite system.} \textcolor{green}{done}.
 
-\textcolor{blue}{Discussion: Since we have now connected entanglement to the rank of the matrix, we now need to show this idea is consistent with the correlation of the two states in a composite system }
-If the rank being 1 implies the joint quantum state is not entangled, what if the coefficent matrix has full rank? We now may make the following definition and proceed to classify the strength of entanglement in terms of the rank of the coefficient matrix. Here by strength, we mean how much information Bob has about Alice once Alice measures on her part of the composite system.
+How does this all help us better understand the "spooky action at a distance"? To Albert Einstein, what bothered him in the 1930s is that there seems to be some "hidden information" such that an event at one point in the universe can influence an another event arbitrarily far away. Say an entanglement is achieved, for example, in an laboratory through firing a laser beam through a special kind of crystal to form a pair of entangled particles. Once a measurement (as introduced in \textbf{Section \ref{subsection:projective measurement}}) is made on either one of the particles, the state of the entire entangled system is collapsed, including the other particle, which might be somewhere very far away. Albert Einstein's hypothesis is that the moment the two particles are created, they contain some intrinsic information hidden from us until we measure them. Though such theory of "hidden information" is proven wrong by John Bell (see \textbf{Section \ref{section: bell-nonlocality}}, there is still some correlation between the pair of particles. In other words, even though Alice's particle is now at Smith College, whereas Bob's particle is now in Mars, information about Alice's particle does in some sense improve our knowledge of Bob's particle. Therefore, our next goal is to connect the rank of the coefficient matrix to how much more knowledge gain is potentially possible in an entangled system.
+
+We now may make the following definition and proceed to classify the strength of entanglement in terms of the rank of the coefficient matrix. Here by the strength of entanglement, we mean the amount of that extra potential knowledge gain.
+% If the rank being 1 implies the joint quantum state is not entangled, what if the coefficent matrix has full rank? We now may make the following definition and proceed to classify the strength of entanglement in terms of the rank of the coefficient matrix. Here by strength, we mean how much information Bob has about Alice once Alice measures on her part of the composite system.
 
 \begin{definition} \label{def: maximally entangled}
- Let $\ket{\psi}$ be a state in ${\mathbb{C}}^{(n^2)}$.  Then, the entanglement degree of $\ket{\psi}$ is $rank(M_{S \otimes S}(\ket{\psi}))$.  If the entanglement degree of $\ket{\psi}$ is $n$, we say $\ket{\psi}$ is maximally entangled \footnote{In some other literature, being maximally entangled means something different: A maximally entangled state is a quantum state which has maximum von Neumann entropy for each bipartition. This is equivalent to saying that the reduced density matrix $\rho_A, \rho_B$ are both a multiple of the identity matrix}.
+ Let $\ket{\psi}$ be a state in ${\mathbb{C}}^{(n^2)}$.  Then, the entanglement degree of $\ket{\psi}$ is $rank(M(\ket{\psi}))$.  If the entanglement degree of $\ket{\psi}$ is $n$, we say $\ket{\psi}$ is maximally entangled \footnote{In some other literature, being maximally entangled means something different: A maximally entangled state is a quantum state which has maximum von Neumann entropy for each bipartition. This is equivalent to saying that the reduced density matrix $\rho_A, \rho_B$ are both a multiple of the identity matrix}.
 \end{definition}
 
 % When Alice and Bob share a state, Alice may measure her piece of the state, and if it is entangled, her measurement necessarily affects Bob's piece.
