@@ -13,9 +13,9 @@
 
 Broadly speaking, cryptography is the practice of communication secretly in the presence of third parties who wish to intercept or corrupt the communications. The two communicating parties, Alice and Bob wish to exchange information, while Eve attempts to read their messages.
 
-Encryption schemes can be classified grossly as either \emph{private key cryptography} or \emph{public key cryptography}. The distinction being that in private key cryptography, the same secret key is used for Alice's encryption and Bob's decryption, whereas in public key cryptography, one key is used to encrypt and is made available to the public, a different secret key is used to decrypt.
+Encryption schemes can be classified grossly as either \emph{private key cryptography} or \emph{public key cryptography}. The distinction being that in private key cryptography, the same secret key is used for Alice's encryption and Bob's decryption, whereas in public key cryptography, one key is used to encrypt and is made available to the public, while a different secret key is used to decrypt.
 
-Currently, pubic key cryptosystems such as the \emph{RSA cryptosystem} are the most widely used cryptographic protocol.  Public key cryptosystems don't rely on Alice and Bob sharing a secret key {\emph{in advance}}. Instead, Bob generates a pair of keys, and makes one of them available to the public. Alice can use that public key to encrypt her message, which Bob can decipher with the use of his other key, which remains private. Security in this situation, depends on it being extremely difficult for Eve to guess Bob's other private key, even with access to the public key.  In practice, this typcially relies on a classical computer's difficulty in solving the problem of factoring when large primes are involved. It's worth noting that {\emph{Shor's fast algorithm}} on a quantum computer can easily break RSA.
+Currently, pubic key cryptosystems such as the \emph{RSA cryptosystem} are the most widely used cryptographic protocol.  Public key cryptosystems don't rely on Alice and Bob sharing a secret key {\emph{in advance}}. Instead, Bob generates a pair of keys, and makes one of them available to the public. Alice can use that public key to encrypt her message, which Bob can decipher with the use of his other key, which remains private. Security in this situation, depends on it being extremely difficult for Eve to crack Bob's private key, even with access to the public key.  In practice, this typcially relies on a classical computer's difficulty in solving the problem of factoring when large primes are involved. It's worth noting that {\emph{Shor's fast algorithm}} on a quantum computer can easily break RSA.
 
 \begin{figure}[h]
     \centering
@@ -30,19 +30,20 @@ In private key cryptosystems, a private key is used by Alice to encrypt the secr
 
 We begin with some preliminary concepts.  Formally, an {\emph{encryption}} is given by an encryption function 
 $$Enc(k,m)=e ,$$
-which takes a key $k$ and the message $m$ and maps it to some encrypted message $e$. The original message $m$ is also called the {\emph{plain text}}, whereas $e$ is refered to as the {\emph{ciphertext}}. Similarly, a {\emph{decryption function}} $$Dec(k,e)=m$$
+which takes a key $k$ and the message $m$ and maps it to some encrypted message $e$. The original message $m$ is also called the {\emph{plaintext}}, whereas $e$ is refered to as the {\emph{ciphertext}}. Similarly, a {\emph{decryption function}} $$Dec(k,e)=m$$
 that takes the key $k$ and the ciphertext $e$ as arguments, and returns the plaintext. 
 
-\textcolor{blue}{We have to define the terms we're using in the definition below.  Also, I would combine the next two definitions into one defintion}
+\textcolor{blue}{We have to define the terms we're using in the definition below.  Also, I would combine the next two definitions into one definition}
 
-
+If $m$ is a message, then p(m) is the probability of guessing one message correctly. For example, say the message an arbitrary 10-bit message picked uniformly randomly, then $p(m)=\frac{1}{2^10}$.
 \begin{definition} \label{def: shannon}
 An encryption scheme (Enc, Dec) is \textit{secret}, or \textit{secure} if and only if for all prior distributions p(m) over messages, and all messages m, we have
 \begin{equation}
     p(m)=p(m|e),
 \end{equation}
-where $e=Enc(k,m)$
+where $e=Enc(k,m)$, and $p(m|e)$ is the conditional probability of m given e.
 \end{definition}
+This means that in a secret encryption scheme, if Eve sees the ciphertext, she knows nothing more than anyone else who hasn't seen the ciphertext at all. 
 
 \begin{definition}
 An encryption scheme (Enc, Dec) is correct if and only if for all possible messages m, and all possible keys k, we have m=Dec(k, Enc(k,m)).
