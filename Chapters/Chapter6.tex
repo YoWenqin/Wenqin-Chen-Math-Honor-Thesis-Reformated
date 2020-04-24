@@ -469,7 +469,7 @@ So when $\ket{\theta}$ is a constant, the rank must be at least 2.\\
 \begin{example}
 Say Alice and Bob share a state $\ket{\psi}=\frac{1}{2\sqrt{2}}(\ket{e_1 e_1}+\ket{e_2 e_3}+\ket{e_3 e_1}+\ket{e_3 e_3}$). Then Alice makes a measurement and yields $\ket{\varphi}=\icol{a\\b\\c}$.
 
-Then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is $\ket{\theta}\bra{\theta}$,
+Then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is $\ket{\theta}$,
 \begin{equation}
 \ket{\theta}=\frac{1}{\sqrt{C}}\begin{pmatrix}
 1 && 0 && 1\\
@@ -481,9 +481,55 @@ Then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is 
 \overline{b+c}
 \end{pmatrix}
 \end{equation}
-\textcolor{green}{how well Bob can do in determining what Alice measured in this case?}
-\end{example}
+Say $\ket{\varphi}=\icol{1\\0\\0}$. Then $\ket{\theta}=\frac{1}{\sqrt{C}}\icol{1\\0\\0}$.
 
+Now consider if Alice makes a measurement and yields $\ket{\varphi'}=\icol{0\\-1\\1}$. Then Bob's post-measurement state is $\ket{\theta'}\bra{\theta'}$, where $\ket{\theta'}=\frac{1}{\sqrt{C}}\icol{1\\0\\0}=\ket{\theta}$.
+
+Certainly you can use Gram-Schmidt to construct an orthonormal basis for $\mathbb{C}^3$ that contains both $\ket{\varphi}$ and $\ket{\varphi'}$. What this means is that for a coefficient matrix whose rank is neither 1 or the full rank, there exists some orthonormal basis that Alice can choose to measure on such that Bob will not be able to infer Alice's measurement result even if he knows the basis Alice chooses. Alice yielding $\ket{\varphi}$ and $\ket{\varphi'}$ will make no difference to what Bob observes on his side at all!
+
+One interesting thing to notice here is that such phenomenon does not occur for an arbitrary orthonormal basis that Alice picks. For example, here's what happens if Alice picks the standard basis to do her measurement. When Alice's measurement outcome is $\ket{e_1}$,$\ket{e_2}$, or $\ket{e_3}$, the post-measurement state for Bob is be $\ket{e_1}$, $\ket{e_3}$, $\ket{e_1}+\ket{e_3}$ respectively. There is this one-to-one mapping form Alice's measurement outcome to Bob's post-measurement state, so Bob will be able to infer Alice's measurement result once he makes a measurement on the standard basis 
+\textcolor{green}{wait. Bob will never be able to make a measurement and observe the outcome $\ket{e_1}+\ket{e_3}$ because he's measuring on the standard basis. in other words, if the post-measurement state for Bob is $\ket{e_1}+\ket{e_3}$, he will get the come $\ket{e_1}$ and $\ket{e_3}$ half of the time each.}
+% \textcolor{green}{how well Bob can do in determining what Alice measured in this case?}
+% $\ket{\varphi_2}=$.
+
+% Say $\ket{\theta}=\icol{\theta_1 \\ \theta_2 \\ \theta_3}$, then Bob is trying to solve for
+% \begin{equation}
+% \begin{cases}
+% \sqrt{C}\theta_1=\overline{a+c}\\
+% \sqrt{C}\theta_2=0\\
+% \sqrt{C}\theta_3=\overline{b+c}
+% \end{cases}
+% \Rightarrow 
+% \begin{cases}
+% b=a+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})\\
+% \theta_2=0\\
+% c=\sqrt{C}\overline{\theta_1}-a
+% \end{cases}
+% \end{equation}
+% Now consider $\ket{\varphi'}=\begin{pmatrix}
+% a'\\a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})\\c'
+% \end{pmatrix}$. For $\ket{\varphi}$ and $\ket{\varphi'}$ to be orthogonal,
+% \begin{gather}
+%     aa'+b(a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1}))+cc'=0\\
+%     \Rightarrow c'=-\frac{1}{c}(aa'+b(a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})))
+% \end{gather}
+% So $\ket{\varphi'}=\begin{pmatrix}
+% a'\\
+% a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})\\
+% -\frac{1}{c}(aa'+b(a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})))
+% \end{pmatrix}$
+
+% Now check what happens if Alice's measurement yields $\ket{\varphi'}$. Then Bob's post-measurement state is
+% \begin{equation}
+%     \frac{1}{\sqrt{C}}\begin{pmatrix}
+%     \overline{a'-\frac{1}{c}(aa'+b(a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})))}\\
+%     0\\
+%     \overline{a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})-\frac{1}{c}(aa'+b(a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})))}
+%     \end{pmatrix}
+% \end{equation}
+
+\end{example}
+\textcolor{green}{it's about the worst correlation. if we just pick the standard basis it still looks maximally correlated, but there exists "an" orthonormal basis such that two differents elements in the basis get mapped to the same theta. the rank is about the "worst" it can be. this might be put into the further discussion session}
 The reader maybe skeptical that what if ..., the next section aims to reconcile 
 
 
@@ -533,14 +579,17 @@ What the above proposition implies is that Alice can indeed choose an arbitrary 
 
 
 \section{Restrictions on Measurements?}
-Now we know how Alice's and Bob's states are correlated mathematically during the "spooky action at a distance". But remember, Bob wouldn't be able to gain any information until he makes a measurement on his side. Recall that in a previous \textbf{Section \ref{subsection:projective measurement}} , particularly in \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}}, we say that we only want to make measurements on orthonormal basis, because otherwise states cannot be reliably distinguished. Before, the setup is that Alice chooses a state $\ket{\psi}_{i=1}^n$ from some fixed set of states known to both herself and to Bob. She then gives the state to Bob, whose task is to identify the index of that state. Now our task is different. Alice and Bob share a composite 2-qudit state $\ket{\psi}$. Suppose Bob knows the coefficient matrix of $\ket{\psi}$, $M_{\ket{\psi}}$, and the basis Alice measures with, $\ket{\psi}_{i=1}^n$. After Alice has made a measurement on her part of the system, the task is for Bob to infer Alice's result by only measuring on his part of the system. By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M_{\ket{\psi}}$ preserves orthogonality, then Bob can measure with respect to the basis $M_{\ket{\psi}}^T \ket{\psi}_{i=1}^n$, which is automatically orthonormal. 
+Now we know how Alice's and Bob's states are correlated mathematically during the "spooky action at a distance". But remember, Bob wouldn't be able to gain any information until he makes a measurement on his side. Recall that in a previous \textbf{Section \ref{subsection:projective measurement}} , particularly in \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}}, we say that we only want to make measurements on orthonormal basis, because otherwise states cannot be reliably distinguished. Before, the setup is that Alice chooses a state $\ket{\psi}_{i=1}^n$ from some fixed set of states known to both herself and to Bob. She then gives the state to Bob, whose task is to identify the index of that state. Now our task is different. Alice and Bob share a composite 2-qudit state $\ket{\psi}$. Suppose Bob knows the coefficient matrix of $\ket{\psi}$, $M_{\ket{\psi}}$, and the basis Alice measures with, $\ket{\psi}_{i=1}^n$. After Alice has made a measurement on her part of the system, the task is for Bob to infer Alice's result by only measuring on his part of the system. By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M_{\ket{\psi}}$ preserves orthogonality, then Bob can measure with respect to the basis $M_{\ket{\psi}}^T \ket{\psi}_{i=1}^n$, which is automatically orthonormal. With that measurement result (the $\ket{\theta}$ in \textbf{Lemma \ref{end state lemma}}), he will be able to infer Alice's measurement result by simply applying the inverse of the transpose of the coefficient matrix to the measurement result. 
 
 However, what would happen if $M_{\ket{\psi}}^T$ does not preserve orthogonality? Then $M_{\ket{\psi}}^T \ket{\psi}_{i=1}^n$ would no longer be orthonormal, and Bob will not be able to make a meaningful measurement. Therefore, in this section, we look to address what's the characterization of coefficient matrices that preserve orthogonality and explore what happens if orthogonality is not preserved.
 
+Formally, we state the following proposition, which is an extension from \textbf{Proposition \ref{entanglement-rank}}. The difference is that back in \textbf{Proposition \ref{entanglement-rank}}, Bob hasn't made a measurement on his side yet, so he doesn't even know his post-measurement state. If the shared state is maximally entangled, Bob really has this potential extra knowledge gain about Alice waiting to be disclosed through Bob's measurement. So the next two propositions is really a discussion on when is Bob actually able to make use of that extra knowledge gain and learn something about Alice.
+
 \begin{prop}
-Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a 2-qudit maximally entangled quantum state shared by Alice and Bob. Say Alice first makes a measurement and observes $\ket{\varphi}$. If the coefficient matrix satisfies the characterization within Proposition \ref{orthogonality preserving character} and Bob knows the basis that Alice uses to do the measurement, then Bob will be able to make a measurement on his particle and infer Alice's measurement result with certainty. 
+Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a 2-qudit maximally entangled quantum state shared by Alice and Bob. Say Alice first makes a measurement and observes $\ket{\varphi}$. If the coefficient matrix preserves orthogonality and Bob knows the basis that Alice uses to do the measurement, then Bob will be able to make a measurement on his particle and infer exactly Alice's measurement result with certainty. 
 \end{prop}
 
+The next proposition characterizes matrices that preserve orthogonality.
 \begin{prop} \label{orthogonality preserving character}
 $\{M(\ket{\psi})|M(\ket{\psi})$ is a scalar multiple of a $n \times n$ unitary matrix$\}$ is a characterization of all states in $\mathbb{C}^n \otimes \mathbb{C}^n$ such that orthogonality is preserved. i.e. if $\braket{u|v}=0$, then $\braket{M(\ket{\psi})u|M(\ket{\psi}v}=0$.
 \end{prop}
