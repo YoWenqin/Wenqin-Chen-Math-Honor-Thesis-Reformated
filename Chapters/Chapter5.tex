@@ -17,16 +17,15 @@ Encryption schemes can be classified grossly as either \emph{private key cryptog
 
 Currently, pubic key cryptosystems such as the \emph{RSA cryptosystem} are the most widely used cryptographic protocol.  Public key cryptosystems don't rely on Alice and Bob sharing a secret key {\emph{in advance}}. Instead, Bob generates a pair of keys, and makes one of them available to the public. Alice can use that public key to encrypt her message, which Bob can decipher with the use of his other key, which remains private. Security in this situation, depends on it being extremely difficult for Eve to crack Bob's private key, even with access to the public key.  In practice, this typcially relies on a classical computer's difficulty in solving the problem of factoring when large primes are involved. It's worth noting that {\emph{Shor's fast algorithm}} on a quantum computer can easily break RSA.
 
+In private key cryptosystems, a private key is used by Alice to encrypt the secret message she wants to send to Bob, who will also need the private key to decrypt the message. Of course, in this situation, the very act of distributing a key from Alice to Bob is dangerous because Eve might be eavesdropping at the moment the key is distributed. In this chapter, we will introduce some of the main concepts in cryptography.  Then we will illustrate some ways in which Alice and Bob can exploit the laws of quantum mechanics to establish better security. 
+
+% \textcolor{blue}{How about one-time pad here first.  Also this is a good place for a picture of Alice and Bob.  We should be able to find a schematic with Alice and Bob somewhere} developed in \cite{shannon1949communication}.
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.6]{"schematic of a general crypto system".png}
     \caption{Schematic of a general secrecy system from \cite{shannon1949communication}}
     \label{fig:general crypto schematic}
 \end{figure}
-
-In private key cryptosystems, a private key is used by Alice to encrypt the secret message she wants to send to Bob, who will also need the private key to decrypt the message. Of course, in this situation, the very act of distributing a key from Alice to Bob is dangerous because Eve might be eavesdropping at the moment the key is distributed. In this chapter, we will introduce some of the main concepts in cryptography.  Then we will illustrate some ways in which Alice and Bob can exploit the laws of quantum mechanics to establish better security. 
-
-% \textcolor{blue}{How about one-time pad here first.  Also this is a good place for a picture of Alice and Bob.  We should be able to find a schematic with Alice and Bob somewhere} developed in \cite{shannon1949communication}.
 
 We begin with some preliminary concepts.  Formally, an {\emph{encryption}} is given by an encryption function 
 $$Enc(k,m)=e ,$$
@@ -49,10 +48,9 @@ If the encryption scheme (Enc, Dec) is secure and correct, then the number of po
 \end{theorem}
 For the proof, see p.18 of \cite{Wehner:notes}. 
 
+% \textcolor{blue}{Insert a couple of sentences on one-time pads here.  Basically say that if Alice and Bob use a one-time pad that is created securely, their message is unbreakable}
 
-\textcolor{blue}{Insert a couple of sentences on one-time pads here.  Basically say that if Alice and Bob use a one-time pad that is created securely, their message is unbreakable}
-
-\begin{definition}
+\begin{definition} \label{def: classical one-time pad scheme}
 The classical one-time pad is an encryption scheme in which the encryption of a message $m \in \{0, 1\}^n$ using the key $k \in \{0, 1\}^n$ is given by
 \begin{equation}
     Enc(k,m)=(m \oplus k)=(m_1 \oplus k_1, m_2 \oplus k_2, \hdots, m_n \oplus k_n)=(e_1, \hdots, e_n)=e
@@ -62,10 +60,16 @@ where $m_i \oplus k_i = m_i + k_i mod 2$. The decryption is given by
 Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
 \end{equation}
 \end{definition}
-Dec(k,e) is apparently the inverse of Enc(k,m) since $m_i \oplus k_i \oplus k_i=m_i$, so the one-time pad scheme is correct. It also satisfies Shannon's \textbf{Definition \ref{def: shannon}} for security. The proof can be found in section 1.8.1 of \cite{Wehner:notes}.
+Dec(k,e) is apparently the inverse of $Enc(k,m)$ since $m_i \oplus k_i \oplus k_i=m_i$, so the one-time pad scheme is correct. Now we see if it also satisfies Shannon's \textbf{Definition \ref{def: shannon}} for security. Assuming a uniformly random choice of key k, the associated ciphertext is also uniformly distributed over all n-bit strings, so we have 
+\begin{gather}
+    p(e|m)=p(k|m)=\frac{1}{2^n}\\
+    p(e)=\sum_m p(m) p(e|m)=\frac{1}{2^n}
+\end{gather}
+Applying Bayes rule, we then have $$p(m|e)=\frac{p(m,e)}{p(e)}=\frac{p(e|m)p(m)}{p(e)}=p(m)$$
+So the one-time pad is perfectly secure upon the key being uniformly distributed and independent from any eavesdropper. More information about one-time pad can be found in Section 1.8 of \cite{Wehner:notes}.
 
 \begin{example}
-Say Alice wants to transmit a message "hello" to Bob and uses the conventional 8-bit ASCII encoding \footnote{For ASCII encoding, refer to \url{https://en.wikipedia.org/wiki/ASCII}} for each character, the encoding process can be illustrated by \textbf{Table  \ref{table: one-time pad encoding}}. The actual ciphertext that Alice is going to send to Bob is 0000 1011 0001 0111 0001 0101 0001 1100 0001 1011.
+Say Alice wants to transmit a message "hello" to Bob and uses the conventional 8-bit ASCII encoding \footnote{For ASCII encoding, refer to \url{https://en.wikipedia.org/wiki/ASCII}} for each character, the encoding process can be illustrated by \textbf{Table  \ref{table: one-time pad encoding}}. The actual ciphertext that Alice is going to send to Bob is 0000 1011 0001 0111 0001 0101 0001 1100 0001 1011 using the encryption scheme defined in \textbf{Definition \ref{def: classical one-time pad scheme}}.
 
 \begin{table}[h]
 \centering 
@@ -81,11 +85,10 @@ ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \\ \hline
 \label{table: one-time pad encoding}
 \end{table}
 
-Bob's decipher process using the same one-time pad can be illustrated by \textbf{Table \ref{table: one-time pad decoding}}:
+Bob's decipher process using the same one-time pad can be illustrated by \textbf{Table \ref{table: one-time pad decoding}}, following the decryption scheme also defined in \textbf{Definition \ref{def: classical one-time pad scheme}}:
 \begin{table}[h] 
-
-\begin{tabular}{|c|c|c|c|c|c|}
 \centering
+\begin{tabular}{|c|c|c|c|c|c|}
 \hline
 ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \\ \hline
 one-time pad in bits & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline
