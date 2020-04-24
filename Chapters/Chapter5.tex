@@ -33,8 +33,6 @@ $$Enc(k,m)=e ,$$
 which takes a key $k$ and the message $m$ and maps it to some encrypted message $e$. The original message $m$ is also called the {\emph{plaintext}}, whereas $e$ is refered to as the {\emph{ciphertext}}. Similarly, a {\emph{decryption function}} $$Dec(k,e)=m$$
 that takes the key $k$ and the ciphertext $e$ as arguments, and returns the plaintext. 
 
-\textcolor{blue}{We have to define the terms we're using in the definition below.  Also, I would combine the next two definitions into one definition}
-
 If $m$ is a message, then p(m) is the probability of guessing one message correctly. For example, say the message an arbitrary 10-bit message picked uniformly randomly, then $p(m)=\frac{1}{2^10}$.
 \begin{definition} \label{def: shannon}
 An encryption scheme (Enc, Dec) is \textit{secret}, or \textit{secure} if and only if for all prior distributions p(m) over messages, and all messages m, we have
@@ -42,14 +40,10 @@ An encryption scheme (Enc, Dec) is \textit{secret}, or \textit{secure} if and on
     p(m)=p(m|e),
 \end{equation}
 where $e=Enc(k,m)$, and $p(m|e)$ is the conditional probability of m given e.
-\end{definition}
-This means that in a secret encryption scheme, if Eve sees the ciphertext, she knows nothing more than anyone else who hasn't seen the ciphertext at all. 
 
-\begin{definition}
 An encryption scheme (Enc, Dec) is correct if and only if for all possible messages m, and all possible keys k, we have m=Dec(k, Enc(k,m)).
 \end{definition}
-
-Thus, in Cryptography the goal is to design protocols that are both secure and correct.  The following Theorem shows that this is only possible when the number of possible keys is large relative to the number of possible messages.
+In cryptography the goal is to design protocols that are both secure and correct, which means that not only must the ciphertext be decipherable, but also that if Eve sees the ciphertext, she knows nothing more than anyone else who hasn't seen the ciphertext at all. The following theorem shows that this is only possible when the number of possible keys is large relative to the number of possible messages.
 \begin{theorem}
 If the encryption scheme (Enc, Dec) is secure and correct, then the number of possible keys |K| is at least as large as the number of possible messages |M|, that is, $|K| \ge |M|$.
 \end{theorem}
@@ -70,8 +64,43 @@ Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
 \end{definition}
 Dec(k,e) is apparently the inverse of Enc(k,m) since $m_i \oplus k_i \oplus k_i=m_i$, so the one-time pad scheme is correct. It also satisfies Shannon's \textbf{Definition \ref{def: shannon}} for security. The proof can be found in section 1.8.1 of \cite{Wehner:notes}.
 
+\begin{example}
+Say Alice wants to transmit a message "hello" to Bob and uses the conventional 8-bit ASCII encoding \footnote{For ASCII encoding, refer to \url{https://en.wikipedia.org/wiki/ASCII}} for each character, the encoding process can be illustrated by \textbf{Table  \ref{table: one-time pad encoding}}. The actual ciphertext that Alice is going to send to Bob is 0000 1011 0001 0111 0001 0101 0001 1100 0001 1011.
 
-\textcolor{blue}{Include example of a short message like "hello" transmitted with the classical one-time pad}
+\begin{table}[h]
+\centering 
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+character & h & e & l & l & o \\ \hline
+plaintext in bits & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \\ \hline
+one-time pad & c & r & y & p & t \\ \hline
+one-time pad in bits & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline
+ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \\ \hline
+\end{tabular}
+\caption{Alice's encoding process from "hello" to the ciphertext represented by a string of bits}
+\label{table: one-time pad encoding}
+\end{table}
+
+Bob's decipher process using the same one-time pad can be illustrated by \textbf{Table \ref{table: one-time pad decoding}}:
+\begin{table}[h] 
+
+\begin{tabular}{|c|c|c|c|c|c|}
+\centering
+\hline
+ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \\ \hline
+one-time pad in bits & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline
+plaintext in bits & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \\ \hline
+plaintext in characters & h & e & l & l & o \\ \hline
+\end{tabular}
+\caption{Bob's decipher process from the ciphertext back to "hello"}
+\label{table: one-time pad decoding}
+\end{table}
+\end{example}
+
+
+
+
+At the end of \textbf{Chapter \ref{Chapter6-classification of entanglement}}, we will create a classical one-time pad making use of quantum mechanics.
 
 \begin{definition} \label{def: quantum one-time pad}
 The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice applies $X^{k_1} Z^{k_2}$ to qubit $\rho$ and sends the resulting state to Bob. To decrypt, Bob applies the inverse $(X^{k_1} Z^{k_2})^\dagger$ to obtain $\rho$, where X and Z are the Pauli-X and Pauli-Z matrix respectively. i.e.
