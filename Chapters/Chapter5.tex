@@ -68,32 +68,35 @@ Dec(k,e) is apparently the inverse of $Enc(k,m)$ since $m_i \oplus k_i \oplus k_
 Applying Bayes rule, we then have $$p(m|e)=\frac{p(m,e)}{p(e)}=\frac{p(e|m)p(m)}{p(e)}=p(m)$$
 So the one-time pad is perfectly secure upon the key being uniformly distributed and independent from any eavesdropper. More information about one-time pad can be found in Section 1.8 of \cite{Wehner:notes}.
 
+We now provide an example of a transcription using a one-time pad.
+\textcolor{blue}{I changed the labels in the tables below.  I think this is more consistent with the way we defined our terms.  What do you think?} \textcolor{green}{looks reasonable to me!}
 \begin{example}
-Say Alice wants to transmit a message "hello" to Bob and uses the conventional 8-bit ASCII encoding \footnote{For ASCII encoding, refer to \url{https://en.wikipedia.org/wiki/ASCII}} for each character, the encoding process can be illustrated by \textbf{Table  \ref{table: one-time pad encoding}}. The actual ciphertext that Alice is going to send to Bob is 0000 1011 0001 0111 0001 0101 0001 1100 0001 1011 using the encryption scheme defined in \textbf{Definition \ref{def: classical one-time pad scheme}}.
+\label{example one-time pad}
+Say Alice wishes to transmit a message "hello" to her friend Bob.  They will use the conventional 8-bit ASCII encoding \footnote{For ASCII encoding, refer to \url{https://en.wikipedia.org/wiki/ASCII}} for each character.  the encoding process can be illustrated by \textbf{Table  \ref{table: one-time pad encoding}} below. The ciphertext that Alice is going to send to Bob is 0000 1011 0001 0111 0001 0101 0001 1100 0001 1011 using the encryption scheme defined in \textbf{Definition \ref{def: classical one-time pad scheme}}.
 
 \begin{table}[h]
 \centering 
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 character & h & e & l & l & o \\ \hline
-plaintext in bits & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \\ \hline
-one-time pad & c & r & y & p & t \\ \hline
-one-time pad in bits & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline
+plaintext & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \\ \hline
+pad character & c & r & y & p & t \\ \hline
+one-time pad & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline
 ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \\ \hline
 \end{tabular}
 \caption{Alice's encoding process from "hello" to the ciphertext represented by a string of bits}
 \label{table: one-time pad encoding}
 \end{table}
 
-Bob's decipher process using the same one-time pad can be illustrated by \textbf{Table \ref{table: one-time pad decoding}}, following the decryption scheme also defined in \textbf{Definition \ref{def: classical one-time pad scheme}}:
+Bob's will decipher using the same one-time pad.   His work is illustrated by \textbf{Table \ref{table: one-time pad decoding}}, following the decryption scheme also defined in \textbf{Definition \ref{def: classical one-time pad scheme}}:
 \begin{table}[h] 
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \\ \hline
-one-time pad in bits & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline
-plaintext in bits & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \\ \hline
-plaintext in characters & h & e & l & l & o \\ \hline
+one-time pad & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline
+plaintext & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \\ \hline
+plaintext character & h & e & l & l & o \\ \hline
 \end{tabular}
 \caption{Bob's decipher process from the ciphertext back to "hello"}
 \label{table: one-time pad decoding}
@@ -158,15 +161,40 @@ So $\braket{\psi_1 | \psi_2}=0$ or $1$. So $\ket{\psi_1}$ and $\ket{\psi_2}$ are
 
 \textcolor{blue}{What is locality?}
 \textcolor{green}{The assumption that Alice performing her measurement does not influence the result of Bob's measurement - this assumption is incorrect in the quantum world, as validated by Bell's experiment}
-\textcolor{blue}{I changed this part around.  Definitely something like the current first paragraph should come first, but I'm not sure where to include what the rules are for such a game.  The next two paragramphs should be synthesized a bit }
 
 
-In many collaborative games, two players using a {\emph{quantum strategy}} can achieve a higher winning probability than if they use a {\emph{classical strategy}}. Because of this, many probabilistic games can be thought of as tests for entanglement, and therefore play a key role in quantum key distribution. In this context, when using a \textit{quantum strategy}, Alice and Bob can pick a state $\rho_{AB}$ to share, and agree on measurements to perform depending on their respective questions. In a classical game ...
+
+In many collaborative games, two players using a {\emph{quantum strategy}} can achieve a higher winning probability than if they use a {\emph{classical strategy}}. Because of this, many probabilistic games can be thought of as tests for entanglement.  This also illustrates why one might try to make use of quantum mechanics in cryptography.  We illustrate this phenomenon with an example of a guessing game.
+
+In our game Alice and Bob work collaboratively and try to craft a strategy which will maximize their team score.  Once they have agreed on a strategy, the game begins, at which point all their communication must cease.  The rules of the game are as follows:
+\begin{enumerate}
+\item Alice is presented with an element $x$ of the set $\{0,1\}$.  This element will serve as her {\emph{question}}.
+\item Alice responds to her question by choosing $a$ an element of {\emph{another}} copy of the set $\{0,1\}$.  We will call $a$ Alice's {\emph{answer}}. 
+\item Without seeing what has happened with Alice, Bob is also presented with an element $y$ of yet another copy of $\{0,1\}$. The element $y$ is Bob's question.
+\item Bob too answers his question by choosing his answer $b$ from $\{0,1\}$.
+\end{enumerate}
+
+Once both answers are picked, we are ready do see if Alice and Bob have won.  They win the game if and only if their answers satisfy the equation
+\begin{equation*}
+ a+b =xy\hspace{.1cm}(mod 2) 
+\end{equation*}
+
+
+\textcolor{blue}{Inside the marked area must be modified.  Maybe the stuff about non-locality should be in the introduction, but I can't figure out where.  The thing is that I think it's better to describe the game really carefully pretty early}
+
+
+
+*******************************************************
+
+In this context, when using a \textit{quantum strategy}, Alice and Bob can pick a state $\rho_{AB}$ to share, and agree on measurements to perform depending on their respective questions. In a classical game ...
 
 Bell proved that the predictions of quantum theory are incompatible with those of any classical theory satisfying a natural notion of locality \cite{bell1964}. The bell-nonlocality can be understood by a non-local game between Alice and Bob, in which they are asked questions $x,y \in \{0,1\}$ respectively. They respond with asnwers $a, b \in \{0,1\}$ respectively. They are allowed to agree on a strategy beforehand, but are not allowed to communicate during the game. Alice and Bob win the game if and only if 
 \begin{equation*}
  a+b (mod 2)=xy    
 \end{equation*}
+
+***************************************************************
+
 
 The winning probability is given by 
 \begin{equation*}
@@ -181,7 +209,7 @@ where $p(a,b|x,y)$ is the probability that Alice and Bob answer a and b given qu
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.8]{"non-local game".png}
-    \caption{Alice and Bob in a non-local CHSH guessing game}
+    \caption{Alice and Bob in a non-local CHSH guessing game. Alice and Bob win the game if $a+b (mod2)=xy$.}
     \label{fig:non-local game}
 \end{figure}
 
@@ -192,7 +220,7 @@ where $p(a,b|x,y)$ is the probability that Alice and Bob answer a and b given qu
 %-----------------------------------
 \subsection{Classical Strategy}
 
-A classical strategy is simply given by functions $f_A(x)=a$ and $f_B(y)=b$. By checking all possible classical strategies in the following table, we see the maximum winning probability is $\frac{3}{4}$.
+A classical strategy is simply given by functions $f_A(x)=a$ and $f_B(y)=b$. By simply checking all possible choices in the following table, we see the maximum winning probability is $\frac{3}{4}$.
 
 \begin{table}[h]
 \centering
@@ -206,17 +234,29 @@ b=0 & $\frac{3}{4}$ & $\frac{1}{4}$ & $\frac{1}{4}$ & $\frac{3}{4}$ \\ \hline
 \end{tabular}
 \end{table}
 
+Thus, the probability of winning classically is $.75$.  Surprisingly, this can be {\emph{improved}} by making use of quantum mechanics!  The idea is that Alice and Bob can make use of a strategy where even though neither sees which question the other is asked, their answers are {\emph{correlated}}.
+
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
 
 \subsection{Quantum Strategy}
+
+\textcolor{blue}{Say something more about the quantum version of the game. Basically here they use this entanglement "machine" }
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{"quantum strategy diagram".png}
+    \caption{Quantum strategy that Alice and Bob agrees on before the game. What differs from the classical strategy is that they share an EPR pair before the game starts, and make measurement on different bases depending on the value of x and y.}
+    \label{fig: quantum strategy diagram}
+\end{figure}
+
 Suppose Alice and Bob share an EPR pair, where we label the qubit held by Alice A and the one held by Bob B: 
 \begin{equation*}
     \ket{\psi_{AB}}=\frac{1}{\sqrt{2}}(\ket{0}_A \ket{0}_B+\ket{1}_A \ket{1}_B)
 \end{equation*}
 
-Suppose now that when x = 0, Alice measures her qubit in the standard basis $\{\ket{0}, \ket{1}\}$. When x = 1, Alice measures her qubit in the Hadarmard basis $\{\ket{+}, \ket{-}\}$, where
+Suppose now that when x = 0, Alice measures her qubit (by convention, the left-hand side of $\ket{\psi_{AB}}$) in the standard basis $\{\ket{0}, \ket{1}\}$. When x = 1, Alice measures her qubit in the Hadarmard basis $\{\ket{+}, \ket{-}\}$, where
 \begin{gather*}
     \ket{+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})\\
     \ket{-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})
