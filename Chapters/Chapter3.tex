@@ -10,7 +10,7 @@
 \hfill \textit{--Werner Heisenberg}
 \end{quote}
 
-In the 20th century, quantum mechanics fundamentally changed our understanding of the physical world.  Previously, physicists viewed the universe deterministically.  Any physical attribute of an object could be known, in principle, to an arbitrary degree of accuracy.  An object moving through space possessed an exact location, velocity and momentum at a time $t$. In contrast, in the quantum mechanical universe Schrödinger's famous cat is simultaneously alive and dead subject to a certain probability distribution.  Only when we actually opens the chamber to see whether the cat is alive or dead is it's ultimate state determined. If an object is moving, the certainty wit which we know its position, constrains how much we can know about its velocity.  Perhaps even more alarmingly, an observer cannot even measure an object without changing it.
+In the 20th century, quantum mechanics fundamentally changed our understanding of the physical world.  Previously, physicists viewed the universe deterministically.  Any physical attribute of an object could be known, in principle, to an arbitrary degree of accuracy.  An object moving through space possessed an exact location, velocity and momentum at a time $t$. In contrast, in the quantum mechanical universe Schrödinger's famous cat is simultaneously alive and dead subject to a certain probability distribution.  Only when we actually opens the chamber to see whether the cat is alive or dead is its ultimate state determined. If an object is moving, the certainty with which we know its position constrains how much we can know about its velocity.  Perhaps even more alarmingly, an observer cannot even measure an object without changing it.
 
 Famous physicists like Niels Bohr, Max Planck, Paul Dirac, Werner Heisenberg, Richard Feynman and many others relegated the previously held {\emph{classical}} view of the universe to only one side of a coin.  In this chapter we present the postulates of quantum mechanics.  In each instance, after stating a postulate precisely, we summarize the key ideas, making explicit what the reader should take from the postulate for this thesis.  This summary is by no means complete.  See ... \textcolor{red}{add more references that provide introductions to quantum mechanics for non-physicists} for a more extensive introduction to the subject and \cite{dorai2018} for a more extensive introduction to the history of quantum mechanics.
 
@@ -28,7 +28,7 @@ Famous physicists like Niels Bohr, Max Planck, Paul Dirac, Werner Heisenberg, Ri
 For our purposes, typically the Hilbert space is $C^n$. In fact, most of the time $n=2$, so the state vector is a qubit (see \textbf{Definition \ref{def qubit}} and more generally Chapter \ref{Chapter2-preliminaries}).  Thus, unless otherwise specified, in what follows a state vector is a superposition of $\ket{0}$ and $\ket{1}$.
 
 There are {\emph{real}} physical systems that can be described in terms of qubits.  These include, for example, the polarization of a photon, the alignment of nuclear spin in a uniform magnetic field, and the state of an electron orbiting a single atom.  In the last case, the orbiting electron can exist in either the "ground" or "excited" states, which can be identified with $\ket{0}$ and $\ket{1}$ respectively. By shining light on the atom for an appropriate length of time, it is possible to move the electron from the $\ket{0}$ state to the $\ket{1}$. Interestingly, by reducing the time we shine the light, we may move the electron from the state $\ket{0}$ to $\ket{+}$, a (nontrivial) superposition\footnote{$\ket{+}=\frac{\sqrt{2}}{2}\ket{0}+\frac{\sqrt{2}}{2}\ket{1}$, hence $\ket{+}$ can be viewed as being "halfway" between $\ket{0}$ and $\ket{1}$} of $\ket{0}$ and $\ket{1}$ (see \cite{Nielsen}).
-
+***Raj: It might be good to define $\ket{+}$ and $\ket{-}$ earlier. You use them again in the next postulate.***
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
@@ -40,7 +40,7 @@ There are {\emph{real}} physical systems that can be described in terms of qubit
     \textbf{Postulate 2}: The evolution of a closed quantum system is described by a unitary transformation. More precisely, the state $\ket{\psi_1}$ of the system at time $t_1$ is related to the state $\ket{\psi_2}$ of the system at time $t_2$ by a unitary operator U.  So, $\ket{\psi_2}=U\ket{\psi_1}$, where $U$ depends only on the times $t_1$ and $t_2$.
 \end{quote}
 
-Since for us, the state space will be ${\mathbb{C}}^n$ or ${\mathbb{C}}^2$, our operators wil all be unitary matrices.  
+Since for us, the state space will be ${\mathbb{C}}^n$ or ${\mathbb{C}}^2$, our operators will all be unitary matrices.  
 
 \begin{example} [Hadamard gate]
 A commonly used unitary operator is the Hadarmard gate, denoted by H.  
@@ -61,7 +61,7 @@ so $H$ maps an orthonormal set to an orthonormal set as we have seen.
 % \end{example}
 Note that this postulate does not tell us what unitary operator describes the evolution of the system, it only assures that the evolution can be described in such way.  When the state space is ${\mathbb{C}}^2$, any unitary operator will show up in such a way.
 
-It's worth pointing out that Postulate 2 applies to a {\emph{closed} system.  While this is nearly an impossible in reality, in many of the scenarios discussed in this thesis it is reasonable to describe the evolution via unitary operators nonetheless.
+It's worth pointing out that Postulate 2 applies to a \emph{closed} system.  While this is nearly impossible in reality, in many of the scenarios discussed in this thesis it is reasonable to describe the evolution via unitary operators nonetheless.
 
 
 

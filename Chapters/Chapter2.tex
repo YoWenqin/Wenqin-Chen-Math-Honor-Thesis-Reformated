@@ -44,11 +44,12 @@ One easily checks that $\mathbb{C}^d$ has inner product given by the formula
 \end{equation}
 With this inner product, ${\mathbb{C}}^d$ is a \emph{Hilbert space.}\footnote{A Hilbert space is an inner product space where Cauchy sequences converge.}  
 
-If $L:V \to W$ is a linear transformation between two inner product spaces, the {\emph{adjoint of }}$L$, $L^\dagger$ is the linear transformation from $W$ to $V$ characterized by the property that, \textrm{ for all } $\ket{v} \in V$, \textrm{ for all }$\ket{w} \in W$, \footnote{Note that the left inner product on the left is taken in $W$, while the one on the right is taken in $V$}
+If $L:V \to W$ is a linear transformation between two inner product spaces, the {\emph{adjoint of }}$L$, $L^\dagger$ is the linear transformation from $W$ to $V$ characterized by the property that, \textrm{ for all } $\ket{v} \in V$, \textrm{ for all }$\ket{w} \in W$, 
+% \footnote{Note that the left inner product on the left is taken in $W$, while the one on the right is taken in $V$}
 \begin{equation}
     \langle\ket{w}, L\ket{v}\rangle=\langle L^\dagger \ket{w}, \ket{v}\rangle .
 \end{equation}
-Note that in the equation above, the inner product on the left is taken in $W$, while the one on the right is taken in $V$.  ***Raj: Either remove this sentence or footnote 4*** When $V={\mathbb{C}}^n, W={\mathbb{C}}^m$ and $L(\ket{v})=A\ket{v}$ for some matrix $A \in M_{m.n}(\mathbb{C})$, the adjoint of $L$ is left multiplication by the conjugate transpose of $A$.  When this is the case, in a slight abuse of notation we'll write $A^\dagger=(\overline{A})^T$.\footnote{The superscript "T" denotes the transpose, and $\overline{A}$ is the entry by entry conjugate of the matrix $A$} One special case is when the matrix $A$ is a column vector $\ket{v}$.  Then, clearly $\ket{v}^\dagger$ is just the conjugate of the $\ket{v}$, written as a row vector.  It is convenient to write $\bra{v}={\ket{v}}^\dagger$, the symbol "$\bra{v}$" being read "bra v".\footnote{See footnote 1}  With this convention,
+Note that in the equation above, the inner product on the left is taken in $W$, while the one on the right is taken in $V$.  When $V={\mathbb{C}}^n, W={\mathbb{C}}^m$ and $L(\ket{v})=A\ket{v}$ for some matrix $A \in M_{m.n}(\mathbb{C})$, the adjoint of $L$ is left multiplication by the conjugate transpose of $A$.  When this is the case, in a slight abuse of notation we'll write $A^\dagger=(\overline{A})^T$.\footnote{The superscript "T" denotes the transpose, and $\overline{A}$ is the entry by entry conjugate of the matrix $A$} One special case is when the matrix $A$ is a column vector $\ket{v}$.  Then, clearly $\ket{v}^\dagger$ is just the conjugate transpose of the $\ket{v}$, written as a row vector.  It is convenient to write $\bra{v}={\ket{v}}^\dagger$, the symbol "$\bra{v}$" being read "bra v".\footnote{See footnote 1}  With this convention,
 \begin{equation}
 \bra{v}\cdot \ket{w}=\sum_i \overline{v_i}w_i=\langle \ket{v},\ket{w}\rangle,
 \end{equation}
@@ -88,7 +89,7 @@ $${\delta}_{i,j}=
 
 By using the \textit{Gram-Schmidt} procedure, an arbitrary basis $\{\ket{w_1},\hdots,\ket{w_k}\}$ can be replaced with an orthonormal basis $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$.  If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for $V$ and $\ket{v} \in V$ then, 
 $$\ket{v}=\sum\limits_i\braket{u_i|v}\ket{u_i} .$$
-Moreover, orthornormal vectors satisfy the \textit{completeness relation}.  That is, 
+Moreover, orthonormal vectors satisfy the \textit{completeness relation}.  That is, 
 \begin{eqnarray*}
     (\sum_i \ket{u_i}\bra{u_i})\ket{v}&=&
     \sum_i \ket{u_i}\bra{u_i}\sum_j \braket{u_j|v} \ket{u_j}\\
@@ -135,6 +136,7 @@ In addition, a useful way of representing linear operators which makes use of th
 In other words, the bra-ket notation convention allows us to interpret $\ket{w}\braket{v|v'}$ in two ways: the operator $\ket{w}\bra{v}$ acting on $\ket{v'}$, or multiplying $\ket{w}$ by the complex number $\braket{v|v'}$.
 \end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+***Raj: The result below is called the Spectral Theorem. It's probably good to mention this because it's not a completely easy result. (Although it's not too hard either; in a good semester I'll teach it in MTH 211)***
 One can check that any hermitian operator $M \in M_{k,k}(\mathbb{C})$ is diagonalizable, with real eigenvalues.  Also, two eigenvectors corresponding to different eigenvalues are necessarily orthogonal.  Thus, there exists an orthonormal basis $\{\ket{v_1},...\ket{v_k}\}$ for $\mathbb{C}^k$ where $\ket{v_i}$ is an eigenvector corresponding to eigenvalue $\lambda_i$  Then, the matrix $\sum\limits_j \lambda_j \ket{v_j}\bra{v_j}$ satisfies
 
 \begin{eqnarray}
@@ -142,7 +144,7 @@ One can check that any hermitian operator $M \in M_{k,k}(\mathbb{C})$ is diagona
 &=&\sum\limits_j \lambda_j\braket{v_j|v_i}\ket{v_j}\\
 &=&\sum\limits_j \lambda_j\delta_{i,j}\ket{v_j}\\
 &=&\lambda_i\ket{v_i}\\
-&=&M\ket{v_i}.\\
+&=&M\ket{v_i}.
 \end{eqnarray}
 Since left multiplication by the two matrices agrees on a basis,
 \begin{equation}
@@ -258,4 +260,5 @@ Let $\ket{v_1}, \ket{v_2}, \ket{v_3}$ and $\ket{v_4}$ be vectors.  Then,
     % \item $(\ket{v_1} \otimes \ket{v_2})(\ket{v_3} \otimes \ket{v_4})=\ket{v_1 v_3} \otimes \ket{v_2 v_4}$.
     \item $(A \otimes B)\circ(C \otimes D)=(A \circ C) \otimes (B \circ D)$.
 \end{enumerate}
+***Raj: is (2) supposed to be the other distributive law?***
 Thus, in particular, tensor products are associative and satisfy the left and right distributive laws.  The above relations hold in more generality.   

@@ -60,6 +60,7 @@ where $m_i \oplus k_i = m_i + k_i mod 2$. The decryption is given by
 Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
 \end{equation}
 \end{definition}
+
 Dec(k,e) is apparently the inverse of $Enc(k,m)$ since $m_i \oplus k_i \oplus k_i=m_i$, so the one-time pad scheme is correct. Now we see if it also satisfies Shannon's \textbf{Definition \ref{def: shannon}} for security. Assuming a uniformly random choice of key k, the associated ciphertext is also uniformly distributed over all n-bit strings, so we have 
 \begin{gather}
     p(e|m)=p(k|m)=\frac{1}{2^n}\\
