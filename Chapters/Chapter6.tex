@@ -237,14 +237,14 @@ We now describe the composite system analogue of the situation described in \tex
     \label{fig:entanglement}
 \end{figure}
 \textcolor{green}{There are two steps or two preconditions that enable Bob to infer Alice's measurement result with certainty.
-\begin{enumerate}
+\begin{enumerate} 
     \item After Alice's measurement yet before Bob's measurement, there must exist a correlation between Alice's measurement end state $\ket{\varphi}$ and the post-measurement state of Bob's system $\ket{\theta}$.
     \item If the correlation is strong, Bob must be able to make use of the correlation by measuring with respect to an orthonormal basis that allows him to infer Alice's outcome.
 \end{enumerate}
 Let's address the first step in this section and address the second one in the next section.}
+
 It's important to remember that in step 1, {\emph{only Alice}} measures her part of their shared state with respect to an orthonormal basis.  Still, because of this measurement, the state of their composite system collapses.  
-We are interested
-in the situation when Alice measures with respect to an orthonormal basis $\{\ket{\varphi_i}\}$.  If Alice measures with respect to this basis, we know that for some $i_0$, she observes outcome $i_0$, in which case her system has an end state of $\ket{\varphi_{i_0}}$. Using density matrices, this corresponds to a situation \textcolor{green}{we do an operation }
+We are interested in the situation when Alice measures with respect to an orthonormal basis $\{\ket{\varphi_i}\}$.  If Alice measures with respect to this basis, we know that for some $i_0$, she observes outcome $i_0$, in which case her system has an end state of $\ket{\varphi_{i_0}}$. Using density matrices, this corresponds to a situation \textcolor{green}{we do an operation }
 % where Alice measures with respect to
 $\ket{\varphi_{i_0}}\bra{\varphi_{i_0}} \otimes I$ \textcolor{green}{on the composite system consisting of Alice and Bob}.  In our first Proposition, we consider only the situation when Alice's system yields state vector $\ket{\varphi}$ post measurement.  This corresponds to the situation where Alice is measuring with respect to {\emph{any}} orthonormal basis that contains $\ket{\varphi}$ as an element. Our task is to determine how correlated Bob's part of their shared state is with Alice's after she has measured.  
 
@@ -320,8 +320,8 @@ This implies that
 \end{equation}
 
 
-Similarly, say Bob observes $\ket{\varphi}\bra{\varphi}$. Then the post-measurement state conditioned on Bob obtaining the outcome $\ket{\psi}_B$ is $\rho_{\ket{\psi}_B}^{AB}=\frac{(I_A \otimes \ket{\psi}\bra{\psi}_B  )\rho_{AB}(I_A \otimes \ket{\psi}\bra{\psi}_B)}{tr((I_A \otimes \ket{\psi}\bra{\psi}_B)\rho_{AB})}$.
-Then Alice's post-measurement state is $\ket{\theta}=\frac{1}{\sqrt{C}} M(\ket{\psi_i})^T \overline{\ket{\varphi}}$.
+Similarly, say Bob observes $\ket{\varphi}\bra{\varphi}$. Then the post-measurement state conditioned on Bob obtaining the outcome $\ket{\psi}_B$ is $$\rho_{\ket{\psi}_B}^{AB}=\frac{(I_A \otimes \ket{\psi}\bra{\psi}_B  )\rho_{AB}(I_A \otimes \ket{\psi}\bra{\psi}_B)}{tr((I_A \otimes \ket{\psi}\bra{\psi}_B)\rho_{AB})}$$.
+Then Alice's post-measurement state is $$\ket{\theta}=\frac{1}{\sqrt{C}} M(\ket{\psi_i})^T \overline{\ket{\varphi}}$$.
 \end{proof}
 
 \bigskip
@@ -497,15 +497,17 @@ We illustrate this correlation with some examples.
 
 \begin{example}
 \label{example rank full not orth}
-Include example where the n=3=rank, but the matrix is not a scalar multiple of a Unitary
+Include example where the n=3=rank, but the matrix is not a scalar multiple of a unitary matrix.
+\textcolor{red}{TODO}
 \end{example}
 
+\textcolor{green}{Here is an example illustrating what it means for when we say "the state of Bob's system has partial correlation with Alice's measurement end state and only contains some information about Alice" as in \textbf{Proposition \ref{entanglement-rank}}, when the rank of the coefficient matrix is neither 1 or n.}
 \begin{example}
 \label{example rank not full}
-Say Alice and Bob share a state $\ket{\psi}=\frac{1}{2\sqrt{2}}(\ket{e_1 e_1}+\ket{e_2 e_3}+\ket{e_3 e_1}+\ket{e_3 e_3}$). Then Alice makes a measurement and yields $\ket{\varphi}=\icol{a\\b\\c}$.
+Say Alice and Bob share a state $\ket{\psi}=\frac{1}{2\sqrt{2}}(\ket{e_1 e_1}+\ket{e_2 e_3}+\ket{e_3 e_1}+\ket{e_3 e_3}$).
 
-Then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is $\ket{\theta}$,
-\begin{equation}
+Suppose Alice makes a measurement and yields $\ket{\varphi}=\icol{a\\b\\c}$, then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is $\ket{\theta}$, where
+\begin{equation} \label{eqn:example-theta}
 \ket{\theta}=\frac{1}{\sqrt{C}}\begin{pmatrix}
 1 && 0 && 1\\
 0 && 0 && 0\\
@@ -514,57 +516,39 @@ Then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is 
 \overline{a+c}\\
 0\\
 \overline{b+c}
-\end{pmatrix}
+\end{pmatrix} 
 \end{equation}
-Say $\ket{\varphi}=\icol{1\\0\\0}$. Then $\ket{\theta}=\frac{1}{\sqrt{C}}\icol{1\\0\\0}$.
+\textcolor{green}{
+ Say Alice measures with respect to an orthonormal basis that consists of
+    \begin{gather}
+    \ket{\varphi_1}=\ket{e_1}\\ \ket{\varphi_2}=\frac{1}{\sqrt{2}}(-\ket{e_2}+\ket{e_3})\\
+    \ket{\varphi_3}=\frac{1}{\sqrt{2}}(-\ket{e_2}-\ket{e_3})
+    \end{gather}
+By \eqref{eqn:example-theta}, we get the mapping from Alice's measurement end state $\ket{\varphi_i}$ to post-measurement state for Bob $\ket{\theta_i}$:
+    \begin{gather}
+        \ket{\varphi_1} \mapsto \ket{\theta_1}=\ket{e_1}\\
+        \ket{\varphi_2} \mapsto \ket{\theta_2}=\ket{e_1}\\
+        \ket{\varphi_3} \mapsto \ket{\theta_3}=\frac{1}{\sqrt{5}}(-\ket{e_1}-2\ket{e_3})
+    \end{gather}
+}
+\textcolor{green}{The above mappings show that Alice yielding $\ket{\varphi_1}$ and $\ket{\varphi_2}$ makes no difference to the post-measurement state on Bob's system, while Bob post-measurement state corresponding to $\ket{\varphi_3}$ is distinctive from the other two $\ket{\theta}_i$. This is what we mean by "partial correlation" between Alice's measurement end state and Bob's post-measurement state, that there \emph{exists} an orthonormal basis that contain at least two $\ket{\varphi}_i$ that get mapped to the same post-measurement state in Bob's system.}
+\end{example} 
+\textcolor{green}{Notice that the \textit{"collision"} of mapping for the above example does not happen for an arbitrary orthonormal basis.} For example, here's the mapping from Alice's measurement end state $\ket{\varphi_i}$ to Bob's post-measurement state $\ket{\theta_i}$ if Alice measures with respect to the standard basis:
+\begin{gather}
+    \ket{e_1} \mapsto \ket{e_1}\\
+    \ket{e_2} \mapsto \ket{e_3}\\
+    \ket{e_3} \mapsto \ket{e_1}+\ket{e_3}
+\end{gather}
+The mapping is one-to-one now! \textcolor{green}{This means that when the rank of the coefficient matrix is neither 1 or full rank, if Alice picks a \textit{"lucky"} orthonormal basis, then assuming Bob also knows that basis, there still exist a \textit{perfect} correlation between Alice's measurement end state and Bob's post-measurement state as if in the case for full rank. The distinction between this and the full rank case is that in the latter case, the correlation is \textit{perfect} regardless of the orthonormal basis that Alice measures on. Similarly, in the case when the rank of the coefficient matrix is 1, there is no correlation regardless of the orthonormal basis that Alice picks. So our way of using the rank of the coefficient matrix to quantify the strength of correlation between Alice and Bob is more about the \textit{"worst case"} scenario.}
 
-Now consider if Alice makes a measurement and yields $\ket{\varphi'}=\icol{0\\-1\\1}$. Then Bob's post-measurement state is $\ket{\theta'}\bra{\theta'}$, where $\ket{\theta'}=\frac{1}{\sqrt{C}}\icol{1\\0\\0}=\ket{\theta}$.
+% Of course, we can use Gram-Schmidt to construct an orthonormal basis for $\mathbb{C}^3$ that contains both $\ket{\varphi}$ and $\ket{\varphi'}$. 
 
-Of course, we can use Gram-Schmidt to construct an orthonormal basis for $\mathbb{C}^3$ that contains both $\ket{\varphi}$ and $\ket{\varphi'}$. What this means is that for a coefficient matrix whose rank is neither 1 or the full rank, there exists some orthonormal basis that Alice can choose to measure on such that Bob will not be able to infer Alice's measurement result even if he knows the basis Alice chooses. Alice yielding $\ket{\varphi}$ and $\ket{\varphi'}$ will make no difference to what Bob observes on his side at all!
 
-One interesting thing to notice here is that such phenomenon does not occur for an arbitrary orthonormal basis that Alice picks. For example, here's what happens if Alice picks the standard basis to do her measurement. When Alice's measurement outcome is $\ket{e_1}$,$\ket{e_2}$, or $\ket{e_3}$, the post-measurement state for Bob is be $\ket{e_1}$, $\ket{e_3}$, $\ket{e_1}+\ket{e_3}$ respectively. There is this one-to-one mapping form Alice's measurement outcome to Bob's post-measurement state, so Bob will be able to infer Alice's measurement result once he makes a measurement on the standard basis 
-\textcolor{green}{wait. Bob will never be able to make a measurement and observe the outcome $\ket{e_1}+\ket{e_3}$ because he's measuring on the standard basis. in other words, if the post-measurement state for Bob is $\ket{e_1}+\ket{e_3}$, he will get the come $\ket{e_1}$ and $\ket{e_3}$ half of the time each. } \textcolor{red}{we are not measuring yet, but we can come back to this example in a later section. Here we are just talking about the correlation. "it might seem that there is a perfect correlation...yet Bob won't be able to make a measurement in this case".}
-% \textcolor{green}{how well Bob can do in determining what Alice measured in this case?}
-% $\ket{\varphi_2}=$.
+%  What this means is that for a coefficient matrix whose rank is neither 1 or the full rank, there exists some orthonormal basis that Alice can choose to measure on such that Bob will not be able to infer Alice's measurement result even if he knows the basis Alice chooses. Alice yielding $\ket{\varphi}$ and $\ket{\varphi'}$ will make no difference to what Bob observes on his side at all!
 
-% Say $\ket{\theta}=\icol{\theta_1 \\ \theta_2 \\ \theta_3}$, then Bob is trying to solve for
-% \begin{equation}
-% \begin{cases}
-% \sqrt{C}\theta_1=\overline{a+c}\\
-% \sqrt{C}\theta_2=0\\
-% \sqrt{C}\theta_3=\overline{b+c}
-% \end{cases}
-% \Rightarrow 
-% \begin{cases}
-% b=a+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})\\
-% \theta_2=0\\
-% c=\sqrt{C}\overline{\theta_1}-a
-% \end{cases}
-% \end{equation}
-% Now consider $\ket{\varphi'}=\begin{pmatrix}
-% a'\\a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})\\c'
-% \end{pmatrix}$. For $\ket{\varphi}$ and $\ket{\varphi'}$ to be orthogonal,
-% \begin{gather}
-%     aa'+b(a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1}))+cc'=0\\
-%     \Rightarrow c'=-\frac{1}{c}(aa'+b(a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})))
-% \end{gather}
-% So $\ket{\varphi'}=\begin{pmatrix}
-% a'\\
-% a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})\\
-% -\frac{1}{c}(aa'+b(a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})))
-% \end{pmatrix}$
 
-% Now check what happens if Alice's measurement yields $\ket{\varphi'}$. Then Bob's post-measurement state is
-% \begin{equation}
-%     \frac{1}{\sqrt{C}}\begin{pmatrix}
-%     \overline{a'-\frac{1}{c}(aa'+b(a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})))}\\
-%     0\\
-%     \overline{a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})-\frac{1}{c}(aa'+b(a'+\sqrt{C}(\overline{\theta_3}-\overline{\theta_1})))}
-%     \end{pmatrix}
-% \end{equation}
+\textcolor{red}{we are not measuring yet, but we can come back to this example in a later section. Here we are just talking about the correlation. "it might seem that there is a perfect correlation...yet Bob won't be able to make a measurement in this case".}
 
-\end{example}
-\textcolor{green}{it's about the worst correlation. if we just pick the standard basis it still looks maximally correlated, but there exists "an" orthonormal basis such that two differents elements in the basis get mapped to the same theta. the rank is about the "worst" it can be. this might be put into the further discussion session}
 
 
 
@@ -575,10 +559,10 @@ One interesting thing to notice here is that such phenomenon does not occur for 
 
 Next, we take care of "old business" by making sure that Bob's post-measurement state in \textbf{Lemma \ref{end state lemma}} is {\emph{legal}}.  The point is that a priori the conjugate of Alice's post-measurement state could be in the kernel of the transpose of the coefficient matrix $M(\ket{\psi})$. If this were the case, {\bf{Lemma}} \ref{end state lemma} tells us that the post-measurement state would be zero, which is in fact not a valid quantum state.  Thus, we now show that this occurs with probability zero.
 
-\textcolor{blue}{In this proof, change outcome to end state and make the structure of the proof explicit.  That is, any u whose conjugate is in the kernel of the transpose of the coefficient matrix corresponds to an outcome that has probability zero.  Also, you don't have transposes in this proof.}
+\textcolor{blue}{In this proof, change outcome to end state and make the structure of the proof explicit.  That is, any u whose conjugate is in the kernel of the transpose of the coefficient matrix corresponds to an outcome that has probability zero.  Also, you don't have transposes in this proof.}\textcolor{green}{done}
 
 \begin{prop} \label{null space}
-Say Alice and Bob share a two-qudit quantum state $\ket{\psi}$. Alice can never observe an outcome corresponding to an end state $\ket{u}$, where $\ket{\Bar{u}} \in Nul(M(\ket{\psi})^T)$.
+Say Alice and Bob share a two-qudit quantum state $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^n$. \textcolor{green}{Alice's end state after her measurement can never be $\ket{u}$, such that} $\ket{\Bar{u}} \in Nul(M(\ket{\psi})^T)$.
 \end{prop}
 \begin{proof}
 The shared density matrix is 
@@ -586,28 +570,29 @@ The shared density matrix is
 \rho=\ket{\psi}\bra{\psi}=(\sum_{i,j} a_{ij}\ket{e_i e_j}(\sum_{i',j'} \overline{a_{i'j'}}\bra{e_{i'} e_{j'}})=\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}\ket{e_i e_j}\bra{e_{i'} e_{j'}}.  
 \end{gather*}
 
-Let $\ket{u}=\sum_1^n b_i \ket{e_i}$. Then
-\begin{equation*} \tag{$\star$}
-    \braket{u|i}=\overline{b_i}, \braket{i|u}=b_i
-\end{equation*}
-
-Since $\ket{\Bar{u}} \in Nul(M(\ket{\psi}))$, we have 
-\begin{equation*} \tag{$\star \star$}
+Consider an arbitrary n-dimensional qudit $\ket{u}=\sum_1^n b_i \ket{e_i}$. Then
+\begin{equation} \label{eqn: null space eqn 1}
+    \braket{u|e_i}=\overline{b_i}, \braket{e_i|u}=b_i
+\end{equation}
+\textcolor{green}{We want to show that if $\ket{u}$'s conjugate happens to be in the kernel of $M(\ket{\psi})^T$, the probability of Alice's measurement end state being $\ket{u}$ 0. Now suppose}
+$\ket{\Bar{u}} \in Nul(M(\ket{\psi})^T)$, we have \begin{equation} \label{eqn: null space eqn 2}
     \forall i, \sum_{j=1}^n a_{ij} \overline{b_i}=0
-\end{equation*}
+\end{equation}
+\textcolor{red}{reference where the formula for calculating the probability comes from.}
 
-The probability of Alice observing $\ket{u}$, and Bob observing some $\ket{v}$ is
+The probability of Alice observing $\ket{u}$, and Bob observing an arbitrary n-dimensional qudit $\ket{v}$ is
 \begin{eqnarray*}
 p(\ket{u}_A, \ket{v}_B)&=&\braket{u v | \rho |u v}\\
-&=&\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}\braket{u|i}\braket{i'|u}_A \otimes \braket{v|j}\braket{j'|v}_B\\
-&=&\sum_i \sum_{i'} \sum_j \sum_{j'}  a_{ij} \overline{a_{i'j'}} \braket{u|i}\braket{i'|u}_A \otimes \braket{v|j}\braket{j'|v}_B\\
-&=&(\sum_i \sum_j a_{ij} \overline{b_i})(\sum_{i'} \sum_{j'} \overline{a_{i'j'}} b_{i'})_A \otimes \braket{v|j}\braket{j'|v}_B   \; \; \;  (by (\star))\\ 
-&=& 0 \; \; \; (by (\star \star))
+&=&\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}\braket{u|e_i}\braket{e_{i'}|u}_A \otimes \braket{v|e_j}\braket{e_{j'}|v}_B\\
+&=&\sum_i \sum_{i'} \sum_j \sum_{j'}  a_{ij} \overline{a_{i'j'}} \braket{u|e_i}\braket{e_{i'}|u}_A \otimes \braket{v|j}\braket{j'|v}_B\\
+&=&(\sum_i \sum_j a_{ij} \overline{b_i})(\sum_{i'} \sum_{j'} \overline{a_{i'j'}} b_{i'})_A \otimes \braket{v|j}\braket{j'|v}_B   \; \; \;  (by \;  \eqref{eqn: null space eqn 1})\\ 
+&=& 0 \; \; \; (by \; \eqref{eqn: null space eqn 2})
 \end{eqnarray*}
-Thus, Alice can never observe an outcome with a state who's conjugate is in the kernel of $M(\ket{\psi})$.
+Thus, \textcolor{green}{Alice's measurement end state can never has conjugate that is} in the kernel of $M(\ket{\psi})^T$.
 \end{proof}
 
-In the next section, we examine to what extent Bob can {\emph{use}} his end state to figure out what outcome Alice observed.
+\textcolor{green}{We have described when there exists perfect correlation between Alice's measurement end state $\ket{\varphi}$ and Bob's post-measurement state $\ket{\theta}$, thereby completing the first step that allows Bob to infer Alice's measurement end state. However, if Bob is not able to do a measurement on his post-measurement state, having a "perfect" correlation with Alice is useless. We therefore move on to the second step in the next section, in which we examine to what extent Bob can figure out Alice's $\ket{\varphi}$ by \emph{measuring} on his post-measurement state $\ket{\theta}$.}
+% we examine to what extent Bob can {\emph{use}} his end state to figure out what outcome Alice observed.
 
 
 %----------------------------------------------------------------------------------------
@@ -617,20 +602,25 @@ In the next section, we examine to what extent Bob can {\emph{use}} his end stat
 
 \textcolor{blue}{Careful with notation.  We use parenthesis not subscripts for the coordinate matrix.  I changed some, but not all.} \textcolor{green}{done}
 \section{Entanglement and Measuring}
-In the last section we analyzed the way in which Alice's and Bob's end states are correlated when they share a composite state. We now continue with our analysis, but the key point being that Bob doesn't have {\emph{access}} to his state vector without making a  {\emph{measurement}}.  This situation is similar to that of \textbf{Examples \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}}, only now instead of Alice {\emph{selecting}} a state, now she {\emph{measures}} and observes an outcome with an end state.  Specifically, in our previous setup, Alice chooses a state from an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$ known to both herself and to Bob. She then gives the state to Bob, whose task is to identify the index of that state. Our task is different. Now, Alice and Bob share a known composite 2-qudit state $\ket{\psi}$ and Alice measures with respect to the orthonormal basis. After Alice has made a measurement, the task is for Bob to infer Alice's outcome by measuring his part of the system. By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M(\ket{\psi_i})$ preserves orthogonality (and has full rank), Bob can measure with respect to the basis $\{M(\ket{\psi_i})^T \ket{\psi_i}\}_{i=1}^n$, which is automatically orthonormal. Thus, by measuring with respect to {\emph{this orthonormal basis}} he will be able to infer which outcome Alice observed by simply applying the inverse of the transpose of the coefficient matrix to the his end state. 
+In the last section we analyzed the way in which Alice's and Bob's end states are correlated when they share a composite state. We now continue with our analysis, but the key point being that Bob doesn't have {\emph{access}} to his state vector without making a  {\emph{measurement}}.  
+% This situation is similar to that of \textbf{Examples \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}}, only now instead of Alice {\emph{selecting}} a state, now she {\emph{measures}} and observes an outcome with an end state.  Specifically, in our previous setup, Alice chooses a state from an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$ known to both herself and to Bob. She then gives the state to Bob, whose task is to identify the index of that state. Our task is different. Now, Alice and Bob share a known composite 2-qudit state $\ket{\psi}$ and Alice measures with respect to the orthonormal basis. 
+
+Now that Alice has made a measurement, the task is for Bob to infer Alice's outcome by measuring his part of the system. By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M(\ket{\psi_i})$ preserves orthogonality (and has full rank), Bob can measure with respect to the basis $\{M(\ket{\psi_i})^T \ket{\psi_i}\}_{i=1}^n$, which is automatically orthonormal. Thus, by measuring with respect to {\emph{this orthonormal basis}} he will be able to infer which outcome Alice observed by simply applying the inverse of the transpose of the coefficient matrix to the his end state. 
 
 On the other hand, if the transpose of the coefficient matrix does not preserve orthogonality, Bob cannot determine Alice's outcome with certainty {\emph{even if their shared state is maximally entangled}}.  Thus, perfect correlation between Alice's and Bob's end states is not enough to guarantee that he knows the results of her measurement.  This says that there are two different reasons why  Bob may fail to know the result of Alice's measurement.  The first is that their state may not be maximally entangled, so their end states are not perfectly correlated.  The second, is that even though their end states are perfectly correlated, uncertainty is introduced when Bob tries to {\emph{access}} his end state by measuring.  
 
-\textcolor{blue}{Add small transition}
+\textcolor{blue}{Add small transition} \textcolor{green}{done}.
 
-\textcolor{green}{I think I had that $\ket{\psi}$ must be maximally entangled in the below proposition. Is that not needed? }
+
+\textcolor{green}{The next Proposition is an extension of \textbf{Proposition \ref{entanglement-rank}} and concludes when exactly is Bob able to infer Alice's measurement end state.}
+\textcolor{red}{I think I had that $\ket{\psi}$ must be maximally entangled in the below proposition. Is that not needed? }
 
 \begin{prop} \label{prop: ultimate}
 Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state representing a composite system of Alice and Bob. Say Alice makes a measurement with respect to a basis known to both herself and Bob.  If the transpose of the coefficient matrix preserves orthogonality, then Bob can determine Alice's measurement outcome with certainty. 
 \end{prop}
 
 \begin{proof}
-This result follows from the calculations in the proof of \textbf{Proposition \ref{entanglement-rank}}, and the fact that a matrix which preserves orthogonality must be of full rank.
+This result follows from the calculations in the proof of \textbf{Proposition \ref{entanglement-rank}}, and the fact that a matrix which preserves orthogonality must be of full rank. \textcolor{green}{This will be proved in the next Proposition}
 \end{proof}
 The next Proposition characterizes matrices that preserve orthogonality.
 
