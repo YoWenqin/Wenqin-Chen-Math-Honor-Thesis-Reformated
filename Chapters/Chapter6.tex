@@ -217,9 +217,9 @@ Thus, we have established that $rank(M(\ket{\psi}))=rank(M_{B \otimes B'}(\ket{\
 
 \textcolor{blue}{I changed this paragraph a bit.  I think it sounds better, but I'm not crazy about the Einstein stuff in the middle.}
 
-Our task is to now show our this mathematical description of entanglement is consistent with the correlation that motivated the phrase "spooky action at a distance." In the 1930s Einstein was unhappy with the notion that an event at one point in the universe could influence another one far away.  We examine a {\emph{real world}} situation where entanglement occurs, for example, when a laser beam is fired through a special kind of crystal to form a pair of entangled photons. Once either one of the photons is measured (as introduced in \textbf{Section \ref{subsection:projective measurement}}), the state of the entire entangled system {\emph{collapses}}.  In particular, the state of the other photon collapses as well, {\emph{although it may be very far away from the place where the measurement occurs.}} To explain this, Einstein theorized that the two photons contained some information that was hidden from us until the moment of measurement. While this "hidden information" idea ultimately was proven wrong by John Bell (see \textbf{Section \ref{section: bell-nonlocality}}), the fact remains that entanglement allow for the {\emph{exchanging}} of information. In other words, even though Alice's photon may be at Smith College while Bob's is on Mars, Bob may be able to gain information about Alice's photon by measuring his. Next we will show that our "rank test" for entanglement can capture the correlation between the component states of composite system after measurement.
+Our task is to now show our this mathematical description of entanglement is consistent with the correlation that motivated the phrase "spooky action at a distance". In the 1930s Einstein was unhappy with the notion that an event at one point in the universe could influence another one far away as if there is faster than light communication.  We examine a {\emph{real world}} situation where entanglement occurs, for example, when a laser beam is fired through a special kind of crystal to form a pair of entangled photons. Once either one of the photons is measured (as introduced in \textbf{Section \ref{subsection:projective measurement}}), the state of the entire entangled system {\emph{collapses}}.  In particular, the state of the other photon collapses as well, {\emph{although it may be very far away from the place where the measurement occurs.}} To explain this, Einstein theorized that the two photons contained some information that was hidden from us until the moment of measurement. While this "hidden information" idea ultimately was proven wrong by John Bell (see \textbf{Section \ref{section: bell-nonlocality}}), the fact remains that entanglement allows for the {\emph{exchanging}} of information. In other words, even though Alice's photon may be at Smith College while Bob's is on Mars, Bob may be able to gain information about Alice's photon by measuring his. Next we will show that our "rank test" for entanglement can capture the correlation between the component states of composite system after measurement.
 
-We now define the strength of entanglement of a composite system in terms of the coefficient matrix, and show that our notion is consistent with the degree to which the post measurement states in a composite system are correlated.
+We now define the strength of entanglement of a composite system in terms of the coefficient matrix, and show that our notion is consistent with the degree to which the post-measurement states in a composite system are correlated.
 % If the rank being 1 implies the joint quantum state is not entangled, what if the coefficent matrix has full rank? We now may make the following definition and proceed to classify the strength of entanglement in terms of the rank of the coefficient matrix. Here by strength, we mean how much information Bob has about Alice once Alice measures on her part of the composite system.
 
 \begin{definition} \label{def: maximally entangled}
@@ -229,41 +229,44 @@ We now define the strength of entanglement of a composite system in terms of the
 
 Note that $\ket{\psi}$ is entangled exactly when it's entanglement degree is greater than one.  We now describe the composite system analogue of the situation described in \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{Example \ref{example: non-orthogonal states for measurements}}, where Bob tries to determine which state Alice picks from a known basis. 
 
-In this {\emph{quantum version}}, Alice and Bob share a composite state which is known to both parties.  This time, instead of Alice {\emph{selecting}} an element of a basis, she {\emph{measures}} her part of the composite state with respect to an orthonormal basis, which is known to Bob (see \textbf{Figure \ref{fig:entanglement}}).  Thus {\emph{Alice's state}} will be her end state post measurement, which is necessarily and element of the orthonormal basis.  Just like in the previous situation, the goal is for Bob to determine Alice's state with certainty.  A schematic is presented in \textbf{Figure \ref{fig:entanglement}}.
+We now introduce a {\emph{quantum version}} of the task in \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{Example \ref{example: non-orthogonal states for measurements}}. Alice and Bob now share a composite state which is known to both parties.  This time, instead of Alice {\emph{selecting}} an element of a basis, she {\emph{measures}} her part of the composite state with respect to an orthonormal basis, which is known to Bob (see \textbf{Figure \ref{fig:entanglement}}).  Thus {\emph{Alice's state}} will be her end state post-measurement, which is necessarily and element of the orthonormal basis.  Just like in the previous situation, the goal is for Bob to determine Alice's state with certainty.  A schematic is presented in \textbf{Figure \ref{fig:entanglement}}.
 
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.8]{"entangled to alice and bob".png}
-    \caption{Alice and Bob sharing an entangled state. Suppose that Alice measures with respect to an orthonormal basis $\{\varphi_i\}$ and obtains an end state $\ket{\varphi}$.  Then, the post measurement state for Bob after Alice's measurement is $\ket{\theta}$. That is, their composite system has end state $\ket{\varphi}\otimes\ket{\theta}$}
+    \caption{Alice and Bob sharing an entangled state. Suppose that Alice measures with respect to an orthonormal basis $\{\varphi_i\}$ and obtains an end state $\ket{\varphi}$.  Then, the post-measurement state for Bob after Alice's measurement is $\ket{\theta}$. That is, their composite system has end state $\ket{\varphi}\otimes\ket{\theta}$}
     \label{fig:entanglement}
 \end{figure}
-\textcolor{red}{add a tensor in between}
+\textcolor{red}{add a tensor in between and a put a measurement sign only next to Alice}
 
 
 We will see that there are two requirements that must be met if Bob is to be able to carry out his task with certainty.
+\begin{quote}
 \begin{enumerate} 
-    \item After Alice's measurement there must be a perfect correlation between Alice's end state $\ket{\varphi}$ and (the post measurement) state of Bob's system $\ket{\theta}$.  That is to say, {\emph{if one knows}} $\ket{\theta}$ and Alice and Bob's shared composite state, then one can recover $\ket{\varphi}$.
+    \item After Alice's measurement there must be a perfect correlation between Alice's end state $\ket{\varphi}$ and Bob's state $\ket{\theta}$.  That is to say, {\emph{if one knows}} $\ket{\theta}$ and Alice and Bob's shared composite state, then one can recover $\ket{\varphi}$.
     \item Bob must be able to {\emph{access}} his state without creating additional uncertainty.
-\end{enumerate}
+\end{enumerate}    
+\end{quote}
 
-We address the first requirement in this Section and the second requirement in next Section.  We wish to emphasize that initially {\emph{only Alice}} measures her part of their shared state with respect to an orthonormal basis.  Still, because of this measurement, the state of their composite system collapses.  
+
+We address the first requirement in this Section and the second requirement in the next Section.  We wish to emphasize that initially {\emph{only Alice}} measures her part of their shared state with respect to an orthonormal basis.  Still, because of this measurement, the state of their composite system collapses.  
 
 
 Suppose that Alice measures with respect to an orthonormal basis ${\{\ket{\varphi_i}\}}_{i=1}^{n}$.  Then, we know that for some $i_0$, she will observe outcome $i_0$, in which case her system will have $\ket{\varphi_{i_0}}$ as it's end state. Using density matrices, this corresponds to a situation \textcolor{green}{we do an operation }
 % where Alice measures with respect to
 $\ket{\varphi_{i_0}}\bra{\varphi_{i_0}} \otimes \mathbb{I}$ \textcolor{green}{on the composite system consisting of Alice and Bob}.  
 
-In our next Proposition, we consider the situation where Alice's system yields state vector $\ket{\varphi}$ post measurement.  This corresponds to the case where Alice is measuring with respect to {\emph{any}} orthonormal basis that contains $\ket{\varphi}$ as an element. Our task is to determine how correlated Bob's and Alice's states are after she has measured.  
+In our next Proposition, we consider the situation where Alice's system yields state vector $\ket{\varphi}$ post-measurement.  This corresponds to the case where Alice is measuring with respect to {\emph{any}} orthonormal basis that contains $\ket{\varphi}$ as an element. Our task is to determine how correlated Bob's and Alice's states are after she has measured.  
 
 
-% '\textcolor{blue}{We have to make sure enough is said about this version of the measurement computation.  I've changed some of them, but we can't call a state an "outcome".  Alice observes some outcome and the post measurement state is psi.  Also, in the Proofs below, make sure we don't use any notation or computations that we haven't defined or shown}
+% '\textcolor{blue}{We have to make sure enough is said about this version of the measurement computation.  I've changed some of them, but we can't call a state an "outcome".  Alice observes some outcome and the post-measurement state is psi.  Also, in the Proofs below, make sure we don't use any notation or computations that we haven't defined or shown}
 % \textcolor{red}{outcome refers to the index instead of the actual state. check all of them.}
 
 \textcolor{red}{add to the chapter in density matrix to justify our computation. change the prop to only use state}
 \begin{prop}
 \label{entanglement-rank}
-Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state shared by Alice and Bob. Say Alice first makes a measurement and observes an outcome with end state $\ket{\varphi}$. Let the state of Bob's system after Alice has performed the measurement be denoted by $\ket{\theta}$. Then,
+Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state shared by Alice and Bob. Say Alice first makes a measurement and observes an outcome with end state $\ket{\varphi}$. Let the state of Bob's system after Alice's measurement be denoted by $\ket{\theta}$. Then,
 \begin{enumerate}
     \item $rank(M(\ket{\psi}))=1$ if and only if $\ket{\theta}$ is constant.  That is, $\ket{\theta}$ is independent of $\ket{\varphi}$. In this situation, the state of Bob's system has no correlation with Alice's measurement end state.
     \item $rank(M(\ket{\psi}))=n$ if and only if the state of Bob's system has perfect correlation with Alice's measurement end state.
@@ -289,10 +292,10 @@ Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state sh
 \end{enumerate}
 \end{lemma}
 
-Thus, when Alice's post measurement vector is $\ket{\varphi}$, Bob's is given by left multiplication by $M(\ket{\psi})^T$ up to a global phase and taking conjugates.
+Thus, when Alice's post-measurement state is $\ket{\varphi}$, Bob's is given by left multiplication by $M(\ket{\psi})^T$ up to a global phase and taking conjugates.
 
 \begin{proof}
-It is convenient to work with density matrices.  Thus, we first compute $\rho=\iota(\ket{\psi})\ket{\psi}\bra{\psi}$.  Let $\ket{\psi}$ be given by 
+It is convenient to work with density matrices.  Thus, we first compute $\rho=\iota(\ket{\psi})=\ket{\psi}\bra{\psi}$.  Let $\ket{\psi}$ be given by 
 \begin{equation}
 \ket{\psi}=\icol{a_1\\ \vdots \\a_{n^2}}.
 \end{equation}
@@ -307,14 +310,14 @@ Now say
 \ket{\varphi}=\icol{b_1\\ \vdots \\b_n}.
 \end{equation}
 Say Alice observes $\ket{\varphi}\bra{\varphi}_A$.
-Then the post measurement state conditioned on obtaining the end state $\ket{\varphi}_A$ is
+Then the post-measurement state conditioned on obtaining the end state $\ket{\varphi}_A$ is
 \begin{equation}
-\rho_{\ket{\psi}_A}^{AB}=\frac{(\ket{\varphi}\bra{\varphi}_A \otimes I_B)\rho_{AB}(\ket{\varphi}\bra{\varphi}_A \otimes I_B)}{tr((\ket{\varphi}\bra{\varphi}_A \otimes I_B)\rho_{AB})}
+\rho_{\ket{\varphi}_A}^{AB}=\frac{(\ket{\varphi}\bra{\varphi}_A \otimes I_B)\rho_{AB}(\ket{\varphi}\bra{\varphi}_A \otimes I_B)}{tr((\ket{\varphi}\bra{\varphi}_A \otimes I_B)\rho_{AB})}
 \end{equation}
 
 Let $C$ be the denominator of the above expression. Then 
 \begin{eqnarray}
-\rho_{\ket{\psi}_A}^{AB}&=&\frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\ket{\psi}\braket{\psi|e_i}\braket{e_{i'}|\psi}\bra{\psi}_A \otimes \ket{e_j}\bra{e_{j'}}_B\\
+\rho_{\ket{\varphi}_A}^{AB}&=&\frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\ket{\psi}\braket{\psi|e_i}\braket{e_{i'}|\psi}\bra{\psi}_A \otimes \ket{e_j}\bra{e_{j'}}_B\\
 &=&\frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\overline{b_i}b_{i'}\ket{e_j}\bra{e_{j'}}_B\\
 &=&\ket{\varphi}\bra{\varphi}_A \otimes \frac{1}{c} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\overline{b_i}b_{i'}\ket{e_j}\bra{e_{j'}}
 \end{eqnarray}
@@ -330,8 +333,8 @@ This implies that
 \end{equation}
 
 
-Similarly, say Bob observes $\ket{\varphi}\bra{\varphi}$. Then the post measurement state conditioned on Bob obtaining the end state $\ket{\psi}_B$ is $$\rho_{\ket{\psi}_B}^{AB}=\frac{(I_A \otimes \ket{\psi}\bra{\psi}_B  )\rho_{AB}(I_A \otimes \ket{\psi}\bra{\psi}_B)}{tr((I_A \otimes \ket{\psi}\bra{\psi}_B)\rho_{AB})}$$.
-Then Alice's post measurement state is $$\ket{\theta}=\frac{1}{\sqrt{C}} M(\ket{\psi_i})^T \overline{\ket{\varphi}}$$.
+Similarly, say Bob observes $\ket{\varphi}\bra{\varphi}$. Then the post-measurement state conditioned on Bob obtaining the end state $\ket{\varphi}_B$ is $$\rho_{\ket{\varphi}_B}^{AB}=\frac{(I_A \otimes \ket{\varphi}\bra{\varphi}  )\rho_{AB}(I_A \otimes \ket{\varphi}\bra{\varphi})}{tr((I_A \otimes \ket{\varphi}\bra{\varphi})\rho_{AB})}$$.
+Then Alice's post-measurement state is $$\ket{\theta}=\frac{1}{\sqrt{C}} M(\ket{\psi_i})^T \overline{\ket{\varphi}}$$.
 
 The result follows by {\bf{Lemma}} \ref{lemma state into density}.
 \end{proof}
@@ -353,7 +356,7 @@ Now we are ready to prove \textbf{Proposition \ref{entanglement-rank}}.
 {\bf{Proposition}} \ref{entanglement-rank} follows from the following result.  Assume all the notation of {\bf{Proposition}} \ref{entanglement-rank}.
 \begin{prop}
 \label{correlation}
-Suppose $rank({M(\ket{\psi})}^T)=m$, and let $j_1, j_2, ... j_m$ be the indices of the columns of the reduced row echelon form of $M(\ket{\psi}^T$ that have a leading one.  Suppose further that $\ket{\varphi} \in span\{\ket{e_{j_1}}, ... \ket{e_{j_m}}\}$.  Then if one knows $\ket{\theta}$, one can determine $\ket{\varphi}$ uniquely.  
+Suppose $rank({M(\ket{\psi})}^T)=m$, and let $j_1, j_2, ... j_m$ be the indices of the columns of the reduced row echelon form of $M(\ket{\psi})^T$ that have a leading one.  Suppose further that $\ket{\varphi} \in span\{\ket{e_{j_1}}, ... \ket{e_{j_m}}\}$.  Then if one knows $\ket{\theta}$, one can determine $\ket{\varphi}$ uniquely.  
 \end{prop}
 Thus, {\bf{Proposition}} \ref{correlation} says that if the $\ket{\psi}$ is maximally entangled,$\ket{\varphi}$ and $\ket{\theta}$ are perfectly correlated in the sense that from $\ket{\theta}$ one can {\emph{always}} uniquely determine $\ket{\varphi}$.  If $\ket{\psi}$ is entangled with entanglement degree $m<n$, then given $\ket{\theta}$ one can determine $\ket{\varphi}$ if we suppose first that $\ket{\varphi}$ lies in an $m$-dimensional subspace.  In this sense there is partial correlation between end states but not total.  Note that when $\ket{\psi}$ is separable, {\bf{Proposition}} \ref{correlation} tells us that $\ket{\theta}$ conveys no information about $\ket{\varphi}$.  This is clear, since up to a global phase there is a unique state in the direction of $\ket{e_j}$ for any $j$.
 
@@ -362,7 +365,7 @@ We now prove {\bf{Proposition}} \ref{correlation}.
 As in the proof of {\bf{Lemma}} \ref{end state lemma}, we work with density matrices here.  From {\bf{Lemma}} \ref{end state lemma},
 \begin{eqnarray}
 \ket{\theta}\bra{\theta}&=&{M(\ket{\psi})}^T\overline{\ket{\varphi}}\cdot({M(\ket{\psi})}^T\overline{\ket{\varphi}})^\dagger\\
-&=&{M(\ket{\psi})}^T\overline{\ket{\varphi}}\cdot {(\overline{\ket{\psi}})}^\dagger {({M(\ket{\psi})}^T)}^\dagger \\
+&=&{M(\ket{\psi})}^T\overline{\ket{\varphi}}\cdot {(\overline{\ket{\psi}})}^\dagger {({M(\ket{\varphi})}^T)}^\dagger \\
 &=&{M(\ket{\psi})}^T\overline{\ket{\varphi}}\cdot \overline{\bra{\varphi}} {({M(\ket{\psi})}^T)}^\dagger.
 \end{eqnarray}
 Now let $Y$ be the reduced row echelon form of $({M(\ket{\psi})}^T$ and let $A$ be the an $n$ by $n$ invertible matrix with
@@ -562,7 +565,7 @@ We illustrate this correlation with some examples.
 \textcolor{green}{Here is an example illustrating what it means for when we say "the state of Bob's system has partial correlation with Alice's measurement end state and only contains some information about Alice" as in \textbf{Proposition \ref{entanglement-rank}}, when the rank of the coefficient matrix is neither 1 or n.}
 \begin{example}
 \label{example rank not full}
-Say Alice and Bob share a state $\ket{\psi}=\frac{1}{2\sqrt{2}}(\ket{e_1 e_1}+\ket{e_2 e_3}+\ket{e_3 e_1}+\ket{e_3 e_3}$).
+Say Alice and Bob share a state $$\ket{\psi}=\frac{1}{2\sqrt{2}}(\ket{e_1 e_1}+\ket{e_2 e_3}+\ket{e_3 e_1}+\ket{e_3 e_3}).$$
 
 Suppose Alice makes a measurement and yields $\ket{\varphi}=\icol{a\\b\\c}$, then from \textbf{Lemma \ref{end state lemma}}, Bob's post-measurement state is $\ket{\theta}$, where
 \begin{equation} \label{eqn:example-theta}
@@ -787,8 +790,8 @@ We normalize the two vectors and call them $\ket{u}'$ and $\ket{v}'$, respective
 %----------------------------------------------------------------------------------------
 \pagebreak
 
-\textcolor{blue}{Need to add some here.  Also maybe add a diagram or a series of diagram} \textcolor{green}{what kind of diagram?}
-\textcolor{red}{use Alice and Bob diagrams}
+\textcolor{blue}{Need to add some here.  Also maybe add a diagram or a series of diagram}
+\textcolor{red}{use Alice and Bob diagrams and a paragraph with an intro about the ideas}
 \section{Application to a One-time Pad}
 The above classification of entanglement can potentially be used in the following cryptographic scheme.
 \begin{enumerate}
