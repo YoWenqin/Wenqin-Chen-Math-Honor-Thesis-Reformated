@@ -22,13 +22,13 @@ Famous physicists like Niels Bohr, Max Planck, Paul Dirac, Werner Heisenberg, Ri
 
 
 \begin{quote}
-    \textbf{Postulate 1}: Associated to any isolated physical system is a Hilbert space\footnote{a complete inner product space} known as the state space of the system. The system is completely described by its state vector, which is a unit vector in the system's state space.
+    \textbf{Postulate 1}: Associated to any isolated physical system is a Hilbert space\footnote{a complete inner product space} known as the {\emph{state space}} of the system. The system is completely described by its {\emph{state vector}}, which is a unit vector in the system's state space.
 \end{quote}
 
-For our purposes, typically the Hilbert space is $C^n$. In fact, most of the time $n=2$, so the state vector is a qubit (see \textbf{Definition \ref{def qubit}} and more generally Chapter \ref{Chapter2-preliminaries}).  Thus, unless otherwise specified, in what follows a state vector is a superposition of $\ket{0}$ and $\ket{1}$.
+For our purposes, the Hilbert space is $C^n$. In fact, often $n=2$, so the state vector is a qubit (see \textbf{Definition \ref{def qubit}} and more generally Chapter \ref{Chapter2-preliminaries}).  Thus, in many of our examples, a state vector is a superposition of $\ket{0}$ and $\ket{1}$.
 
 There are {\emph{real}} physical systems that can be described in terms of qubits.  These include, for example, the polarization of a photon, the alignment of nuclear spin in a uniform magnetic field, and the state of an electron orbiting a single atom.  In the last case, the orbiting electron can exist in either the "ground" or "excited" states, which can be identified with $\ket{0}$ and $\ket{1}$ respectively. By shining light on the atom for an appropriate length of time, it is possible to move the electron from the $\ket{0}$ state to the $\ket{1}$. Interestingly, by reducing the time we shine the light, we may move the electron from the state $\ket{0}$ to $\ket{+}$, a (nontrivial) superposition\footnote{$\ket{+}=\frac{\sqrt{2}}{2}\ket{0}+\frac{\sqrt{2}}{2}\ket{1}$, hence $\ket{+}$ can be viewed as being "halfway" between $\ket{0}$ and $\ket{1}$} of $\ket{0}$ and $\ket{1}$ (see \cite{Nielsen}).
-***Raj: It might be good to define $\ket{+}$ and $\ket{-}$ earlier. You use them again in the next postulate.***
+\textcolor{blue}{***Raj: It might be good to define $\ket{+}$ and $\ket{-}$ earlier. You use them again in the next postulate.***}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
@@ -59,9 +59,9 @@ so $H$ maps an orthonormal set to an orthonormal set as we have seen.
 % \begin{example} [Pauli Matrices]
 
 % \end{example}
-Note that this postulate does not tell us what unitary operator describes the evolution of the system, it only assures that the evolution can be described in such way.  When the state space is ${\mathbb{C}}^2$, any unitary operator will show up in such a way.
+Note that this Postulate does not tell us what unitary operator describes the evolution of the system, it only assures that the evolution can be described in such way.  When the state space is ${\mathbb{C}}^2$, any unitary operator will show up in such a way.
 
-It's worth pointing out that Postulate 2 applies to a \emph{closed} system.  While this is nearly impossible in reality, in many of the scenarios discussed in this thesis it is reasonable to describe the evolution via unitary operators nonetheless.
+It's worth pointing out that {\bf{Postulate 2}} applies to a \emph{closed} system.  While this is nearly impossible in reality, in many of the scenarios discussed in this thesis it is reasonable to describe the evolution via unitary operators nonetheless.
 
 
 
@@ -79,21 +79,21 @@ It's worth pointing out that Postulate 2 applies to a \emph{closed} system.  Whi
 
 
 \begin{quote}
-    \textbf{Postulate 3}: Quantum measurements are described by a collection $\{M_m\}$ of measurement operators. These operators act on the state space of the system being measured, and the index {\emph{m}} refers to the measurement outcomes that may occur in the experiment. If the quantum system is in state $\ket{\psi}$ immediately prior to measurement, then the probability that outcome {\emph{m}} occurs is given by 
+    \textbf{Postulate 3}: Quantum measurements are described by a collection $\{M_m\}$ of measurement operators which satisfy the {\emph{completeness equation}} $\sum\limits_m M_m^\dagger M_m =I$. These operators act on the state space of the system being measured, and the index {\emph{m}} refers to the measurement outcomes that may occur in the experiment. If the quantum system is in state $\ket{\psi}$ immediately prior to measurement, then the probability that outcome {\emph{m}} occurs is given by 
     \begin{gather*}
-        p(m)=\bra{\psi}M_m^\dagger M_m \ket{\psi},
+        p(m)=\bra{\psi}M_m^\dagger M_m \ket{\psi}.
     \end{gather*}
-    in which case the state of the system after the measurement is
+   When this is the case, the state of the system after the measurement is
     \begin{gather*}
         \frac{M_m \ket{\psi}}{\sqrt{\bra{\psi}M_m^\dagger M_m \ket{\psi}}}.
     \end{gather*}
-Lastly, the measurement operators are required to satisfy the completeness equation $\sum\limits_m M_m^\dagger M_m =I$.
+
 \end{quote}
 
 
-\textcolor{blue}{COMMENTS AND SUGGESTIONS ADDED IN BLUE}
 
-This postulate is of importance going forward, so we will provide lots of examples, and will spend some time of the Postulate.  We should point out that when {\emph{any}} external object (including measuring equipment) observes a quantum system, the quantum system is no longer closed, and hence is not necessarily subject to unitary evolution as in Postulate 2. Postulate 3 describes the effects of these measurements on a quantum system. 
+
+This Postulate is crucial going forward, so we will provide lots of examples, and will spend some time of the Postulate.  We should point out that when {\emph{any}} external object (including measuring equipment) observes a quantum system, the quantum system is no longer closed, and hence is not necessarily subject to unitary evolution as in {\bf{Postulate 2}}. {\bf{Postulate 3}} describes the effects of these measurements on a quantum system. 
 
 We start with a simple but important example.
 \begin{example} \label{measurement-standard basis}
@@ -120,7 +120,7 @@ Since $\ket{\psi}$ is a unit vector, $p(0)+p(1)=1$.  Thus, the measurement outco
 
 
 
-If two quantum states $\ket{\psi}, \ket{\sigma}$ satisfy $\ket{\psi}=e^{i\theta}\ket{\sigma}$, we say $\ket{\psi}$ is equal to $\ket{\sigma}$ up to the \textit{global phase factor $e^{i\theta}$}. For quantum mechanical purposes, they are considered equal because the probability distribution corresponding to either outcome is the same. This is because if $M_m$ is a measurement operator used in an arbitrary quantum measurement, then the probability of observing outcome $m$ for $\ket{\psi}$ is 
+If two quantum states $\ket{\psi}, \ket{\sigma}$ satisfy $\ket{\psi}=e^{i\theta}\ket{\sigma}$, we say $\ket{\psi}$ is equal to $\ket{\sigma}$ up to the \textit{global phase factor $e^{i\theta}$}. For quantum mechanical purposes, these states are equal because the probability distribution corresponding to either outcome is the same. This is because if $M_m$ is a measurement operator used in an arbitrary quantum measurement, then the probability of observing outcome $m$ for $\ket{\psi}$ is 
 \begin{eqnarray}
 \braket{\psi|M_m^\dagger M_m|\psi} &=& \braket{e^{i\theta}\sigma|M_m^\dagger M_m|e^{i\theta} \sigma} \\
 &=& |e^{i\theta}|^2\braket{\sigma|M_m^\dagger M_m| \sigma} \\
@@ -134,10 +134,10 @@ which equals the probability of observing outcome $m$ for $\ket{\sigma}$.  There
 % \end{prop}
 
 \bigskip
-It follows from Postulate 3 that only orthogonal states can be reliably distinguished. To illustrate this property, we consider two situation where Alice and Bob have access to a known collection of states.  In both situations, Alice chooses a state and we examine whether Bob can reliably determine which state Alice picked by measuring it.
+It follows from {\bf{Postulate 3}} that only orthogonal states can be reliably distinguished. To illustrate this property, we consider two situation where Alice and Bob have access to a known collection of states.  In both situations, Alice chooses a state and we examine whether Bob can reliably determine which state Alice picked by measuring it.  Consider the following example.
 
 \begin{example} \label{example: orthogonal states for measurements}
-Orthogonal states can be reliably distinguished. More precisely, suppose Alice chooses a state $\ket{\psi_i}$ from some fixed set of states known to both herself and to Bob. She gives the state to Bob, whose task is to identify the index $i$ from the state Alice has given him by measuring. If the collection of states $\{\ket{\psi_j}\}_{j=1}^n$ is orthonormal, then Bob can determine the index i correctly with certainty.
+Suppose Alice chooses a state $\ket{\psi_i}$ from some fixed set of states known to both herself and to Bob. She gives the state to Bob, whose task is to identify the index $i$ from the state Alice has given him by measuring. If the collection of states $\{\ket{\psi_j}\}_{j=1}^n$ is orthonormal, then Bob can determine the index i correctly with certainty.
 \end{example}
 \begin{proof}
 We describe the procedure for Bob to conduct his quantum measurement.  Define measurement operators $M_j=\ket{\psi_j}\bra{\psi_j}$ for each $j$.  We have seen that each $M_j$ is a Hermitian projector, and that an orthonormal basis satisfies the completeness relation.  The key point is that Bob may measure with {\emph{this collection of measurement operators.}}
@@ -147,21 +147,21 @@ Thus, if Alice picked $\ket{\psi_i}$, the probability of observing $i$ and $j\ne
 p(i)=\braket{\psi_i | M_i |\psi_i}=\braket{\psi_i |\psi_i}\braket{\psi_i |\psi_i}=1^2=1\\
 p(j)=\braket{\psi_i | M_j |\psi_i}=\braket{\psi_i |\psi_j}\braket{\psi_j |\psi_i}=0^2=0\\
 \end{align}
-Thus, Bob can detect the outcome $i$ with probability $1$.  Once again the crucial point is that the set of vectors from which Alice selects is known to Bob and is {\emph{orthonormal}}. Because of this, he can measure with respect to the {\emph{appropriate collection of measurement operators.}} 
+This computation shows that Bob can detect the outcome $i$ with probability $1$.  Once again the crucial point is that the set of vectors from which Alice selects is known to Bob and is {\emph{orthonormal}}. Because of this, he can measure with respect to the corresponding collection of measurement operators. 
 \end{proof}
 
 On the other hand, {\emph{even when they are known to Bob,}} non-orthogonal states cannot be reliably distinguished (see page 87 Box 2.3 in \cite{Nielsen} for a rigoroous proof).  We demonstrate this phenomenon with another example.
 \begin{example} \label{example: non-orthogonal states for measurements}
-This time, say Alice selects from the states $\ket{\psi_1}=\ket{0}$ and  $\ket{\psi_2}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$. Suppose Bob attempts to distinguish $\ket{\psi_1}, \ket{\psi_2}$ with measurement operators $M_1=\ket{0}\bra{0}, M_2=\ket{1}\bra{1}$ as before.
+This time, say Alice selects from the states $\ket{\psi_1}=\ket{0}$ and  $\ket{\psi_2}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}=\ket{+}$. Suppose Bob attempts to distinguish $\ket{\psi_1}, \ket{\psi_2}$ with measurement operators $M_1=\ket{0}\bra{0}, M_2=\ket{1}\bra{1}$ as before.
 
-Now, if Alice prepares $\ket{\psi_1}$, then $p(1)=\braket{0 |0}\braket{0|0}=1$, so Bob picks the correct index. 
+Now, if Alice picks $\ket{\psi_1}$, then $p(1)=\braket{0 |0}\braket{0|0}=1$, so Bob picks the correct index. 
 
-However, if Alice prepares $\ket{\psi_2}$, then the probabilities of the measurement outcomes being $1$ and $2$ respectively are given by;
+However, if Alice picks $\ket{\psi_2}$, then the probabilities of the measurement outcomes being $1$ and $2$ respectively are given by;
 \begin{eqnarray}
     & &p(1)=\braket{\psi_2|0}\braket{0|\psi_2}=|\braket{0|\psi_2}|^2=|\frac{\braket{0|0}+\braket{0|1}}{\sqrt{2}}|^2=\frac{1}{2}\textrm{  and}\\
     & &p(2)=\braket{\psi_2|1}\braket{1|\psi_2}={\frac{1}{2}}_.
 \end{eqnarray}
-This means is that if Bob's measurement outcome is $2$, Alice must have prepared $\ket{\psi_2}$, so Bob will be able to guess correctly with certainty. However, if the measurement outcome is $1$, Alice could have prepared either $\ket{\psi_1}$ or $\ket{\psi_2}$.  Thus, Bob will not be able to determine Alice's index with certainty.  In fact, suppose that Alice prepares $\ket{\psi_1}$ and $\ket{\psi_2}$ with equal probability.  Then if Bob guesses that Alice has prepared $\ket{\psi_1}$, the probability of him being correct is $\frac{\frac{1}{2}}{\frac{1}{2}+\frac{1}{2}\frac{1}{2}}=\frac{2}{3}$.
+This means is that if Bob's measurement outcome is $2$, Alice must have picked $\ket{\psi_2}$, so Bob will be able to guess correctly with certainty. However, if the measurement outcome is $1$, Alice could have prepared either $\ket{\psi_1}$ or $\ket{\psi_2}$.  Thus, Bob will not be able to determine Alice's index with certainty.  In fact, suppose that Alice prepares $\ket{\psi_1}$ and $\ket{\psi_2}$ with equal probability.  Then if Bob guesses that Alice has prepared $\ket{\psi_1}$, the probability of him being correct is $\frac{\frac{1}{2}}{\frac{1}{2}+\frac{1}{2}\frac{1}{2}}=\frac{2}{3}$.
 \end{example}
 
 %-----------------------------------
@@ -169,7 +169,7 @@ This means is that if Bob's measurement outcome is $2$, Alice must have prepared
 %-----------------------------------
 
 \label{subsection:projective measurement}
-The measurement operators used in the last two examples are by far the most important kind for the purposes of this thesis.  Such measurements are known as \textit{projective measurements}, and they will turn out to be \textit{equivalent} to the general measurements, when coupled with unitary transformations as described in Postulate 2 \footnote{See \cite{Nielsen} Section 2.2.8 for why they are equivalent}. 
+The measurement operators used in the last {\bf{Examples}} \ref{example: orthogonal states for measurements}, \ref{example: non-orthogonal states for measurements} are by far the most important kind for the purposes of this thesis.  Such measurements are known as \textit{projective measurements}, and they will turn out to be \textit{equivalent} to the general measurements, when coupled with unitary transformations as described in {\bf{Postulate 2}} \footnote{See \cite{Nielsen} Section 2.2.8 for why they are equivalent}. 
 
 
 Note that when the measurement operators in \textbf{Postulate 3}, are orthogonal projectors the completeness condition becomes
@@ -271,9 +271,9 @@ E(M)&=&\sum_m mp(m)\\
     \textbf{Postulate 4}:  The state space of a composite physical system is the tensor product of the component physical systems. Moreover, if we have $n$ systems numbered $1$ through $n$, where system $i$ is in the state $\ket{\psi_i}$, then the joint state of the total system is $\ket{\psi_1} \otimes \ket{\psi_1} \otimes \hdots \otimes \ket{\psi_n}$
 \end{quote}
 
-\textcolor{blue}{SENTENCES ADDED AT THE END}
 
-Postulate 4 makes clear the crucial role tensor products play in quantum mechanics.  This Postulate also enables us to define one of the most important ideas associated with composite quantum systems, that of \textit{entanglement}. 
+
+{\bf{Postulate 4}} makes clear the crucial role tensor products play in quantum mechanics.  This Postulate also enables us to define one of the most important ideas associated with composite quantum systems, that of \textit{entanglement}. 
 
 
 \begin{definition}\label{definition: entanglement with state vector}
@@ -303,7 +303,7 @@ Therefore $\alpha \gamma \neq 0$ and $\beta \delta \neq 0$, so all are nonzero. 
 \end{example}
 
 
-Informally, when two states are entangled, one cannot be described physically independent of the other.  In practice, we may think of entangled states as being {\emph{correlated}} in the sense that information about one of them is in fact, information about both of them. In {\bf{Chapter}} \ref{Chapter6-classification of entanglement} we will classify entanglement completely and examine more precisely the way in which entangled states are correlated. 
+Informally, when two states are maximally entangled, one cannot be described physically independent of the other.  In practice, we may think of entangled states as being {\emph{correlated}} in the sense that information about one of them is in fact, information about {\emph{both}} of them. In {\bf{Chapter}} \ref{Chapter6-classification of entanglement} we will classify entanglement completely and examine more precisely the way in which entangled states are correlated. 
 
 Entangled states adhere to {\emph{monogamy of entanglement}} (see \cite{Toner2006}).  This principal is used in cryptography protocols such as E91 which we will discuss in \textbf{Section \ref{section: e91}}. Briefly, monogamy states that if two qubits A and B are maximally entangled, they cannot be entangled with a third qubit C. 
 

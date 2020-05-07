@@ -136,8 +136,8 @@ In addition, a useful way of representing linear operators which makes use of th
 In other words, the bra-ket notation convention allows us to interpret $\ket{w}\braket{v|v'}$ in two ways: the operator $\ket{w}\bra{v}$ acting on $\ket{v'}$, or multiplying $\ket{w}$ by the complex number $\braket{v|v'}$.
 \end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-***Raj: The result below is called the Spectral Theorem. It's probably good to mention this because it's not a completely easy result. (Although it's not too hard either; in a good semester I'll teach it in MTH 211)***
-One can check that any hermitian operator $M \in M_{k,k}(\mathbb{C})$ is diagonalizable, with real eigenvalues.  Also, two eigenvectors corresponding to different eigenvalues are necessarily orthogonal.  Thus, there exists an orthonormal basis $\{\ket{v_1},...\ket{v_k}\}$ for $\mathbb{C}^k$ where $\ket{v_i}$ is an eigenvector corresponding to eigenvalue $\lambda_i$  Then, the matrix $\sum\limits_j \lambda_j \ket{v_j}\bra{v_j}$ satisfies
+
+One can show that any Hermitian operator $M \in M_{k,k}(\mathbb{C})$ is diagonalizable, with real eigenvalues \footnote{This result is known as the Spectral Theorem}.  Also, two eigenvectors corresponding to different eigenvalues are necessarily orthogonal.  Thus, there exists an orthonormal basis $\{\ket{v_1},...\ket{v_k}\}$ for $\mathbb{C}^k$ where $\ket{v_i}$ is an eigenvector corresponding to eigenvalue $\lambda_i$  Then, the matrix $\sum\limits_j \lambda_j \ket{v_j}\bra{v_j}$ satisfies
 
 \begin{eqnarray}
 \left(\sum\limits_j \lambda_j\ket{v_j}\bra{v_j}\right)\ket{v_i}&=&\sum\limits_j \lambda_j\ket{v_j}\bra{v_j}\ket{v_i}\\
@@ -166,7 +166,7 @@ $Z$ is called the Pauli-$Z$ matrix.
 
 One important class of hermitian operators are the \textit{projectors}. Suppose W is a k-dimensional vector subspace of the d-dimensional vector space V. By Gram-Schmidt, we may choose an orthonormal basis $\{\ket{u_1}, \hdots, \ket{u_d}\}$ for V such that $\{\ket{u_1}, \hdots, \ket{u_k}\}$ is a basis for W.  
 \begin{definition}
-The matrix $P=\sum_{i=1}^k \ket{u_i} \bra{u_i}$ is the projector onto the subspace $W$.
+The matrix $P=\sum\limits_{i=1}^k \ket{u_i} \bra{u_i}$ is the projector onto the subspace $W$.
 \end{definition}
 By inspection, projectors are hermitian.  In addition,
 \begin{eqnarray}
@@ -251,14 +251,14 @@ With cryptography in mind, we sometimes think of the left-hand side of a tensor 
 % \end{notation}
 
 Tensor product satisfy too many properties to name.  We highlight a few of them. 
-Let $\ket{v_1}, \ket{v_2}, \ket{v_3}$ and $\ket{v_4}$ be vectors.  Then,
+Let $\ket{v_1}, \ket{v_2}, \ket{v_3}$ and $\ket{v_4}$ be vectors, and $A, B, C$ and $D$ be linear transformations.  Then,
 \begin{enumerate}
     \item $\ket{v_1} \otimes (\ket{v_2}+\ket{v_3})=\ket{v_1} \otimes \ket{v_2} + \ket{v_1} \otimes \ket{v_3}$.
-    \item $\ket{v_1} \otimes (\ket{v_2}+\ket{v_3})=\ket{v_1} \otimes \ket{v_2} + \ket{v_1} \otimes \ket{v_3}$.
+    \item $(\ket{v_1} + \ket{v_2})\otimes \ket{v_3}=\ket{v_1} \otimes \ket{v_3} + \ket{v_2} \otimes \ket{v_3}$.
     \item $\ket{v_1} \otimes (\ket{v_2} \otimes \ket{v_3})=(\ket{v_1} \otimes \ket{v_2}) \otimes \ket{v_3}$.
     \item $\ket{v_1} \otimes \ket{v_2} \ne \ket{v_2} \otimes \ket{v_1}$.
     % \item $(\ket{v_1} \otimes \ket{v_2})(\ket{v_3} \otimes \ket{v_4})=\ket{v_1 v_3} \otimes \ket{v_2 v_4}$.
     \item $(A \otimes B)\circ(C \otimes D)=(A \circ C) \otimes (B \circ D)$.
 \end{enumerate}
-***Raj: is (2) supposed to be the other distributive law?***
+
 Thus, in particular, tensor products are associative and satisfy the left and right distributive laws.  The above relations hold in more generality.   
