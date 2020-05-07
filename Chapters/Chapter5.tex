@@ -69,8 +69,6 @@ Dec(k,e) is apparently the inverse of $Enc(k,m)$ since $m_i \oplus k_i \oplus k_
 Applying Bayes rule, we then have $$p(m|e)=\frac{p(m,e)}{p(e)}=\frac{p(e|m)p(m)}{p(e)}=p(m)$$
 So the one-time pad is perfectly secure upon the key being uniformly distributed and independent from any eavesdropper. More information about one-time pad can be found in Section 1.8 of \cite{Wehner:notes}.
 
-We now provide an example of a transcription using a one-time pad.
-\textcolor{blue}{I changed the labels in the tables below.  I think this is more consistent with the way we defined our terms.  What do you think?} \textcolor{green}{looks reasonable to me!}
 \begin{example}
 \label{example one-time pad}
 Say Alice wishes to transmit a message "hello" to her friend Bob.  They will use the conventional 8-bit ASCII encoding \footnote{For ASCII encoding, refer to \url{https://en.wikipedia.org/wiki/ASCII}} for each character.  the encoding process can be illustrated by \textbf{Table  \ref{table: one-time pad encoding}} below. The ciphertext that Alice is going to send to Bob is 0000 1011 0001 0111 0001 0101 0001 1100 0001 1011 using the encryption scheme defined in \textbf{Definition \ref{def: classical one-time pad scheme}}.
@@ -109,6 +107,8 @@ plaintext character & h & e & l & l & o \\ \hline
 
 At the end of \textbf{Chapter \ref{Chapter6-classification of entanglement}}, we will create a classical one-time pad making use of quantum mechanics.
 
+\textcolor{green}{Now let's introduce the quantum one-time pad, the quantum analogue of the classical one-time pad encryption scheme. You can refer to   \cite{mosca2000private} for mode in-depth discussion. Here we just describe the encryption scheme. Recall that to transmit n classical bits privately via the classical one-time pad, n bits of shared private key is necessary and sufficient. It turns out to transmit n qubits privately, 2n bits of shared private key are necessary and sufficient.}
+
 \begin{definition} \label{def: quantum one-time pad}
 The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice applies $X^{k_1} Z^{k_2}$ to qubit $\rho$ and sends the resulting state to Bob. To decrypt, Bob applies the inverse $(X^{k_1} Z^{k_2})^\dagger$ to obtain $\rho$, where X and Z are the Pauli-X and Pauli-Z matrix respectively. i.e.
 \begin{equation}
@@ -123,7 +123,9 @@ The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice a
 \end{equation}
 \end{definition}
 
-\textcolor{blue}{Include example of this computation.  How does this compare to the classical one-time pad?  Also, does the No Cloning Theorem get used for something later?}
+
+
+\textcolor{blue}{Include example of this computation.  How does this compare to the classical one-time pad?  Also, does the No Cloning Theorem get used for something later?} \textcolor{green}{it's mentioned in BB84}
 
 \begin{theorem}[No Cloning Theorem] \label{no-cloning thm}
 Arbitrary qubits (or quantum states), unlike classical bits, cannot be copied. 
@@ -242,8 +244,9 @@ Thus, the probability of winning classically is $.75$.  Surprisingly, this can b
 %-----------------------------------
 
 \subsection{Quantum Strategy}
+\textcolor{green}{Abiding the same set of rules as in the classical strategy that no communication is allowed after the game starts, Alice and Bob are now able to improve their winning probability by deploying a quantum strategy! There are two differences from the classical strategy. First, Alice and Bob share an entangled 2 qudit state.\footnote{You can can just imagine Alice and Bob gather in a physics labs before the game start, fire a beam through a special kind of crystal and obtain a pair of entangled photons. Then Alice and Bob each take one photon and walk away from each other to start the game.} Second, Alice and Bob make measurements with respect to different orthonormal bases depending on the question they each receive.}
 
-\textcolor{blue}{Say something more about the quantum version of the game. Basically here they use this entanglement "machine" }
+\textcolor{blue}{Say something more about the quantum version of the game. Basically here they use this entanglement "machine" } \textcolor{green}{done.}
 
 \begin{figure}[h]
     \centering
@@ -344,7 +347,7 @@ In the second phase, Bob notifies Alice over any channel (can totally be an inse
 \end{figure}
 \footnotetext{Figure from \url{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}}
 
-To verify whether an eavesdropper Eve has tapped into the communication, Alice and Bob picked a random subset of their shared secret key and compare if they actually agree. If yes, they can discard those bits and have the remaining bits be the shared secret key. Otherwise, it means Eve attempts to infer the key. Because of the no-cloning theorem, she has to measure the photons sent by Alice before passing them on to Bob. She cannot replicate the photon, pass the original photon to Bob and keep the replicated photon to herself. Since Eve does not know which basis Alice picked to encode the bit, Eve has to guess. If she guesses wrongly and measures on the wrong basis, the information encoded on the other basis is lost. So when the photon reaches Bob, his measurement result will be random and he infer the wrong bit. Say Eve chooses the measurement basis incorrectly on average $\frac{1}{2}$ of the time, then Bob (using the same basis as Alice) will get the bit wrong $\frac{1}{2} \times \frac{1}{2}=\frac{1}{4}$ of the time). If m bits are compared, the probability of Eve being undetected is $(\frac{3}{4})^m$, which approaches 0 as m gets bigger.
+To verify whether an eavesdropper Eve has tapped into the communication, Alice and Bob picked a random subset of their shared secret key and compare if they actually agree. If yes, they can discard those bits and have the remaining bits be the shared secret key. Otherwise, it means Eve attempts to infer the key. Because of the no-cloning theorem (see \textbf{Theorem \ref{no-cloning thm}}), she has to measure the photons sent by Alice before passing them on to Bob. She cannot replicate the photon, pass the original photon to Bob and keep the replicated photon to herself. Since Eve does not know which basis Alice picked to encode the bit, Eve has to guess. If she guesses wrongly and measures on the wrong basis, the information encoded on the other basis is lost. So when the photon reaches Bob, his measurement result will be random and he infer the wrong bit. Say Eve chooses the measurement basis incorrectly on average $\frac{1}{2}$ of the time, then Bob (using the same basis as Alice) will get the bit wrong $\frac{1}{2} \times \frac{1}{2}=\frac{1}{4}$ of the time). If m bits are compared, the probability of Eve being undetected is $(\frac{3}{4})^m$, which approaches 0 as m gets bigger.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
