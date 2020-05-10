@@ -1,148 +1,55 @@
 % Appendix A
 
-\chapter{Four Postulates of Quantum Mechanics With Density Matrices} % Main appendix title
+\chapter{Projective Measurements} % Main appendix title
 
-\label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
-\section{Postulates of Quantum Mechanics Reformulated with Density Matrices}
+\label{AppendixA} % Change X to a consecutive letter; for referencing this appendix elsewhere, use \ref{AppendixX}
+Postulate 3 can be completely restated in the context of projective measurements, which we present in the Appendix.
 
 
-% \textcolor{blue}{I THINK EVERYTHING BELOW THIS SHOULD BE IN AN APPENDIX EXCEPT FOR THEOREM 2.  I think this is literally the only thing we use going forward.  I don't think we even use Postulate 3'}
 
-The four Postulates from \textbf{Chapter \ref{Chapter3-postulates}} can be reworked with density matrices in place of state vectors. \textbf{Postulate 1} becomes
+
+The measurement postulate for projective measurements is superficially rather different from the general postulate above.
 \begin{quote}
-\textbf{Postulate 1'}: Associated to any isolated physical system is a complex vector space with inner product (that is, a Hilbert space) known as the \textit{state space} of the system. The system is completely described by its \textit{density matrix}, which is a positive matrix with trace one, acting on the state space of the system. If a quantum system is in the state $\rho_i$ with probability $p_i$, then the density matrix for the system is $\sum_i p_i \rho_i$    
-\end{quote}
-
-Here is \textbf{Postulate 2} reworked for density matrices:
-\begin{quote}
-    {\bf{Postulate 2'}}: Say the evolution of a closed quantum system is described by a unitary transformation U. Then the evolution of the density operator is described by the equation
+    \textbf{Projective Measurements}: A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
     \begin{equation}
-        \rho=\sum_i p_i \ket{\psi_i}\bra{\psi_i}	\underrightarrow{U}\sum_i p_i U \ket{\psi_i}\bra{\psi_i}U^\dagger=U \rho U^\dagger
+        M=\sum_m m P_m
+    \end{equation}
+    where $P_m$ is the projector onto the eigenspace of M with eigenvalue m \footnote{The eigenspace corresponding to an eigenvalue m is the set of vectors which have eigenvalue m}. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable. Upon measuring the state $\ket{\psi}$, the probability of getting result m is given by 
+    \begin{equation}
+        p(m)=\braket{\psi|P_m|\psi}
+    \end{equation}
+    Given that outcome m occurred, the state of the quantum system immediately after the measurement is 
+    \begin{equation}
+        \frac{P_m \ket{\psi}}{\sqrt{p(m)}}.
     \end{equation}
 \end{quote}
 
-Note that this computation is consistent with \textbf{Lemma \ref{lemma state into density}} and {\bf{Postulate 2}} since
+Here is an example of projective measurements on single qubits.
+\begin{example}
+Consider the Pauli-Z matrix introduced in \textbf{Example} \ref{example-pauli z diagonal rep}.
+\begin{equation}
+    Z=\ket{0}\bra{0}-\ket{1}\bra{1}
+\end{equation}
+Take Z as the observable for out projective measurement. Here $P_{+1}=\ket{0}\bra{0}$ is the projector onto the eigenspace of Z with eigenvalue 1. $P_{-1}=\ket{1}\bra{1}$ is the projector onto the eigenspace of Z with eigenvalue -1.
+
+Thus the measurement of Z on the state $\ket{\psi}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$ yields the outcome 1 with probability $\braket{\psi|0}\braket{0|\psi}=\frac{1}{2}$. Similarly, the outcome -1 has probability $\frac{1}{2}$.
+\end{example}
+
+% Another feature that distinguishes quantum from classical is that that we can measure a qubit in basis aside from the standard basis. 
+
+
+
+
+
+**********************************************************
+
+
+Another very nice property of projective measurements is that it is very easy to calculate the expected value of a given the observable M of a projective measurement:
 \begin{eqnarray}
-\ket{U \psi_i}\bra{U \psi_i}&=& \ket{U \psi_i}(\ket{U \psi_i}^\dagger)\\
-&=& \ket{U\psi_i}(\ket{\psi_i})^\dagger U^\dagger\\
-&=& \ket{U \psi_i} \bra{\psi_i}U^\dagger\\
-&=& U \ket{\psi_i}\bra{\psi_i}U^\dagger.
+E(M)&=&\sum_m mp(m)\\
+&=&\sum_m m \braket{\psi|P_m|\psi}\\
+&=&\braket{\psi|(\sum_m mP_m)|\psi}\\
+&=&\braket{\psi|M|\psi}
 \end{eqnarray}
 
-Similarly, (\textbf{Postulate 3}) can be translated to density matrices:
-\begin{quote}
-    {\bf{Postulate 3'}}: Suppose we perform a measurement described by measurement operators $M_m$ on an ensemble of pure states $\{p_i, \ket{\psi_i}\}$. If the initial state prepared was $\ket{\psi_i}$, then the probability of outcome $m$ is
-    \begin{equation}
-        p(m|i)=\braket{\psi_i|M_m^\dagger M_m|\psi_i}=tr(\braket{\psi_i|M_m^\dagger M_m|\psi_i})=tr(M_m^\dagger M_m \ket{\psi_i}\bra{\psi_i})
-    \end{equation}
-    The post-measurement state given the initial state being $\ket{\psi_i}$ is
-    \begin{equation}
-        \ket{\psi_i^m}=\frac{M_m \ket{\psi_i}}{\sqrt{\bra{\psi_i}M_m^\dagger M_m \ket{\psi_i}}}
-    \end{equation}
-    So the probability of obtaining result m is
-    \begin{equation}
-        p(m)=\sum_i p(m|i)p_i=\sum_i p_i tr(M_m^\dagger M_m \ket{\psi_i}\bra{\psi_i})=tr(M_m^\dagger M_m \rho)
-    \end{equation}
-    The post-measurement state upon result m is an ensemble of states $\ket{\psi_i^m}$ with respective probabilities $p(i|m)$
-    \begin{equation}
-        \rho_m = \sum_i p(i|m)\ket{\psi_i^m}\bra{\psi_i^m}=\sum_i p(i|m)\frac{M_m \ket{\psi_i}\bra{\psi_i}M_m^\dagger}{\bra{\psi_i}M_m^\dagger M_m \ket{\psi_i}}
-    \end{equation}
-    By probability theory, we have $p(i|m)=\frac{p(m,i)}{p(m)}=\frac{p(m|i)p_i}{p(m)}$. So
-    \begin{equation}
-        \rho_m=\sum_i \frac{p(m|i)p_i}{p(m)}\frac{M_m \ket{\psi_i}\bra{\psi_i}M_m^\dagger}{\bra{\psi_i}M_m^\dagger M_m \ket{\psi_i}}=\frac{M_m M_m (\sum_i p_i \ket{\psi_i}\bra{\psi_i})M_m^\dagger}{p(m)}=\frac{M_m \rho M_m^\dagger}{tr(M_m^\dagger M_m \rho)}
-    \end{equation}
-\end{quote}
-
-
-
-\textcolor{red}{add an example of density matrix with probability distribution and its outcome probability}.
-
-
-
-Also by inspection, if $rank(\rho)=1$, then $\rho$ is a pure state. Otherwise, $\rho$ is mixed.
-
-We therefore are able to describe the four postulates in the language of density matrices. For the complete reformulated postulates, see \textbf{Appendix} \ref{AppendixA}.
-
-% \begin{definition}[Density Matrix]
-%  Consider a quantum system with state space $\mathbb{C}^d$. A density matrix, commonly denoted as $\rho$, is a linear operator $\rho \in \mathbb{L}(\mathbb{C}^d, \mathbb{C}^d)$ such that:
-%  \begin{enumerate}
-%      \item $\rho \geq 0$, and
-%      \item $tr(\rho)=1$.
-%  \end{enumerate}
- 
-%  If $rank(\rho)=1$, then $\rho$ is called a pure state, otherwise $\rho$ is mixed.
-% \end{definition}
-
-
-
-\bigskip
-Under projective measurement defined in section \ref{subsection:projective measurement}, now written in terms of density matrices upon measuring the state $\rho$, the probability of getting result m is given by
-\begin{equation}
-    p(m)=tr(P_m \rho),
-\end{equation}
-and the post-measurement states are
-\begin{equation}
-    \rho_{|m}=\frac{P_m \rho P_m}{tr(P_m \rho)}
-\end{equation}
-% \begin{definition}[Projective Measurement On Density Matrix] 
-% A projective measurement is given by a set of orthogonal projectors $M_x=\Pi_x$ such that $\sum_x \Pi_x=\mathbb{I}$. For such a measurement, unless otherwise specified we will always use the default Kraus decomposition $A_x=\Pi_x$. 
-
-% The probability $q_x$ of observing measurement outcome x can then be expressed as
-% \begin{equation}
-%     q_x=tr(\Pi_x)
-% \end{equation}
-% and the post-measurement states are
-% \begin{equation}
-%     \rho_{\ket{x}}=\frac{\Pi_x \rho \Pi_x}{tr(\Pi_x \rho)}
-% \end{equation}
-
-% \end{definition}
-
-
-
-% We can simply examine a classical bit to determine whether it is in the state 0 or 1. However, we cannot examine a qubit to determine its quantum state, that is, the value of $\alpha$ and $\beta$. Quantum mechanics tells us that we can only acquire much more restricted information about the quantum state. When we measure a qubit we get either the result 0, with probability $|\alpha|^2$, or the result 1, with probability $|\beta|^2$. Since the probabilities must sum to 1, $|\alpha|^2+|\beta|^2=1$. Thus, a qubit's state is a unit vector in a two-dimensional complex vector space. 
-
-% Measurement changes the state of a qubit, collapsing it from its superposition of $\ket{0}$ and $\ket{1}$ to the specific state consistent with the measurement result.  
-
-\bigskip
-Further, the definition of entanglement in definition \ref{definition: entanglement with state vector} becomes 
-\begin{definition}[Entanglement] \label{def: entanglement with density matrix}
- Consider two quantum systems A and B and their joint state $\rho_{AB}$. The joint state $\rho_{AB}$ is separable if there exists a probability distribution $\{p_i\}_i$, and sets of density matrices $\{\rho_i^A\}_i$, $\{\rho_i^B\}_i$ such that $\rho_{AB}=\sum_i p_i\rho_i^A\otimes\rho_i^B$.
- If there exists no such decomposition $\rho_{AB}$ is called entangled.
- If $\rho_{AB}=\ket{\psi}\bra{\psi}$ is a pure state, then $\psi_{AB}$ is separable if and only if there exists $\ket{\psi}_A, \ket{\psi}_B$ such that $\ket{\psi}_{AB}=\ket{\psi}_A \otimes \ket{\psi}_B$.
-\end{definition}
-
-\textcolor{red}{for most of what follows, we are only interested in pure states. maybe put the general definition in footnote.}
-
-\section{Reduced Density Matrix}
-One very important application of density matrices is the reduced density matrix, a tool to describe sub-systems of a composite quantum system.
-\begin{definition}
- Suppose we have a composite system shared by A and B described by $\rho$. The reduced density matrix for A is defined by
-\begin{equation}
-    \rho^A=tr_B (\rho)
-\end{equation}
-where $tr_B$ is known as the \textit{partial trace} over system B. The partial trace is defined by
-\begin{equation}
-tr_B(\ket{a_1}\bra{a_2} \otimes \ket{b_1} \bra{b_2})=\ket{a_1}\bra{a_2}tr(\ket{b_1}\bra{b_2})
-\end{equation}
-where $\ket{a_1}, \ket{a_2}$ are any two vectors in the state space of A, and $\ket{b_1}, \ket{b_2}$ are two arbitrary vectors in the state space of B.
-\end{definition}
-
-Note that $tr(\ket{b_1}\bra{b_2})=\braket{b_2|b_1}$
-
------------------------------------
-
-\textbf{Postulate 2}: The evolution of a closed quantum system is described by a \textit{unitary transformation}. That is, the state $\rho$ of the system at time $t_1$ is related to the state $\rho'$ of the system at time $t_2$ by a unitary operator U which depends only on the times $t_1$ and $t_2$, $\rho'=U\rho U^\dagger$.
-
-\textbf{Postulate 3}: Quantum measurements are described by a collection $\{M_m\}$ of \textit{measurement operators}. These are operators acting on the state space of the system being measured. The index m refers to the measurement outcomes that may occur in the experiment. If the state of the quantum system is $\ket{\psi}$ immediately before the measurement then the probability that result m occurs is given by 
-    \begin{equation}
-        p(m)=tr(M_m^\dagger M_m \rho)
-    \end{equation}
-    and the state of the system after the measurement is
-    \begin{equation}
-        \frac{M_m \rho M_m^\dagger}{tr(M_m^\dagger M_m \rho)}
-    \end{equation}
-    The measurement operators satisfy the completeness equation $\sum_m M_m^\dagger M_m =I$
-    
-\textbf{Postulate 4}:The state space of a composite physical system is the tensor product of the component physical systems. Moreover, if we have systems numbered 1 through n, and system number i is prepared in the state $\rho_i$, then the joint state of the total system is $\rho_1 \otimes \ket{\psi_1} \otimes \hdots \otimes \rho_n$
-
+****************************************************

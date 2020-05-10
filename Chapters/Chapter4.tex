@@ -15,8 +15,8 @@ In addition, for entangled joint state vectors such as $\ket{EPR}$ (see \eqref{e
 
 This additional wrinkle is interesting, but is not used significantly in future chapters.  In the interest of completeness, we summarize some key ideas in the "density matrix" formulation.  The reader may choose to skip everything in the chapter after {\bf{Lemma}} \ref{lemma state into density}.
 
+% \textcolor{red}{for most of what follows, we are only interested in pure states. maybe put the general definition in footnote.}
 \begin{definition}
-
 \textcolor{green}{Suppose a source prepares quantum states $\{\ket{\psi_1},\hdots,\ket{\psi_n}\}$ in a probabilistic manner, i.e. it prepares the quantum state $\ket{\psi}_i$ with probability $p_i$ with}
  \begin{equation}
 \sum\limits_i^n p_i=1, p_i \geq 0,
@@ -34,9 +34,8 @@ then the resulting density matrix is given by
 % \begin{equation}
 %     \rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i}.
 % \end{equation}
-
 \end{definition}
------------------
+\bigskip
 
 Note that density matrices can be viewed as generalizing state vectors.  Let $\ket{\psi}$ be a state vector and consider the assignment
 $$\ket{\psi} \xrightarrow{\iota} \ket{\psi}\bra{\psi}.$$
@@ -91,8 +90,6 @@ e^{i\theta_1}b_1 e^{-i\theta_2}\Bar{b_2}=b_1 \Bar{b_2}\\
 Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices. \textcolor{green}{We can therefore reformulate all the postulates introduced in the previous chapter in the language of density matrices. Here we just present the definition of measuring on a basis using density matrix. In other words, \textbf{Definition \ref{def: measurement in a basis state vector}} becomes the following:}
 
 
-% A few theorems that we introduced using state vectors back in Chapter \ref{Chapter3-postulates} can be reformulated using density matrices.
-% \textbf{Theorem} \ref{theorem: measurement in an orthonormal basis} becomes the following:
 \begin{definition}[Measuring a Density Matrix in a Basis]
 Consider a quantum system in a state represented by the density matrix $\rho$. Measuring $\rho$ in the basis $\{\ket{b_j}\}_j$ results in outcome $j$ with probability 
 \begin{equation} \label{eqn: measurement probability in density matrix}
@@ -100,18 +97,33 @@ Consider a quantum system in a state represented by the density matrix $\rho$. M
 \end{equation}
 \end{definition}
 
-A more extensive introduction on density matrices can be found in \textbf{Appendix \ref{AppendixA}}.
+ Here is an example of measuring a density matrix in a basis.
 
----------------------------------
-Here is the mathematical characterization of density matrix. 
+% \textcolor{red}{add an example of density matrix with probability distribution and its outcome probability}.
+
+{\color{green}
+\begin{example}
+Consider a source that prepares the state $\ket{0}$ and $\ket{1}$ with probabilities $p_0=p_1=\frac{1}{2}$. Suppose we measure the resulting state
+$$\rho=\frac{1}{2}\ket{0}\bra{0}+\ket{1}\bra{1}=\frac{\mathbb{I}}{2},$$
+in the Hadamard basis $\{\ket{+}, \ket{-}\}$. The probabilities of the outcomes are given by 
+\begin{gather}
+    q_1=\braket{+|\rho|+}=\frac{1}{2}\\
+    q_2=\braket{-|\rho|-}=\frac{1}{2}
+\end{gather}
+\end{example}
+}
+
+It turns out there is a rather elegant mathematical characterization of density matrix:
 
 % ---------------------------
 % If we wish to emphasize that a state is given by a proper density matrix, we say the state is \textit{mixed}.  In similar fashion, states given by vectors are sometimes called {\emph{pure}}. 
 % The material in this Chapter past this point will not be used in subsequent Chapters of the thesis, so the reader can freely skip ahead.
 
-\textcolor{blue}{THE ABOVE IS WRITTEN FOR SUBSEQUENT SECTIONS.  IF THEY GET MOVED TO AN APPENDIX, THE SENTENCE ABOVE MUST BE REWRITTEN}\textcolor{green}{done}
+% \textcolor{blue}{THE ABOVE IS WRITTEN FOR SUBSEQUENT SECTIONS.  IF THEY GET MOVED TO AN APPENDIX, THE SENTENCE ABOVE MUST BE REWRITTEN}\textcolor{green}{done}
 
-\begin{theorem}[Characterization of density matrix]
+
+
+\begin{theorem}[Characterization of density matrix]\label{thm: char of density matrix}
 A matrix $\rho$ is the density matrix associated to some ensemble $\{p_i, \ket{\psi_i}\}$ if and only if it satisfies the conditions:
 \begin{enumerate}
     \item (\textbf{Trace condition}) $tr(\rho)=1$
@@ -133,5 +145,8 @@ So the positivity condition is satisfied.
 Conversely, suppose $\rho$ is any operator satisfying the two conditions. Because of the positive condition, we have $\rho=\sum_j \lambda_j \ket{j}\bra{j}$, where the vectors $\ket{j}$ are orthogonal, and $\lambda_j$ are real, non-negative eigenvalues of $\rho$. Because of the trace condition, we have $\sum_j \lambda_j=1$. Let $p_i=\lambda_i$, so the probability of each $\ket{j}$ sums up to 1. So $\rho$ is essentially representing an ensemble of states $\{\lambda_j, \ket{j}\}$.
 \end{proof}
 
-\pagebreak
+\textcolor{green}{The justification of \textbf{Definition \ref{eqn: measurement probability in density matrix}} and how density matrices reformulate the four postulates can be found in \textbf{Appendix \ref{AppendixB}}. Even though we will only discuss pure states, the reformulated postulates with density matrices apply to all mixed states. The first motivation behind density matrices (as introduced at the start of the chapter) is therefore addressed. The operation called \textit{partial trace} using density matrices is the key to address the second motivation, in which we want to answer the following question: suppose $\rho$ is a density matrix on a tensor product space $\mathbb{C}^{d_1} \otimes \mathbb{C}^{d_2}$, but suppose Alice holds the part of $\rho$ corresponding to system A and Bob holds the part corresponding to system B. How do we describe the state $\rho_A$ of Alice's system? A formal definition of partial trace and \textit{reduced density matrix} can be found in \textbf{Appendix \ref{AppendixB}}.
+}
+
+
 
