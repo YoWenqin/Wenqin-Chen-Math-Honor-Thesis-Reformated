@@ -788,12 +788,6 @@ By Lemma \ref{end state lemma} after Alice's measurement, if Alice observes outc
 Similarly, if Alice observes outcome $2$, her end state is $\ket{1}$, in which case the composite system is in state $\ket{\varphi}\otimes\ket{\theta}=\ket{1}\otimes \ket{0}=\ket{10}$.  In this situation, when Bob measures he observes $2$ and has end state $\ket{0}$ with probability one.  Again, by multiplying his end state by the inverse of the transpose of the coefficient matrix, he can determine Alice's end state, and hence her outcome with certainty.
 \end{example}
 
-Before another example, we characterize all composite qubit states that allow Bob to determine Alice's measurement end state with certainty.  
-\begin{prop}
-\label{classification}
-Let $\ket{\psi} \in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$ be a composite state shared by Alice and Bob.  Then, Bob can determine Alice's measurement outcome with certainty if and only if $\ket{\psi}=\frac{1}{\sqrt{2}}(a\ket{00}+(-e^{i\theta})\Bar{b}\ket{01}+b\ket{10}+e^{i\theta}\Bar{a}\ket{11})$, where $a, b \in \mathbb{C}$ with $|a|^2+|b|^2=1$.
-\end{prop}
-{\bf{Proposition}} \ref{classification} follows from {\bf{Proposition}} \ref{prop: ultimate} and the well known characterization of all $2$ by $2$ unitary matrices.
 
 
 
@@ -828,6 +822,20 @@ We normalize the two vectors and call them $\ket{u}'$ and $\ket{v}'$, respective
 -\frac{1}{\sqrt{2}}
 \end{pmatrix}$. Therefore to Bob, if he measures with basis $\ket{u'}, \ket{v'}$ and yields $\ket{v'}$, he can infer with certainty that Alice observes $\ket{1}$. However, if Bob yields $\ket{u'}$, then he is not able to tell what Alice observes.
 \end{example}
+
+
+
+After the examples, we now characterize all composite qubit states that allow Bob to determine Alice's measurement end state with certainty.  
+\begin{prop}
+\label{classification}
+Let $\ket{\psi} \in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$ be a composite state shared by Alice and Bob.  Then, Bob can determine Alice's measurement outcome with certainty if and only if $\ket{\psi}=\frac{1}{\sqrt{2}}(a\ket{00}+(-e^{i\theta})\Bar{b}\ket{01}+b\ket{10}+e^{i\theta}\Bar{a}\ket{11})$, where $a, b \in \mathbb{C}$ with $|a|^2+|b|^2=1$.
+\end{prop}
+{\bf{Proposition}} \ref{classification} follows from {\bf{Proposition}} \ref{prop: ultimate} and the well known characterization of all $2$ by $2$ unitary matrices.
+
+
+
+
+
 %----------------------------------------------------------------------------------------
 %	SECTION 4
 %----------------------------------------------------------------------------------------
