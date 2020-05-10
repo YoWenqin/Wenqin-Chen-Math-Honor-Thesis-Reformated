@@ -8,7 +8,12 @@
 
 % \textcolor{blue}{I THINK EVERYTHING BELOW THIS SHOULD BE IN AN APPENDIX EXCEPT FOR THEOREM 2.  I think this is literally the only thing we use going forward.  I don't think we even use Postulate 3'}
 
-The four Postulates from \textbf{Chapter \ref{Chapter3-postulates}} can be reworked with density matrices in place of state vectors. For example, here's \textbf{Postulate 2} reworked for density matrices:
+The four Postulates from \textbf{Chapter \ref{Chapter3-postulates}} can be reworked with density matrices in place of state vectors. \textbf{Postulate 1} becomes
+\begin{quote}
+\textbf{Postulate 1'}: Associated to any isolated physical system is a complex vector space with inner product (that is, a Hilbert space) known as the \textit{state space} of the system. The system is completely described by its \textit{density matrix}, which is a positive matrix with trace one, acting on the state space of the system. If a quantum system is in the state $\rho_i$ with probability $p_i$, then the density matrix for the system is $\sum_i p_i \rho_i$    
+\end{quote}
+
+Here is \textbf{Postulate 2} reworked for density matrices:
 \begin{quote}
     {\bf{Postulate 2'}}: Say the evolution of a closed quantum system is described by a unitary transformation U. Then the evolution of the density operator is described by the equation
     \begin{equation}
@@ -16,7 +21,7 @@ The four Postulates from \textbf{Chapter \ref{Chapter3-postulates}} can be rewor
     \end{equation}
 \end{quote}
 
-Note that this computation is consistent with Lemma \ref{lemma state into density} and {\bf{Postulate 2}} since
+Note that this computation is consistent with \textbf{Lemma \ref{lemma state into density}} and {\bf{Postulate 2}} since
 \begin{eqnarray}
 \ket{U \psi_i}\bra{U \psi_i}&=& \ket{U \psi_i}(\ket{U \psi_i}^\dagger)\\
 &=& \ket{U\psi_i}(\ket{\psi_i})^\dagger U^\dagger\\
@@ -68,11 +73,7 @@ We therefore are able to describe the four postulates in the language of density
 %  If $rank(\rho)=1$, then $\rho$ is called a pure state, otherwise $\rho$ is mixed.
 % \end{definition}
 
-A few theorems that we introduced using state vectors back in Chapter \ref{Chapter3-postulates} can be reformulated using density matrices.
-\textbf{Theorem} \ref{theorem: measurement in an orthonormal basis} becomes the following:
-\begin{theorem} [Measuring a Density Matrix in an Orthonormal Basis]
-Consider a quantum system in the state $\rho$. Measuring $\rho$ in the basis $\{\ket{b_j}\}_j$ results in outcome $j$ with probability $q_j=\braket{b_j | \rho |b_j}$.
-\end{theorem}
+
 
 \bigskip
 Under projective measurement defined in section \ref{subsection:projective measurement}, now written in terms of density matrices upon measuring the state $\rho$, the probability of getting result m is given by
@@ -130,7 +131,6 @@ where $\ket{a_1}, \ket{a_2}$ are any two vectors in the state space of A, and $\
 Note that $tr(\ket{b_1}\bra{b_2})=\braket{b_2|b_1}$
 
 -----------------------------------
-\textbf{Postulate 1}: Associated to any isolated physical system is a complex vector space with inner product (that is, a Hilbert space) known as the \textit{state space} of the system. The system is completely described by its \textit{density matrix}, which is a positive matrix with trace one, acting on the state space of the system. If a quantum system is in the state $\rho_i$ with probability $p_i$, then the density matrix for the system is $\sum_i p_i \rho_i$
 
 \textbf{Postulate 2}: The evolution of a closed quantum system is described by a \textit{unitary transformation}. That is, the state $\rho$ of the system at time $t_1$ is related to the state $\rho'$ of the system at time $t_2$ by a unitary operator U which depends only on the times $t_1$ and $t_2$, $\rho'=U\rho U^\dagger$.
 

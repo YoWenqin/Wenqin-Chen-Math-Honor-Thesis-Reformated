@@ -4,28 +4,46 @@
 
 \label{Chapter4-density matrix} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-In the last chapter we formulated the postulates of quantum mechanics using the language of state vectors. These could have been stated using \textit{density matrices} as well. We have already seen that a {\emph{fixed}} state vector for a system gives rise to a probability distribution when it is measured.  Density matrices allow one to describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}.  Thus with density matrices probability enters the discussion at another level altogether.
+
+In the last chapter we formulated the postulates of quantum mechanics using the language of state vectors. These could have been stated using \textit{density matrices} as well. 
+{\color{green}
+There are at least two motivations behind introducing density matrices. We have already seen that measurements prepare different states with a probability distribution. The first motivation behind density matrices is to describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}.  Thus with density matrices probability enters the discussion at another level altogether.
+In addition, for entangled joint state vectors such as $\ket{EPR}$ (see \eqref{eqn: epr}), that cannot written as a simple tensor product between $\ket{a}$ and $\ket{b}$, it is unclear how to describe the state of $\ket{a}$ without any reference to $\ket{b}$. Therefore, the second motivation behind density matrices is to provide an effective mathematical generalization for describing such $\ket{a}$. 
+}
+% We have already seen that a {\emph{fixed}} state vector for a system gives rise to a probability distribution when it is measured.  Density matrices allow one to 
+% describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}.  Thus with density matrices probability enters the discussion at another level altogether.
 
 This additional wrinkle is interesting, but is not used significantly in future chapters.  In the interest of completeness, we summarize some key ideas in the "density matrix" formulation.  The reader may choose to skip everything in the chapter after {\bf{Lemma}} \ref{lemma state into density}.
 
 \begin{definition}
-Let $\{\ket{\psi_1},\hdots,\ket{\psi_n}\}$ be states.  Suppose that a quantum system is in the state $\ket{\psi_i}$ with probability $p_i$, where  
-\begin{equation}
-\sum\limits_i^n p_i=1, p_i \geq 0.
+
+\textcolor{green}{Suppose a source prepares quantum states $\{\ket{\psi_1},\hdots,\ket{\psi_n}\}$ in a probabilistic manner, i.e. it prepares the quantum state $\ket{\psi}_i$ with probability $p_i$ with}
+ \begin{equation}
+\sum\limits_i^n p_i=1, p_i \geq 0,
 \end{equation}
-Then, we define the density matrix for the quantum system $\rho$, by 
+then the resulting density matrix is given by
 \begin{equation}
     \rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i}.
 \end{equation}
+\textcolor{green}{The set of probabilities and states $\{(p_i, \ket{\psi_i})\}$ is called an \textit{ensemble} of states.}
+% that a quantum system is in the state $\ket{\psi_i}$ with probability $p_i$, where  
+% \begin{equation}
+% \sum\limits_i^n p_i=1, p_i \geq 0.
+% \end{equation}
+% Then, we define the density matrix for the quantum system $\rho$, by 
+% \begin{equation}
+%     \rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i}.
+% \end{equation}
+
 \end{definition}
+-----------------
 
 Note that density matrices can be viewed as generalizing state vectors.  Let $\ket{\psi}$ be a state vector and consider the assignment
 $$\ket{\psi} \xrightarrow{\iota} \ket{\psi}\bra{\psi}.$$
 
-Clearly, the matrix $\ket{\psi}\bra{\psi}$ can be regarded as the density matrix for the system that is in the state $\ket{\psi}$ with probability $1$, i.e. the state vector $\ket{\psi}$.  The following lemma shows that this function is an inclusion for our purposes.
-
-% \textcolor{blue}{ADD LINES TO PROOF BELOW} \textcolor{green}{done}
-
+Clearly, the matrix $\iota(\ket{\psi})=\ket{\psi}\bra{\psi}$ can be regarded as the density matrix for the system that is in the state $\ket{\psi}$ with probability $1$, i.e. the state vector $\ket{\psi}$. Notice $\iota({\ket{\psi}})$ is a rank-1 matrix with precisely 1 non-zero eigenvalue that is equal to 1 with associated eigenstate $\ket{\psi}$.
+\textcolor{green}{We call such density matrix $\iota(\ket{\psi})$ a \textit{pure state}. More formally, we say a density matrix is a pure state if it is a one-dimensional projector. Otherwise, it is a \textit{mixed state}. We will only talk about pure states in this thesis.}
+The following lemma shows that the function $\iota$ is an inclusion for our purposes.
 
 \begin{lemma}
 \label{lemma state into density}
@@ -70,12 +88,28 @@ e^{i\theta_1}b_1 e^{-i\theta_2}\Bar{b_2}=b_1 \Bar{b_2}\\
 \end{gather}
 \end{proof}
 
+Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices. \textcolor{green}{We can therefore reformulate all the postulates introduced in the previous chapter in the language of density matrices. Here we just present the definition of measuring on a basis using density matrix. In other words, \textbf{Definition \ref{def: measurement in a basis state vector}} becomes the following:}
 
 
-Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices.  If we wish to emphasize that a state is given by a proper density matrix, we say the state is \textit{mixed}.  In similar fashion, states given by vectors are sometimes called {\emph{pure}}. 
+% A few theorems that we introduced using state vectors back in Chapter \ref{Chapter3-postulates} can be reformulated using density matrices.
+% \textbf{Theorem} \ref{theorem: measurement in an orthonormal basis} becomes the following:
+\begin{definition}[Measuring a Density Matrix in a Basis]
+Consider a quantum system in a state represented by the density matrix $\rho$. Measuring $\rho$ in the basis $\{\ket{b_j}\}_j$ results in outcome $j$ with probability 
+\begin{equation} \label{eqn: measurement probability in density matrix}
+    q_j=\braket{b_j | \rho |b_j}
+\end{equation}
+\end{definition}
+
+A more extensive introduction on density matrices can be found in \textbf{Appendix \ref{AppendixA}}.
+
+---------------------------------
+Here is the mathematical characterization of density matrix. 
+
+% ---------------------------
+% If we wish to emphasize that a state is given by a proper density matrix, we say the state is \textit{mixed}.  In similar fashion, states given by vectors are sometimes called {\emph{pure}}. 
 % The material in this Chapter past this point will not be used in subsequent Chapters of the thesis, so the reader can freely skip ahead.
 
-\textcolor{blue}{THE ABOVE IS WRITTEN FOR SUBSEQUENT SECTIONS.  IF THEY GET MOVED TO AN APPENDIX, THE SENTENCE ABOVE MUST BE REWRITTEN}
+\textcolor{blue}{THE ABOVE IS WRITTEN FOR SUBSEQUENT SECTIONS.  IF THEY GET MOVED TO AN APPENDIX, THE SENTENCE ABOVE MUST BE REWRITTEN}\textcolor{green}{done}
 
 \begin{theorem}[Characterization of density matrix]
 A matrix $\rho$ is the density matrix associated to some ensemble $\{p_i, \ket{\psi_i}\}$ if and only if it satisfies the conditions:
@@ -90,7 +124,7 @@ Given a density matrix $\rho=\sum_i p_i \ket{\psi_i}\bra{\psi_i}$. Then
 \begin{equation}
     tr(\rho)=\sum_i p_i tr(\ket{\psi_i}\bra{\psi_i})=\sum_i p_i =1
 \end{equation}
-So the trace condition is satisfied. Notice here from section \ref{section:complex vector space} we know all eigenvalues of a projector like $\ket{\psi_i}\bra{\psi_i}$ are 0 or 1. Since trace is equal to the sum of eigenvalues, we have $tr(\ket{\psi_i}\bra{\psi_i})=1$. Now suppose $\ket{\varphi}$ is an arbitrary vector in state space. Then
+So the trace condition is satisfied. Notice here from \textbf{Section \ref{section:complex vector space}} we know all eigenvalues of a projector like $\ket{\psi_i}\bra{\psi_i}$ are 0 or 1. Since trace is equal to the sum of eigenvalues, we have $tr(\ket{\psi_i}\bra{\psi_i})=1$. Now suppose $\ket{\varphi}$ is an arbitrary vector in state space. Then
 \begin{equation}
     \braket{\varphi|\rho|\varphi}=\sum_i p_i \braket{\varphi|\psi_i} \braket{\psi_i|\varphi}=\sum_i p_i |\braket{\varphi|\psi_i}|^2 \ge 0
 \end{equation}
