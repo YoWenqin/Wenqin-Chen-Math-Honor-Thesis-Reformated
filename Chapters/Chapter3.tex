@@ -12,7 +12,8 @@
 
 In the 20th century, quantum mechanics fundamentally changed our understanding of the physical world.  Previously, physicists viewed the universe deterministically.  Any physical attribute of an object could be known, in principle, to an arbitrary degree of accuracy.  An object moving through space possessed an exact location, velocity and momentum at a time $t$. In contrast, in the quantum mechanical universe Schrödinger's famous cat is simultaneously alive and dead subject to a certain probability distribution.  Only when we actually opens the chamber to see whether the cat is alive or dead is its ultimate state determined. If an object is moving, the certainty with which we know its position constrains how much we can know about its velocity.  Perhaps even more alarmingly, an observer cannot even measure an object without changing it.
 
-Famous physicists like Niels Bohr, Max Planck, Paul Dirac, Werner Heisenberg, Richard Feynman and many others relegated the previously held {\emph{classical}} view of the universe to only one side of a coin.  In this chapter we present the postulates of quantum mechanics.  In each instance, after stating a postulate precisely, we summarize the key ideas, making explicit what the reader should take from the postulate for this thesis.  This summary is by no means complete.  See ... \textcolor{red}{add more references that provide introductions to quantum mechanics for non-physicists} for a more extensive introduction to the subject and \cite{dorai2018} for a more extensive introduction to the history of quantum mechanics.
+Famous physicists like Niels Bohr, Max Planck, Paul Dirac, Werner Heisenberg, Richard Feynman and many others relegated the previously held {\emph{classical}} view of the universe to only one side of a coin.  In this chapter we present the postulates of quantum mechanics.  In each instance, after stating a postulate precisely, we summarize the key ideas, making explicit what the reader should take from the postulate for this thesis.  This summary is by no means complete. 
+\textcolor{green}{See \cite{hall2013quantum} for a more comprehensive introduction to quantum mechanics for mathematicians, and \cite{rieffel1998introduction} for a more "computer-scientsy" perspective. \cite{dorai2018} provides a summary in the history of quantum mechanics.}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -25,15 +26,27 @@ Famous physicists like Niels Bohr, Max Planck, Paul Dirac, Werner Heisenberg, Ri
     \textbf{Postulate 1}: Associated to any isolated physical system is a Hilbert space\footnote{a complete inner product space} known as the {\emph{state space}} of the system. The system is completely described by its {\emph{state vector}}, which is a unit vector in the system's state space.
 \end{quote}
 
-For our purposes, the Hilbert space is $C^n$. In fact, often $n=2$, so the state vector is a qubit (see \textbf{Definition \ref{def qubit}} and more generally Chapter \ref{Chapter2-preliminaries}).  Thus, in many of our examples, a state vector is a superposition of $\ket{0}$ and $\ket{1}$.
+For our purposes, the Hilbert space is $C^n$. In fact, often $n=2$, so the state vector is a qubit (see \textbf{Definition \ref{def qubit}} and more generally \textbf{Chapter \ref{Chapter2-preliminaries}}).  Thus, in many of our examples, a state vector is a superposition of $\ket{0}$ and $\ket{1}$.
 
-There are {\emph{real}} physical systems that can be described in terms of qubits.  These include, for example, the polarization of a photon, the alignment of nuclear spin in a uniform magnetic field, and the state of an electron orbiting a single atom.  In the last case, the orbiting electron can exist in either the "ground" or "excited" states, which can be identified with $\ket{0}$ and $\ket{1}$ respectively. By shining light on the atom for an appropriate length of time, it is possible to move the electron from the $\ket{0}$ state to the $\ket{1}$. Interestingly, by reducing the time we shine the light, we may move the electron from the state $\ket{0}$ to $\ket{+}$, a (nontrivial) superposition\footnote{$\ket{+}=\frac{\sqrt{2}}{2}\ket{0}+\frac{\sqrt{2}}{2}\ket{1}$, hence $\ket{+}$ can be viewed as being "halfway" between $\ket{0}$ and $\ket{1}$} of $\ket{0}$ and $\ket{1}$ (see \cite{Nielsen}).
-\textcolor{blue}{***Raj: It might be good to define $\ket{+}$ and $\ket{-}$ earlier. You use them again in the next postulate.***}
+There are {\emph{real}} physical systems that can be described in terms of qubits.  These include, for example, the polarization of a photon, the alignment of nuclear spin in a uniform magnetic field, and the state of an electron orbiting a single atom.  In the last case, the orbiting electron can exist in either the "ground" or "excited" states, which can be identified with $\ket{0}$ and $\ket{1}$ respectively. By shining light on the atom for an appropriate length of time, it is possible to move the electron from the $\ket{0}$ state to the $\ket{1}$. Interestingly, by reducing the time we shine the light, we may move the electron from the state $\ket{0}$ to $\ket{+}$, a (nontrivial) superposition
+\footnote{
+$\ket{+}$ and $\ket{-}$ can both be viewed as being "halfway" between $\ket{0}$ and $\ket{1}$} of $\ket{0}$ and $\ket{1}$ (see \cite{Nielsen}).
+{\color{green}
+In fact, $\ket{+}, \ket{-}$ form a commonly used orthonormal basis in $\mathbb{C}^2$ called \textit{Hadamard basis}. They are defined as follows:
+\begin{equation} \label{eqn: hadamard basis}
+\begin{cases}
+\ket{+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})\\
+\ket{-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})
+\end{cases}    
+\end{equation}
+}
 
+% \textcolor{blue}{***Raj: It might be good to define $\ket{+}$ and $\ket{-}$ earlier. You use them again in the next postulate.***}
+\pagebreak
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\pagebreak
+
 \section{Postulate 2: Evolution}
 
 \begin{quote}
@@ -71,7 +84,7 @@ It's worth pointing out that {\bf{Postulate 2}} applies to a \emph{closed} syste
 %	SECTION 3
 %----------------------------------------------------------------------------------------
 \pagebreak
-\section{Postulate 3: Quantum Measurement}
+\section{Postulate 3: Quantum Measurement} \label{section: postulate 3}
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
@@ -80,13 +93,13 @@ It's worth pointing out that {\bf{Postulate 2}} applies to a \emph{closed} syste
 
 \begin{quote}
     \textbf{Postulate 3}: Quantum measurements are described by a collection $\{M_m\}$ of measurement operators which satisfy the {\emph{completeness equation}} $\sum\limits_m M_m^\dagger M_m =I$. These operators act on the state space of the system being measured, and the index {\emph{m}} refers to the measurement outcomes that may occur in the experiment. If the quantum system is in state $\ket{\psi}$ immediately prior to measurement, then the probability that outcome {\emph{m}} occurs is given by 
-    \begin{gather*}
+    \begin{equation} \label{eqn: general measurement probability}
         p(m)=\bra{\psi}M_m^\dagger M_m \ket{\psi}.
-    \end{gather*}
+    \end{equation} 
    When this is the case, the state of the system after the measurement is
-    \begin{gather*}
+    \begin{equation} \label{eqn: general measurement post state}
         \frac{M_m \ket{\psi}}{\sqrt{\bra{\psi}M_m^\dagger M_m \ket{\psi}}}.
-    \end{gather*}
+    \end{equation}
 
 \end{quote}
 
@@ -152,7 +165,7 @@ This computation shows that Bob can detect the outcome $i$ with probability $1$.
 
 On the other hand, {\emph{even when they are known to Bob,}} non-orthogonal states cannot be reliably distinguished (see page 87 Box 2.3 in \cite{Nielsen} for a rigoroous proof).  We demonstrate this phenomenon with another example.
 \begin{example} \label{example: non-orthogonal states for measurements}
-This time, say Alice selects from the states $\ket{\psi_1}=\ket{0}$ and  $\ket{\psi_2}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}=\ket{+}$. Suppose Bob attempts to distinguish $\ket{\psi_1}, \ket{\psi_2}$ with measurement operators $M_1=\ket{0}\bra{0}, M_2=\ket{1}\bra{1}$ as before.
+This time, say Alice selects from the states $\ket{\psi_1}=\ket{0}$ and  $\ket{\psi_2}=\ket{+}$. Suppose Bob attempts to distinguish $\ket{\psi_1}, \ket{\psi_2}$ with measurement operators $M_1=\ket{0}\bra{0}, M_2=\ket{1}\bra{1}$ as before.
 
 Now, if Alice picks $\ket{\psi_1}$, then $p(1)=\braket{0 |0}\braket{0|0}=1$, so Bob picks the correct index. 
 
@@ -177,91 +190,61 @@ Note that when the measurement operators in \textbf{Postulate 3}, are orthogonal
 \sum\limits_m M_m^\dagger M_m = I = \sum\limits_m M_m M_m = \sum\limits_m M_m.
 \end{equation}
 
+% \textcolor{blue}{Insert definition of projective measurement with respect to an orthonormal basis here (begun below).  Add a footnote saying "We will define projective measurements rigorously in the Appendix, but for our purposes projective measurements can be made with respect to an orthonormal basis."  I think there is no need to include the more general definition of projective measurement except in an appendix} \textcolor{green}{done}
 
+{\color{green}
 
+\begin{definition}[Measuring in a Basis]\footnote{Measuring in a basis actually belongs to a special subclass of quantum measurement called \textit{projective measurement}. We will define projective measurements rigorously in the \textbf{Appendix \ref{AppendixB}}, but for our purposes it is sufficient just to introduce measuring with respect to an orthonormal basis.} 
+To measure in a basis $\{\ket{u_m}\}$, where $\ket{u_m}$ form an orthnormal basis, means to perform a quantum measurement with a collection $\{M_m\}$ of measurement operators such that $M_m=\ket{u_m}\bra{u_m}$.
 
-\textcolor{blue}{Insert definition of projective measurement with respect to an orthonormal basis here (begun below).  Add a footnote saying "We will define projective measurements rigorously in the Appendix, but for our purposes projective measurements can be made with respect to an orthonormal basis."  I think there is no need to include the more general definition of projective measurement except in an appendix}
-
-
-\begin{definition}
-Let
+If the quantum system is in state $\ket{\psi}$ immediately prior to measurement, then the probability of that outcome m occurs is given by
+\begin{equation}\label{eqn: basis measurement probability}
+    p(m)=|\braket{\psi|b_i}|^2.
+\end{equation}
+When this is the case, the state of the system after the measurement is $\ket{u_m}$
 \end{definition}
 
-\textcolor{blue}{Note that .. (refer to above examples).  Here is an additional example ... Include example of a projectvie measurement with respect to an orthonorma basis that isn't the standard basis}
+We can check that this definition is consistent with \textbf{Postulate 3}.
+Notice that $$M_m^2=\ket{u_m}\bra{u_m}\ket{u_m}\bra{u_m}=\ket{u_m}\braket{u_m|u_m}\bra{u_m}=\ket{u_m}\bra{u_m}=M_m$$ and $$M_m^\dagger=(\ket{u_m}\bra{u_m})^\dagger=\ket{u_m}\bra{u_m}=M_m$$.
+
+Therefore, $$\sum_m M_m^\dagger M_m=\sum_m M_m^2=\sum_m M_m = \sum_m \ket{u_m}\bra{u_m}=\mathbb{I}.$$
+We proved the correctness of the last step back in \textbf{Section \ref{section:complex vector space}}. 
+So measuring in a basis does satisfy the completeness equation required for quantum measurement as defined in \textbf{Postulate 3}. 
+You can easily check \eqref{eqn: general measurement probability} becomes \eqref{eqn: basis measurement probability} and that \eqref{eqn: general measurement post state} becomes $\ket{u_m}$ up to a global phase. The calculation is very similar to the one shown in \textbf{Example \ref{measurement-standard basis}}.
+
+While \textbf{Example \ref{measurement-standard basis}} shows a measurement with respect to the standard basis, here is an additional exmple of measuring on the Hadamard basis.
+
+% \textcolor{blue}{Note that .. (refer to above examples).  Here is an additional example ... Include example of a projectvie measurement with respect to an orthonorma basis that isn't the standard basis}
 
 \begin{example}
-
+Suppose the initial quantum state is $\ket{\psi}=\ket{0}$. We measure in the Hadamard basis $\{\ket{+}, \ket{-}\}$. Then by \eqref{eqn: basis measurement probability}, the probabilities that outcome 1, 2 occurs are each given by
+\begin{gather}
+    p(1)=|\braket{0|+}|^2=\frac{1}{2}\\
+    p(2)=|\braket{0|-}|^2=\frac{1}{2}
+\end{gather}
+where the state of the system after the measurement is $\ket{+}, \ket{-}$ respectively.
 \end{example}
 
 
 
 For our purposes the most important measurements are projective measurements with respect to an orthonormal basis, as in \textbf{Examples} \ref{measurement-standard basis} and \ref{example: orthogonal states for measurements}.  In this paper, when say we are "measuring" we are always measuring with respect to an orthonormal basis.
+}
 
-
-Note that when we measure the quantum state $\ket{\psi}$ with respect to the orthonormal basis $B =\{\ket{b_j}\}_{j=1}^d$, the probability of observing outcome $j$ is given by,
- \begin{equation}
- p(j)=\braket{\psi|b_j}\braket{b_j|\psi}= \overline{\braket{b_j|\psi}}\braket{b_j|\psi}= |\braket{b_j|\psi}|^2.
- \end{equation}
- When this outcome is observed, the post-measurement state is $\ket{b_j}$, up to a global phase.  Thus, \textbf{Example} \ref{measurement-standard basis} is exactly this computation applied to the orthonormal basis $\{\ket{0},\ket{1}\}.$
+% Note that when we measure the quantum state $\ket{\psi}$ with respect to the orthonormal basis $B =\{\ket{b_j}\}_{j=1}^d$, the probability of observing outcome $j$ is given by,
+%  \begin{equation}
+%  p(j)=\braket{\psi|b_j}\braket{b_j|\psi}= \overline{\braket{b_j|\psi}}\braket{b_j|\psi}= |\braket{b_j|\psi}|^2.
+%  \end{equation}
+%  When this outcome is observed, the post-measurement state is $\ket{b_j}$, up to a global phase.  Thus, \textbf{Example} \ref{measurement-standard basis} is exactly this computation applied to the orthonormal basis $\{\ket{0},\ket{1}\}.$
+ \pagebreak
  
  
  
  
+%  ************************************************************
  
- ************************************************************
- 
- \textcolor{blue}{BELOW THIS LINE MOVE TO APPENDIX}
-
-Postulate 3 can be completely restated in the context of projective measurements, which we present in the Appendix.
+%  \textcolor{blue}{BELOW THIS LINE MOVE TO APPENDIX}
 
 
-
-
-The measurement postulate for projective measurements is superficially rather different from the general postulate above.
-\begin{quote}
-    \textbf{Projective Measurements}: A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
-    \begin{equation}
-        M=\sum_m m P_m
-    \end{equation}
-    where $P_m$ is the projector onto the eigenspace of M with eigenvalue m \footnote{The eigenspace corresponding to an eigenvalue m is the set of vectors which have eigenvalue m}. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable. Upon measuring the state $\ket{\psi}$, the probability of getting result m is given by 
-    \begin{equation}
-        p(m)=\braket{\psi|P_m|\psi}
-    \end{equation}
-    Given that outcome m occurred, the state of the quantum system immediately after the measurement is 
-    \begin{equation}
-        \frac{P_m \ket{\psi}}{\sqrt{p(m)}}.
-    \end{equation}
-\end{quote}
-
-Here is an example of projective measurements on single qubits.
-\begin{example}
-Consider the Pauli-Z matrix introduced in \textbf{Example} \ref{example-pauli z diagonal rep}.
-\begin{equation}
-    Z=\ket{0}\bra{0}-\ket{1}\bra{1}
-\end{equation}
-Take Z as the observable for out projective measurement. Here $P_{+1}=\ket{0}\bra{0}$ is the projector onto the eigenspace of Z with eigenvalue 1. $P_{-1}=\ket{1}\bra{1}$ is the projector onto the eigenspace of Z with eigenvalue -1.
-
-Thus the measurement of Z on the state $\ket{\psi}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$ yields the outcome 1 with probability $\braket{\psi|0}\braket{0|\psi}=\frac{1}{2}$. Similarly, the outcome -1 has probability $\frac{1}{2}$.
-\end{example}
-
-% Another feature that distinguishes quantum from classical is that that we can measure a qubit in basis aside from the standard basis. 
-
-
-
-
-
-**********************************************************
-
-
-Another very nice property of projective measurements is that it is very easy to calculate the expected value of a given the observable M of a projective measurement:
-\begin{eqnarray}
-E(M)&=&\sum_m mp(m)\\
-&=&\sum_m m \braket{\psi|P_m|\psi}\\
-&=&\braket{\psi|(\sum_m mP_m)|\psi}\\
-&=&\braket{\psi|M|\psi}
-\end{eqnarray}
-
-****************************************************
 %----------------------------------------------------------------------------------------
 %	SECTION 4
 %----------------------------------------------------------------------------------------

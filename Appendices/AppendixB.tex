@@ -1,0 +1,55 @@
+% Appendix Template
+
+\chapter{Projective Measurements} % Main appendix title
+
+\label{AppendixB} % Change X to a consecutive letter; for referencing this appendix elsewhere, use \ref{AppendixX}
+Postulate 3 can be completely restated in the context of projective measurements, which we present in the Appendix.
+
+
+
+
+The measurement postulate for projective measurements is superficially rather different from the general postulate above.
+\begin{quote}
+    \textbf{Projective Measurements}: A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
+    \begin{equation}
+        M=\sum_m m P_m
+    \end{equation}
+    where $P_m$ is the projector onto the eigenspace of M with eigenvalue m \footnote{The eigenspace corresponding to an eigenvalue m is the set of vectors which have eigenvalue m}. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable. Upon measuring the state $\ket{\psi}$, the probability of getting result m is given by 
+    \begin{equation}
+        p(m)=\braket{\psi|P_m|\psi}
+    \end{equation}
+    Given that outcome m occurred, the state of the quantum system immediately after the measurement is 
+    \begin{equation}
+        \frac{P_m \ket{\psi}}{\sqrt{p(m)}}.
+    \end{equation}
+\end{quote}
+
+Here is an example of projective measurements on single qubits.
+\begin{example}
+Consider the Pauli-Z matrix introduced in \textbf{Example} \ref{example-pauli z diagonal rep}.
+\begin{equation}
+    Z=\ket{0}\bra{0}-\ket{1}\bra{1}
+\end{equation}
+Take Z as the observable for out projective measurement. Here $P_{+1}=\ket{0}\bra{0}$ is the projector onto the eigenspace of Z with eigenvalue 1. $P_{-1}=\ket{1}\bra{1}$ is the projector onto the eigenspace of Z with eigenvalue -1.
+
+Thus the measurement of Z on the state $\ket{\psi}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$ yields the outcome 1 with probability $\braket{\psi|0}\braket{0|\psi}=\frac{1}{2}$. Similarly, the outcome -1 has probability $\frac{1}{2}$.
+\end{example}
+
+% Another feature that distinguishes quantum from classical is that that we can measure a qubit in basis aside from the standard basis. 
+
+
+
+
+
+**********************************************************
+
+
+Another very nice property of projective measurements is that it is very easy to calculate the expected value of a given the observable M of a projective measurement:
+\begin{eqnarray}
+E(M)&=&\sum_m mp(m)\\
+&=&\sum_m m \braket{\psi|P_m|\psi}\\
+&=&\braket{\psi|(\sum_m mP_m)|\psi}\\
+&=&\braket{\psi|M|\psi}
+\end{eqnarray}
+
+****************************************************

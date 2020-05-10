@@ -683,9 +683,9 @@ We have now described exactly when there exists perfect correlation between Alic
 In the last section we analyzed the extent to which Alice's and Bob's end states are correlated when Alice measures a shared composite state. We now continue with our analysis, focusing on when Bob has {\emph{access}} to his state vector without introducing additional uncertainty. 
 % This situation is similar to that of \textbf{Examples \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}}, only now instead of Alice {\emph{selecting}} a state, now she {\emph{measures}} and observes an outcome with an end state.  Specifically, in our previous setup, Alice chooses a state from an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$ known to both herself and to Bob. She then gives the state to Bob, whose task is to identify the index of that state. Our task is different. Now, Alice and Bob share a known composite 2-qudit state $\ket{\psi}$ and Alice measures with respect to the orthonormal basis. 
 
-By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M(\ket{\psi_i})$ preserves orthogonality and has full rank, Bob can measure with respect to the basis $\{M(\ket{\psi_i})^T \overline{\ket{\psi_i}}\}_{i=1}^n$, which must be orthonormal. Thus, by measuring with respect to {\emph{this orthonormal basis}} he will be able to infer which end state Alice observed by simply applying the inverse of the transpose of the coefficient matrix to the his end state, and then taking conjugates. This is very much the quantum analogue of {\bf{Example}} \ref{example: orthogonal states for measurements}.
+By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M(\ket{\psi_i})$ preserves orthogonality and has full rank, Bob can measure with respect to the basis $\{M(\ket{\psi_i})^T \overline{\ket{\psi_i}}\}_{i=1}^n$, which must be orthonormal. Thus, by measuring with respect to {\emph{this}} orthonormal basis he will be able to infer which end state Alice observed by simply applying the inverse of the transpose of the coefficient matrix to the his end state, and then taking conjugates. This is very much the quantum analogue of {\bf{Example}} \ref{example: orthogonal states for measurements}.
 
-On the other hand, if the transpose of the coefficient matrix does not preserve orthogonality, Bob cannot determine Alice's end state with certainty {\emph{even if their shared state is maximally entangled}}.  Thus, perfect correlation between Alice's and Bob's end states is not enough to guarantee that he knows the results of her measurement.  This is because even though their end states may be perfectly correlated, uncertainty is introduced when Bob tries to {\emph{access}} his end state by measuring.  The situation is the quantum analogue of {\bf{Example}} \ref{example: non-orthogonal states for measurements}.  The next Proposition characterizes exactly when Bob is able to infer Alice's measurement end state with certainty.
+On the other hand, if the transpose of the coefficient matrix does not preserve orthogonality, Bob cannot determine Alice's end state with certainty {\emph{even if their shared state is maximally entangled}}.  Thus, perfect correlation between Alice's and Bob's end states is not enough to guarantee that he knows the results of her measurement.  This is because even though their end states may be perfectly correlated, uncertainty is introduced when Bob tries to {\emph{access}} his end state by measuring, as was the case in {\bf{Example}} \ref{example: non-orthogonal states for measurements}.  The next Proposition characterizes exactly when Bob is able to infer Alice's measurement end state with certainty.  
 % \textcolor{red}{I think I had that $\ket{\psi}$ must be maximally entangled in the below proposition. Is that not needed? }
 
 \begin{prop} \label{prop: ultimate}
@@ -695,7 +695,7 @@ Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state sh
 \begin{proof}
 This result follows from the calculations in the proof of \textbf{Proposition \ref{entanglement-rank}}, and the fact that a nonzero matrix which preserves orthogonality must be of full rank and is therefore maximally entangled.  Thus after {\bf{Proposition}} \ref{orthogonality preserving character} the result is proven.
 \end{proof}
-The next Proposition characterizes matrices that preserve orthogonality.
+
 
 
 
@@ -704,18 +704,15 @@ Let $M$ be a square matrix.  Then $M$ is a nonzero scalar multiple of a unitary 
 
 \end{prop}
 
-\textcolor{blue}{I changed the statement of the Proposition as we discussed.  Make sure the proof is structured in an appropriate way for the current version.} \textcolor{green}{done}
 
 
 \begin{proof}
-Consider an arbitrary square matrix M that is a nonzero scalar multiple of a unitary matrix. Say $M=\lambda U$, where $\lambda$ is a scalar, $\lambda \ne 0$, and $U$ is a unitary matrix.
-Then if $\braket{u|v}=0$, we have
-$$\braket{Mu|Mv}=\braket{\lambda Uu|\lambda Uv}={|\lambda|}^2 \braket{u|(U^\dagger U)v}={|\lambda|}^2 \braket{u|\mathbb{I}v}=={|\lambda|}^2 \braket{u|v}0,$$ So orthogonality is preserved.
+First, let $M$ be a nonzero scalar multiple of a unitary matrix. Say $M=\lambda U$, where $\lambda \ne 0$, and $U$ is a unitary matrix.  Suppose that $\braket{u|v}=0$.  Then,
+$$\braket{Mu|Mv}=\braket{\lambda Uu|\lambda Uv}={|\lambda|}^2 \braket{u|(U^\dagger U)v}={|\lambda|}^2 \braket{u|\mathbb{I}v}={|\lambda|}^2 \braket{u|v}0,$$ So orthogonality is preserved.  Thus nonzero scalar multiples of unitary matrices preserve orthogonality.
 
-Now we prove the other direction. Suppose $\braket{Mu|Mv}=0$ when $\braket{u|v}=0$ and $M \ne 0$. First, we will show that if a nonzero square matrix $M$ preserves orthogonality, it must be invertible.
-We prove this by contraposition: any nonzero singular square matrix does not preserve orthogonality. In other words, for an arbitrary nonzero singular $n$ by $n$ matrix $M$, there exist $\ket{u}, \ket{v} \in \mathbb{C}^n$ such that $\braket{u|v}=0$, but $\braket{Mu|Mv} \ne 0$.
+Now suppose $M\neq0$, and $\braket{Mu|Mv}=0$ when $\braket{u|v}=0$. First, we will show that $M$ must be invertible.  We prove the contrapositive.  That is, if a nonzero $n$ by $n$ matrix $M$ is singular, there exist $\ket{u}, \ket{v} \in \mathbb{C}^n$ such that $\braket{u|v}=0$, but $\braket{Mu|Mv} \ne 0$.
 
-Let the dimension of $ker(M)$ be $m$, and let $\{\ket{x_1}, \ket{x_2},\hdots, \ket{x_m}\}$ be a basis of $ker(M)$. Extend that basis to $\{\ket{x_1}, \ket{x_2},\hdots, \ket{x_m}, \hdots, \ket{x_n}\}$. Since $M \neq 0$, $n>m$.  By using Gram-Schmidt we may assume that this basis is orthonormal.  Let
+Say $\{\ket{x_1}, \ket{x_2},\hdots, \ket{x_m}\}$ is a basis for $ker(M)$, and extend to $\{\ket{x_1}, \ket{x_2},\hdots, \ket{x_m}, \hdots, \ket{x_n}\}$ a basis for ${\mathbb{C}}^n$.  By hypothesis on $M$, $1 \leq m <n$, and by Gram-Schmidt we may assume that this basis is orthonormal.  Let
 \begin{gather*}
     \ket{u}=\ket{x_1}+\ket{x_n}\\
     \ket{v}=\ket{x_1}-\ket{x_n}
@@ -729,14 +726,15 @@ Since $\ket{x_1} \in ker(M)$, we also have
     \ket{Mv}=M\ket{x_1}-M\ket{x_n}=-M\ket{x_n}    
 \end{gather*}
 
-Since $\ket{x_n} \notin ker(M)$, we have $\ket{\sigma}=M\ket{x_n} \ne 0$. So $\braket{Mu|Mv}=-\braket{\sigma|\sigma} \ne 0$. Thus $M$ does not preserve orthogonality, so any matrix which preserves orthogonality must be invertible.  Now we want to show that a nonzero matrix $M$ which preserves orthogonality must be a scalar multiple of a unitary matrix.
+Since $\ket{x_n} \notin ker(M)$, we have $\ket{\sigma}=M\ket{x_n} \ne 0$. So $\braket{Mu|Mv}=-\braket{\sigma|\sigma} \ne 0$. Thus $M$ does not preserve orthogonality, so any matrix which preserves orthogonality must be invertible.  We now show that a nonzero matrix $M$ which preserves orthogonality must be a scalar multiple of a unitary matrix.
 
-Fix an arbitrary $\ket{v} \in \mathbb{C}^n, \ket{v} \ne 0$.  Since $M$ is a nonzero invertible matrix, $M^\dagger M \ket{v} \ne 0$.  Now, for $\ket{u} \in \mathbb{C}^n$, if $\braket{u|v}=0$, then $\braket{Mu|Mv}=0$, so $\braket{u|M^\dagger Mv}=0$, thus
+Let $\ket{v} \in \mathbb{C}^n, \ket{v} \ne 0$.  Since $M$ is a nonzero invertible matrix, $M^\dagger M \ket{v} \ne 0$.  Now, for $\ket{u} \in \mathbb{C}^n$, if $\braket{u|v}=0$, then $\braket{Mu|Mv}=0$, so $\braket{u|M^\dagger Mv}=0$, thus
 $$\ket{v}^\perp \subseteq {(M^\dagger M\ket{v})}^\perp.$$
 
-Since $\ket{v}^\perp$ and $(M^\dagger M\ket{v})^\perp$ both have dimension $n-1$, $\ket{v}^\perp = (M^\dagger M\ket{v})^\perp$, thus for some $\lambda_v$, we have $\lambda_v \ket{v} = M^\dagger M \ket{v}.$
+\noindent
+Since $\ket{v}^\perp$ and $(M^\dagger M\ket{v})^\perp$ both have dimension $n-1$, $\ket{v}^\perp = (M^\dagger M\ket{v})^\perp$, thus for some $\lambda_v \in \mathbb{C}$, we have $\lambda_v \ket{v} = M^\dagger M \ket{v}.$
 
-Now let $\ket{v'} \in \mathbb{C}^n$ with $\braket{v|v'} \neq 0$, and let ${\lambda}_{v'}=M^\dagger M \ket{v'}$.  Then,
+Now let $0 \neq \ket{v'} \in \mathbb{C}^n$ with $\braket{v|v'} \neq 0$, and let ${\lambda}_{v'}=M^\dagger M \ket{v'}$.  Then,
 \begin{gather*}
 \braket{v|v'}-\braket{v|v'}=0\\
 \Rightarrow \braket{M^\dagger M v|v'}-\braket{M^\dagger M v|v'}=0\\
@@ -749,27 +747,61 @@ Now let $\ket{v'} \in \mathbb{C}^n$ with $\braket{v|v'} \neq 0$, and let ${\lamb
 On the other hand, if $\braket{v|v'}=0$, then $ \ket{v''}=\ket{v}+\ket{v'}$ is not orthogonal to both $\ket{v}$, $\ket{v'}$.  Thus, 
 $$ {\lambda}_{v}=\lambda_{v''}=\lambda_{v'}.$$
 
-Thus, since $\lambda$ is independent of $\ket{v}$, $M^\dagger M = \lambda \mathbb{I}$.  Also, ${(M^\dagger M)}^\dagger={(\lambda \mathbb{I})}^\dagger=\lambda \mathbb{I}$, so $\lambda$ is real and  $\frac{1}{\sqrt{\lambda}}M$ is unitary as required.
+Thus, since $\lambda$ is independent of $\ket{v}$, $M^\dagger M = \lambda \mathbb{I}$.  But then,
+\begin{equation*}
+{(M^\dagger M)}^\dagger={(\lambda \mathbb{I})}^\dagger=\overline{\lambda} \mathbb{I} =\lambda \mathbb{I}.
+\end{equation*}
+So $\lambda$ is real and  
+\begin{equation*}
+{(\frac{1}{\sqrt{\lambda}}M)}^\dagger \frac{1}{\sqrt{\lambda}}M=\frac{1}{\lambda}M^\dagger M=\frac{1}{\lambda}\lambda\mathbb{I}=\mathbb{I},
+\end{equation*}
+so $M$ is a scalar multiple of a unitary matrix as required.
 \end{proof}
 
 
 
-\textcolor{green}{The coefficient matrix of any quantum state is a nonzero square matrix. By \textbf{Lemma \ref{end state lemma}} and \textbf{Proposition \ref{orthogonality preserving character}}, we learn that after Alice has made her measurement with respect to an orthonormal basis ${\ket{\varphi}_i}_{i=1}^n$ and yields an end state $\ket{\varphi}$, Bob will only be able to actually measure with respect to an orthonormal basis $M(\ket{\psi})^T {\ket{\varphi}_i}_{i=1}^n$ if the transpose of the coefficient matrix $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix. For example, if Alice measured her part of the shared pair of entangled particles with respect to a basis $\{\ket{u}, \ket{v}\}$, then }
-Bob can measure his part with respect to the basis $\{M(\ket{\psi})^T\ket{u}, M(\ket{\psi})^T\ket{v}\}$. When $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix, it is also invertible and hence has full rank. \textcolor{green}{Therefore, the initial 2-qudit state that Alice and Bob shared $\ket{\psi}$ is maximally entangled, implying that the state of Bob's system contains perfect information about Alice according to \textbf{Proposition \ref{entanglement-rank}}. Therefore, by measuring his system with respect to $\{M(\ket{\psi})^T\ket{u}, M(\ket{\psi})^T\ket{v}\}$, Bob can infer Alice's end state that is either $\ket{u}$, or $\ket{v}$ by applying \textbf{Lemma \ref{end state lemma}}}. 
+Thus, after Alice has made her measurement with respect to an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$, Bob is guaranteed to be able to measure with respect to the basis $\{M(\ket{\psi})^T {\overline{\ket{\varphi_i}}}\}_{i=1}^n$, only if the transpose of the coefficient matrix $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix. 
+
+For example, say $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix.  Then, if Alice measured her part of the shared system with respect to a basis $\{\ket{u}, \ket{v}\}$, then 
+Bob can measure his part with respect to the orthonormal basis $\{M(\ket{\psi})^T\overline{\ket{u}}, M(\ket{\psi})^T\overline{\ket{v}}\}$. In this situation, not only is the state of Bob's system perfectly correlated with Alice's by \textbf{Proposition \ref{entanglement-rank}}, but Bob can measure with respect to an orthonormal basis consisting of all of his possible end states.  Therefore, by measuring his system with respect to $\{M(\ket{\psi})^T\overline{\ket{u}}, M(\ket{\psi})^T\overline{\ket{v}}\}$, Bob can infer Alice's end state that is either $\ket{u}$, or $\ket{v}$.
 % Therefore, Bob can infer Alice's measured outcome once he knows which specific basis Alice picked.
 
-Otherwise, Bob can only measure with respect to some basis $\{M(\ket{\psi})^T\ket{u}, (M(\ket{\psi})^T\ket{u})^\perp \}$ and can only infer something meaningful of Alice within certain probability.
+On the other hand, if $\ket{\psi}$ is maximally entangled, but it's coefficient matrix doesn't have the desired form, Bob may have to measure with respect to an orthonormal basis of the form $\{M(\ket{\psi})^T\overline{\ket{u}}, (M(\ket{\psi})^T\overline{\ket{u})}^\perp \}$.  In this case, Bob cannot infer Alice's outcome perfectly, even though prior to {\emph{his}} measurement, there was perfect correlation between his and Alice's end states.  
 
+In our first example, we illustrate what happens when both {\bf{Requirements 1, 2}} are satisfied.
 \begin{example}
-Consider a two-qubit joint state to be $\ket{\psi}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$. Say Alice chooses to measure on the standard basis $\{\ket{0}, \ket{1}\}$.
+Let $\ket{\psi}=\frac{1}{\sqrt{2}}(\ket{01}+\ket{10})$ be a composite state shared by Alice and Bob.  Say Alice chooses to measure with respect to the standard basis $\{\ket{0}, \ket{1}\}$.  Then,
+\begin{equation*}
+M(\ket{\psi})=M(\ket{\psi})^T= \frac{1}{\sqrt{2}}\left(\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}\right),
+\end{equation*}
+which is a scalar multiple of a unitary matrix since,
+\begin{equation*}
+\left(\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}\right)\cdot \left(\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}\right)=\mathbb{I}.
+\end{equation*}
+Therefore, by \textbf{Proposition \ref{prop: ultimate}}, Bob can determine Alice's measurement end state with certainty. This is because he can measure with respect to the orthonormal basis
+\begin{equation*}
+\{\left(\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}\right)\ket{0}, \left(\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}\right)\ket{1}\}=\{\ket{1}, \ket{0}\}=\{\ket{\theta_1},\ket{\theta_2}\}.
+\end{equation*}
 
-\textcolor{green}{$M(\ket{\psi})=\frac{1}{\sqrt{2}}\mathbb{I}$, so $M(\ket{\psi})^T=M(\ket{\psi})$, which is obviously a scalar multiple of the unitary matrix $\mathbb{I}$. So by \textbf{Proposition \ref{orthogonality preserving character}} and \textbf{Proposition \ref{prop: ultimate}}, we know Bob can determine Alice's measurement end state with certainty. This is because he can measure with respect to  $\{M(\ket{\psi})^T\ket{0}, M(\ket{\psi})^T\ket{1}\}=\{\ket{1}, \ket{0}\}$. By Lemma \ref{end state lemma}, after Alice's measurement and Bob's measurement on their own system both with respect to the standard basis, if Bob observes the end state $\ket{1}$ on his system, he can infer with certainty that Alice observes $\ket{0}$. If he observes the end state $\ket{1}$ instead, he can infer that Alice observes $\ket{1}$.}
+By Lemma \ref{end state lemma} after Alice's measurement, if Alice observes outcome $1$, her end state is $\ket{0}$, in which case the composite system is in state $\ket{\varphi}\otimes \ket{\theta}=\ket{0}\otimes\ket{1}=\ket{01}$.  The key point, is that when Bob measures the post-measurement system, he observes the outcome $1$ and end state $\ket{1}$ with probability one.  Since he knows both Alice's basis and the state $\ket{\psi}$, he can determine her outcome by multiplying by the inverse of transpose of the coordinate matrix and taking conjugates, and then picking the outcome which matches that state.  Thus, in this case, he multiplies his end state by $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ and gets $\ket{0}$, so he knows that she observed outcome $1$  and had end state $\ket{0}$.
+
+Similarly, if Alice observes outcome $2$, her end state is $\ket{1}$, in which case the composite system is in state $\ket{\varphi}\otimes\ket{\theta}=\ket{1}\otimes \ket{0}=\ket{10}$.  In this situation, when Bob measures he observes $2$ and has end state $\ket{0}$ with probability one.  Again, by multiplying his end state by the inverse of the transpose of the coefficient matrix, he can determine Alice's end state, and hence her outcome with certainty.
 \end{example}
 
-\textcolor{green}{Let's call all 2-qudit quantum states that allow Bob to determine Alice's measurement end state with certainty \emph{"good"} states. More explicitly, the transpose of the coefficient matrix of a \emph{"good"} must have full rank and is a scalar multiple of a unitary matrix. For a 2-qudit states in $\mathbb{C}^2 \otimes \mathbb{C}^2$, there is an elegant characterization of all such \emph{"good"} states.} 
-\begin{corollary}
-$\ket{\psi}=\frac{1}{\sqrt{2}}(a\ket{00}+(-e^{i\theta})\Bar{b}\ket{01}+b\ket{10}+e^{i\theta}\Bar{a}\ket{11})$, where $|a|^2+|b|^2=1$ is a characterization of all “good" states in $\mathbb{C}^2 \otimes \mathbb{C}^2$ such that if $\braket{u|v}=0$, then $\braket{M(\ket{\psi})^Tu|M(\ket{\psi})^Tv)}=0$.
-\end{corollary}
+Before another example, we characterize all composite qubit states that allow Bob to determine Alice's measurement end state with certainty.  
+\begin{prop}
+\label{classification}
+Let $\ket{\psi} \in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$ be a composite state shared by Alice and Bob.  Then, Bob can determine Alice's measurement outcome with certainty if and only if $\ket{\psi}=\frac{1}{\sqrt{2}}(a\ket{00}+(-e^{i\theta})\Bar{b}\ket{01}+b\ket{10}+e^{i\theta}\Bar{a}\ket{11})$, where $a, b \in \mathbb{C}$ with $|a|^2+|b|^2=1$.
+\end{prop}
+{\bf{Proposition}} \ref{classification} follows from {\bf{Proposition}} \ref{prop: ultimate} and the well known characterization of all $2$ by $2$ unitary matrices.
+
+
+
+
+*********************************************************
+
+
+
 
 \begin{example}
 Consider a two-qubit state not within the characterization in Proposition \ref{orthogonality preserving character} $\ket{\psi}=\frac{1}{\sqrt{3}}(\ket{00}+\ket{01}+\ket{10})$. Say Alice chooses to measure on the standard basis $\{\ket{0}, \ket{1}\}$.
