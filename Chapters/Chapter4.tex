@@ -6,26 +6,25 @@
 
 
 In the last chapter we formulated the postulates of quantum mechanics using the language of state vectors. These could have been stated using \textit{density matrices} as well. 
-{\color{green}
-There are at least two motivations behind introducing density matrices. We have already seen that measurements yield different states with a probability distribution. The first motivation behind density matrices is to describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}. You can imagine a source such as a machine that \emph{prepares} quantum states with a probability distribution. Thus with density matrices probability enters the discussion at another level altogether.
-In addition, for entangled joint state vectors such as $\ket{EPR}$ (see \eqref{eqn: epr}), that cannot written as a simple tensor product between $\ket{a}$ and $\ket{b}$, it is unclear how to describe the state of $\ket{a}$ without any reference to $\ket{b}$. Therefore, the second motivation behind density matrices is to provide an effective mathematical generalization for describing such $\ket{a}$. 
-}
+
+There are at least two motivations behind introducing density matrices. We have already seen that measurements yield different states with a probability distribution. The first motivation behind density matrices is to describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}. You can imagine a source such as a machine that \emph{prepares} different quantum states subject to a probability distribution. Thus with density matrices, probability enters the discussion even before a system is measured.
+In addition, since entangled joint state vectors such as $\ket{EPR}$ (see \eqref{eqn: epr}), cannot be written as a simple tensor, it is unclear how to describe the state vectors of the component systems.  Density matrices provide the framework for doing this. 
+
 % We have already seen that a {\emph{fixed}} state vector for a system gives rise to a probability distribution when it is measured.  Density matrices allow one to 
 % describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}.  Thus with density matrices probability enters the discussion at another level altogether.
 
-This additional wrinkle is interesting, but is not used significantly in future chapters.  In the interest of completeness, we summarize some key ideas in the "density matrix" formulation.  The reader may choose to skip everything in the chapter after {\bf{Lemma}} \ref{lemma state into density}.
+
 
 % \textcolor{red}{for most of what follows, we are only interested in pure states. maybe put the general definition in footnote.}
 \begin{definition}
-\textcolor{green}{Suppose a source prepares quantum states $\{\ket{\psi_1},\hdots,\ket{\psi_n}\}$ in a probabilistic manner, i.e. it prepares the quantum state $\ket{\psi}_i$ with probability $p_i$ with}
- \begin{equation}
-\sum\limits_i^n p_i=1, p_i \geq 0,
-\end{equation}
-then the resulting density matrix is given by
+Let s $\{\ket{\psi_1},\hdots,\ket{\psi_n}\}$ be states, and let $p_i\geq 0$ with $\sum\limits_i p_i=1$.
+Then, 
 \begin{equation}
     \rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i}.
 \end{equation}
-\textcolor{green}{The set of probabilities and states $\{(p_i, \ket{\psi_i})\}$ is called an \textit{ensemble} of states.}
+is the density matrix corresponding to $\{(p_i, \ket{\psi_i})\}$. 
+\end{definition}
+The set called $\{(p_i, \ket{\psi_i})\}$ is called the \textit{ensemble} of states for the density matrix $\rho$.  When $\rho$ is a density matrix with ensemble of states $\{(p_i, \ket{\psi_i})\}$, we sometimes say the state $\ket{\psi_i}$ {\emph{is prepared with probability}} $p_i$.
 % that a quantum system is in the state $\ket{\psi_i}$ with probability $p_i$, where  
 % \begin{equation}
 % \sum\limits_i^n p_i=1, p_i \geq 0.
@@ -34,15 +33,17 @@ then the resulting density matrix is given by
 % \begin{equation}
 %     \rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i}.
 % \end{equation}
-\end{definition}
+
 \bigskip
 
-Note that density matrices can be viewed as generalizing state vectors.  Let $\ket{\psi}$ be a state vector and consider the assignment
+Note that density matrices can be viewed as generalizing state vectors.  Let $\ket{\psi}$ be a state vector and consider the assignment $\iota$ given by
 $$\ket{\psi} \xrightarrow{\iota} \ket{\psi}\bra{\psi}.$$
 
-Clearly, the matrix $\iota(\ket{\psi})=\ket{\psi}\bra{\psi}$ can be regarded as the density matrix for the system that is in the state $\ket{\psi}$ with probability $1$, i.e. the state vector $\ket{\psi}$. Notice $\iota({\ket{\psi}})$ is a rank-1 matrix with precisely 1 non-zero eigenvalue that is equal to 1 with associated eigenstate $\ket{\psi}$.
-\textcolor{green}{We call such density matrix $\iota(\ket{\psi})$ a \textit{pure state}. More formally, we say a density matrix is a pure state if it is a one-dimensional projector. Otherwise, it is a \textit{mixed state}. We will only talk about pure states in this thesis.}
+Clearly, the matrix $\iota(\ket{\psi})=\ket{\psi}\bra{\psi}$ can be regarded as the density matrix for the system that is in the state $\ket{\psi}$ with probability $1$, i.e. the state vector $\ket{\psi}$.  Notice that $\iota({\ket{\psi}})$ is a matrix of rank one with precisely nonzero eigenvalue ($\lambda=1$ corresponding to eigenvector $\ket{\psi}$).  We call the density matrix $\iota(\ket{\psi})$ a \textit{pure state}. Thus, a density matrix is a pure state if it is a one-dimensional projector. Otherwise, it is a \textit{mixed state}. We will consider pure states in this thesis.
+
 The following lemma shows that the function $\iota$ is an inclusion for our purposes.
+
+\textcolor{blue}{This proof below should be separated into two parts.  I think the sting of implications is fine for concluding that $a_i=e^{i\theta_i}b_i$ for every $i$.  Then, say "Now we consider two indices $i,j$" and finish the argument.  Basically there needs to be some words at the end.}
 
 \begin{lemma}
 \label{lemma state into density}
@@ -87,36 +88,37 @@ e^{i\theta_1}b_1 e^{-i\theta_2}\Bar{b_2}=b_1 \Bar{b_2}\\
 \end{gather}
 \end{proof}
 
-Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices. \textcolor{green}{We can therefore reformulate all the postulates introduced in the previous chapter in the language of density matrices. Here we just present the definition of measuring on a basis using density matrix. In other words, \textbf{Definition \ref{def: measurement in a basis state vector}} becomes the following:}
+Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices. The postulates of quantum mechanics can be formulated in the language of density matrices. Here we just present the definition of measuring with respect to an orthonormal basis using density matrices. In other words, the following is the density matrix version of \textbf{Definition \ref{def: measurement in a basis state vector}}.
 
 
-\begin{definition}[Measuring a Density Matrix in a Basis]
-Consider a quantum system in a state in $\mathbb{C}^n$ represented by the density matrix $\rho$. Measuring $\rho$ in the basis $\{\ket{u_i}\}_{i=1}^n$ results in outcome $i$ with probability 
+\begin{definition}
+Consider a quantum system in a state in $\mathbb{C}^n$ given by density matrix $\rho$.  When we measure $\rho$ with respect to the basis $\{\ket{u_i}\}_{i=1}^n$, we observe outcome $i$ with probability 
 \begin{equation} \label{eqn: measurement probability in density matrix}
     q_i=\braket{u_i | \rho |u_i}
 \end{equation}
 \end{definition}
 
-{\color{green}
-The justification of \textbf{Definition \ref{eqn: measurement probability in density matrix}} and how density matrices reformulate the four postulates can be found in \textbf{Appendix \ref{AppendixB}}. Here we just present an example of measuring a density matrix in a basis.
 
+A justification for \textbf{Definition \ref{eqn: measurement probability in density matrix}} as well as a description of how the four postulates can be reformulated for density matrices can be found in \textbf{Appendix \ref{AppendixB}}, but here is an example of measuring a density matrix with respect to an orthonormal basis.
 
+\textcolor{blue}{I think you should add a little more to the compustions of $q_i$ below.  Basically, I think you should actually insert $\rho$ in below and do one of the computations.  You could do one, and say "Similarly, $q_2=\frac{1}{2}$".}
 \begin{example}
-Consider a source that prepares the state $\ket{0}$ and $\ket{1}$ with probabilities $p_0=p_1=\frac{1}{2}$. Suppose we measure the resulting state
+Consider a source that prepares the state $\ket{0}$ and $\ket{1}$ with probabilities $p_0=p_1=\frac{1}{2}$. Suppose we measure the corresponding mixed state
 $$\rho=\frac{1}{2}\ket{0}\bra{0}+\ket{1}\bra{1}=\frac{\mathbb{I}}{2},$$
-in the Hadamard basis $\{\ket{+}, \ket{-}\}$. The probabilities of the outcomes are given by 
+with respect to the Hadamard basis $\{\ket{+}, \ket{-}\}$. The probabilities of the outcomes are given by 
 \begin{gather}
     q_1=\braket{+|\rho|+}=\frac{1}{2}\\
     q_2=\braket{-|\rho|-}=\frac{1}{2}
 \end{gather}
 \end{example}
-}
 
-{\color{green}
-How do we use density matrices to represent measurement on a subsystem? In other words, if Alice and Bob share a joint state in $\mathbb{C}^n \otimes \mathbb{C^n}$ represented by a density matrix $\rho$, and Alice makes a measurement with respect to an orthonormal basis $\{\ket{u_i}\}_{i=1^n}$, the corresponding measurement operator on the composite system in terms of density matrix is $$\ket{u_i}\bra{u_i} \otimes \mathbb{I}_n.$$ Intuitively this is reasonable because when Alice makes a measurement, Bob does nothing. Say Alice's measurement end state is $\ket{u_{i_0}}$, then Bob's measurement statistics (the probability of each outcome) should be the same as those before Alice's measurement. You can check that this is true using By \eqref{eqn: general measurement probability density matrix}.
 
-Even though we will only discuss pure states, the reformulated postulates with density matrices apply to all mixed states. The first motivation behind density matrices (as introduced at the start of the chapter) is therefore addressed. The operation called \textit{partial trace} using density matrices is the key to address the second motivation, in which we want to answer the following question: suppose $\rho$ is a density matrix on a tensor product space $\mathbb{C}^{d_1} \otimes \mathbb{C}^{d_2}$, but suppose Alice holds the part of $\rho$ corresponding to system A and Bob holds the part corresponding to system B. How do we describe the state $\rho_A$ of Alice's system? A formal definition of partial trace and \textit{reduced density matrix} can be found in \textbf{Appendix \ref{AppendixB}}.
-}
+One important application is when a measurement on a {\emph{joint state}} is made in {\emph{one component only}}.  In other words, suppose that $\ket{\psi}$ in $\mathbb{C}^n \otimes \mathbb{C^n}$ is a composite state shared by Alice and Bob.  By using $\iota$, we may regard $\ket{\psi}$ as the density matrix $\rho=\ket{\psi}\bra{\psi}$.  Then, we can make sense of Alice makes a measurement with respect to an orthonormal basis $\{\ket{u_i}\}_{i=1}^n\subseteq {\mathbb{C}}^n$, by using of the family of operators $$\ket{u_i}\bra{u_i} \otimes \mathbb{I}_n.$$ 
+
+Intuitively, this is reasonable because in our situation, only Alice makes a measurement, while Bob does nothing.  If Alice makes a measurement and observes outcome $i_0$ with end state $\ket{u_{i_0}}$, then the probability of each outcome for Bob should be the same as it was before Alice's measurement.  This can be checked by \eqref{eqn: general measurement probability density matrix}.
+
+More applications of density matrices are discussed in \textbf{Appendix \ref{AppendixB}}.  In particular, the  \textit{partial trace} provides a tool to describe Alice's state when she shares a composite system with Bob we describe the state $\rho_A$ of Alice's system? A formal definition of partial trace and \textit{reduced density matrix} can be found in \textbf{Appendix \ref{AppendixB}}.
+
 
 
 
