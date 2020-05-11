@@ -36,8 +36,8 @@ You can check that \eqref{eqn: density matrix postulate 2} is consistent with \t
 Similarly, \textbf{Postulate 3} can be translated to density matrices:
 \begin{quote}
     \textbf{Postulate 3'}: Quantum measurements are described by a collection $\{M_m\}$ of \textit{measurement operators}. These are operators acting on the state space of the system being measured. The index $m$ refers to the measurement outcomes that may occur in the experiment. If the state of the quantum system is $\ket{\psi}$ immediately before the measurement then the probability that result m occurs is given by 
-    \begin{equation}
-        p(m)=tr(M_m^\dagger M_m \rho)
+    \begin{equation} \label{eqn: general measurement probability density matrix}
+        p(m)=tr(M_m^\dagger M_m \rho)=\braket{M_m| \rho |M_m}
     \end{equation}
     and the state of the system after the measurement is
     \begin{equation}
@@ -55,7 +55,7 @@ Here is how we obtain the above reformulation. Suppose we perform a measurement 
     \end{equation}
     and the probability of obtaining result m is
     \begin{equation}
-        p(m)=\sum_i p(m|i)p_i=\sum_i p_i tr(M_m^\dagger M_m \ket{\psi_i}\bra{\psi_i})=tr(M_m^\dagger M_m \rho)
+        p(m)=\sum_i p(m|i)p_i=\sum_i p_i tr(M_m^\dagger M_m \ket{\psi_i}\bra{\psi_i})=tr(M_m^\dagger M_m \rho)==\braket{M_m| \rho |M_m}
     \end{equation}
     The post-measurement state upon result m is an ensemble of states $\ket{\psi_i^m}$ with respective probabilities $p(i|m)$
     \begin{equation}
@@ -84,6 +84,29 @@ The most commonly used projective measurement, measuring with a basis has alread
     \textbf{Postulate 4'}:The state space of a composite physical system is the tensor product of the component physical systems. Moreover, if we have systems numbered 1 through n, and system number i is prepared in the state $\rho_i$, then the joint state of the total system is $\rho_1 \otimes \rho_2 \otimes \hdots \otimes \rho_n$
 \end{quote}
 
+It turns out there is a rather elegant mathematical characterization of density matrix:
+
+\begin{theorem}[Characterization of density matrix]\label{thm: char of density matrix}
+A matrix $\rho$ is the density matrix associated to some ensemble $\{p_i, \ket{\psi_i}\}$ if and only if it satisfies the conditions:
+\begin{enumerate}
+    \item (\textbf{Trace condition}) $tr(\rho)=1$
+    \item (\textbf{Positive condition}) $\rho$ is a positive matrix \footnote{Positive operators is a special subclass of Hermitian operators. A positive operator A is definined to be an operator such that for any vector $\ket{v}$, $\langle \ket{v}, A\ket{v} \rangle \in \mathbb{R}_{\ge 0}$. It turns out that any positive operator has diagonal representation $\sum_i \lambda_i \ket{i}\bra{i}$ with non-negative eigenvalues $\lambda_i$.} 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Given a density matrix $\rho=\sum\limits_i p_i \ket{\psi_i}\bra{\psi_i}$. Then
+\begin{equation}
+    tr(\rho)=\sum_i p_i tr(\ket{\psi_i}\bra{\psi_i})=\sum_i p_i =1
+\end{equation}
+So the trace condition is satisfied. Notice here from \textbf{Section \ref{section:complex vector space}} we know all eigenvalues of a projector like $\ket{\psi_i}\bra{\psi_i}$ are 0 or 1. Since trace is equal to the sum of eigenvalues, we have $tr(\ket{\psi_i}\bra{\psi_i})=1$. Now suppose $\ket{\varphi}$ is an arbitrary vector in state space. Then
+\begin{equation}
+    \braket{\varphi|\rho|\varphi}=\sum_i p_i \braket{\varphi|\psi_i} \braket{\psi_i|\varphi}=\sum_i p_i |\braket{\varphi|\psi_i}|^2 \ge 0
+\end{equation}
+So the positivity condition is satisfied.
+
+Conversely, suppose $\rho$ is any operator satisfying the two conditions. Because of the positive condition, we have $\rho=\sum\limits_j \lambda_j \ket{j}\bra{j}$, where the vectors $\ket{j}$ are orthogonal, and $\lambda_j$ are real, non-negative eigenvalues of $\rho$. Because of the trace condition, we have $\sum\limits_j \lambda_j=1$. Let $p_i=\lambda_i$, so the probability of each $\ket{j}$ sums up to 1. So $\rho$ is essentially representing an ensemble of states $\{\lambda_j, \ket{j}\}$.
+\end{proof}
 
 Further, the definition of entanglement in \textbf{Definition \ref{definition: entanglement with state vector}} becomes 
 \begin{definition}[Entanglement] \label{def: entanglement with density matrix}

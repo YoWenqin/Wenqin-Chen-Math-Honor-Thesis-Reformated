@@ -7,7 +7,7 @@
 
 In the last chapter we formulated the postulates of quantum mechanics using the language of state vectors. These could have been stated using \textit{density matrices} as well. 
 {\color{green}
-There are at least two motivations behind introducing density matrices. We have already seen that measurements prepare different states with a probability distribution. The first motivation behind density matrices is to describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}.  Thus with density matrices probability enters the discussion at another level altogether.
+There are at least two motivations behind introducing density matrices. We have already seen that measurements yield different states with a probability distribution. The first motivation behind density matrices is to describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}. You can imagine a source such as a machine that \emph{prepares} quantum states with a probability distribution. Thus with density matrices probability enters the discussion at another level altogether.
 In addition, for entangled joint state vectors such as $\ket{EPR}$ (see \eqref{eqn: epr}), that cannot written as a simple tensor product between $\ket{a}$ and $\ket{b}$, it is unclear how to describe the state of $\ket{a}$ without any reference to $\ket{b}$. Therefore, the second motivation behind density matrices is to provide an effective mathematical generalization for describing such $\ket{a}$. 
 }
 % We have already seen that a {\emph{fixed}} state vector for a system gives rise to a probability distribution when it is measured.  Density matrices allow one to 
@@ -91,17 +91,16 @@ Since state vectors can only be determined up to a global phase, from a quantum 
 
 
 \begin{definition}[Measuring a Density Matrix in a Basis]
-Consider a quantum system in a state represented by the density matrix $\rho$. Measuring $\rho$ in the basis $\{\ket{b_j}\}_j$ results in outcome $j$ with probability 
+Consider a quantum system in a state in $\mathbb{C}^n$ represented by the density matrix $\rho$. Measuring $\rho$ in the basis $\{\ket{u_i}\}_{i=1}^n$ results in outcome $i$ with probability 
 \begin{equation} \label{eqn: measurement probability in density matrix}
-    q_j=\braket{b_j | \rho |b_j}
+    q_i=\braket{u_i | \rho |u_i}
 \end{equation}
 \end{definition}
 
- Here is an example of measuring a density matrix in a basis.
-
-% \textcolor{red}{add an example of density matrix with probability distribution and its outcome probability}.
-
 {\color{green}
+The justification of \textbf{Definition \ref{eqn: measurement probability in density matrix}} and how density matrices reformulate the four postulates can be found in \textbf{Appendix \ref{AppendixB}}. Here we just present an example of measuring a density matrix in a basis.
+
+
 \begin{example}
 Consider a source that prepares the state $\ket{0}$ and $\ket{1}$ with probabilities $p_0=p_1=\frac{1}{2}$. Suppose we measure the resulting state
 $$\rho=\frac{1}{2}\ket{0}\bra{0}+\ket{1}\bra{1}=\frac{\mathbb{I}}{2},$$
@@ -113,39 +112,10 @@ in the Hadamard basis $\{\ket{+}, \ket{-}\}$. The probabilities of the outcomes 
 \end{example}
 }
 
-It turns out there is a rather elegant mathematical characterization of density matrix:
+{\color{green}
+How do we use density matrices to represent measurement on a subsystem? In other words, if Alice and Bob share a joint state in $\mathbb{C}^n \otimes \mathbb{C^n}$ represented by a density matrix $\rho$, and Alice makes a measurement with respect to an orthonormal basis $\{\ket{u_i}\}_{i=1^n}$, the corresponding measurement operator on the composite system in terms of density matrix is $$\ket{u_i}\bra{u_i} \otimes \mathbb{I}_n.$$ Intuitively this is reasonable because when Alice makes a measurement, Bob does nothing. Say Alice's measurement end state is $\ket{u_{i_0}}$, then Bob's measurement statistics (the probability of each outcome) should be the same as those before Alice's measurement. You can check that this is true using By \eqref{eqn: general measurement probability density matrix}.
 
-% ---------------------------
-% If we wish to emphasize that a state is given by a proper density matrix, we say the state is \textit{mixed}.  In similar fashion, states given by vectors are sometimes called {\emph{pure}}. 
-% The material in this Chapter past this point will not be used in subsequent Chapters of the thesis, so the reader can freely skip ahead.
-
-% \textcolor{blue}{THE ABOVE IS WRITTEN FOR SUBSEQUENT SECTIONS.  IF THEY GET MOVED TO AN APPENDIX, THE SENTENCE ABOVE MUST BE REWRITTEN}\textcolor{green}{done}
-
-
-
-\begin{theorem}[Characterization of density matrix]\label{thm: char of density matrix}
-A matrix $\rho$ is the density matrix associated to some ensemble $\{p_i, \ket{\psi_i}\}$ if and only if it satisfies the conditions:
-\begin{enumerate}
-    \item (\textbf{Trace condition}) $tr(\rho)=1$
-    \item (\textbf{Positive condition}) $\rho$ is a positive matrix \footnote{Positive operators is a special subclass of Hermitian operators. A positive operator A is definined to be an operator such that for any vector $\ket{v}$, $\langle \ket{v}, A\ket{v} \rangle \in \mathbb{R}_{\ge 0}$. It turns out that any positive operator has diagonal representation $\sum_i \lambda_i \ket{i}\bra{i}$ with non-negative eigenvalues $\lambda_i$.} 
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-Given a density matrix $\rho=\sum_i p_i \ket{\psi_i}\bra{\psi_i}$. Then
-\begin{equation}
-    tr(\rho)=\sum_i p_i tr(\ket{\psi_i}\bra{\psi_i})=\sum_i p_i =1
-\end{equation}
-So the trace condition is satisfied. Notice here from \textbf{Section \ref{section:complex vector space}} we know all eigenvalues of a projector like $\ket{\psi_i}\bra{\psi_i}$ are 0 or 1. Since trace is equal to the sum of eigenvalues, we have $tr(\ket{\psi_i}\bra{\psi_i})=1$. Now suppose $\ket{\varphi}$ is an arbitrary vector in state space. Then
-\begin{equation}
-    \braket{\varphi|\rho|\varphi}=\sum_i p_i \braket{\varphi|\psi_i} \braket{\psi_i|\varphi}=\sum_i p_i |\braket{\varphi|\psi_i}|^2 \ge 0
-\end{equation}
-So the positivity condition is satisfied.
-
-Conversely, suppose $\rho$ is any operator satisfying the two conditions. Because of the positive condition, we have $\rho=\sum_j \lambda_j \ket{j}\bra{j}$, where the vectors $\ket{j}$ are orthogonal, and $\lambda_j$ are real, non-negative eigenvalues of $\rho$. Because of the trace condition, we have $\sum_j \lambda_j=1$. Let $p_i=\lambda_i$, so the probability of each $\ket{j}$ sums up to 1. So $\rho$ is essentially representing an ensemble of states $\{\lambda_j, \ket{j}\}$.
-\end{proof}
-
-\textcolor{green}{The justification of \textbf{Definition \ref{eqn: measurement probability in density matrix}} and how density matrices reformulate the four postulates can be found in \textbf{Appendix \ref{AppendixB}}. Even though we will only discuss pure states, the reformulated postulates with density matrices apply to all mixed states. The first motivation behind density matrices (as introduced at the start of the chapter) is therefore addressed. The operation called \textit{partial trace} using density matrices is the key to address the second motivation, in which we want to answer the following question: suppose $\rho$ is a density matrix on a tensor product space $\mathbb{C}^{d_1} \otimes \mathbb{C}^{d_2}$, but suppose Alice holds the part of $\rho$ corresponding to system A and Bob holds the part corresponding to system B. How do we describe the state $\rho_A$ of Alice's system? A formal definition of partial trace and \textit{reduced density matrix} can be found in \textbf{Appendix \ref{AppendixB}}.
+Even though we will only discuss pure states, the reformulated postulates with density matrices apply to all mixed states. The first motivation behind density matrices (as introduced at the start of the chapter) is therefore addressed. The operation called \textit{partial trace} using density matrices is the key to address the second motivation, in which we want to answer the following question: suppose $\rho$ is a density matrix on a tensor product space $\mathbb{C}^{d_1} \otimes \mathbb{C}^{d_2}$, but suppose Alice holds the part of $\rho$ corresponding to system A and Bob holds the part corresponding to system B. How do we describe the state $\rho_A$ of Alice's system? A formal definition of partial trace and \textit{reduced density matrix} can be found in \textbf{Appendix \ref{AppendixB}}.
 }
 
 

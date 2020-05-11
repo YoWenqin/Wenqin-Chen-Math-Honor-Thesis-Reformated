@@ -125,34 +125,8 @@ The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice a
 
 
 
-\textcolor{blue}{Include example of this computation.  How does this compare to the classical one-time pad?  Also, does the No Cloning Theorem get used for something later?} \textcolor{green}{it's mentioned in BB84}
+\textcolor{blue}{Include example of this computation and explain how this differs from the classical one-time pad.}
 
-\begin{theorem}[No Cloning Theorem] \label{no-cloning thm}
-Arbitrary qubits (or quantum states), unlike classical bits, cannot be copied. 
-\end{theorem} 
-
-\begin{proof} \cite{Wehner:notes}
-For contradiction, assume there exists such unitary operation C that can copy any arbitrary qubits $\ket{\psi_1}, \ket{\psi_2}$. Then
-\begin{equation*}
-    C(\ket{\psi_1} \otimes \ket{0})=\ket{\psi_1} \otimes \ket{\psi_1}
-\end{equation*}
-
-\begin{equation*}
-C(\ket{\psi_2} \otimes \ket{0})=\ket{\psi_2} \otimes \ket{\psi_2}  
-\end{equation*}
-    
-
-Since C is unitary, we have $C^\dagger C=\mathbb{I}$, so
-\begin{eqnarray*}
-\braket{\psi_1|\psi_2}&=&\braket{\psi_1|\psi_2}\braket{0|0}\\
-&=&(\ket{\psi_1} \otimes \ket{0})(\ket{\psi_2} \otimes \ket{0})\\
-&=&(\ket{\psi_1} \otimes \ket{0})C^\dagger C(\ket{\psi_2} \otimes \ket{0})\\
-&=&(\bra{\psi_1} \otimes \bra{\psi_1})(\ket{\psi_2} \otimes \ket{\psi_2})\\
-&=&(\braket{\psi_1 |\psi_2})^2
-\end{eqnarray*}
-
-So $\braket{\psi_1 | \psi_2}=0$ or $1$. So $\ket{\psi_1}$ and $\ket{\psi_2}$ are either equal or othorgonal. So we can only clone states which are orthogonal to one another, but cloning an arbitrary quantum state is impossible. 
-\end{proof}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -161,13 +135,8 @@ So $\braket{\psi_1 | \psi_2}=0$ or $1$. So $\ket{\psi_1}$ and $\ket{\psi_2}$ are
 \pagebreak
 
 \section{Bell-Nonlocality and CHSH game} \label{section: bell-nonlocality}
-
-\textcolor{blue}{What is locality?}
-\textcolor{green}{The assumption that Alice performing her measurement does not influence the result of Bob's measurement - this assumption is incorrect in the quantum world, as validated by Bell's experiment}
-
-
-
 In many collaborative games, two players using a {\emph{quantum strategy}} can achieve a higher winning probability than if they use a {\emph{classical strategy}}. Because of this, many probabilistic games can be thought of as tests for entanglement.  This also illustrates why one might try to make use of quantum mechanics in cryptography.  We illustrate this phenomenon with an example of a guessing game.
+\footnote{\textcolor{green}{This guess game is one way of interpreting the famous Bell-nonlocality. \emph{Locality} is the assumption that Alice performing her measurement does not influence the result of Bob's measurement. Bell's experiment in \cite{bell1964}  proved that the predictions of quantum theory are incompatible with those of any classical theory satisfying a notion of locality.}}
 
 In our game Alice and Bob work collaboratively and try to craft a strategy which will maximize their team score.  Once they have agreed on a strategy, the game begins, at which point all their communication must cease.  The rules of the game are as follows:
 \begin{enumerate}
@@ -183,31 +152,15 @@ Once both answers are picked, we are ready do see if Alice and Bob have won.  Th
 \end{equation*}
 
 
-\textcolor{blue}{Inside the marked area must be modified.  Maybe the stuff about non-locality should be in the introduction, but I can't figure out where.  The thing is that I think it's better to describe the game really carefully pretty early}
+% The winning probability is given by 
+% \begin{equation*}
+%     p^{CHSH}_{win} = \frac{1}{4}\sum_{x,y \in \{0,1\}} \sum_{a, b \: such \: that \: a+b \: mod \: 2 = xy} p(a,b|x,y)
+% \end{equation*}
+% where $p(a,b|x,y)$ is the probability that Alice and Bob answer a and b given questions x and y.
 
 
 
-*******************************************************
-
-In this context, when using a \textit{quantum strategy}, Alice and Bob can pick a state $\rho_{AB}$ to share, and agree on measurements to perform depending on their respective questions. In a classical game ...
-
-Bell proved that the predictions of quantum theory are incompatible with those of any classical theory satisfying a natural notion of locality \cite{bell1964}. The bell-nonlocality can be understood by a non-local game between Alice and Bob, in which they are asked questions $x,y \in \{0,1\}$ respectively. They respond with asnwers $a, b \in \{0,1\}$ respectively. They are allowed to agree on a strategy beforehand, but are not allowed to communicate during the game. Alice and Bob win the game if and only if 
-\begin{equation*}
- a+b (mod 2)=xy    
-\end{equation*}
-
-***************************************************************
-
-
-The winning probability is given by 
-\begin{equation*}
-    p^{CHSH}_{win} = \frac{1}{4}\sum_{x,y \in \{0,1\}} \sum_{a, b \: such \: that \: a+b \: mod 2 = xy} p(a,b|x,y)
-\end{equation*}
-where $p(a,b|x,y)$ is the probability that Alice and Bob answer a and b given questions x and y.
-
-
-
-\textcolor{blue}{The equation above looks funny}
+% \textcolor{blue}{The equation above looks funny}
 
 \begin{figure}[h]
     \centering
@@ -276,9 +229,10 @@ and when y = 1, Bob measures her qubit in $\{\ket{w_1}, \ket{w_2}\}$, where
     \ket{w_1}=cos(\frac{\pi}{8})\ket{0}-sin(\frac{\pi}{8})\ket{1}\\
     \ket{w_2}=sin(\frac{\pi}{8})\ket{0}+cos(\frac{\pi}{8})\ket{1}
     \end{gather*}
-Then consider the probability of winning, conditioned on the four different possible combinations of x, y:
+Then consider the probability of Alice and Bob winning the collaborative game, conditioned on the four different possible choices for x and y:
 \begin{eqnarray*}
-p_{win|x=0,y=0}&=&p(a=0, b=0|x=0, y=0)+p(a=1, b=1|x=0, y=0)\\
+p(win|x=0,y=0)&=&p(a+b=0(mod 2)|x=0,y=0)\\
+&=&p(a=0, b=0|x=0, y=0)+p(a=1, b=1|x=0, y=0)\\
 &=&\braket{0 v_1|\psi}\braket{\psi|0v_1}+\braket{1 v_2|\psi}\braket{\psi|1v_2}\\
 &=&|\braket{0 v_1|\psi}|^2 + |\braket{1 v_2|\psi}|^2\\
 &=&|\frac{1}{\sqrt{2}}(\braket{0v_1|00}+\braket{0v_1|11})|^2+|\frac{1}{\sqrt{2}}(\braket{1v_2|00}+\braket{1v_2|11})|^2\\
@@ -289,20 +243,20 @@ p_{win|x=0,y=0}&=&p(a=0, b=0|x=0, y=0)+p(a=1, b=1|x=0, y=0)\\
 
 Similarly,
 \begin{eqnarray*}
-p_{win|x=0,y=1}&=&p(a=0, b=0|x=0, y=1)+p(a=1, b=1|x=0, y=1)\\
+p(win|x=0,y=1)&=&p(a=0, b=0|x=0, y=1)+p(a=1, b=1|x=0, y=1)\\
 &=&|\braket{0 w_1|\psi}|^2 + |\braket{1 w_2|\psi}|^2\\
 &=&(\frac{1}{\sqrt{2}}cos\frac{\pi}{8})^2+(\frac{1}{\sqrt{2}}cos\frac{\pi}{8})^2\\
 &=&cos^2 \frac{\pi}{8}
 \end{eqnarray*}
 \begin{eqnarray*}
-p_{win|x=1,y=0}&=&p(a=0, b=0|x=1, y=0)+p(a=1, b=1|x=1, y=0)\\
+p(win|x=1,y=0)&=&p(a=0, b=0|x=1, y=0)+p(a=1, b=1|x=1, y=0)\\
 &=&|\braket{+ v_1|\psi}|^2 + |\braket{- v_2|\psi}|^2\\
 &=&\frac{1}{2}(\frac{1}{\sqrt{2}}cos\frac{\pi}{8}+\frac{1}{\sqrt{2}}sin\frac{\pi}{8})^2+\frac{1}{2}(\frac{1}{\sqrt{2}}cos\frac{\pi}{8}+\frac{1}{\sqrt{2}}sin\frac{\pi}{8})^2\\
 &=&\frac{1}{2}(cos\frac{\pi}{8}+sin\frac{\pi}{8})^2\\
 &=&cos^2 \frac{\pi}{8}
 \end{eqnarray*}
 \begin{eqnarray*}
-p_{win|x=1,y=1}&=&p(a=1, b=0|x=1, y=1)+p(a=0, b=1|x=1, y=1)\\
+p(win|x=1,y=1)&=&p(a=1, b=0|x=1, y=1)+p(a=0, b=1|x=1, y=1)\\
 &=&|\braket{- w_1|\psi}|^2 + |\braket{+ w_2|\psi}|^2\\
 &=&\frac{1}{2}(cos\frac{\pi}{8}+sin\frac{\pi}{8})^2\\
 &=&cos^2 \frac{\pi}{8}

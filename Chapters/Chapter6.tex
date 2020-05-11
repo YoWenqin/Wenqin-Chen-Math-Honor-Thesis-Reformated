@@ -251,16 +251,17 @@ We will see that there are two requirements that must be met if Bob is to be abl
 \end{quote}
 
 
-We address the {\bf{Requirement 1}} in this section and {\bf{Requirement 2}} in the next section.  We wish to emphasize that (initially) {\emph{only Alice}} measures her part of their shared state with respect to an orthonormal basis.  Still, because of this measurement, the state of their composite system collapses.  
+We address {\bf{Requirement 1}} in this section and {\bf{Requirement 2}} in the next section.  We wish to emphasize that (initially) {\emph{only Alice}} measures her part of their shared state with respect to an orthonormal basis.  Still, because of this measurement, the state of their composite system collapses.  
 
-
-Suppose that Alice measures with respect to an orthonormal basis ${\{\ket{\varphi_i}\}}_{i=1}^{n}$.  Then, we know that for some $i_0$, she will observe outcome $i_0$, in which case her system will have $\ket{\varphi_{i_0}}$ as it's end state. Mechanically, we compute this in the case that she shares a composite state with Bob by converting their shared state $\ket{\psi}$ to a density matrix, and measuring with respect to the operators ${\{\ket{\varphi_i}\bra{\varphi_i}\otimes \mathbb{I} \}}_{i=1}^n$.  Thus, in what follows we consider the situation where Alice's system has state vector $\ket{\varphi}$ post-measurement.  This corresponds to the case where Alice is measuring with respect to {\emph{any}} orthonormal basis that contains $\ket{\varphi}$ as an element. Our task is to determine how correlated Bob's and Alice's states are after she has measured.  
+Suppose that Alice measures with respect to an orthonormal basis ${\{\ket{\varphi_i}\}}_{i=1}^{n}$.  Then, we know that for some $i_0$, she will observe outcome $i_0$, in which case her system will have $\ket{\varphi_{i_0}}$ as it's end state. Mechanically, we 
+% compute this in the case that she shares a composite state with Bob by 
+convert their shared state $\ket{\psi}$ to a density matrix, and measuring with respect to the operators ${\{\ket{\varphi_i}\bra{\varphi_i}\otimes \mathbb{I} \}}_{i=1}^n$.  Thus, in what follows we consider the situation where Alice's system has state vector $\ket{\varphi}$ post-measurement.  This corresponds to the case where Alice is measuring with respect to {\emph{any}} orthonormal basis that contains $\ket{\varphi}$ as an element. Our task is to determine how correlated Bob's and Alice's states are after she has measured.  
 
 
 % '\textcolor{blue}{We have to make sure enough is said about this version of the measurement computation.  I've changed some of them, but we can't call a state an "outcome".  Alice observes some outcome and the post-measurement state is psi.  Also, in the Proofs below, make sure we don't use any notation or computations that we haven't defined or shown}
 % \textcolor{red}{outcome refers to the index instead of the actual state. check all of them.}
 
-\textcolor{red}{add to the chapter in density matrix to justify our computation. change the prop to only use state}
+\textcolor{red}{add to the chapter in density matrix to justify $\ket{\varphi_i}\bra{\varphi_i} \otimes I$.}
 \begin{prop}
 \label{entanglement-rank}
 Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state shared by Alice and Bob. Say Alice first makes a measurement and observes an outcome with end state $\ket{\varphi}$. Let the state of Bob's system after Alice's measurement be denoted by $\ket{\theta}$. Then,
@@ -271,14 +272,14 @@ Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state sh
 \end{enumerate}
 \end{prop}
 
-This means that when $\ket{\psi}$ is maximally entangled, after Alice has measured what is on Bob's side of the tensor product is perfectly correlated with what is on Alice's side.  When $\ket{\psi}$ is not entangled, there is no correlation at all between their end states.  On the other hand, if their joint state is entangled, but not maximally, there is some (but not perfect) correlation.  
+This means that when $\ket{\psi}$ is maximally entangled, after Alice has measured, what is on Bob's side of the tensor product is perfectly correlated with what is on Alice's side.  When $\ket{\psi}$ is not entangled, there is no correlation at all between their end states.  On the other hand, if their joint state is entangled, but not maximally, there is some (but not perfect) correlation.  
 
 Much of the proposition follows from the following lemma.  
 
 
 
 % We now consider the use of the shared state $|X\rangle$ in message transmission.  Our goal is to classify exactly to what extent information can be transmitted remotely between two parties by use of shared states. The following lemma will tell us what happens in this situation when one of Alice or Bob observes a state $|\psi\rangle$.
-
+\textcolor{blue}{maybe drop "C" and say "up to a global phase"}
 \begin{lemma}
 \label{end state lemma}
 Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state shared by Alice and Bob.  Then,
@@ -306,17 +307,16 @@ Now say
 \begin{equation}
 \ket{\varphi}=\icol{b_1\\ \vdots \\b_n}.
 \end{equation}
-Say Alice observes $\ket{\varphi}\bra{\varphi}_A$.
-Then the post-measurement state conditioned on obtaining the end state $\ket{\varphi}_A$ is
+Say Alice observes $\ket{\varphi}\bra{\varphi}$.
+Then the post-measurement state conditioned on obtaining the end state $\ket{\varphi}$ is
 \begin{equation}
-\rho_{\ket{\varphi}_A}^{AB}=\frac{(\ket{\varphi}\bra{\varphi}_A \otimes I_B)\rho_{AB}(\ket{\varphi}\bra{\varphi}_A \otimes I_B)}{tr((\ket{\varphi}\bra{\varphi}_A \otimes I_B)\rho_{AB})}
+\rho_{\ket{\varphi}}^{AB}=\frac{(\ket{\varphi}\bra{\varphi} \otimes I)\rho(\ket{\varphi}\bra{\varphi} \otimes I)}{tr((\ket{\varphi}\bra{\varphi} \otimes I)\rho)}
 \end{equation}
 
 Let $C$ be the denominator of the above expression. Then 
 \begin{eqnarray}
-\rho_{\ket{\varphi}_A}^{AB}&=&\frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\ket{\varphi}\braket{\varphi|e_i}\braket{e_{i'}|\varphi}\bra{\varphi}_A \otimes \ket{e_j}\bra{e_{j'}}_B\\
-&=&\frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\overline{b_i}b_{i'}\ket{e_j}\bra{e_{j'}}_B\\
-&=&\ket{\varphi}\bra{\varphi}_A \otimes \frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\overline{b_i}b_{i'}\ket{e_j}\bra{e_{j'}}
+\rho_{\ket{\varphi}}^{AB}&=&\frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\ket{\varphi}\braket{\varphi|e_i}\braket{e_{i'}|\varphi}\bra{\varphi} \otimes \ket{e_j}\bra{e_{j'}}\\
+&=&\ket{\varphi}\bra{\varphi} \otimes \frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\overline{b_i}b_{i'}\ket{e_j}\bra{e_{j'}}
 \end{eqnarray}
 
 So after Alice's measurement, Bob's state as a density matrix is given by
@@ -578,7 +578,7 @@ Then,
 \end{itemize}
 
 
-Thus, two different end states for Alice are paired with the same end state for Bob.  Because of this, Bob has no hope of distinguishing between Alice's outcomes $1$ and $2$.
+Thus, two different end states for Alice are paired with the same end state for Bob.  Because of this, Bob has no hope of distinguishing between Alice's outcomes $1 (\ket{\varphi_1})$ and $2(\ket{\varphi_2})$.
 \end{example} 
 We emphasize that this does not occur for any orthonormal basis. For example, suppose Alice and Bob share the same state $\ket{\psi}$, but now she measures with respect to the standard orthonormal basis.  Then,
 
@@ -604,7 +604,7 @@ Thus, when measuring with respect to this orthonormal basis, there is perfect co
 %----------------------------------------------------------------------------------------
 
 
-Next, we take care of "old business" by proving that Bob's post-measurement state in \textbf{Lemma \ref{end state lemma}} is, in face, a {\emph{legal}} state.  The point is that a priori the conjugate of Alice's post-measurement state could be in the kernel of the transpose of the coefficient matrix $M(\ket{\psi})$. If this were the case, {\bf{Lemma}} \ref{end state lemma} tells us that the post-measurement state would be zero, which of course is not a valid state.  We now show that this occurs with probability zero.
+Next, we take care of "old business" by proving that Bob's post-measurement state in \textbf{Lemma \ref{end state lemma}} is, in fact, a {\emph{legal}} state.  The point is that a priori the conjugate of Alice's post-measurement state could be in the kernel of the transpose of the coefficient matrix $M(\ket{\psi})$. If this were the case, {\bf{Lemma}} \ref{end state lemma} tells us that the post-measurement state would be zero, which of course is not a valid state.  We now show that this occurs with probability zero.
 
 \begin{prop} \label{null space}
 Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^n$ be a composite state shared by Alice and Bob.  Then, Alice's end state after her measurement is not in $Nul(M(\ket{\psi})^T)$.
@@ -621,27 +621,28 @@ Consider an arbitrary dimensional qudit $\ket{u}=\sum\limits_1^n b_i \ket{e_i}$.
 \end{equation}
 We will show that if $\overline{\ket{u}}$ is in the kernel of left multiplication by $M(\ket{\psi})^T$, then the probability of Alice's measurement end state being $\ket{u}$ is $0$. Now suppose
 $\ket{\Bar{u}} \in Nul(M(\ket{\psi})^T)$, we have \begin{equation} \label{eqn: null space eqn 2}
-    \forall i, \sum_{j=1}^n a_{ji} \overline{b_j}=0
+\sum_{j=1}^n a_{ji} \overline{b_j}=0
 \end{equation}
+for all $i$.
 \textcolor{red}{reference where the formula for calculating the probability comes from. add the formula into the density matrix section and have the games reference the formula as well. why can we calculate the probability as if Alice and Bob are measuring at the same time? }
-\textcolor{blue}{I changed the index above which was switched.  What's going on in this proof below?  What identity are we using}
-\begin{eqnarray*}
-p(\ket{uv})&=&\braket{u v | \rho |u v}\\
-&=&\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}\braket{u|e_i}\braket{e_{i'}|u}_A \otimes \braket{v|e_j}\braket{e_{j'}|v}_B\\
-&=&\sum_i \sum_{i'} \sum_j \sum_{j'}  a_{ij} \overline{a_{i'j'}} \braket{u|e_i}\braket{e_{i'}|u}_A \otimes \braket{v|j}\braket{j'|v}_B\\
-&=&(\sum_i \sum_j a_{ij} \overline{b_i})(\sum_{i'} \sum_{j'} \overline{a_{i'j'}} b_{i'})_A \otimes \braket{v|j}\braket{j'|v}_B   \; \; \;  (by \;  \eqref{eqn: null space eqn 1})\\ 
-&=& 0 \; \; \; (by \; \eqref{eqn: null space eqn 2})
-\end{eqnarray*}
+% \textcolor{blue}{I changed the index above which was switched.  What's going on in this proof below?  What identity are we using}
+% \begin{eqnarray*}
+% p(\ket{uv})&=&\braket{u v | \rho |u v}\\
+% &=&\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}\braket{u|e_i}\braket{e_{i'}|u} \otimes \braket{v|e_j}\braket{e_{j'}|v}_B\\
+% &=&\sum_i \sum_{i'} \sum_j \sum_{j'}  a_{ij} \overline{a_{i'j'}} \braket{u|e_i}\braket{e_{i'}|u} \otimes \braket{v|j}\braket{j'|v}_B\\
+% &=&(\sum_i \sum_j a_{ij} \overline{b_i})(\sum_{i'} \sum_{j'} \overline{a_{i'j'}} b_{i'}) \otimes \braket{v|j}\braket{j'|v}_B   \; \; \;  (by \;  \eqref{eqn: null space eqn 1})\\ 
+% &=& 0 \; \; \; (by \; \eqref{eqn: null space eqn 2})
+% \end{eqnarray*}
 
 
 
 
 
-******************************************************
+% ******************************************************
 
 
 
-\textcolor{blue}{****************ALTERNATE PROOF with no need for computational justification}
+% \textcolor{blue}{****************ALTERNATE PROOF with no need for computational justification}
 
 Let $\ket{e_r}$ be an element of the standard basis.  Then,
 \begin{eqnarray*}
@@ -661,15 +662,9 @@ since the inner products are nonzero only when $i=i'=k$ and $j=j'=r$.  But
 Thus, the probability of the end state $\ket{u e_r}=0$ for every $r$ with $1\leq r \leq n$.  But then for any $\ket{v} \in {\mathbb{C}}^n$, the end state $\ket{uv} = \ket{u}\otimes\ket{v}$ occurs with probability zero, hence Alice cannot have end state $\ket{u}$.
 \end{proof}
 
-
-\textcolor{blue}{********************* End alternate proof*************************************}
-
-
-******************************************************
-
-
-
-We have now described exactly when there exists perfect correlation between Alice's measurement end state $\ket{\varphi}$ and Bob's post-measurement state $\ket{\theta}$ after Alice measures.  We therefore know precisely when the first requirement necessary for Bob to determine Alice's outcome is satisfied.  However, if Bob is not able to perform {\emph{his own measurement}} on his end state without introducing uncertainty, having a "perfect" correlation with Alice is not enough. In the next section we move on to {\bf{Requirement 2}}, and determine exactly when Bob can determine Alice's outcome with certainty.
+% \textcolor{blue}{********************* End alternate proof*************************************}
+% ******************************************************
+We have now described exactly when there exists perfect correlation between Alice's end state $\ket{\varphi}$ and Bob's end state $\ket{\theta}$ after Alice measures.  This concludes our analysis of {\bf{Requirement 1}}.  However, if Bob is not able to perform {\emph{his own measurement}} on his end state without introducing uncertainty, having a "perfect" correlation with Alice is not enough. In the next section we move on to {\bf{Requirement 2}}, and determine exactly when Bob can determine Alice's outcome with certainty.
 
 
 %----------------------------------------------------------------------------------------
@@ -681,9 +676,9 @@ We have now described exactly when there exists perfect correlation between Alic
 In the last section we analyzed the extent to which Alice's and Bob's end states are correlated when Alice measures a shared composite state. We now continue with our analysis, focusing on when Bob has {\emph{access}} to his state vector without introducing additional uncertainty. 
 % This situation is similar to that of \textbf{Examples \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}}, only now instead of Alice {\emph{selecting}} a state, now she {\emph{measures}} and observes an outcome with an end state.  Specifically, in our previous setup, Alice chooses a state from an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$ known to both herself and to Bob. She then gives the state to Bob, whose task is to identify the index of that state. Our task is different. Now, Alice and Bob share a known composite 2-qudit state $\ket{\psi}$ and Alice measures with respect to the orthonormal basis. 
 
-By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M(\ket{\psi_i})$ preserves orthogonality and has full rank, Bob can measure with respect to the basis $\{M(\ket{\psi_i})^T \overline{\ket{\psi_i}}\}_{i=1}^n$, which must be orthonormal. Thus, by measuring with respect to {\emph{this}} orthonormal basis he will be able to infer which end state Alice observed by simply applying the inverse of the transpose of the coefficient matrix to the his end state, and then taking conjugates. This is very much the quantum analogue of {\bf{Example}} \ref{example: orthogonal states for measurements}.
+By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M(\ket{\psi_i})$ preserves orthogonality and has full rank, Bob can measure with respect to the basis $\{C_i M(\ket{\psi_i})^T \overline{\ket{\psi_i}}\}_{i=1}^n$, which must be orthonormal ($C_i$ is the scalar that normalizes each vector in the basis). Thus, by measuring with respect to {\emph{this}} orthonormal basis he will be able to infer which end state Alice observed by simply applying the inverse of the transpose of the coefficient matrix to the his end state, and then taking conjugates. This is very much the quantum analogue of {\bf{Example}} \ref{example: orthogonal states for measurements}.
 
-On the other hand, if the transpose of the coefficient matrix does not preserve orthogonality, Bob cannot determine Alice's end state with certainty {\emph{even if their shared state is maximally entangled}}.  Thus, perfect correlation between Alice's and Bob's end states is not enough to guarantee that he knows the results of her measurement.  This is because even though their end states may be perfectly correlated, uncertainty is introduced when Bob tries to {\emph{access}} his end state by measuring, as was the case in {\bf{Example}} \ref{example: non-orthogonal states for measurements}.  The next Proposition characterizes exactly when Bob is able to infer Alice's measurement end state with certainty.  
+On the other hand, if the transpose of the coefficient matrix does not preserve orthogonality, Bob cannot determine Alice's end state with certainty {\emph{even if their shared state is maximally entangled}}.  Thus, perfect correlation between Alice's and Bob's end states is not enough to guarantee that he knows the results of her measurement.  This is because even though their end states may be perfectly correlated, uncertainty is introduced when Bob tries to {\emph{access}} his end state by measuring, as was the case in {\bf{Example}} \ref{example: non-orthogonal states for measurements}.  The next proposition characterizes exactly when Bob is able to infer Alice's measurement end state with certainty.  
 % \textcolor{red}{I think I had that $\ket{\psi}$ must be maximally entangled in the below proposition. Is that not needed? }
 
 \begin{prop} \label{prop: ultimate}
@@ -758,13 +753,13 @@ so $M$ is a scalar multiple of a unitary matrix as required.
 
 
 
-Thus, after Alice has made her measurement with respect to an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$, Bob is guaranteed to be able to measure with respect to the basis $\{M(\ket{\psi})^T {\overline{\ket{\varphi_i}}}\}_{i=1}^n$, only if the transpose of the coefficient matrix $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix. 
+Thus, after Alice has made her measurement with respect to an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$, Bob is guaranteed to be able to measure with respect to the basis $\{C_iM(\ket{\psi})^T {\overline{\ket{\varphi_i}}}\}_{i=1}^n$, only if the transpose of the coefficient matrix $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix. 
 
 For example, say $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix.  Then, if Alice measured her part of the shared system with respect to a basis $\{\ket{u}, \ket{v}\}$, then 
-Bob can measure his part with respect to the orthonormal basis $\{M(\ket{\psi})^T\overline{\ket{u}}, M(\ket{\psi})^T\overline{\ket{v}}\}$. In this situation, not only is the state of Bob's system perfectly correlated with Alice's by \textbf{Proposition \ref{entanglement-rank}}, but Bob can measure with respect to an orthonormal basis consisting of all of his possible end states.  Therefore, by measuring his system with respect to $\{M(\ket{\psi})^T\overline{\ket{u}}, M(\ket{\psi})^T\overline{\ket{v}}\}$, Bob can infer Alice's end state that is either $\ket{u}$, or $\ket{v}$.
+Bob can measure his part with respect to the orthonormal basis $\{C_u M(\ket{\psi})^T\overline{\ket{u}}, C_v M(\ket{\psi})^T\overline{\ket{v}}\}$. In this situation, not only is the state of Bob's system perfectly correlated with Alice's by \textbf{Proposition \ref{entanglement-rank}}, but Bob can measure with respect to an orthonormal basis consisting of all of his possible end states.  Therefore, by measuring his system with respect to $\{C_u M(\ket{\psi})^T\overline{\ket{u}}, C_v M(\ket{\psi})^T\overline{\ket{v}}\}$, Bob can infer Alice's end state is either $\ket{u}$, or $\ket{v}$.
 % Therefore, Bob can infer Alice's measured outcome once he knows which specific basis Alice picked.
 
-On the other hand, if $\ket{\psi}$ is maximally entangled, but it's coefficient matrix doesn't have the desired form, Bob may have to measure with respect to an orthonormal basis of the form $\{M(\ket{\psi})^T\overline{\ket{u}}, (M(\ket{\psi})^T\overline{\ket{u})}^\perp \}$.  In this case, Bob cannot infer Alice's outcome perfectly, even though prior to {\emph{his}} measurement, there was perfect correlation between his and Alice's end states.  
+On the other hand, if $\ket{\psi}$ is maximally entangled, but it's coefficient matrix doesn't have the desired form, Bob may have to measure with respect to an orthonormal basis of the form $\{C_u M(\ket{\psi})^T\overline{\ket{u}}, C_{u'}(M(\ket{\psi})^T\overline{\ket{u})}^\perp \}$.  In this case, Bob cannot infer Alice's outcome perfectly, even though prior to {\emph{his}} measurement, there was perfect correlation between his and Alice's end states.  
 
 In our first example, we illustrate what happens when both {\bf{Requirements 1, 2}} are satisfied.
 \begin{example}
@@ -782,7 +777,7 @@ Therefore, by \textbf{Proposition \ref{prop: ultimate}}, Bob can determine Alice
 \{\left(\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}\right)\ket{0}, \left(\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}\right)\ket{1}\}=\{\ket{1}, \ket{0}\}=\{\ket{\theta_1},\ket{\theta_2}\}.
 \end{equation*}
 
-By Lemma \ref{end state lemma} after Alice's measurement, if Alice observes outcome $1$, her end state is $\ket{0}$, in which case the composite system is in state $\ket{\varphi}\otimes \ket{\theta}=\ket{0}\otimes\ket{1}=\ket{01}$.  The key point, is that when Bob measures the post-measurement system, he observes the outcome $1$ and end state $\ket{1}$ with probability one.  Since he knows both Alice's basis and the state $\ket{\psi}$, he can determine her outcome by multiplying by the inverse of transpose of the coordinate matrix and taking conjugates, and then picking the outcome which matches that state.  Thus, in this case, he multiplies his end state by $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ and gets $\ket{0}$, so he knows that she observed outcome $1$  and had end state $\ket{0}$.
+By Lemma \ref{end state lemma} after Alice's measurement, if Alice observes outcome $1$, her end state is $\ket{0}$, in which case the composite system is in state $\ket{\varphi}\otimes \ket{\theta}=\ket{0}\otimes\ket{1}=\ket{01}$.  The key point, is that when Bob measures the post-measurement system, he observes the outcome $1$ and end state $\ket{1}$ with probability one.  Since he knows both Alice's basis and the state $\ket{\psi}$, he can determine her outcome by multiplying by the inverse of transpose of the coefficient matrix and taking conjugates, and then picking the outcome which matches that state.  Thus, in this case, he multiplies his end state by $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ and gets $\ket{0}$, so he knows that she observed outcome $1$  and had end state $\ket{0}$.
 
 Similarly, if Alice observes outcome $2$, her end state is $\ket{1}$, in which case the composite system is in state $\ket{\varphi}\otimes\ket{\theta}=\ket{1}\otimes \ket{0}=\ket{10}$.  In this situation, when Bob measures he observes $2$ and has end state $\ket{0}$ with probability one.  Again, by multiplying his end state by the inverse of the transpose of the coefficient matrix, he can determine Alice's end state, and hence her outcome with certainty.
 \end{example}
@@ -832,9 +827,16 @@ Let $\ket{\psi} \in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$ be a composite state 
 \textcolor{blue}{Need to add some here.  Also maybe add a diagram or a series of diagram} \textcolor{green}{done}
 \textcolor{red}{use Alice and Bob diagrams and a paragraph with an intro about the ideas}
 \section{Application to a One-time Pad}
-Recall one-time pad, as defined in \textbf{Definition \ref{def: classical one-time pad scheme}}. Say Alice wants to transmit an m-digit long message to Bob, she will need to create a one-time pad, which is a private key between Alice and Bob that is also m-digit long. The above classification of entanglement can potentially be used in the following cryptographic scheme.
+Recall one-time pad, as defined in \textbf{Definition \ref{def: classical one-time pad scheme}}. Say Alice wants to transmit an $m$-digit long message to Bob, she will need to create a one-time pad, which is a private key between Alice and Bob that is also m-digit long. The above classification of entanglement can potentially be used in the following cryptographic scheme.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{"protocol diagram".png}
+    \label{fig:protocol diagram}
+\end{figure}
+
 \begin{enumerate}
-    \item Bob creates a series of maximally entangled (as defined in \textbf{Definition \ref{def: maximally entangled}}) 2-qudit states $L={\ket{\psi_1}, \ket{\psi_2}, \hdots, \ket{\psi_m}}$, where $\ket{\psi_i} \in \mathbb{C}^n \otimes \mathbb{C}^n$. He sends the left qudit of each state to Alice via a secure quantum communication channel and keep the right side to himself.
-    \item Via a classical communication channel that doesn't have to be secure, Alice notify Bob in order the set of orthonormal bases that she is going to make measurements with. In other words, for each $\ket{\psi_i}$, Alice randomly chooses an orthonormal basis $B_i=\{\ket{b_1}, \ket{b_2}, \hdots, \ket{b_n}\}$ and sends the elements in the basis in order to Bob.
-    \item For each qudit received from L, Alice makes a measurement and saves her result locally. With the knowledge of L and $B_1, B_2, \hdots, B_m$, Bob will be able to infer Alice's measurement result by measuring with respect to basis $\{M(\ket{\psi_i})^T \ket{b_1}, M(\ket{\psi_i})^T \ket{b_2}, \hdots, M(\ket{\psi_i})^T \ket{b_n}\}$. He saves the result for each $\ket{\psi_i}$ and in the end get an m-digit long key that can be used for one-time pad introduced in \textbf{Definition \ref{def: quantum one-time pad}}.
+    \item A third party creates a series of maximally entangled (as defined in \textbf{Definition \ref{def: maximally entangled}}) $2$-qudit states $L={\ket{\psi_1}, \ket{\psi_2}, \hdots, \ket{\psi_m}}$, where $\ket{\psi_i} \in \mathbb{C}^n \otimes \mathbb{C}^n$, and sends the left qudit of each state to Alice and the right qudit of each state to Bob via a secure quantum communication channel.
+    \item On a classical communication channel that doesn't have to be secure, Alice notify Bob in order the set of orthonormal bases that she is going to make measurements with. In other words, for each $\ket{\psi_i}$, Alice randomly chooses an orthonormal basis $B_i=\{\ket{b_1}, \ket{b_2}, \hdots, \ket{b_n}\}$ and sends the elements in the basis in order to Bob.
+    \item For each qudit received from L, Alice makes a measurement and saves her result locally. With the knowledge of L and $B_1, B_2, \hdots, B_m$, Bob will be able to infer Alice's measurement result by measuring with respect to basis $\{M(\ket{\psi_i})^T \ket{b_1}, M(\ket{\psi_i})^T \ket{b_2}, \hdots, M(\ket{\psi_i})^T \ket{b_n}\}$ on the right qudit of each $\ket{\psi_i}$ that he kept. He saves the result for each $\ket{\psi_i}$ and in the end get an m-digit long key that can be used for one-time pad introduced in \textbf{Definition \ref{def: quantum one-time pad}}.
 \end{enumerate}
