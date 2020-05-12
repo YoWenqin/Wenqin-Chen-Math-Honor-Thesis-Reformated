@@ -10,18 +10,18 @@
     \label{fig:actual entanglemen}
 \end{figure}
 
-When two particles are entangled, their states are so correlated that interacting with one immediately affects the other, even if they are far apart in space.  It is no wonder that Albert Einstein once described entanglement as "spooky action at a distance". While at this point we have defined entanglement (see {\bf{Definition}} \ref{definition: entanglement with state vector} and \textbf{Definition \ref{def: entanglement with density matrix}}) and used its properties (in the E91 Protocol laid out in \textbf{Section \ref{section: e91}}), it is natural to wonder {\emph{exactly}} when a composite state in $\mathbb{C}^n \otimes \mathbb{C}^n$ is entangled.
-Are all entangled systems equivalent, or are there some systems that are more entangled than others? In this chapter we answer these questions.
+When two particles are entangled, their states are so correlated that interacting with one immediately affects the other, even if they are far apart in space.  It is no wonder that Albert Einstein once described entanglement as "spooky action at a distance". While at this point we have defined entanglement (see {\bf{Definition}} \ref{definition: entanglement with state vector}) and used its properties (in \textbf{Section \ref{section: e91}}), we have not yet determined {\emph{exactly when}} a composite state in $\mathbb{C}^n \otimes \mathbb{C}^n$ is entangled.
+It is also not clear whether all entangled systems are equivalent, or whether some systems that are more entangled than others.  In this chapter we answer these questions.
 
 
-We will begin with a mathematical classification of when a 2-qudit state is a tensor product of two vectors and determine to what extent Alice's vector and Bob's vector are correlated. In the case that Alice's and Bob's vectors are highly correlated, we then examine how Bob can use this correlation to make a one-time pad. 
+We will begin with a mathematical classification of when a 2-qudit state is a tensor product of two vectors, and we determine to what extent Alice's vector and Bob's vector are correlated. In the case that Alice's and Bob's vectors are highly correlated, we then examine how Bob can use this correlation to make a one-time pad. 
 % We will begin with a mathematical classification of when a vector in a tensor product of two vector spaces is a product of two vectors. We apply this to the situation when Alice and Bob share a $2$-qudit quantum state in $\mathbb{C}^n \otimes \mathbb{C}^n$. When this is the case, we first determine exactly when and to what extent the vectors on Alice's and Bob's side of the tensor product are correlated. If Alice and Bob's side of 
 % We then use this idea to 
 
 
 When Alice and Bob each have a system with state space ${\mathbb{C}}^n$, we know that their composite system will have state space ${\mathbb{C}}^n \otimes {\mathbb{C}}^n={\mathbb{C}}^{n^2}$ by Postulate 4 in \textbf{Chapter \ref{Chapter3-postulates}}. If $\ket{\psi}$ is the state vector for their composite system, the convention is to think of all terms on the left-hand side of the tensor product symbol as representing Alice's system, and all terms on the right-hand side as representing Bob's system.  
 
-In the next Section we show that the rank of a matrix associated to a composite state $\ket{\psi}$ measures how entangled Alice's and Bob's systems are.
+In the next section we show that the rank of a matrix associated to a composite state $\ket{\psi}$ measures how entangled Alice's and Bob's systems are.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -821,11 +821,8 @@ Let $\ket{\psi} \in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$ be a composite state 
 %----------------------------------------------------------------------------------------
 \pagebreak
 
-\textcolor{blue}{Need to add some here.  Also maybe add a diagram or a series of diagram} \textcolor{green}{done}
-\textcolor{red}{use Alice and Bob diagrams and a paragraph with an intro about the ideas}
-\textcolor{red}{just use the same basis throughout the time and say that our contribution is that alice and bob can share any maximally entangled state. }
 \section{Application to a One-time Pad}
-Recall one-time pad, as defined in \textbf{Definition \ref{def: classical one-time pad scheme}}. Say Alice wants to transmit an $m$-digit long message to Bob, she will need to create a one-time pad, which is a private key between Alice and Bob that is also m-digit long. The above classification of entanglement can potentially be used in the following cryptographic scheme.
+Recall one-time pad, as defined in \textbf{Definition \ref{def: classical one-time pad scheme}}. Say Alice wants to transmit an $m$-digit long message to Bob, she will need to create a one-time pad, which is a private key between Alice and Bob that is also m-digit long. The above classification of entanglement can potentially be used in the following cryptographic scheme. \textcolor{green}{It is similar to the EE91 Protocol in \textbf{Section \ref{section: e91}}, the difference being that now Alice and Bob can share any maximally entangled state instead of a specific state.}
 
 \begin{figure}[h]
     \centering
@@ -835,6 +832,6 @@ Recall one-time pad, as defined in \textbf{Definition \ref{def: classical one-ti
 
 \begin{enumerate}
     \item A third party creates a series of maximally entangled (as defined in \textbf{Definition \ref{def: maximally entangled}}) $2$-qudit states whose coefficient matrix transpose is a scalar multiple of a unitary matrix $L={\ket{\psi_1}, \ket{\psi_2}, \hdots, \ket{\psi_m}}$, where $\ket{\psi_i} \in \mathbb{C}^n \otimes \mathbb{C}^n$, and sends the left qudit of each state to Alice and the right qudit of each state to Bob via a secure quantum communication channel.
-    \item Over the phone, Alice tells Bob in order the set of orthonormal bases that she is going to make measurements with. In other words, for each $\ket{\psi_i}$, Alice randomly chooses an orthonormal basis $B_i=\{\ket{b_1}, \ket{b_2}, \hdots, \ket{b_n}\}$ and sends the elements in the basis in order to Bob.
-    \item For each qudit received from $L$, Alice makes a measurement and saves her result locally. With the knowledge of $L$ and the choice of each basis, Bob will be able to infer Alice's measurement outcome with certainty by {\bf{Proposition}} \ref{prop: ultimate}.  He saves the result for each $\ket{\psi_i}$ and in the end get an m-digit long key that can be used for one-time pad introduced in \textbf{Definition \ref{def: classical one-time pad scheme}}.
+    \item Over the phone, Alice tells Bob in order the \textcolor{green}{elements in the orthonormal basis} that she is going to make measurements with. \textcolor{green}{Call that} orthonormal basis $B=\{\ket{b_1}, \ket{b_2}, \hdots, \ket{b_n}\}$ .
+    \item For each qudit received from $L$, Alice makes a measurement \textcolor{green}{with respect to $B$} and saves her result locally. With the knowledge of $L$ and the choice of each basis, Bob will be able to infer Alice's measurement outcome with certainty by {\bf{Proposition}} \ref{prop: ultimate}.  He saves the result for each $\ket{\psi_i}$ and in the end get an $m$-digit long key that can be used for one-time pad introduced in \textbf{Definition \ref{def: classical one-time pad scheme}}.
 \end{enumerate}

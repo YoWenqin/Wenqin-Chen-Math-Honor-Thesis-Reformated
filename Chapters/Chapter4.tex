@@ -43,8 +43,6 @@ Clearly, the matrix $\iota(\ket{\psi})=\ket{\psi}\bra{\psi}$ can be regarded as 
 
 The following lemma shows that the function $\iota$ is an inclusion for our purposes.
 
-\textcolor{blue}{This proof below should be separated into two parts.  I think the sting of implications is fine for concluding that $a_i=e^{i\theta_i}b_i$ for every $i$.  Then, say "Now we consider two indices $i,j$" and finish the argument.  Basically there needs to be some words at the end.}
-
 \begin{lemma}
 \label{lemma state into density}
 Let $\ket{\psi_1}, \ket{\psi_2}$ be state vectors in ${\mathbb{C}}^n$ with $\iota({\ket{\psi_1}})=\iota(\ket{\psi_2})$.\\
@@ -62,30 +60,26 @@ a_n \Bar{a_1} && a_n \Bar{a_2} && \hdots && a_n \Bar{a_n}\\
 b_1 \Bar{b_1} && b_1 \Bar{b_2} && \hdots && b_1 \Bar{b_n}\\
 && && \vdots && \\
 b_n \Bar{b_1} && b_n \Bar{b_2} && \hdots && b_n \Bar{b_n}\\ 
-\end{pmatrix}\\
-\Rightarrow 
-\begin{cases}
-a_1 \Bar{a_1}=b_1 \Bar{b_1}\\
-a_2 \Bar{a_2}=b_2 \Bar{b_2}\\
-\hdots\\
-a_n \Bar{a_n}=b_n \Bar{b_n}\\
-a_1 \Bar{a_2}=b_1 \Bar{b_2}\\
-\hdots
-\end{cases}
-\Rightarrow \begin{cases}
-a_1 = e^{i\theta_1}b_1\\
-\hdots\\
-a_n = e^{i\theta_n}b_n\\
-a_1 \Bar{a_2}=b_1 \Bar{b_2}\\
-\hdots
-\end{cases}
-\Rightarrow \begin{cases}
-e^{i\theta_1}b_1 e^{-i\theta_2}\Bar{b_2}=b_1 \Bar{b_2}\\
-\hdots\\
-\end{cases}\\
-\Rightarrow \theta_1 = \theta_2 = \hdots = \theta_n
-\Rightarrow\ket{\psi_1}=e^{i\theta_1}\ket{\psi_2}
+\end{pmatrix}
 \end{gather}
+{\color{green}
+Then for all $i$, $$a_i \Bar{a_i}=b_i \Bar{b_i}.$$
+and for all $j$ such that $i \ne j$, 
+\begin{equation}\label{eqn: different index}
+    a_i \Bar{a_j}=b_i \Bar{b_j}
+\end{equation}
+Therefore, 
+\begin{equation}\label{eqn: same index}
+   a_i=e^{i\theta_i}b_i. 
+\end{equation}
+Substitute \eqref{eqn: same index} into \eqref{eqn: different index}, we get 
+\begin{equation}
+    e^{i\theta_i}b_i \overline{e^{j\theta_j}b_j}=b_i \Bar{b_j}.
+\end{equation}
+Hence, $$e^{i\theta_i}b_i e^{-i\theta_j}\Bar{b_j}=b_i \Bar{b_j}.$$
+So $\theta_i=\theta_j$ for all $i,j$.\\
+Therefore, $\ket{\psi_1}=\icol{e^{i\theta_1}b_1 \\ \vdots \\ e^{i\theta_1}b_n}=e^{i\theta_1}\ket{\psi_2}$
+}
 \end{proof}
 
 Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices. The postulates of quantum mechanics can be formulated in the language of density matrices. Here we just present the definition of measuring with respect to an orthonormal basis using density matrices. In other words, the following is the density matrix version of \textbf{Definition \ref{def: measurement in a basis state vector}}.
