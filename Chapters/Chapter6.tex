@@ -621,7 +621,7 @@ $\ket{\Bar{u}} \in Nul(M(\ket{\psi})^T)$, we have \begin{equation} \label{eqn: n
 \sum_{j=1}^n a_{ji} \overline{b_j}=0
 \end{equation}
 for all $i$.
-\textcolor{red}{reference where the formula for calculating the probability comes from. add the formula into the density matrix section and have the games reference the formula as well. why can we calculate the probability as if Alice and Bob are measuring at the same time? }
+% \textcolor{red}{reference where the formula for calculating the probability comes from. add the formula into the density matrix section and have the games reference the formula as well. why can we calculate the probability as if Alice and Bob are measuring at the same time? }
 % \textcolor{blue}{I changed the index above which was switched.  What's going on in this proof below?  What identity are we using}
 % \begin{eqnarray*}
 % p(\ket{uv})&=&\braket{u v | \rho |u v}\\
@@ -641,7 +641,7 @@ for all $i$.
 
 % \textcolor{blue}{****************ALTERNATE PROOF with no need for computational justification}
 
-Let $\ket{e_r}$ be an element of the standard basis.  Then,
+Let $\ket{e_r}$ be an element of the standard basis.  Then by \eqref{eqn: general measurement probability density matrix},
 \begin{eqnarray*}
 p(\ket{ue_r})&=&\braket{ue_r | \rho |ue_r}\\
 &=&\braket{ue_r| (\sum_{i,j} \sum_{i',j'} a_{ij} \overline{a_{i'j'}}\ket{e_i e_j}\bra{e_{i'} e_{j'}})|ue_r} \\

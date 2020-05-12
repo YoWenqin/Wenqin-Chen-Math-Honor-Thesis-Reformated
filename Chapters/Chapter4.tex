@@ -95,15 +95,18 @@ Consider a quantum system in a state in $\mathbb{C}^n$ given by density matrix $
 
 A justification for \textbf{Definition \ref{eqn: measurement probability in density matrix}} as well as a description of how the four postulates can be reformulated for density matrices can be found in \textbf{Appendix \ref{AppendixB}}, but here is an example of measuring a density matrix with respect to an orthonormal basis.
 
-\textcolor{blue}{I think you should add a little more to the compustions of $q_i$ below.  Basically, I think you should actually insert $\rho$ in below and do one of the computations.  You could do one, and say "Similarly, $q_2=\frac{1}{2}$".}
 \begin{example}
 Consider a source that prepares the state $\ket{0}$ and $\ket{1}$ with probabilities $p_0=p_1=\frac{1}{2}$. Suppose we measure the corresponding mixed state
-$$\rho=\frac{1}{2}\ket{0}\bra{0}+\ket{1}\bra{1}=\frac{\mathbb{I}}{2},$$
-with respect to the Hadamard basis $\{\ket{+}, \ket{-}\}$. The probabilities of the outcomes are given by 
-\begin{gather}
-    q_1=\braket{+|\rho|+}=\frac{1}{2}\\
-    q_2=\braket{-|\rho|-}=\frac{1}{2}
-\end{gather}
+$$\rho=\frac{1}{2}(\ket{0}\bra{0}+\ket{1}\bra{1})=\frac{\mathbb{I}}{2},$$
+with respect to the Hadamard basis $\{\ket{+}, \ket{-}\}$ (see \eqref{eqn: hadamard basis}). The probabilities of the outcomes are given by 
+\begin{eqnarray}
+    q_1&=&\braket{+|\rho|+}\\
+    &=&\frac{1}{2}\braket{+|(\ket{0}\bra{0}+\ket{1}\bra{1})|+}\\
+    &=&\frac{1}{2}\braket{+|0}\braket{0|+}+\frac{1}{2}\braket{+|1}\braket{1|+}\\
+    &=&\frac{1}{2} \times \frac{1}{2} + \frac{1}{2} \times \frac{1}{2}\\
+    &=&\frac{1}{2}
+\end{eqnarray}
+Similarly, $q_2=\braket{-|\rho|-}=\frac{1}{2}$
 \end{example}
 
 

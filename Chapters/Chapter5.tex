@@ -198,57 +198,53 @@ For example, say Alice and Bob share the joint state $\ket{\psi}=\ket{EPR}$.
 \begin{equation*}
     \ket{\psi}=\frac{1}{\sqrt{2}}(\ket{0} \ket{0}+\ket{1} \ket{1})
 \end{equation*}
+% Suppose that when $x = 0$, Alice measures her qubit in the standard basis $\{\ket{0}, \ket{1}\}$, and when $x = 1$, Alice measures her qubit in the Hadamard basis $\{\ket{+}, \ket{-}\}$.
 
-\textcolor{blue}{Two things to change here.  First all "x,y" and all numbers need to be italicized.  Also use $\cos, \sin $.  Also don't forget to put include periods.}
-
-Suppose that when x = 0, Alice measures her qubit in the standard basis $\{\ket{0}, \ket{1}\}$, and when x = 1, Alice measures her qubit in the Hadamard basis $\{\ket{+}, \ket{-}\}$.
-
-
-Also, when y=0, Bob measures his qubit in the basis $\{\ket{v_1}, \ket{v_2}\}$, where
+Also, when $y=0$, Bob measures his qubit in the basis $\{\ket{v_1}, \ket{v_2}\}$, where
 \begin{gather*}
     \ket{v_1}=\cos(\frac{\pi}{8})\ket{0}+\sin(\frac{\pi}{8})\ket{1}\\
-    \ket{v_2}=-sin(\frac{\pi}{8})\ket{0}+cos(\frac{\pi}{8})\ket{1}  
+    \ket{v_2}=-\sin(\frac{\pi}{8})\ket{0}+\cos(\frac{\pi}{8})\ket{1}  
 \end{gather*}
-and when y = 1, Bob measures her qubit in $\{\ket{w_1}, \ket{w_2}\}$, where
+and when $y = 1$, Bob measures her qubit in $\{\ket{w_1}, \ket{w_2}\}$, where
 \begin{gather*}
-    \ket{w_1}=cos(\frac{\pi}{8})\ket{0}-sin(\frac{\pi}{8})\ket{1}\\
-    \ket{w_2}=sin(\frac{\pi}{8})\ket{0}+cos(\frac{\pi}{8})\ket{1}
+    \ket{w_1}=\cos(\frac{\pi}{8})\ket{0}-\sin(\frac{\pi}{8})\ket{1}\\
+    \ket{w_2}=\sin(\frac{\pi}{8})\ket{0}+\cos(\frac{\pi}{8})\ket{1}.
     \end{gather*}
-Then consider the probability of Alice and Bob winning the collaborative game, conditioned on the four different possible choices for x and y:
+Then consider the probability of Alice and Bob winning the collaborative game, conditioned on the four different possible choices for $x$ and $y$:
 \begin{eqnarray*}
 p(win|x=0,y=0)&=&p(a+b=0(mod 2)|x=0,y=0)\\
 &=&p(a=0, b=0|x=0, y=0)+p(a=1, b=1|x=0, y=0)\\
 &=&\braket{0 v_1|\psi}\braket{\psi|0v_1}+\braket{1 v_2|\psi}\braket{\psi|1v_2}\\
 &=&|\braket{0 v_1|\psi}|^2 + |\braket{1 v_2|\psi}|^2\\
 &=&|\frac{1}{\sqrt{2}}(\braket{0v_1|00}+\braket{0v_1|11})|^2+|\frac{1}{\sqrt{2}}(\braket{1v_2|00}+\braket{1v_2|11})|^2\\
-&=&\frac{1}{2}|cos(\frac{\pi}{8})\braket{00|00}+sin(\frac{\pi}{8})\braket{01|00}+cos(\frac{\pi}{8})\braket{00|11}+cos(\frac{\pi}{8})\braket{01|11}|^2\\
-&+&\frac{1}{2}|-sin(\frac{\pi}{8})\braket{10|00}+cos(\frac{\pi}{8})\braket{11|00}-sin(\frac{\pi}{8})\braket{10|11}+cos(\frac{\pi}{8})\braket{11|11}|^2\\
-&=&cos^2(\frac{\pi}{8})
+&=&\frac{1}{2}|\cos(\frac{\pi}{8})\braket{00|00}+\sin(\frac{\pi}{8})\braket{01|00}+\cos(\frac{\pi}{8})\braket{00|11}+\cos(\frac{\pi}{8})\braket{01|11}|^2\\
+&+&\frac{1}{2}|-\sin(\frac{\pi}{8})\braket{10|00}+\cos(\frac{\pi}{8})\braket{11|00}-\sin(\frac{\pi}{8})\braket{10|11}+\cos(\frac{\pi}{8})\braket{11|11}|^2\\
+&=&\cos^2(\frac{\pi}{8})
 \end{eqnarray*}
 
 Similarly,
 \begin{eqnarray*}
 p(win|x=0,y=1)&=&p(a=0, b=0|x=0, y=1)+p(a=1, b=1|x=0, y=1)\\
 &=&|\braket{0 w_1|\psi}|^2 + |\braket{1 w_2|\psi}|^2\\
-&=&(\frac{1}{\sqrt{2}}cos\frac{\pi}{8})^2+(\frac{1}{\sqrt{2}}cos\frac{\pi}{8})^2\\
-&=&cos^2 \frac{\pi}{8}
+&=&(\frac{1}{\sqrt{2}}\cos\frac{\pi}{8})^2+(\frac{1}{\sqrt{2}}\cos\frac{\pi}{8})^2\\
+&=&\cos^2 \frac{\pi}{8}
 \end{eqnarray*}
 \begin{eqnarray*}
 p(win|x=1,y=0)&=&p(a=0, b=0|x=1, y=0)+p(a=1, b=1|x=1, y=0)\\
 &=&|\braket{+ v_1|\psi}|^2 + |\braket{- v_2|\psi}|^2\\
-&=&\frac{1}{2}(\frac{1}{\sqrt{2}}cos\frac{\pi}{8}+\frac{1}{\sqrt{2}}sin\frac{\pi}{8})^2+\frac{1}{2}(\frac{1}{\sqrt{2}}cos\frac{\pi}{8}+\frac{1}{\sqrt{2}}sin\frac{\pi}{8})^2\\
-&=&\frac{1}{2}(cos\frac{\pi}{8}+sin\frac{\pi}{8})^2\\
-&=&cos^2 \frac{\pi}{8}
+&=&\frac{1}{2}(\frac{1}{\sqrt{2}}\cos\frac{\pi}{8}+\frac{1}{\sqrt{2}}\sin\frac{\pi}{8})^2+\frac{1}{2}(\frac{1}{\sqrt{2}}\cos\frac{\pi}{8}+\frac{1}{\sqrt{2}}\sin\frac{\pi}{8})^2\\
+&=&\frac{1}{2}(\cos\frac{\pi}{8}+\sin\frac{\pi}{8})^2\\
+&=&\cos^2 \frac{\pi}{8}
 \end{eqnarray*}
 \begin{eqnarray*}
 p(win|x=1,y=1)&=&p(a=1, b=0|x=1, y=1)+p(a=0, b=1|x=1, y=1)\\
 &=&|\braket{- w_1|\psi}|^2 + |\braket{+ w_2|\psi}|^2\\
-&=&\frac{1}{2}(cos\frac{\pi}{8}+sin\frac{\pi}{8})^2\\
-&=&cos^2 \frac{\pi}{8}
+&=&\frac{1}{2}(\cos\frac{\pi}{8}+\sin\frac{\pi}{8})^2\\
+&=&\cos^2 \frac{\pi}{8}
 \end{eqnarray*}
 So the probability of winning is the average of the four above:
 \begin{equation*}
-    p_{win}=\frac{1}{4}\sum_{x,y}p_{win|x,y}=cos^2 \frac{\pi}{8} \approx 0.85
+    p(win)=\frac{1}{4}\sum_{x,y}p(win|x,y)=\cos^2 \frac{\pi}{8} \approx 0.85.
 \end{equation*}
 
 %----------------------------------------------------------------------------------------
@@ -320,9 +316,12 @@ To make sure their one-time pad was constructed securely, Alice and Bob pick a s
 \footnotetext{Figure from \url{https://www.cse.wustl.edu/~jain/cse571-07/ftp/quantum/\#Gisin02}}
 
 
-We now present a second application of quantum mechanics to cryptography.  This protocol was published by Ekert in 1991\cite{Ekert1991}.  Here a single source that emits pairs of entangled particles, each represented by states \footnote{A quantum state like this is usually called a singlet state in physics.}.
+We now present a second application of quantum mechanics to cryptography.  This protocol was published by Ekert in 1991\cite{Ekert1991}.  Here a single source that emits pairs of entangled particles, each represented by the joint state 
 $$\frac{1}{\sqrt{2}}(\ket{10}-\ket{01}).$$
-As shown in figure \ref{fig:E91 Illustrated}, Alice and Bob then each receive one particle from every pair emitted from the source. Then they each choose a random basis out of three bases to measure on their received particles. 
+Alice and Bob each receive their component state from every pair emitted from the source. Both of them have access to three orthonormal bases from which they can perform their measurements.  The three bases are $Z_0, Z_{\frac{\pi}{4}}, Z_{\frac{\pi}{2}}$, where $Z_\theta$ is the standard basis rotated counterclockwise by angle $\theta$, so for example, $Z_{\frac{\pi}{2}}$ has first basis element $\ket{1}$ and second basis element $-\ket{0}$ (See \textbf{Figure \ref{fig:e91 encoding}}).
+
+
+In the first phase, Alice and Bob each choose a random basis from their three available bases to measure each photon they receive. They then record the outcome of each measurement as a bit, as in BB84.  For example, if Alice choose $Z_{\frac{\pi}{4}}$, and measures an end state of $45^\circ$, she will record the bit $0$ (see {\bf{Figure}} \ref{fig:E91 Illustrated}).  After a sufficient amount of measurements are made, the first phase ends.  
 
 \begin{figure}[h]
     \centering
@@ -331,11 +330,9 @@ As shown in figure \ref{fig:E91 Illustrated}, Alice and Bob then each receive on
     \label{fig:e91 encoding}
 \end{figure}
 
-The three bases to choose from are $Z_0, Z_{\frac{\pi}{4}}, Z_{\frac{\pi}{2}}$, where $Z_\theta$ is the standard basis rotated counterclockwise by $\theta$ (See \textbf{Figure \ref{fig:e91 encoding}}). In other words, if Alice or Bob choose $Z_0$, she will encode the classical bit 0 with  $0^\circ$ in $Z_0$ and encode the bit 1 with $90^\circ$ in $Z_0$. If they choose $Z_{\frac{\pi}{4}}$, classical bits 0, 1 will be encoded with $45^\circ$ and $135^\circ$ respectively. If they choose $Z_{\frac{\pi}{2}}$, 0 and 1 will be encoded with $90^\circ$ and $180^\circ$ respectively.
 
-Alice and Bob each keeps the choice of basis private until the measurements are completed. As in BB84, they would then discuss in a classical channel that doesn't need to be secure bases they used for their measurements and divide the photons received into two groups: the first consists of photons measured in the same basis by Alice and Bob, and the second contains photons measured in different bases. 
 
-The first group makes use of properties of entanglement. For each measurement Alice and Bob made using the same basis, there exists this perfect anti-correlation between Alice and Bob's photon. This means that they end up each having a bit string which is the binary complement of each other. Then Bob can just invert his bits and obtain a shared secret key with Alice to use for one-time pad. 
+In the second phase, the communicate through a classical channel and separate their bits into those that correspond to measurements performed with the same bases, and those that correspond to measurements performed with different bases.  When they used the same basis, there is a perfect correlation between, the outcomes observed by Alice and Bob (see . between Alice and Bob's photon. This means that they end up each having a bit string which is the binary complement of each other. Then Bob can just invert his bits and obtain a shared secret key with Alice to use for one-time pad. 
 
 The second group is used to detect eavesdropping, they can compute the test statistic S which consists of expected values of Alice and Bob's measurements on the basis of their own choice \footnote{We consider the result "0" as having value 1 (spin up), and the result "1" as having value -1 (spin down). See \cite{Ekert1991} for more details on how the test statistic S is computed.}. It turns out that without eavesdropping, $S=-2\sqrt{2}$. Yet if Eve tapped into the communication, then $-\sqrt{2} \le S \le \sqrt{2}$. Such way of statistically testing for eavesdropping originated from the generalized Bell's theorem (CHSH inequalities) \cite{bell1964}, the concept of which was illustrated in \textbf{Section \ref{section: bell-nonlocality}}.
 
