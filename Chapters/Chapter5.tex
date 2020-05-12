@@ -27,14 +27,17 @@ In private key cryptosystems, a private key is used by Alice to encrypt the secr
     \label{fig:general crypto schematic}
 \end{figure}
 
+\noindent
 We begin with some preliminary concepts.  Formally, an {\emph{encryption}} is given by an encryption function 
 $$Enc(k,m)=e ,$$
 which takes a key $k$ and the message $m$ and maps it to some encrypted message $e$. The original message $m$ is also called the {\emph{plaintext}}, whereas $e$ is refered to as the {\emph{ciphertext}}. Similarly, a {\emph{decryption function}} $$Dec(k,e)=m$$
 that takes the key $k$ and the ciphertext $e$ as arguments, and returns the plaintext. 
 
-If $m$ is a message, then p(m) is the probability of guessing one message correctly. For example, say the message an arbitrary 10-bit message picked uniformly randomly, then $p(m)=\frac{1}{2^10}$.
+If $m$ is a message, then $p(m)$ is the probability of guessing one message correctly. For example, say the message an arbitrary $10$-bit message picked randomly, then $p(m)=\frac{1}{2^{10}}$.
+
+
 \begin{definition} \label{def: shannon}
-An encryption scheme (Enc, Dec) is \textit{secret}, or \textit{secure} if and only if for all prior distributions p(m) over messages, and all messages m, we have
+An encryption scheme (Enc, Dec) is \textit{secret}, or \textit{secure} if and only if 
 \begin{equation}
     p(m)=p(m|e),
 \end{equation}
@@ -42,7 +45,7 @@ where $e=Enc(k,m)$, and $p(m|e)$ is the conditional probability of m given e.
 
 An encryption scheme (Enc, Dec) is correct if and only if for all possible messages m, and all possible keys k, we have m=Dec(k, Enc(k,m)).
 \end{definition}
-In cryptography the goal is to design protocols that are both secure and correct, which means that not only must the ciphertext be decipherable, but also that if Eve sees the ciphertext, she knows nothing more than anyone else who hasn't seen the ciphertext at all. The following theorem shows that this is only possible when the number of possible keys is large relative to the number of possible messages.
+In cryptography the goal is to design protocols that are both secure and correct. This means that the ciphertext be decipherable, and that it must convey no information to a third party that sees it. The following theorem shows that this is only possible when the number of possible keys is large relative to the number of possible messages.
 \begin{theorem}
 If the encryption scheme (Enc, Dec) is secure and correct, then the number of possible keys |K| is at least as large as the number of possible messages |M|, that is, $|K| \ge |M|$.
 \end{theorem}
@@ -61,17 +64,17 @@ Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
 \end{equation}
 \end{definition}
 
-Dec(k,e) is apparently the inverse of $Enc(k,m)$ since $m_i \oplus k_i \oplus k_i=m_i$, so the one-time pad scheme is correct. Now we see if it also satisfies Shannon's \textbf{Definition \ref{def: shannon}} for security. Assuming a uniformly random choice of key k, the associated ciphertext is also uniformly distributed over all n-bit strings, so we have 
+Dec(k,e) is apparently the inverse of $Enc(k,m)$ since $m_i \oplus k_i \oplus k_i=m_i$, so the one-time pad scheme is correct. Now we see if it also satisfies Shannon's \textbf{Definition \ref{def: shannon}} of security. Assuming a uniformly random choice of key $k$, the associated ciphertext is also uniformly distributed over all $n$-bit strings, so we have 
 \begin{gather}
     p(e|m)=p(k|m)=\frac{1}{2^n}\\
-    p(e)=\sum_m p(m) p(e|m)=\frac{1}{2^n}
+    p(e)=\sum_m p(m) p(e|m)=\frac{1}{2^n}.
 \end{gather}
-Applying Bayes rule, we then have $$p(m|e)=\frac{p(m,e)}{p(e)}=\frac{p(e|m)p(m)}{p(e)}=p(m)$$
-So the one-time pad is perfectly secure upon the key being uniformly distributed and independent from any eavesdropper. More information about one-time pad can be found in Section 1.8 of \cite{Wehner:notes}.
+Applying Bayes rule, we then have $$p(m|e)=\frac{p(m,e)}{p(e)}=\frac{p(e|m)p(m)}{p(e)}=p(m).$$
+So the one-time pad is perfectly secure if the key is chosen randomly and is kept hidden from eavesdroppers. More information about one-time pad can be found in Section 1.8 of \cite{Wehner:notes}.
 
 \begin{example}
 \label{example one-time pad}
-Say Alice wishes to transmit a message "hello" to her friend Bob.  They will use the conventional 8-bit ASCII encoding \footnote{For ASCII encoding, refer to \url{https://en.wikipedia.org/wiki/ASCII}} for each character.  the encoding process can be illustrated by \textbf{Table  \ref{table: one-time pad encoding}} below. The ciphertext that Alice is going to send to Bob is 0000 1011 0001 0111 0001 0101 0001 1100 0001 1011 using the encryption scheme defined in \textbf{Definition \ref{def: classical one-time pad scheme}}.
+Say Alice wishes to transmit the message "hello" to her friend Bob.  They will use the conventional 8-bit ASCII encoding \footnote{For ASCII encoding, refer to \url{https://en.wikipedia.org/wiki/ASCII}} for each character.  the encoding process can be illustrated by \textbf{Table  \ref{table: one-time pad encoding}} below. The ciphertext that Alice is going to send to Bob is 0000 1011 0001 0111 0001 0101 0001 1100 0001 1011 using the encryption scheme defined in \textbf{Definition \ref{def: classical one-time pad scheme}}.
 
 \begin{table}[h]
 \centering 
@@ -107,25 +110,9 @@ plaintext character & h & e & l & l & o \\ \hline
 
 At the end of \textbf{Chapter \ref{Chapter6-classification of entanglement}}, we will create a classical one-time pad making use of quantum mechanics.
 
-\textcolor{green}{Now let's introduce the quantum one-time pad, the quantum analogue of the classical one-time pad encryption scheme. You can refer to   \cite{mosca2000private} for mode in-depth discussion. Here we just describe the encryption scheme. Recall that to transmit n classical bits privately via the classical one-time pad, n bits of shared private key is necessary and sufficient. It turns out to transmit n qubits privately, 2n bits of shared private key are necessary and sufficient.}
-
-\begin{definition} \label{def: quantum one-time pad}
-The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice applies $X^{k_1} Z^{k_2}$ to qubit $\rho$ and sends the resulting state to Bob. To decrypt, Bob applies the inverse $(X^{k_1} Z^{k_2})^\dagger$ to obtain $\rho$, where X and Z are the Pauli-X and Pauli-Z matrix respectively. i.e.
-\begin{equation}
-    X=\begin{pmatrix}
-    0 && 1\\
-    1 && 0
-    \end{pmatrix}, 
-    Z=\begin{pmatrix}
-    1 && 0\\
-    0 && -1
-    \end{pmatrix}
-\end{equation}
-\end{definition}
 
 
 
-\textcolor{blue}{Include example of this computation and explain how this differs from the classical one-time pad.}
 
 
 %----------------------------------------------------------------------------------------
@@ -134,9 +121,8 @@ The quantum one-time pad is an encryption scheme for qubits. To encrypt, Alice a
 
 \pagebreak
 
-\section{Bell-Nonlocality and CHSH game} \label{section: bell-nonlocality}
-In many collaborative games, two players using a {\emph{quantum strategy}} can achieve a higher winning probability than if they use a {\emph{classical strategy}}. Because of this, many probabilistic games can be thought of as tests for entanglement.  This also illustrates why one might try to make use of quantum mechanics in cryptography.  We illustrate this phenomenon with an example of a guessing game.
-\footnote{\textcolor{green}{This guess game is one way of interpreting the famous Bell-nonlocality. \emph{Locality} is the assumption that Alice performing her measurement does not influence the result of Bob's measurement. Bell's experiment in \cite{bell1964}  proved that the predictions of quantum theory are incompatible with those of any classical theory satisfying a notion of locality.}}
+\section{A Guessing Game} \label{section: bell-nonlocality}
+In many collaborative games, two players using a {\emph{quantum strategy}} can achieve a higher winning probability than if they use a {\emph{classical strategy}}. Because of this, many probabilistic games can be thought of as tests for entanglement.  Since Alice and Bob work collaboratively to communicate securely, this also illustrates why one might try to make use of quantum mechanics in cryptography.  We illustrate this phenomenon with an example of a guessing game \footnote{This guessing game is one way of interpreting so-called Bell-nonlocality. \emph{Locality} is the assumption that Alice performing her measurement does not influence the result of Bob's measurement. Bell's experiment in \cite{bell1964}  proved that the predictions of quantum theory are incompatible with those of any classical theory satisfying a notion of locality.}.
 
 In our game Alice and Bob work collaboratively and try to craft a strategy which will maximize their team score.  Once they have agreed on a strategy, the game begins, at which point all their communication must cease.  The rules of the game are as follows:
 \begin{enumerate}
@@ -176,7 +162,7 @@ Once both answers are picked, we are ready do see if Alice and Bob have won.  Th
 %-----------------------------------
 \subsection{Classical Strategy}
 
-A classical strategy is simply given by functions $f_A(x)=a$ and $f_B(y)=b$. By simply checking all possible choices in the following table, we see the maximum winning probability is $\frac{3}{4}$.
+A classical strategy is simply given by "choice functions" $f_A(x)=a$ and $f_B(y)=b$. By simply checking all possible choices in the following table, we see the maximum winning probability is $\frac{3}{4}$.
 
 \begin{table}[h]
 \centering
@@ -190,38 +176,37 @@ b=0 & $\frac{3}{4}$ & $\frac{1}{4}$ & $\frac{1}{4}$ & $\frac{3}{4}$ \\ \hline
 \end{tabular}
 \end{table}
 
-Thus, the probability of winning classically is $.75$.  Surprisingly, this can be {\emph{improved}} by making use of quantum mechanics!  The idea is that Alice and Bob can make use of a strategy where even though neither sees which question the other is asked, their answers are {\emph{correlated}}.
+Thus, the probability of winning classically is $.75$.  Surprisingly, this can be {\emph{improved}} by making use of quantum mechanics.  The idea is that Alice and Bob can make use of a strategy where even though neither sees which question the other is asked, their answers are {\emph{correlated}}.
 
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
 
 \subsection{Quantum Strategy}
-\textcolor{green}{Abiding the same set of rules as in the classical strategy that no communication is allowed after the game starts, Alice and Bob are now able to improve their winning probability by deploying a quantum strategy! There are two differences from the classical strategy. First, Alice and Bob share an entangled 2 qudit state.\footnote{You can can just imagine Alice and Bob gather in a physics labs before the game start, fire a beam through a special kind of crystal and obtain a pair of entangled photons. Then Alice and Bob each take one photon and walk away from each other to start the game.} Second, Alice and Bob make measurements with respect to different orthonormal bases depending on the question they each receive.}
+Now we discuss how Alice and Bob are able to improve their winning probability by deploying a quantum strategy.  Suppose that Alice and Bob get to share an entangled $2$-qudit state.\footnote{One can imagine Alice and Bob meeting in a physics labs before the game starts, and firing a beam through a special kind of crystal to obtain a pair of entangled photons. Then, Alice and Bob each take one photon and walk away from each other prior to the start of the game.}  Now, they can each measure their shared state with respect to a {\emph{different}} orthonormmal basis depending on which question they receive.  A schematic is displayed in {\bf{Figure}} \ref{fig: quantum strategy diagram} below.
 
 % \textcolor{blue}{Say something more about the quantum version of the game. Basically here they use this entanglement "machine" } \textcolor{green}{done.}
 
 \begin{figure}[h]
-    \centering
+ \centering
     \includegraphics[scale=0.6]{"quantum strategy diagram".png}
     \caption{Quantum strategy that Alice and Bob agrees on before the game. What differs from the classical strategy is that they share an EPR pair before the game starts, and make measurement on different bases depending on the value of x and y.}
     \label{fig: quantum strategy diagram}
 \end{figure}
 
-Suppose Alice and Bob share an EPR pair, where we label the qubit held by Alice A and the one held by Bob B: 
+For example, say Alice and Bob share the joint state $\ket{\psi}=\ket{EPR}$. 
 \begin{equation*}
-    \ket{\psi_{AB}}=\frac{1}{\sqrt{2}}(\ket{0}_A \ket{0}_B+\ket{1}_A \ket{1}_B)
+    \ket{\psi}=\frac{1}{\sqrt{2}}(\ket{0} \ket{0}+\ket{1} \ket{1})
 \end{equation*}
 
-Suppose now that when x = 0, Alice measures her qubit (by convention, the left-hand side of $\ket{\psi_{AB}}$) in the standard basis $\{\ket{0}, \ket{1}\}$. When x = 1, Alice measures her qubit in the Hadarmard basis $\{\ket{+}, \ket{-}\}$, where
-\begin{gather*}
-    \ket{+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})\\
-    \ket{-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})
-\end{gather*}
+\textcolor{blue}{Two things to change here.  First all "x,y" and all numbers need to be italicized.  Also use $\cos, \sin $.  Also don't forget to put include periods.}
 
-Suppose when y=0, Bob measures his qubit in the basis $\{\ket{v_1}, \ket{v_2}\}$, where
+Suppose that when x = 0, Alice measures her qubit in the standard basis $\{\ket{0}, \ket{1}\}$, and when x = 1, Alice measures her qubit in the Hadamard basis $\{\ket{+}, \ket{-}\}$.
+
+
+Also, when y=0, Bob measures his qubit in the basis $\{\ket{v_1}, \ket{v_2}\}$, where
 \begin{gather*}
-    \ket{v_1}=cos(\frac{\pi}{8})\ket{0}+sin(\frac{\pi}{8})\ket{1}\\
+    \ket{v_1}=\cos(\frac{\pi}{8})\ket{0}+\sin(\frac{\pi}{8})\ket{1}\\
     \ket{v_2}=-sin(\frac{\pi}{8})\ket{0}+cos(\frac{\pi}{8})\ket{1}  
 \end{gather*}
 and when y = 1, Bob measures her qubit in $\{\ket{w_1}, \ket{w_2}\}$, where
@@ -270,7 +255,7 @@ So the probability of winning is the average of the four above:
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 
-The increased probability of winning by making use of a quantum strategy suggests that quantum mechanics could be exploited by either side of the cryptography arms race.  In the next section, we discuss a famous example of this.
+This increased probability of winning when making use of a quantum strategy, suggests that quantum mechanics can be exploited by either side of the cryptography arms race.  In the next section, we discuss a famous example of this.
 
 
 
@@ -287,21 +272,39 @@ The increased probability of winning by making use of a quantum strategy suggest
 \end{figure}
 \footnotetext{Figure from \url{https://www.cse.wustl.edu/~jain/cse571-07/ftp/quantum/\#Gisin02}}
 
-In 1984 Charles Bennett and Gilles Brassard published the first Quantum Key Distribution protocol \cite{Bennett1984} now referred to as the BB84 Protocol. For Alice to transmit a message to Bob, she not only chooses the bit to send, but also a basis out of the standard basis and the Hadamard basis. In other words, if she chooses the standard basis (rectilinear basis), she will encode the classical bit 0 with $\ket{0}$ ($0^\circ$ in rectilinear basis), and the bit 1 with $\ket{1}$ ($90^\circ$ in rectilinear basis). If she chooses the Hadamard basis (diagonal basis), she will encode the bit 0 with $\ket{+}$ ($45^\circ$ in the diagonal basis), and the bit 1 with $\ket{-}$ ($135^\circ$ in the diagonal basis). 
 
-In the first phase, Alice attempts to send a random string of bits to Bob by encoding each bit with a photon of the corresponding polorization as described in \ref{fig:BB84 bit encoding} over a quantum channel. For each photon received, Bob will measure the photon with a randomly chosen basis between the rectilinear basis and the diagonal basis. As explained in Chapter \ref{Chapter3-postulates}, only if Bob chose the same basis as Alice would he be able to get for certainty the same measurement result as what Alice sent. Otherwise, the result he get would be random.
+\textcolor{blue}{Alice doesn't really need the bases right?  Can you read this over and see what you think.  Also, please include a table consistent with the arrows I used.}
 
-In the second phase, Bob notifies Alice over any channel (can totally be an insecure classical channel) which basis he picked for each incoming photon. In response, Alice reports back to Bob whether he chose the correct basis for each photon. Then, Alice and Bob both discard bits corresponding to photons measured with different bases. Assuming no errors occurred and no one manipulated the photons, Bob and Alice now have the same string of bits, and that is the private key distributed from Alice to Bob. The process is illustrated in \ref{fig:BB84 bit example}.
+In 1984, Charles Bennett and Gilles Brassard published the first Quantum Key Distribution protocol \cite{Bennett1984} now commonly referred to as the BB84 Protocol. In this protocol, Alice and Bob use quantum mechanics to make a one-time pad for message transmission.  In this procedure, the benefit of using quantum mechanics comes from the fact that Alice and Bob can {\emph{find out whether or not they were observed during pad creation}}. 
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.35]{"bb84 example".png}
-    \caption{An example of distributing a key of bits from Alice to Bob. The result of secret key established is 0101.\protect\footnotemark}
-    \label{fig:BB84 bit example}
-\end{figure}
-\footnotetext{Figure from \url{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}}
+In this protocol, Alice and Bob each have access to two different orthonormal bases, the standard (Rectilinear) basis, and the Hadamard (diagonal) basis, and Alice has a machine which can emit photons in any one of four polarizations corresponding to the four basis elements.  
 
-To verify whether an eavesdropper Eve has tapped into the communication, Alice and Bob picked a random subset of their shared secret key and compare if they actually agree. If yes, they can discard those bits and have the remaining bits be the shared secret key. Otherwise, it means Eve attempts to infer the key. Because of the no-cloning theorem (see \textbf{Theorem \ref{no-cloning thm}}), she has to measure the photons sent by Alice before passing them on to Bob. She cannot replicate the photon, pass the original photon to Bob and keep the replicated photon to herself. Since Eve does not know which basis Alice picked to encode the bit, Eve has to guess. If she guesses wrongly and measures on the wrong basis, the information encoded on the other basis is lost. So when the photon reaches Bob, his measurement result will be random and he infer the wrong bit. Say Eve chooses the measurement basis incorrectly on average $\frac{1}{2}$ of the time, then Bob (using the same basis as Alice) will get the bit wrong $\frac{1}{2} \times \frac{1}{2}=\frac{1}{4}$ of the time). If m bits are compared, the probability of Eve being undetected is $(\frac{3}{4})^m$, which approaches 0 as m gets bigger.
+To describe this procedure, it's convenient to make some identifications.  First, we identify $\{\ket{0},\ket{1}\}$ with $\{\rightarrow, \uparrow\}$, and $\{\ket{+}, \ket{-}\}$ with $\{\nearrow, \nwarrow\}$ element by element.  Moreover, we think of the first element in each basis as being associated with the bit $0$, while the second element is associated with the bit $1$.  With this dictionary in mind, we are now ready to describe the process.
+
+
+
+
+In the first phase, through a {\emph{quantum channel}}, Alice sends the information of a random string of bits to Bob, which she encodes as photons with the polorizations as described above. For each bit, she selects at random a basis to use, then sends a photon of the appropriate type.  For example, if she wishes to send $1$ and has picked the Hadamard basis, she transmits a photon of type $\nwarrow$ to Bob.  Bob will measure each photon he receives with one of the two bases which he also chooses randomly. Note that only when Bob has chosen the same basis as Alice, will Bob observe the correct outcome with certainty.  
+
+In the second phase, Bob calls Alice and tells her which basis he picked to measure each incoming photon. In each case, Alice responds by telling Bob whether he chose the correct basis for measurement. Then, both parties discard bits that correspond to photons which were measured with "the wrong" basis. Transcription errors notwithstanding, Bob and Alice now have the same string of bits, a piece of which they will soon use to construct a one-time pad.  This procedure is illustrated in \textbf{Table \ref{tab:bb84 protocol example}}
+
+\begin{table}[]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Alice's random bit & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 1 \\ \hline
+Alice's random sending basis & $+$ & $+$ & $\times$ & $+$ & $\times$ & $\times$ & $\times$ & $+$ \\ \hline
+Photon polarization Alice sends & $\rightarrow$ & $\uparrow$ & $\nwarrow$ & $\rightarrow$ & $\nwarrow$ & $\nearrow$ & $\nearrow$ & $\uparrow$ \\ \hline
+Bob's random measuring basis & $+$ & $\times$ & $\times$ & $\times$ & $+$ & $\times$ & $+$ & $+$ \\ \hline
+Photon polarization Bob measures & $\rightarrow$ & $\nearrow$ & $\nwarrow$ & $\nearrow$ & $\uparrow$ & $\nearrow$ & $\uparrow$ & $\uparrow$ \\ \hline
+Shared secret key & 0 &  & 1 &  &  & 0 &  & 1 \\ \hline
+\end{tabular}
+\caption{An example of distributing a key of bits from Alice to Bob. The result of the secret key established is 0101.}
+\label{tab:bb84 protocol example}
+\end{table}
+
+
+To make sure their one-time pad was constructed securely, Alice and Bob pick a subset of the identical string of bits they have constructed and compare them to see if they actually agree. If they agree, they can discard these bits and use the remaining ones to make a one-time pad. On the other hand, if they don't agree it means that their transmission was hacked by Eve\footnote{It's worth noting that as a consequence of the no-cloning theorem (see \textbf{Theorem \ref{no-cloning thm}}), Eve cannot replicate the photon for her own use and pass the original photon to Bob.}.  Even if Eve has access to both bases used by Bob, since Eve she does not know which basis Alice picked to encode the bit, she has no alternative but to guess. For example, if Eve chooses the measurement basis incorrectly on average $\frac{1}{2}$ of the time, then Bob (using the same basis as Alice) will have the wrong bit with probability $\frac{1}{2} \cdot \frac{1}{2}=\frac{1}{4}$. Thus, if $m$ bits are compared, the probability of Eve's interference  going undetected is $(\frac{3}{4})^m$, which is negligible for $m$ large.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
@@ -317,7 +320,11 @@ To verify whether an eavesdropper Eve has tapped into the communication, Alice a
     \label{fig:E91 Illustrated}
 \end{figure}
 \footnotetext{Figure from \url{https://www.cse.wustl.edu/~jain/cse571-07/ftp/quantum/\#Gisin02}}
-In 1991, Eckert describes a quantum channel where there is a single source that emits pairs of entangled particles \cite{Ekert1991}. As shown in figure \ref{fig:E91 Illustrated}, Alice and Bob then each receive one particle from every pair emitted from the source. Then they each choose a random basis out of three bases to measure on their received particles. 
+
+
+In 1991, Eckert describes a quantum channel where there is a single source that emits pairs of entangled particles \cite{Ekert1991}. These entangled particles are all represented by states \footnote{A quantum state like this is usually called a singlet state in physics.}.
+$$\frac{1}{\sqrt{2}}(\ket{10}-\ket{01}).$$
+As shown in figure \ref{fig:E91 Illustrated}, Alice and Bob then each receive one particle from every pair emitted from the source. Then they each choose a random basis out of three bases to measure on their received particles. 
 
 \begin{figure}[h]
     \centering

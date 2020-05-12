@@ -255,7 +255,7 @@ We address {\bf{Requirement 1}} in this section and {\bf{Requirement 2}} in the 
 
 Suppose that Alice measures with respect to an orthonormal basis ${\{\ket{\varphi_i}\}}_{i=1}^{n}$.  Then, we know that for some $i_0$, she will observe outcome $i_0$, in which case her system will have $\ket{\varphi_{i_0}}$ as it's end state. Mechanically, we 
 % compute this in the case that she shares a composite state with Bob by 
-convert their shared state $\ket{\psi}$ to a density matrix, and measuring with respect to the operators ${\{\ket{\varphi_i}\bra{\varphi_i}\otimes \mathbb{I} \}}_{i=1}^n$ \textcolor{green}{(see \textbf{Chapter \ref{Chapter4-density matrix}})}.  Thus, in what follows we consider the situation where Alice's system has state vector $\ket{\varphi}$ post-measurement.  This corresponds to the case where Alice is measuring with respect to {\emph{any}} orthonormal basis that contains $\ket{\varphi}$ as an element. Our task is to determine how correlated Bob's and Alice's states are after she has measured.  
+convert their shared state $\ket{\psi}$ to a density matrix, and measuring with respect to the operators ${\{\ket{\varphi_i}\bra{\varphi_i}\otimes \mathbb{I} \}}_{i=1}^n$.  Thus, in what follows we consider the situation where Alice's system has state vector $\ket{\varphi}$ post-measurement.  This corresponds to the case where Alice is measuring with respect to {\emph{any}} orthonormal basis that contains $\ket{\varphi}$ as an element. Our task is to determine how correlated Bob's and Alice's states are after she has measured.  
 
 \begin{prop}
 \label{entanglement-rank}
@@ -274,7 +274,7 @@ Much of the proposition follows from the following lemma.
 
 
 % We now consider the use of the shared state $|X\rangle$ in message transmission.  Our goal is to classify exactly to what extent information can be transmitted remotely between two parties by use of shared states. The following lemma will tell us what happens in this situation when one of Alice or Bob observes a state $|\psi\rangle$.
-\textcolor{blue}{maybe drop "C" and say "up to a global phase"}
+
 \begin{lemma}
 \label{end state lemma}
 Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state shared by Alice and Bob.  Then,
@@ -284,6 +284,8 @@ Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state sh
 
 \end{enumerate}
 \end{lemma}
+
+\textcolor{blue}{Can we lose the $A$ and $B$ in the proof.}
 
 Thus, when Alice's post-measurement state is $\ket{\varphi}$, Bob's is given by left multiplication by $M(\ket{\psi})^T$ up to a global phase and taking conjugates.
 
@@ -821,6 +823,7 @@ Let $\ket{\psi} \in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$ be a composite state 
 
 \textcolor{blue}{Need to add some here.  Also maybe add a diagram or a series of diagram} \textcolor{green}{done}
 \textcolor{red}{use Alice and Bob diagrams and a paragraph with an intro about the ideas}
+\textcolor{red}{just use the same basis throughout the time and say that our contribution is that alice and bob can share any maximally entangled state. }
 \section{Application to a One-time Pad}
 Recall one-time pad, as defined in \textbf{Definition \ref{def: classical one-time pad scheme}}. Say Alice wants to transmit an $m$-digit long message to Bob, she will need to create a one-time pad, which is a private key between Alice and Bob that is also m-digit long. The above classification of entanglement can potentially be used in the following cryptographic scheme.
 
@@ -831,7 +834,7 @@ Recall one-time pad, as defined in \textbf{Definition \ref{def: classical one-ti
 \end{figure}
 
 \begin{enumerate}
-    \item A third party creates a series of maximally entangled (as defined in \textbf{Definition \ref{def: maximally entangled}}) $2$-qudit states $L={\ket{\psi_1}, \ket{\psi_2}, \hdots, \ket{\psi_m}}$, where $\ket{\psi_i} \in \mathbb{C}^n \otimes \mathbb{C}^n$, and sends the left qudit of each state to Alice and the right qudit of each state to Bob via a secure quantum communication channel.
-    \item On a classical communication channel that doesn't have to be secure, Alice notify Bob in order the set of orthonormal bases that she is going to make measurements with. In other words, for each $\ket{\psi_i}$, Alice randomly chooses an orthonormal basis $B_i=\{\ket{b_1}, \ket{b_2}, \hdots, \ket{b_n}\}$ and sends the elements in the basis in order to Bob.
-    \item For each qudit received from L, Alice makes a measurement and saves her result locally. With the knowledge of L and $B_1, B_2, \hdots, B_m$, Bob will be able to infer Alice's measurement result by measuring with respect to basis $\{M(\ket{\psi_i})^T \ket{b_1}, M(\ket{\psi_i})^T \ket{b_2}, \hdots, M(\ket{\psi_i})^T \ket{b_n}\}$ on the right qudit of each $\ket{\psi_i}$ that he kept. He saves the result for each $\ket{\psi_i}$ and in the end get an m-digit long key that can be used for one-time pad introduced in \textbf{Definition \ref{def: quantum one-time pad}}.
+    \item A third party creates a series of maximally entangled (as defined in \textbf{Definition \ref{def: maximally entangled}}) $2$-qudit states whose coefficient matrix transpose is a scalar multiple of a unitary matrix $L={\ket{\psi_1}, \ket{\psi_2}, \hdots, \ket{\psi_m}}$, where $\ket{\psi_i} \in \mathbb{C}^n \otimes \mathbb{C}^n$, and sends the left qudit of each state to Alice and the right qudit of each state to Bob via a secure quantum communication channel.
+    \item Over the phone, Alice tells Bob in order the set of orthonormal bases that she is going to make measurements with. In other words, for each $\ket{\psi_i}$, Alice randomly chooses an orthonormal basis $B_i=\{\ket{b_1}, \ket{b_2}, \hdots, \ket{b_n}\}$ and sends the elements in the basis in order to Bob.
+    \item For each qudit received from $L$, Alice makes a measurement and saves her result locally. With the knowledge of $L$ and the choice of each basis, Bob will be able to infer Alice's measurement outcome with certainty by {\bf{Proposition}} \ref{prop: ultimate}.  He saves the result for each $\ket{\psi_i}$ and in the end get an m-digit long key that can be used for one-time pad introduced in \textbf{Definition \ref{def: classical one-time pad scheme}}.
 \end{enumerate}

@@ -10,10 +10,13 @@
 
 \section{Complex Vector Spaces} \label{section:complex vector space}
 
+
+
+
 Mathematically, a {\emph{qubit}} is a unit vector in a two-dimensional complex vector space.  In the same way that the bit is the fundamental unit of classical computation and information, the quantum bit, or qubit is the basic unit of quantum information.  With this motivation in mind, we sometimes write $\ket{0} = \icol{1\\0}$, and $\ket{1} = \icol{0\\1}$. Note that the symbols "$\ket{0}$" and "$\ket{1}$" are read "ket one" and "ket two".\footnote{We are using so-called Bra-ket notation common in quantum mechanics}  While bits may only take the values $0$ or $1$, a qubit is a complex linear combination, or \textit{superposition} of $\ket{0}$ and $\ket{1}$ with norm equal to one. 
 
 Thus, formally we have the following definitions:
-\begin{definition}[Qubit]
+\begin{definition}
 \label{def qubit}
 A qubit $\ket{\psi}$ is a two-dimensional "ket" vector, $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$, 
 where $\alpha,\beta\in\mathbb{C}$, with $|\alpha|^2+|\beta|^2=1$.
@@ -100,7 +103,7 @@ Moreover, orthonormal vectors satisfy the \textit{completeness relation}.  That 
 \end{eqnarray*}
 
 
-Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.
+Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=\mathbb{I}$.
 
 
 % by defining
@@ -189,7 +192,7 @@ Thus, a projector is a projection in the sense of linear algebra, so its eigenva
 The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces and their vectors. This will prove useful as the laws of quantum mechanics tell us that the state space of two quantum systems is formed by taking a tensor product. If V and W are inner product spaces of dimension m and n respectively, then their tensor product $V \otimes W$ is an $mn$ dimensional vector space. The elements of $V \otimes W$ are linear combinations of "simple tensors" of the form $\ket{v} \otimes \ket{w}$, where $\ket{v} \in V, \ket{w} \in W$. In particular, if $\{\ket{a_1}, \ket{a_2}...\ket{a_m}\}, \{\ket{b_1},\ket{b_2}, ...\ket{b_n}\}$ are bases for V and W respectively, then the collection $\{\ket{a_i}\otimes\ket{b_j}\}$ is a basis for $V \otimes W$ for $1\leq i \leq m$ and $1 \leq j \leq n$.
 
 
-\begin{definition} [Tensor Product of Two Matrices]
+\begin{definition} 
 For an $m_a \times n_a$ matrix $A=(a_{ij})$, an $m_b \times n_b$ matrix $B=(b_{i'j'})$, the tensor product is the $m_a m_b \times n_a n_b$ matrix given by
 \begin{equation}
 A \otimes B=\begin{pmatrix}
