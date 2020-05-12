@@ -48,8 +48,6 @@ openany
 \usepackage{mathtools}  
 \mathtoolsset{showonlyrefs}
 
-
-
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
 %----------------------------------------------------------------------------------------
@@ -81,7 +79,19 @@ openany
 \AtBeginDocument{
 \hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
 \hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
+\hypersetup{linkcolor=blue, filecolor=blue, urlcolor=blue}
 }
+
+% \hypersetup{
+%     colorlinks=true,
+%     linkcolor=blue,
+%     filecolor=magenta,      
+%     urlcolor=cyan,
+%     pdftitle={\ttitle},
+%     pdfauthor={\authorname},
+%     bookmarks=true,
+%     % pdfpagemode=FullScreen,
+% }
 
 \newtheorem{prop}{Proposition}
 \newtheorem{lemma}[prop]{Lemma}

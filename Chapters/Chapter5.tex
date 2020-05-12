@@ -263,30 +263,27 @@ This increased probability of winning when making use of a quantum strategy, sug
 \pagebreak
 
 \section{BB84 Protocol}
+\textcolor{blue}{Alice doesn't really need the bases right?  Can you read this over and see what you think.  Also, please include a table consistent with the arrows I used.} \textcolor{green}{Why doesn't Alice need the bases? I put the texts I added in green. Feel free to change them back to black if you think they look good.}
+
+In 1984, Charles Bennett and Gilles Brassard published the first Quantum Key Distribution protocol \cite{Bennett1984} now commonly referred to as the BB84 Protocol. In this protocol, Alice and Bob use quantum mechanics to make a one-time pad for message transmission.  In this procedure, the benefit of using quantum mechanics comes from the fact that Alice and Bob can {\emph{find out whether or not they were observed \textcolor{green}{by an eavesdropper} during pad creation}}. 
+
+In this protocol, Alice and Bob each have access to two different orthonormal bases, the standard (Rectilinear) basis, and the Hadamard (diagonal) basis, and Alice has a machine which can emit photons in any one of four polarizations corresponding to the four basis elements \textcolor{green}{in the two bases}.  
+
+To describe this procedure, it's convenient to make some identifications.  First, we identify $\{\ket{0},\ket{1}\}$ with $\{\rightarrow, \uparrow\}$, and $\{\ket{+}, \ket{-}\}$ with $\{\nearrow, \nwarrow\}$ element by element.  Moreover, we think of the first element in each basis as being associated with the bit $0$, while the second element is associated with the bit $1$.  With this dictionary or encoding in mind \textcolor{green}{(as seen in \textbf{Figure \ref{fig:BB84 bit encoding})}}, we are now ready to describe the process.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.6]{"bb84 encoding".png}
+    \includegraphics[scale=0.3]{"bb84 encoding trimmed".png}
     \caption{BB84 Bit Encoding \protect\footnotemark}
     \label{fig:BB84 bit encoding}
 \end{figure}
 \footnotetext{Figure from \url{https://www.cse.wustl.edu/~jain/cse571-07/ftp/quantum/\#Gisin02}}
 
 
-\textcolor{blue}{Alice doesn't really need the bases right?  Can you read this over and see what you think.  Also, please include a table consistent with the arrows I used.}
-
-In 1984, Charles Bennett and Gilles Brassard published the first Quantum Key Distribution protocol \cite{Bennett1984} now commonly referred to as the BB84 Protocol. In this protocol, Alice and Bob use quantum mechanics to make a one-time pad for message transmission.  In this procedure, the benefit of using quantum mechanics comes from the fact that Alice and Bob can {\emph{find out whether or not they were observed during pad creation}}. 
-
-In this protocol, Alice and Bob each have access to two different orthonormal bases, the standard (Rectilinear) basis, and the Hadamard (diagonal) basis, and Alice has a machine which can emit photons in any one of four polarizations corresponding to the four basis elements.  
-
-To describe this procedure, it's convenient to make some identifications.  First, we identify $\{\ket{0},\ket{1}\}$ with $\{\rightarrow, \uparrow\}$, and $\{\ket{+}, \ket{-}\}$ with $\{\nearrow, \nwarrow\}$ element by element.  Moreover, we think of the first element in each basis as being associated with the bit $0$, while the second element is associated with the bit $1$.  With this dictionary in mind, we are now ready to describe the process.
-
-
-
 
 In the first phase, through a {\emph{quantum channel}}, Alice sends the information of a random string of bits to Bob, which she encodes as photons with the polorizations as described above. For each bit, she selects at random a basis to use, then sends a photon of the appropriate type.  For example, if she wishes to send $1$ and has picked the Hadamard basis, she transmits a photon of type $\nwarrow$ to Bob.  Bob will measure each photon he receives with one of the two bases which he also chooses randomly. Note that only when Bob has chosen the same basis as Alice, will Bob observe the correct outcome with certainty.  
 
-In the second phase, Bob calls Alice and tells her which basis he picked to measure each incoming photon. In each case, Alice responds by telling Bob whether he chose the correct basis for measurement. Then, both parties discard bits that correspond to photons which were measured with "the wrong" basis. Transcription errors notwithstanding, Bob and Alice now have the same string of bits, a piece of which they will soon use to construct a one-time pad.  This procedure is illustrated in \textbf{Table \ref{tab:bb84 protocol example}}
+In the second phase, Bob calls \footnote{\textcolor{green}{When we say "Bob calls Alice", we mean Bob interact with Alice via a classical communication channel that mitgh not be secure.}} Alice and tells her which basis he picked to measure each incoming photon. In each case, Alice responds by telling Bob whether he chose the correct basis for measurement. Then, both parties discard bits that correspond to photons which were measured with "the wrong" basis. Transcription errors notwithstanding, Bob and Alice now have the same string of bits, a piece of which they will soon use to construct a one-time pad.  This procedure is illustrated in \textbf{Table \ref{tab:bb84 protocol example}}.
 
 \begin{table}[]
 \centering
@@ -299,12 +296,12 @@ Bob's random measuring basis & $+$ & $\times$ & $\times$ & $\times$ & $+$ & $\ti
 Photon polarization Bob measures & $\rightarrow$ & $\nearrow$ & $\nwarrow$ & $\nearrow$ & $\uparrow$ & $\nearrow$ & $\uparrow$ & $\uparrow$ \\ \hline
 Shared secret key & 0 &  & 1 &  &  & 0 &  & 1 \\ \hline
 \end{tabular}
-\caption{An example of distributing a key of bits from Alice to Bob. The result of the secret key established is 0101.}
+\caption{An example of distributing a key of bits from Alice to Bob. The result of the secret key or one-time pad established is 0101.}
 \label{tab:bb84 protocol example}
 \end{table}
 
 
-To make sure their one-time pad was constructed securely, Alice and Bob pick a subset of the identical string of bits they have constructed and compare them to see if they actually agree. If they agree, they can discard these bits and use the remaining ones to make a one-time pad. On the other hand, if they don't agree it means that their transmission was hacked by Eve\footnote{It's worth noting that as a consequence of the no-cloning theorem (see \textbf{Theorem \ref{no-cloning thm}}), Eve cannot replicate the photon for her own use and pass the original photon to Bob.}.  Even if Eve has access to both bases used by Bob, since Eve she does not know which basis Alice picked to encode the bit, she has no alternative but to guess. For example, if Eve chooses the measurement basis incorrectly on average $\frac{1}{2}$ of the time, then Bob (using the same basis as Alice) will have the wrong bit with probability $\frac{1}{2} \cdot \frac{1}{2}=\frac{1}{4}$. Thus, if $m$ bits are compared, the probability of Eve's interference  going undetected is $(\frac{3}{4})^m$, which is negligible for $m$ large.
+To make sure their one-time pad was constructed \textcolor{green}{without being hacked by an eavesdropper}, Alice and Bob pick a subset of the identical string of bits they have constructed and compare them to see if they actually agree. If they agree, they can discard these bits and use the remaining ones to make a one-time pad. On the other hand, if they don't agree it means that their transmission was hacked by Eve\footnote{It's worth noting that as a consequence of the no-cloning theorem (see \textbf{Theorem \ref{no-cloning thm}}), Eve cannot replicate the photon for her own \textcolor{green}{measurement and pass an undisturbed} original photon to Bob.}.  Even if Eve has access to both bases used by Bob, since Eve does not know which basis Alice picked to encode the bit, she has no alternative but to guess. For example, if Eve chooses the measurement basis incorrectly on average $\frac{1}{2}$ of the time, then Bob (using the same basis as Alice) will have the wrong bit with probability $\frac{1}{2} \cdot \frac{1}{2}=\frac{1}{4}$. Thus, if $m$ bits are compared, the probability of Eve's interference going undetected is $(\frac{3}{4})^m$, which is negligible for $m$ large.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
