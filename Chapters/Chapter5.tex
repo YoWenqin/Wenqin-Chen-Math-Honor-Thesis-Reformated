@@ -259,9 +259,6 @@ This increased probability of winning when making use of a quantum strategy, sug
 \pagebreak
 
 \section{BB84 Protocol}
-\textcolor{blue}{Alice doesn't really need the bases right?  Can you read this over and see what you think.  Also, please include a table consistent with the arrows I used.} \textcolor{green}{Why doesn't Alice need the bases? I put the texts I added in green. Feel free to change them back to black if you think they look good.}
-\textcolor{blue}{Maybe this is just semantics.  It seems like Alice never measures, she just sends photons.  I feel like she just needs a photon "emitter" but doesn't need the bases for measurement purposes}
-
 Here he present an application of quantum mechanics to cryptography.  In 1984, Charles Bennett and Gilles Brassard published the first Quantum Key Distribution protocol \cite{Bennett1984} now commonly referred to as the BB84 Protocol. In this protocol, Alice and Bob use quantum mechanics to make a one-time pad for message transmission.  In this procedure, the benefit of using quantum mechanics comes from the fact that Alice and Bob can {\emph{find out whether or not they were observed by an eavesdropper during pad creation}}. 
 
 In this protocol, Alice and Bob each have access to two different orthonormal bases, the standard (Rectilinear) basis, and the Hadamard (diagonal) basis, and Alice has a machine which can emit photons in any one of four polarizations corresponding to the four basis elements.  
@@ -316,12 +313,14 @@ To make sure their one-time pad was constructed securely, Alice and Bob pick a s
 \footnotetext{Figure from \url{https://www.cse.wustl.edu/~jain/cse571-07/ftp/quantum/\#Gisin02}}
 
 
-We now present a second application of quantum mechanics to cryptography.  This protocol was published by Ekert in 1991\cite{Ekert1991}.  Here a single source that emits pairs of entangled particles, each represented by the joint state 
-$$\frac{1}{\sqrt{2}}(\ket{10}-\ket{01}).$$
-Alice and Bob each receive their component state from every pair emitted from the source. Both of them have access to three orthonormal bases from which they can perform their measurements.  The three bases are $Z_0, Z_{\frac{\pi}{4}}, Z_{\frac{\pi}{2}}$, where $Z_\theta$ is the standard basis rotated counterclockwise by angle $\theta$, so for example, $Z_{\frac{\pi}{2}}$ has first basis element $\ket{1}$ and second basis element $-\ket{0}$ (See \textbf{Figure \ref{fig:e91 encoding}}).
+We now present a second application of quantum mechanics to cryptography.  This protocol was published by Ekert in 1991\cite{Ekert1991}.  A schematic of this protocol is displayed in {\bf{Figure}} \ref{fig:E91 Illustrated}.  
+
+Here a single source that emits pairs of entangled photons, each represented by the joint state 
+$$\ket{\psi}= \frac{1}{\sqrt{2}}(\ket{10}-\ket{01}).$$
+Alice and Bob each receive their component states from every pair emitted from the source. Both of them have access to three orthonormal bases from which they can perform their measurements.  The three bases are $Z_0, Z_{\frac{\pi}{4}}, Z_{\frac{\pi}{2}}$, where $Z_\theta$ is the standard basis rotated counterclockwise by angle $\theta$, so for example, $Z_{\frac{\pi}{2}}$ has first basis element $\ket{1}$ and second basis element $-\ket{0}$ (See \textbf{Figure \ref{fig:e91 encoding}}).
 
 
-In the first phase, Alice and Bob each choose a random basis from their three available bases to measure each photon they receive. They then record the outcome of each measurement as a bit, as in BB84.  For example, if Alice choose $Z_{\frac{\pi}{4}}$, and measures an end state of $45^\circ$, she will record the bit $0$ (see {\bf{Figure}} \ref{fig:E91 Illustrated}).  After a sufficient amount of measurements are made, the first phase ends.  
+In the first phase, Alice and Bob each choose a random basis from their three available bases to measure each photon they receive. They then record the outcome of each measurement as a bit, as in BB84.  For example, if Alice choose $Z_{\frac{\pi}{4}}$, and measures an end state of $45^\circ$, she will record the bit $0$ (see {\bf{Figure}} \ref{fig:e91 encoding}).  After a sufficient amount of measurements are made, the first phase ends.  
 
 \begin{figure}[h]
     \centering
@@ -332,8 +331,8 @@ In the first phase, Alice and Bob each choose a random basis from their three av
 
 
 
-In the second phase, the communicate through a classical channel and separate their bits into those that correspond to measurements performed with the same bases, and those that correspond to measurements performed with different bases.  When they used the same basis, there is a perfect correlation between, the outcomes observed by Alice and Bob (see . between Alice and Bob's photon. This means that they end up each having a bit string which is the binary complement of each other. Then Bob can just invert his bits and obtain a shared secret key with Alice to use for one-time pad. 
+In the second phase, they communicate through a classical channel and separate their bits into those that correspond to measurements performed with the same bases, and those that correspond to measurements performed with different bases.  For now, they "keep" the substring of bits where they have measured with the same basis, and temporarily "discard" the substring where they measured with respect to different orthonormal bases.  On the substring, where they have used the same basis, there is a perfect correlation between, the outcomes observed by Alice and Bob (see {\bf{Section}} \ref{Section 6.1} for a comprehensive discussion).  In brief, because their states are maximally entangled with joint state $\ket{\psi}$, when they have used the same basis for measurement, Alice will always have transcribed the opposite bit from Bob. That is, they end up with bit strings which are the binary complement of each other. Thus, Bob can simply invert his bits and obtain a shared key with Alice to use for one-time pad. 
 
-The second group is used to detect eavesdropping, they can compute the test statistic S which consists of expected values of Alice and Bob's measurements on the basis of their own choice \footnote{We consider the result "0" as having value 1 (spin up), and the result "1" as having value -1 (spin down). See \cite{Ekert1991} for more details on how the test statistic S is computed.}. It turns out that without eavesdropping, $S=-2\sqrt{2}$. Yet if Eve tapped into the communication, then $-\sqrt{2} \le S \le \sqrt{2}$. Such way of statistically testing for eavesdropping originated from the generalized Bell's theorem (CHSH inequalities) \cite{bell1964}, the concept of which was illustrated in \textbf{Section \ref{section: bell-nonlocality}}.
+This time, unlike in BB84, the "discarded" group is used to detect eavesdropping.  In this protocol, they compute a test statistic $S$, which consists of expected values of Alice and Bob's measurements on the basis that they actually chose, with a particular sign convention.  One can show that without eavesdropping, $S=-2\sqrt{2}$, while if Eve tapped into the communication, then $-\sqrt{2} \le S \le \sqrt{2}$ (see \cite{Ekert1991} for details).  Thus, as in BB84, they can use statistical methods to test for security.  The methods for statistically testing for eavesdropping used here came from the generalized Bell's theorem (CHSH inequalities) \cite{bell1964}.  While this was not explictly discussed in this thesis, the ideas are reminiscent of ideas in \textbf{Section \ref{section: bell-nonlocality}}.
 
 % This protocol is based on the Bohm's version of the Einsteain-Podolsky-Rosen gedanken experiment, and the generalized Bell's theorem (CHSH inequalities) is used to test for eavesdropping. From a theoretical points of view, E91 protocol extends BB84. 

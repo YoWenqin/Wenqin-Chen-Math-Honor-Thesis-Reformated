@@ -3,6 +3,9 @@
 \chapter{More on Density Matrices} % Main appendix title
 
 \label{AppendixB} % For referencing this appendix elsewhere, use \ref{AppendixA}
+
+In this appendix we include some additional properties of density matrices.  We begin with a discussion about some of the postulates of quantum mechanics reworked for density matrices.
+
 \section{Postulates of Quantum Mechanics Reformulated with Density Matrices}
 
 
@@ -13,9 +16,9 @@ The four Postulates from \textbf{Chapter \ref{Chapter3-postulates}} can be rewor
 \textbf{Postulate 1'}: Associated to any isolated physical system is a complex vector space with inner product (that is, a Hilbert space) known as the \textit{state space} of the system. The system is completely described by its \textit{density matrix}, which is a positive matrix with trace one, acting on the state space of the system. If a quantum system is in the state $\rho_i$ with probability $p_i$, then the density matrix for the system is $\sum_i p_i \rho_i$    
 \end{quote}
 
-\textcolor{green}{Recall in \textbf{Postulate 2}, we described the evolution of a quantum system. Say the evolution on a quantum system $\rho$ is described a unitary transformation U. Then}
+In \textbf{Postulate 2}, we described the evolution of a quantum system.  If the evolution on a quantum system $\rho$ is described a unitary transformation U. Then, we should have
     \begin{equation}
-        \rho=\sum_i p_i \ket{\psi_i}\bra{\psi_i}	\underrightarrow{U}\sum_i p_i U \ket{\psi_i}\bra{\psi_i}U^\dagger=U \rho U^\dagger
+        \rho=\sum_i p_i \ket{\psi_i}\bra{\psi_i}	\underrightarrow{U}\sum_i p_i U \ket{\psi_i}\bra{\psi_i}U^\dagger=U \rho U^\dagger.
     \end{equation}
 We therefore get \textbf{Postulate 2} reworked for density matrices:  
 \begin{quote}
@@ -84,6 +87,7 @@ The most commonly used projective measurement, measuring with a basis has alread
     \textbf{Postulate 4'}:The state space of a composite physical system is the tensor product of the component physical systems. Moreover, if we have systems numbered 1 through n, and system number i is prepared in the state $\rho_i$, then the joint state of the total system is $\rho_1 \otimes \rho_2 \otimes \hdots \otimes \rho_n$
 \end{quote}
 
+\section{Beyond the Postulates}
 It turns out there is a rather elegant mathematical characterization of density matrix:
 
 \begin{theorem}[Characterization of density matrix]\label{thm: char of density matrix}
@@ -115,7 +119,6 @@ Further, the definition of entanglement in \textbf{Definition \ref{definition: e
  If $\rho_{AB}=\ket{\psi}\bra{\psi}$ is a pure state, then $\psi_{AB}$ is separable if and only if there exists $\ket{\psi}_A, \ket{\psi}_B$ such that $\ket{\psi}_{AB}=\ket{\psi}_A \otimes \ket{\psi}_B$.
 \end{definition}
 
-\section{Reduced Density Matrix}
 One very important application of density matrices is the reduced density matrix, a tool to describe sub-systems of a composite quantum system.
 \begin{definition}
  Suppose we have a composite system shared by A and B described by $\rho$. The reduced density matrix for A is defined by
@@ -129,12 +132,13 @@ tr_B(\ket{a_1}\bra{a_2} \otimes \ket{b_1} \bra{b_2})=\ket{a_1}\bra{a_2}tr(\ket{b
 where $\ket{a_1}, \ket{a_2}$ are any two vectors in the state space of A, and $\ket{b_1}, \ket{b_2}$ are two arbitrary vectors in the state space of B.
 \end{definition}
 
-{\color{green}
-Notice that trace is cyclic, so
+
+Since trace is cyclic we have
 \begin{equation}
- tr(\ket{b_1}\bra{b_2})=tr(\braket{b_2|b_1})=\braket{b_2|b_1}
+ tr(\ket{b_1}\bra{b_2})=tr(\braket{b_2|b_1})=\braket{b_2|b_1}.
 \end{equation}
-The partial trace is used to describe part of a larger quantum system because it is actually the \emph{unique} operation that provides the correct measurement statistics (such as the probability distribution) for measurements made on a subsystem. The complete justification can be found in Section 2.4.3 of \cite{Nielsen} 
+
+One can show that the partial trace is the only operation with yields the correct probability distribution of a sub-system within a composite system. The complete justification can be found in Section 2.4.3 of \cite{Nielsen} 
 Let's just illustrate the concept of reduced density matrix and partial trace by the next two examples: one describes a separable state, while the other one describes an entangled state.
 \begin{example}
 Suppose a joint quantum system of A and B is in state $\rho^{AB}=\rho \otimes \sigma$, where $\rho$ is a density matrix for system A, and $\sigma$ is a density matrix for system B. Then the reduced density matrix for A is
@@ -144,7 +148,8 @@ Suppose a joint quantum system of A and B is in state $\rho^{AB}=\rho \otimes \s
 where the last step is true because of \textbf{Theorem \ref{thm: char of density matrix}}.
 Similarly $\rho^B=\sigma$.
 \end{example}
-The above result is consistent with our intuition that for a 
+The above result is consistent with our intuition that comes from separable composite systems.
+
 \begin{example}
 Now suppose the joint quantum system of A and B is in the entangled state $\ket{EPR}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$. Then the corresponding density matrix is
 \begin{eqnarray}
@@ -162,4 +167,3 @@ Then the reduced density matrix of system A is
 The reduced density matrix of system B is $\rho^B=\frac{\mathbb{I}}{2}$
 \end{example}
 Note that the joint quantum state of A and B is a \emph{pure state} because $rank(\rho^{AB})=1$, but the reduced density matrices on both subsystems are \emph{mixed states}. If it's a mixed state, it is a state that we do not yet have maximal knowledge. That the joint state of a system can be completely known, yet a subsystem be in mixed state is one hallmark of quantum entanglement.
-}

@@ -29,6 +29,7 @@ In the next section we show that the rank of a matrix associated to a composite 
 \pagebreak
 
 \section{Rank of Coefficient Matrix and the Strength of Entanglement}
+\label{Section 6.1}
 
 We begin will a purely mathematical proposition which characterizes precisely when a vector in the tensor product of two vector spaces is a tensor product.
 
@@ -285,8 +286,6 @@ Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state sh
 \end{enumerate}
 \end{lemma}
 
-\textcolor{blue}{Can we lose the $A$ and $B$ in the proof.}
-
 Thus, when Alice's post-measurement state is $\ket{\varphi}$, Bob's is given by left multiplication by $M(\ket{\psi})^T$ up to a global phase and taking conjugates.
 
 \begin{proof}
@@ -307,12 +306,12 @@ Now say
 Say Alice observes $\ket{\varphi}\bra{\varphi}$.
 Then the post-measurement state conditioned on obtaining the end state $\ket{\varphi}$ is
 \begin{equation}
-\rho_{\ket{\varphi}}^{AB}=\frac{(\ket{\varphi}\bra{\varphi} \otimes I)\rho(\ket{\varphi}\bra{\varphi} \otimes I)}{tr((\ket{\varphi}\bra{\varphi} \otimes I)\rho)}
+\rho_{\ket{\varphi}}=\frac{(\ket{\varphi}\bra{\varphi} \otimes \mathbb{I})\rho(\ket{\varphi}\bra{\varphi} \otimes \mathbb{I})}{tr((\ket{\varphi}\bra{\varphi} \otimes \mathbb{I})\rho)}
 \end{equation}
 
 Let $C$ be the denominator of the above expression. Then 
 \begin{eqnarray}
-\rho_{\ket{\varphi}}^{AB}&=&\frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\ket{\varphi}\braket{\varphi|e_i}\braket{e_{i'}|\varphi}\bra{\varphi} \otimes \ket{e_j}\bra{e_{j'}}\\
+\rho_{\ket{\varphi}}&=&\frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\ket{\varphi}\braket{\varphi|e_i}\braket{e_{i'}|\varphi}\bra{\varphi} \otimes \ket{e_j}\bra{e_{j'}}\\
 &=&\ket{\varphi}\bra{\varphi} \otimes \frac{1}{C} \sum_{i,j} \sum_{{i'}, {j'}} a_{ij} \overline{a_{i'j'}}\overline{b_i}b_{i'}\ket{e_j}\bra{e_{j'}}
 \end{eqnarray}
 
@@ -670,6 +669,7 @@ We have now described exactly when there exists perfect correlation between Alic
 \pagebreak
 
 \section{Entanglement and Measuring}
+\label{Section 6.2}
 In the last section we analyzed the extent to which Alice's and Bob's end states are correlated when Alice measures a shared composite state. We now continue with our analysis, focusing on when Bob has {\emph{access}} to his state vector without introducing additional uncertainty. 
 % This situation is similar to that of \textbf{Examples \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}}, only now instead of Alice {\emph{selecting}} a state, now she {\emph{measures}} and observes an outcome with an end state.  Specifically, in our previous setup, Alice chooses a state from an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$ known to both herself and to Bob. She then gives the state to Bob, whose task is to identify the index of that state. Our task is different. Now, Alice and Bob share a known composite 2-qudit state $\ket{\psi}$ and Alice measures with respect to the orthonormal basis. 
 
@@ -821,17 +821,27 @@ Let $\ket{\psi} \in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$ be a composite state 
 %----------------------------------------------------------------------------------------
 \pagebreak
 
-\section{Application to a One-time Pad}
-Recall one-time pad, as defined in \textbf{Definition \ref{def: classical one-time pad scheme}}. Say Alice wants to transmit an $m$-digit long message to Bob, she will need to create a one-time pad, which is a private key between Alice and Bob that is also m-digit long. The above classification of entanglement can potentially be used in the following cryptographic scheme. \textcolor{green}{It is similar to the EE91 Protocol in \textbf{Section \ref{section: e91}}, the difference being that now Alice and Bob can share any maximally entangled state instead of a specific state.}
+\section{Application to a One-time Pad}\label{section: application to a one-time pad}
 
+
+We now use our results to construct a one-time pad (see \textbf{Definition \ref{def: classical one-time pad scheme}}). This protocol is similar to BB84 and E91 (discussed in \textbf{Section \ref{section: e91}}).  One difference is that now, by using the results in {\bf{Sections}} \ref{Section 6.1} and \ref{Section 6.2}, Alice and Bob may use {\emph{any state}} whose coefficient matrix is orthogonal, instead of the specific state used in BB91.  
+
+%As always, recall that if Alice wants to transmit an $m$-digits long message to Bob, she will need to create a one-time pad that is also $m$-digits long.
+
+\begin{comment}
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.6]{"protocol diagram".png}
     \label{fig:protocol diagram}
 \end{figure}
+\end{comment}
 
-\begin{enumerate}
-    \item A third party creates a series of maximally entangled (as defined in \textbf{Definition \ref{def: maximally entangled}}) $2$-qudit states whose coefficient matrix transpose is a scalar multiple of a unitary matrix $L={\ket{\psi_1}, \ket{\psi_2}, \hdots, \ket{\psi_m}}$, where $\ket{\psi_i} \in \mathbb{C}^n \otimes \mathbb{C}^n$, and sends the left qudit of each state to Alice and the right qudit of each state to Bob via a secure quantum communication channel.
-    \item Over the phone, Alice tells Bob in order the \textcolor{green}{elements in the orthonormal basis} that she is going to make measurements with. \textcolor{green}{Call that} orthonormal basis $B=\{\ket{b_1}, \ket{b_2}, \hdots, \ket{b_n}\}$ .
-    \item For each qudit received from $L$, Alice makes a measurement \textcolor{green}{with respect to $B$} and saves her result locally. With the knowledge of $L$ and the choice of each basis, Bob will be able to infer Alice's measurement outcome with certainty by {\bf{Proposition}} \ref{prop: ultimate}.  He saves the result for each $\ket{\psi_i}$ and in the end get an $m$-digit long key that can be used for one-time pad introduced in \textbf{Definition \ref{def: classical one-time pad scheme}}.
-\end{enumerate}
+In this protocol, Alice has two (disjoint) orthonormal bases, $B_1$ and $B_2$ and a machine which emits a composite state $\ket{\psi}$, where $M(\ket{\psi})^T$ a scalar multiple of a unitary matrix.  Bob will have bases for measurement which he constructs from information passed on to him from Alice.
+
+In the first phase, Alice emits a large number of copies of the entangled state $\ket{\psi}$.  She "keeps" her half of the composite system, and sends the other half to Bob through a quantum channel.  Then, Alice measures each one of her states with a basis chosen randomly from $B_1$ and $B_2$, and records the outcome as a character from $1$ to $n$ (or a bit, if $\ket{\psi}\in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$).  
+
+
+
+In the second phase, Alice calls Bob through a classical channel and tells him the two bases $B_1$ and $B_2$, as well as the the identity of $\ket{\psi}$.  Then, Bob begins to measure his states, by randomly measuring in the "complementary" bases for $B_1$ and $B_2$ as describe in {\bf{Sections}} \ref{Section 6.1} and \ref{Section 6.2}.  That is, Bob selects randomly from bases consisting of the conjugates of Alice's basis elements multiplied by the transpose of the coefficient matrix (up to a scalar).  Bob writes down all the outcomes he observes to form a string.  After he is done, Alice and Bob tell each other which bases they used for their measurements.  As in BB84 and E91, they "keep" the substring of characters where they measured in "complementary" bases.  By {\bf{Proposition}} \ref{prop: ultimate}, when this was the case, they have the same outcomes, unless a third party intercepted their quantum transmission.  Part of this list will be used for a one-time pad.  As in BB84, to check security, they pick a subset of the string on which they measured with complementary bases, and conduct a statistical test.
+
+

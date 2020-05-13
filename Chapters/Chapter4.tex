@@ -49,10 +49,12 @@ Let $\ket{\psi_1}, \ket{\psi_2}$ be state vectors in ${\mathbb{C}}^n$ with $\iot
 Then $\ket{\psi_1}=\ket{\psi_2}$ up to a global phase.
 \end{lemma}
 \begin{proof}
-Let $\ket{\psi_1}=\icol{a_1\\ \vdots \\ a_n}, \ket{\psi_2}=\icol{b_1\\ \vdots \\ b_n}$. Then
-\begin{gather}
-\iota({\ket{\psi_1}})=\iota(\ket{\psi_2})\\
-\Rightarrow \begin{pmatrix}
+Let $\ket{\psi_1}=\icol{a_1\\ \vdots \\ a_n}, \ket{\psi_2}=\icol{b_1\\ \vdots \\ b_n}$. 
+\bigskip
+
+Then, $\iota({\ket{\psi_1}})=\iota(\ket{\psi_2})$ so
+\begin{equation*}
+\begin{pmatrix}
 a_1 \Bar{a_1} && a_1 \Bar{a_2} && \hdots && a_1 \Bar{a_n}\\
 && && \vdots && \\
 a_n \Bar{a_1} && a_n \Bar{a_2} && \hdots && a_n \Bar{a_n}\\              
@@ -61,10 +63,11 @@ b_1 \Bar{b_1} && b_1 \Bar{b_2} && \hdots && b_1 \Bar{b_n}\\
 && && \vdots && \\
 b_n \Bar{b_1} && b_n \Bar{b_2} && \hdots && b_n \Bar{b_n}\\ 
 \end{pmatrix}
-\end{gather}
-{\color{green}
-Then for all $i$, $$a_i \Bar{a_i}=b_i \Bar{b_i}.$$
-and for all $j$ such that $i \ne j$, 
+\end{equation*}
+
+\noindent
+Then for all $i$, $$a_i \Bar{a_i}=b_i \Bar{b_i},$$
+and for all $i, j$ with $i \ne j$, 
 \begin{equation}\label{eqn: different index}
     a_i \Bar{a_j}=b_i \Bar{b_j}
 \end{equation}
@@ -72,14 +75,13 @@ Therefore,
 \begin{equation}\label{eqn: same index}
    a_i=e^{i\theta_i}b_i. 
 \end{equation}
-Substitute \eqref{eqn: same index} into \eqref{eqn: different index}, we get 
+By substituting \eqref{eqn: same index} into \eqref{eqn: different index}, we get 
 \begin{equation}
-    e^{i\theta_i}b_i \overline{e^{j\theta_j}b_j}=b_i \Bar{b_j}.
+    e^{i\theta_i}b_i \overline{e^{j\theta_j}b_j}=b_i \Bar{b_j}
+=e^{i\theta_i}b_i e^{-i\theta_j}\Bar{b_j}=e^{i(\theta_i-\theta_j)}b_i \Bar{b_j}.
 \end{equation}
-Hence, $$e^{i\theta_i}b_i e^{-i\theta_j}\Bar{b_j}=b_i \Bar{b_j}.$$
-So $\theta_i=\theta_j$ for all $i,j$.\\
-Therefore, $\ket{\psi_1}=\icol{e^{i\theta_1}b_1 \\ \vdots \\ e^{i\theta_1}b_n}=e^{i\theta_1}\ket{\psi_2}$
-}
+Thus, $\theta_i=\theta_j (mod 2\pi)$ for all $i,j$, 
+therefore $\ket{\psi_1}=\icol{e^{i\theta_1}b_1 \\ \vdots \\ e^{i\theta_1}b_n}=e^{i\theta_1}\ket{\psi_2}$ as required.
 \end{proof}
 
 Since state vectors can only be determined up to a global phase, from a quantum mechanics perspective, the map $\iota$ is one-ton-one, hence state vectors are a special case of density matrices. The postulates of quantum mechanics can be formulated in the language of density matrices. Here we just present the definition of measuring with respect to an orthonormal basis using density matrices. In other words, the following is the density matrix version of \textbf{Definition \ref{def: measurement in a basis state vector}}.

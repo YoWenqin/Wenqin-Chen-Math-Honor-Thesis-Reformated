@@ -4,19 +4,29 @@
 
 \label{Chapter7-further discussion} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-\textcolor{blue}{I added some possible things in no particular order}
+This thesis suggests multiple directions for future research. 
+% I will just pick two.
+Note that the protocol in \textbf{Section \ref{section: application to a one-time pad}} does not have a built in security feature to detect eavesdropping. So one possible next step of this research is to find the analog to the bases used in BB84 and E91, so that Alice and Bob can make use of Bell's inequality (in \textbf{Section: \ref{section: bell-nonlocality}}) to conduct a statistic test.
 
-\begin{itemize}
-\item Replacing pure states by mixed states in the classification of entanglement computation.
-\item Explicit computation on "general case" of maximally entangled states whose coordinate matrices are not scalar multiples of unitary matrices with a "randomly" selected basis.
-\item Probability that a randomly selected maximally entangled state has a coordinate matrix that is a scalar multiple of a unitary matrix.
-\item Anything about the entanglement "decaying".
-\end{itemize}
+Another further direction is to expand our classification of entanglement to mixed states as well. To better study mixed states, a more expansive mathematics is needed. For example, in \textbf{Appendix \ref{AppendixA}}, we talked about projective measurement, which is a special case of general quantum measurements. It turns out there are other types of measurements out there as well. In particular, the Positive Operator Valued Measure, or known as POVM, is a a mathematically convenient tool to study general measurements, if we only care about the measurement statistics, but not about the post-measurement state (see \cite{Nielsen}). For a generalized measurement described by a set of measurement operators $\{M_m\}$. We define a set of operators $\{{E_m}\}$, where
+$E_m=M_m^\dagger M$. We can check that the completeness equation required for \textbf{Postulate 3} in \textbf{Section \ref{section: postulate 3}} $\sum_m E_m=I$ is satisfied. The probability of getting outcome $m$ therefore becomes 
+$$p(m)=\langle \psi | E_m | \psi \rangle$$
+We call the operators ${{E_m}}$ the \textit{POVM elements} associated with the measurement.
+Here is an example \footnote{this example is taken from taken from \cite{Nielsen}}of a general measurement or POVM that's not projective measurement or measurement with a basis. Suppose Alice gives Bob a qubit in one of two states $\ket{\psi_1}=\ket{0}, \ket{\psi_2}=\ket{+}$. These two states are not orthogonal, so projective measurements won't be able to distinguish them reliably. A POVM containing the following three elements proves useful (c is a scalar),
+\begin{gather}
+    E_1=c_1\ket{1}\bra{1}\\
+    E_2=c_2\ket{+}\ket{-}\\
+    E_3=\mathbb{I}-E_1-E_2
+\end{gather}
+Suppose Bob is given $\ket{\psi_1}$, then we have $\braket{\psi_1|E_1|\psi_1}=0$, so if his POVM measurement result is $E_1$ then Bob can conclude that he received $\ket{\psi_2}$. Similarly, if his outcome is $E_2$, he can conclude that he received $\ket{\psi_1}$. However, if his measurement outcome is $E_3$, he can infer nothing. For a more thorough survey on POVM, see \cite{brandt1999positive}.
 
-\section{Projective Measurement vs POVM}
 
-\section{Statistic Test}
-- if there's an analog to the standard basis and the hadarmard basis with respect to the singlet state as in bb84 and e91. if this is true, our protocol can be strengthed with the statistic test and  generalize bb84 and e91
+% \textcolor{blue}{I added some possible things in no particular order}
 
-this thesis gives rise to more questions that can be written down. so i just give out two of them. each should be in one paragraph.
+% \begin{itemize}
+% \item Replacing pure states by mixed states in the classification of entanglement computation.
+% \item Explicit computation on "general case" of maximally entangled states whose coordinate matrices are not scalar multiples of unitary matrices with a "randomly" selected basis.
+% \item Probability that a randomly selected maximally entangled state has a coordinate matrix that is a scalar multiple of a unitary matrix.
+% \item Anything about the entanglement "decaying".
+% \end{itemize}
 
