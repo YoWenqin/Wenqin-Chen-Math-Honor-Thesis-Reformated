@@ -67,7 +67,7 @@ so $H$ maps an orthonormal set to an orthonormal set as we have seen.
 % \begin{example} [Pauli Matrices]
 
 % \end{example}
-Note that this Postulate does not tell us what unitary operator describes the evolution of the system, it only assures that the evolution can be described in such way.  When the state space is ${\mathbb{C}}^2$, any unitary operator will show up in such a way.
+Note that this postulate does not tell us what unitary operator describes the evolution of the system, it only assures that the evolution can be described in such way.  When the state space is ${\mathbb{C}}^2$, any unitary operator will show up in such a way.
 
 It's worth pointing out that {\bf{Postulate 2}} applies to a \emph{closed} system.  While this is nearly impossible in reality, in many of the scenarios discussed in this thesis it is reasonable to describe the evolution via unitary operators nonetheless.
 
@@ -101,13 +101,13 @@ It's worth pointing out that {\bf{Postulate 2}} applies to a \emph{closed} syste
 
 
 
-This postulate is crucial going forward, so we will provide lots of examples, and will spend some time of the postulate.  We should point out that when {\emph{any}} external object (including measuring equipment) observes a quantum system, the quantum system is no longer closed, and hence is not necessarily subject to unitary evolution as in {\bf{Postulate 2}}. {\bf{Postulate 3}} describes the effects of these measurements on a quantum system. 
+This postulate is crucial going forward, so we will provide lots of examples.  We should point out that when {\emph{any}} external object (including measuring equipment) observes a quantum system, the quantum system is no longer closed, and hence is not necessarily subject to unitary evolution as in {\bf{Postulate 2}}. {\bf{Postulate 3}} describes the effects of these measurements on a quantum system. 
 
 We start with a simple but important example.
 \begin{example} \label{measurement-standard basis}
 We measure a single qubit with two outcomes given by the two measurement operators 
 $$M_0=\ket{0}\bra{0}\textrm{ and }M_1=\ket{1}\bra{1}.$$ 
-Each measurement operator is projector, and thus, by our previous computation,
+Each measurement operator is projector, and thus, by \eqref{eqn: projectors square to themselves},
 \begin{equation*}
     M_0^\dagger M_0+M_1^\dagger M_1 = (M_0)^2+(M_1)^2=M_0 + M_1 = \mathbb{I}.
 \end{equation*}
@@ -162,7 +162,7 @@ Now, if Alice picks $\ket{\psi_1}$, then $p(1)=\braket{0 |0}\braket{0|0}=1$, so 
 
 However, if Alice picks $\ket{\psi_2}$, then the probabilities of the measurement outcomes being $1$ and $2$ respectively are given by;
 \begin{eqnarray}
-    & &p(1)=\braket{\psi_2|0}\braket{0|\psi_2}=|\braket{0|\psi_2}|^2=|\frac{\braket{0|0}+\braket{0|1}}{\sqrt{2}}|^2=\frac{1}{2}\textrm{  and}\\
+    & &p(1)=\braket{\psi_2|0}\braket{0|\psi_2}=|\braket{0|\psi_2}|^2=|\frac{\braket{0|0}+\braket{0|1}}{\sqrt{2}}|^2=\frac{1}{2},\\
     & &p(2)=\braket{\psi_2|1}\braket{1|\psi_2}={\frac{1}{2}}_.
 \end{eqnarray}
 This means is that if Bob's measurement outcome is $2$, Alice must have picked $\ket{\psi_2}$, so Bob will be able to guess correctly with certainty. However, if the measurement outcome is $1$, Alice could have prepared either $\ket{\psi_1}$ or $\ket{\psi_2}$.  Thus, Bob will not be able to determine Alice's index with certainty.  In fact, suppose that Alice prepares $\ket{\psi_1}$ and $\ket{\psi_2}$ with equal probability.  Then if Bob guesses that Alice has prepared $\ket{\psi_1}$, the probability of him being correct is $\frac{\frac{1}{2}}{\frac{1}{2}+\frac{1}{2}\frac{1}{2}}=\frac{2}{3}$.
@@ -173,10 +173,10 @@ This means is that if Bob's measurement outcome is $2$, Alice must have picked $
 %-----------------------------------
 
 \label{subsection:projective measurement}
-The measurement operators used in the last {\bf{Examples}} \ref{example: orthogonal states for measurements}, \ref{example: non-orthogonal states for measurements} are by far the most important kind for the purposes of this thesis.  Such measurements are known as \textit{projective measurements}, and they are \textit{equivalent} to the general measurements, when coupled with unitary transformations as described in {\bf{Postulate 2}} \footnote{See \cite{Nielsen} Section 2.2.8 for why they are equivalent}. 
+The measurement operators used in the last two examples are by far the most important kind for the purposes of this thesis.  Such measurements are known as \textit{projective measurements}\footnote{We define projective measurements rigorously in \textbf{Appendix \ref{AppendixB}}.}, and they are \textit{equivalent} to the general measurements, when coupled with unitary transformations as described in {\bf{Postulate 2}} \footnote{See \cite{Nielsen} Section 2.2.8 for why they are equivalent.}. 
 
 
-Note that whenever the measurement operators in \textbf{Postulate 3}, are orthogonal projectors the completeness condition becomes
+Note that whenever the measurement operators in \textbf{Postulate 3} are orthogonal projectors, the completeness condition becomes
 \begin{equation}
 \sum\limits_m M_m^\dagger M_m = \mathbb{I} = \sum\limits_m M_m M_m = \sum\limits_m M_m.
 \end{equation}
@@ -186,21 +186,19 @@ Note that whenever the measurement operators in \textbf{Postulate 3}, are orthog
 We now define the type of measurement we will use from this point forward.  
 
 \begin{definition} \label{def: measurement in a basis state vector}
-Let $\{\ket{u_m}\}$, be an orthnormal basis for $\mathbb{C}^n$.  When we measure with respect to the family of operators $\{M_m\}=\{\ket{u_m}\bra{u_m}\}$, we say that we are measuring with respect to the orthonormal basis $\{\ket{u_m}\}$\footnote{These measurements are a special type of \textit{projective measurement}.  We define projective measurements rigorously in the \textbf{Appendix \ref{AppendixB}}.}.
+Let $\{\ket{u_m}\}_{m=1}^n$, be an orthnormal basis for $\mathbb{C}^n$.  When we measure with respect to the family of operators $\{M_m\}=\{\ket{u_m}\bra{u_m}\}_{m=1}^n$, we say that we are measuring with respect to the orthonormal basis $\{\ket{u_m}\}_{m=1}^n$\footnote{These measurements are a special type of \textit{projective measurement}.}.
 \end{definition}
-Note that if the quantum system is in state $\ket{\psi}$ immediately prior to measurement, then the probability of that outcome $m$ occurs is given by
+Note that if the quantum system is in state $\ket{\psi}$ immediately prior to measurement, then by \eqref{eqn: general measurement probability} and \eqref{eqn: projectors square to themselves}, the probability of that outcome $m$ occurs is given by
 \begin{equation}\label{eqn: basis measurement probability}
-    p(m)=\braket{\psi|M_m|\psi}=\braket{\psi\ket{u_m}\bra{u_m}\psi}   =|\braket{\psi|u_m}|^2.
+    p(m)=\braket{\psi|M_m|\psi}=\braket{\psi\ket{u_m}\bra{u_m}\psi}=|\braket{\psi|u_m}|^2.
 \end{equation}
 
-One easily checks that each $\ket{u_m}\bra{u_m}$ is a Hermitian projector.  By making use of these properties, we see that when the outcome $m$ is observed, the state of the system after post-measurement is
+Since each $M_m$ is Hermitian, by \eqref{eqn: general measurement post state}, we see that when the outcome $m$ is observed, the state of the system after post-measurement is
 \begin{equation} 
 \frac{M_m \ket{\psi}}{\sqrt{\bra{\psi}M_m^\dagger M_m \ket{\psi}}}=\frac{\ket{u_m}\bra{u_m} \ket{\psi}}{\sqrt{\bra{\psi}\ket{u_m}\bra{u_m} \ket{\psi}}}=\frac{\braket{u_m|\psi}\ket{u_m}}{|\braket{\psi|u_m}|}=\ket{u_m}.
 \end{equation}
 
-
-
-By the computation in \textbf{Section \ref{section:complex vector space}}, we see that $\{\ket{e_m}\bra{e_m}\}$ is a family of operators as defined in \textbf{Postulate 3}.  The calculation in \textbf{Example \ref{measurement-standard basis}} is exactly this computation, applied to the standard basis in  $\mathbb{C}^2$.  Here is an example using the Hadamard basis.
+By \eqref{eqn: orthonormal basis satisfies completion relation}, we see that $\{M_m\}=\{\ket{u_m}\bra{u_m}\}_{m=1}^n$ is a family of operators as defined in \textbf{Postulate 3}.  The calculation in \textbf{Example \ref{measurement-standard basis}} is exactly this computation, applied to the standard basis in  $\mathbb{C}^2$.  Here is an example using the Hadamard basis.
 
 % \textcolor{blue}{Note that .. (refer to above examples).  Here is an additional example ... Include example of a projectvie measurement with respect to an orthonorma basis that isn't the standard basis}
 
@@ -245,7 +243,7 @@ We again emphasize that in this paper, when say we are "measuring" we are always
 
 
 
-{\bf{Postulate 4}} makes clear the crucial role tensor products play in quantum mechanics.  This Postulate also enables us to define one of the most important ideas associated with composite quantum systems, that of \textit{entanglement}. 
+{\bf{Postulate 4}} makes clear the crucial role tensor products play in quantum mechanics.  This postulate also enables us to define one of the most important ideas associated with composite quantum systems, that of \textit{entanglement}. 
 
 
 \begin{definition}\label{definition: entanglement with state vector}
@@ -275,7 +273,7 @@ Therefore $\alpha \gamma \neq 0$ and $\beta \delta \neq 0$, so all are nonzero. 
 \end{example}
 
 
-Informally, when two states are maximally entangled, one cannot be described physically independent of the other.  In practice, we may think of entangled states as being {\emph{correlated}} in the sense that information about one of them is in fact, information about {\emph{both}} of them. In {\bf{Chapter}} \ref{Chapter6-classification of entanglement} we will classify entanglement completely and examine more precisely the way in which entangled states are correlated. 
+Informally, when two states are maximally entangled, one cannot be described physically independent of the other.  In practice, we may think of entangled states as being {\emph{correlated}} in the sense that information about one of them is in fact, information about {\emph{both}} of them. In {\bf{Chapter} \ref{Chapter6-classification of entanglement}} we will classify entanglement completely and examine more precisely the way in which entangled states are correlated. 
 
 Entangled states adhere to {\emph{monogamy of entanglement}} (see \cite{Toner2006}).  This principal is used in cryptography protocols such as E91 which we will discuss in \textbf{Section \ref{section: e91}}. Briefly, monogamy states that if two qubits A and B are maximally entangled, they cannot be entangled with a third qubit C. 
 

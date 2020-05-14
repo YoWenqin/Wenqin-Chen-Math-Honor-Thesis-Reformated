@@ -8,14 +8,8 @@
 In the last chapter we formulated the postulates of quantum mechanics using the language of state vectors. These could have been stated using \textit{density matrices} as well. 
 
 There are at least two motivations behind introducing density matrices. We have already seen that measurements yield different states with a probability distribution. The first motivation behind density matrices is to describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}. You can imagine a source such as a machine that \emph{prepares} different quantum states subject to a probability distribution. Thus with density matrices, probability enters the discussion even before a system is measured.
-In addition, since entangled joint state vectors such as $\ket{EPR}$ (see \eqref{eqn: epr}), cannot be written as a simple tensor, it is unclear how to describe the state vectors of the component systems.  Density matrices provide the framework for doing this. 
+In addition, since entangled joint state vectors such as $\ket{EPR}$ (see \eqref{eqn: epr}) cannot be written as a simple tensor of two ket vectors, it is unclear how to describe the state vectors of the component systems.  Density matrices provide the framework for doing this. 
 
-% We have already seen that a {\emph{fixed}} state vector for a system gives rise to a probability distribution when it is measured.  Density matrices allow one to 
-% describe a quantum system whose state is probabilistic {\emph{even prior to measurement}}.  Thus with density matrices probability enters the discussion at another level altogether.
-
-
-
-% \textcolor{red}{for most of what follows, we are only interested in pure states. maybe put the general definition in footnote.}
 \begin{definition}
 Let $\{\ket{\psi_1},\hdots,\ket{\psi_n}\}$ be states, and let $p_i\geq 0$ with $\sum\limits_i p_i=1$.
 Then, 
@@ -80,7 +74,7 @@ By substituting \eqref{eqn: same index} into \eqref{eqn: different index}, we ge
     e^{i\theta_i}b_i \overline{e^{j\theta_j}b_j}=b_i \Bar{b_j}
 =e^{i\theta_i}b_i e^{-i\theta_j}\Bar{b_j}=e^{i(\theta_i-\theta_j)}b_i \Bar{b_j}.
 \end{equation}
-Thus, $\theta_i=\theta_j (mod 2\pi)$ for all $i,j$, 
+Thus, $\theta_i=\theta_j \pmod{2\pi}$ for all $i,j$, 
 therefore $\ket{\psi_1}=\icol{e^{i\theta_1}b_1 \\ \vdots \\ e^{i\theta_1}b_n}=e^{i\theta_1}\ket{\psi_2}$ as required.
 \end{proof}
 
@@ -98,7 +92,7 @@ Consider a quantum system in a state in $\mathbb{C}^n$ given by density matrix $
 A justification for \textbf{Definition \ref{eqn: measurement probability in density matrix}} as well as a description of how the four postulates can be reformulated for density matrices can be found in \textbf{Appendix \ref{AppendixB}}, but here is an example of measuring a density matrix with respect to an orthonormal basis.
 
 \begin{example}
-Consider a source that prepares the state $\ket{0}$ and $\ket{1}$ with probabilities $p_0=p_1=\frac{1}{2}$. Suppose we measure the corresponding mixed state
+Consider a source that prepares the state $\ket{0}$ and $\ket{1}$ with probabilities $p_1=p_2=\frac{1}{2}$. Suppose we measure the corresponding mixed state
 $$\rho=\frac{1}{2}(\ket{0}\bra{0}+\ket{1}\bra{1})=\frac{\mathbb{I}}{2},$$
 with respect to the Hadamard basis $\{\ket{+}, \ket{-}\}$ (see \eqref{eqn: hadamard basis}). The probabilities of the outcomes are given by 
 \begin{eqnarray}
@@ -112,7 +106,7 @@ Similarly, $q_2=\braket{-|\rho|-}=\frac{1}{2}$
 \end{example}
 
 
-One important application is when a measurement on a {\emph{joint state}} is made in {\emph{one component only}}.  In other words, suppose that $\ket{\psi}$ in $\mathbb{C}^n \otimes \mathbb{C^n}$ is a composite state shared by Alice and Bob.  By using $\iota$, we may regard $\ket{\psi}$ as the density matrix $\rho=\ket{\psi}\bra{\psi}$.  Then, we can make sense of Alice makes a measurement with respect to an orthonormal basis $\{\ket{u_i}\}_{i=1}^n\subseteq {\mathbb{C}}^n$, by using of the family of operators $$\ket{u_i}\bra{u_i} \otimes \mathbb{I}_n.$$ 
+One important application is when a measurement on a {\emph{joint state}} is made in {\emph{one component only}}.  In other words, suppose that $\ket{\psi}$ in $\mathbb{C}^n \otimes \mathbb{C^n}$ is a composite state shared by Alice and Bob.  By using $\iota$, we may regard $\ket{\psi}$ as the density matrix $\rho=\ket{\psi}\bra{\psi}$.  Then, we can make sense of Alice makes a measurement with respect to an orthonormal basis $\{\ket{u_i}\}_{i=1}^n\subseteq {\mathbb{C}}^n$, by using of the family of operators $$\{\ket{u_i}\bra{u_i} \otimes \mathbb{I}_n\}_{i=1}^n.$$ 
 
 Intuitively, this is reasonable because in our situation, only Alice makes a measurement, while Bob does nothing.  If Alice makes a measurement and observes outcome $i_0$ with end state $\ket{u_{i_0}}$, then the probability of each outcome for Bob should be the same as it was before Alice's measurement.  This can be checked by \eqref{eqn: general measurement probability density matrix}.
 

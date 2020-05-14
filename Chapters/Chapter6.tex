@@ -6,22 +6,19 @@
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.4]{"actual entanglement".jpg}
-    \caption{The First-Ever Photo of Quantum Entanglement captured by physicists at the University of Glasgow. \cite{moreau2019imaging}}
+    \caption{The first-ever photo of quantum entanglement captured by physicists at the University of Glasgow. \cite{moreau2019imaging}}
     \label{fig:actual entanglemen}
 \end{figure}
 
-When two particles are entangled, their states are so correlated that interacting with one immediately affects the other, even if they are far apart in space.  It is no wonder that Albert Einstein once described entanglement as "spooky action at a distance". While at this point we have defined entanglement (see {\bf{Definition}} \ref{definition: entanglement with state vector}) and used its properties (in \textbf{Section \ref{section: e91}}), we have not yet determined {\emph{exactly when}} a composite state in $\mathbb{C}^n \otimes \mathbb{C}^n$ is entangled.
-It is also not clear whether all entangled systems are equivalent, or whether some systems that are more entangled than others.  In this chapter we answer these questions.
+When two particles are entangled, their states are so correlated that interacting with one immediately affects the other, even if they are far apart in space.  It is no wonder that Albert Einstein once described entanglement as "spooky action at a distance". While at this point we have defined entanglement (see {\bf{Definition} \ref{definition: entanglement with state vector}}) and used its properties (in \textbf{Section \ref{section: e91}}), we have not yet determined {\emph{exactly when}} a composite state in $\mathbb{C}^n \otimes \mathbb{C}^n$ is entangled.
+It is also not clear whether all entangled systems are equivalent, or whether some systems are more entangled than others. In this chapter we answer these questions.
 
 
-We will begin with a mathematical classification of when a 2-qudit state is a tensor product of two vectors, and we determine to what extent Alice's vector and Bob's vector are correlated. In the case that Alice's and Bob's vectors are highly correlated, we then examine how Bob can use this correlation to make a one-time pad. 
-% We will begin with a mathematical classification of when a vector in a tensor product of two vector spaces is a product of two vectors. We apply this to the situation when Alice and Bob share a $2$-qudit quantum state in $\mathbb{C}^n \otimes \mathbb{C}^n$. When this is the case, we first determine exactly when and to what extent the vectors on Alice's and Bob's side of the tensor product are correlated. If Alice and Bob's side of 
-% We then use this idea to 
-
+We will begin with a mathematical classification of when a $2$-qudit state is a tensor product of two vectors, and we determine to what extent Alice's vector and Bob's vector are correlated. In the case that Alice's and Bob's vectors are highly correlated, we then examine how Bob can use this correlation to make a one-time pad. 
 
 When Alice and Bob each have a system with state space ${\mathbb{C}}^n$, we know that their composite system will have state space ${\mathbb{C}}^n \otimes {\mathbb{C}}^n={\mathbb{C}}^{n^2}$ by Postulate 4 in \textbf{Chapter \ref{Chapter3-postulates}}. If $\ket{\psi}$ is the state vector for their composite system, the convention is to think of all terms on the left-hand side of the tensor product symbol as representing Alice's system, and all terms on the right-hand side as representing Bob's system.  
 
-In the next section we show that the rank of a matrix associated to a composite state $\ket{\psi}$ measures how entangled Alice's and Bob's systems are.
+In the next section we show that the rank of a matrix associated to a composite state $\ket{\psi}$ quantifies how entangled Alice's and Bob's systems are.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -31,11 +28,11 @@ In the next section we show that the rank of a matrix associated to a composite 
 \section{Rank of Coefficient Matrix and the Strength of Entanglement}
 \label{Section 6.1}
 
-We begin will a purely mathematical proposition which characterizes precisely when a vector in the tensor product of two vector spaces is a tensor product.
+We begin with a purely mathematical proposition that characterizes precisely when a vector in the tensor product of two vector spaces is a tensor product.
 
 \begin{prop}
 \label{rank prop}
-Let $\ket{\psi}$ be a state in $\mathbb{C}^n \otimes \mathbb{C}^n$, and let $S=\{\ket{e_i}\}$ be the standard basis for $\mathbb{C}^n$. Define the coefficient matrix $M(\ket{\psi})$ by
+Let $\ket{\psi}$ be a state in $\mathbb{C}^n \otimes \mathbb{C}^n$, and let $S=\{\ket{e_i}\}_{i=1}^n$ be the standard basis for $\mathbb{C}^n$. Define the coefficient matrix $M(\ket{\psi})$ by
 \begin{equation}
 M(\ket{\psi})=(a_{i,j}) \textrm{, where}\ket{\psi}=\sum\limits_{i,j}a_{i,j}|e_i e_j\rangle . 
 \end{equation}
@@ -47,13 +44,13 @@ Notice in particular, that if $rank(M(\ket{\psi}))=1$, then there exist vectors 
 If $rank(M(\ket{\psi}))=1$, then the state $\ket{\psi}$ is separable. Otherwise, $\ket{\psi}$ is entangled.
 \end{corollary}
 
-While {\bf{Proposition}} \ref{rank prop} shows us that the rank of the coefficient matrix tells us whether or not $\ket{\psi}$ is entangled, we will later see that it is also a measure of {\emph{how entangled}} a composite system is. That is, we will show that in a precise way, the rank indicates the strength of the {\emph{correlation}} between Bob's and Alice's parts of the composite system.
+While {\bf{Proposition} \ref{rank prop}} shows that the rank of the coefficient matrix tells us whether or not $\ket{\psi}$ is entangled, we will later see that it is also a measure of {\emph{how entangled}} a composite system is. That is, we will show that in a precise way, the rank indicates the strength of the {\emph{correlation}} between Bob's and Alice's parts of the composite system.
 
 Before continuing to discuss the connection between rank and entanglement, let's first prove a useful fact we will need in the proof of \textbf{Proposition \ref{rank prop}}.
 
 \begin{lemma}
 \label{independence lemma}
-Let $k=min S(\ket{\psi})$, and suppose $\ket{\psi}=\sum\limits_{i=1}^k \ket{v_iw_i}$.  Then, the sets $\{\ket{v_1}, \ket{v_2},...,\ket{v_k}\}$ and $\{\ket{w_1}, \ket{w_2},...,\ket{w_k}\}$ are both linearly independent.
+Let $k=min (S(\ket{\psi}))$, and suppose $\ket{\psi}=\sum\limits_{i=1}^k \ket{v_iw_i}$.  Then, the sets $\{\ket{v_1}, \ket{v_2},...,\ket{v_k}\}$ and $\{\ket{w_1}, \ket{w_2},...,\ket{w_k}\}$ are both linearly independent.
 \end{lemma}
 
 \begin{proof}
@@ -72,12 +69,12 @@ Therefore $k-1 \in S(\ket{\psi})$, contradicting the minimality of $k$.  Thus, $
 Now we are ready to prove \textbf{Proposition \ref{rank prop}}.
 
 \begin{proof}
-Let $k=min(S(\ket{\psi}))$ and say $\ket{\psi}=\sum\limits_{i=1}^k \ket{v_i w_i}$. By Lemma \ref{independence lemma}, $\{\ket{v_1}, \ket{v_2},...,\ket{v_k}\}$ and $\{\ket{w_1}, \ket{w_2},...,\ket{w_k}\}$ are linearly independent.  We now extend each linearly independent set to bases for $\mathbb{C}^n$. Thus, let $B=\{\ket{v_1}, \ket{v_2},...,\ket{v_k}, \ket{v_{k+1}},...,\ket{v_n}\}$ and $B'=\{\ket{w_1}, \ket{w_2},...,\ket{w_n}\}$ be bases, and let $M_{B \otimes B'}(\ket{\psi})$ denote the coefficient matrix of $\ket{\psi}=\sum\limits_{i=1}^{n}\ket{v_i w_i}$ with respect to the basis $B \otimes B'$. That is, $M_{B \otimes B'}(\ket{\psi})$ is the {\emph{coefficient matrix}} corresponding to the basis $\{\ket{v_i w_j} \}$ of ${\mathbb{C}}^{n^2}$.  By inspection, 
+Let $k=min(S(\ket{\psi}))$ and say $\ket{\psi}=\sum\limits_{i=1}^k \ket{v_i w_i}$. By \textbf{Lemma \ref{independence lemma}}, $\{\ket{v_1}, \ket{v_2},...,\ket{v_k}\}$ and $\{\ket{w_1}, \ket{w_2},...,\ket{w_k}\}$ are linearly independent.  We now extend each linearly independent set to bases for $\mathbb{C}^n$. Thus, let $B=\{\ket{v_1}, \ket{v_2},...,\ket{v_k}, \ket{v_{k+1}},...,\ket{v_n}\}$ and $B'=\{\ket{w_1}, \ket{w_2},...,\ket{w_n}\}$ be bases, and let $M_{B \otimes B'}(\ket{\psi})$ denote the coefficient matrix of $\ket{\psi}=\sum\limits_{i=1}^{n}\ket{v_i w_i}$ with respect to the basis $B \otimes B'$. That is, $M_{B \otimes B'}(\ket{\psi})$ is the {\emph{coefficient matrix}} corresponding to the basis $\{\ket{v_i w_j} \}$ of ${\mathbb{C}}^{n^2}$.  By inspection, 
 $$M_{B \otimes B'}(\ket{\psi})=\begin{pmatrix}
 \mathbb{I}_k && 0 \\
 0 && 0
 \end{pmatrix}$$
-so clearly $rank(M_{B \otimes B'}(\ket{\psi}))$ is k.
+so clearly $rank(M_{B \otimes B'}(\ket{\psi}))$ is $k$.
 
 Thus, we need only show that $rank(M_{B \otimes B'}(\ket{\psi}))=rank(M(\ket{\psi})$.  To do this, we will find two invertible $n \times n$ matrices P, Q with 
 \begin{equation}
@@ -129,7 +126,7 @@ v_{n1}w_{11}+\hdots+v_{nk}w_{1k} && v_{n1}w_{21}+\hdots+v_{nk}w_{2k} && \hdots &
 On the other hand,
 \begin{eqnarray*}
 \ket{\psi}&=&\sum_{i=1}^k \ket{v_i w_i}\\
-&=&\sum_{i=1}^k \left(\sum_{j=1}^{n} v_{ji} \ket{e_j}) \otimes (\sum_{s=1}^n w_{si}\ket{e_s}\right)\\
+&=&\sum_{i=1}^k \left(\sum_{j=1}^{n} v_{ji} \ket{e_j}) \otimes \sum_{s=1}^n w_{si}\ket{e_s}\right)\\
 &=&\sum_{i=1}^k \sum_{j=1}^{n} \sum_{s=1}^n v_{ji} w_{si} \ket{e_j e_s}\\
 \end{eqnarray*}
 
@@ -146,7 +143,7 @@ Then
 $$M_{B \otimes B'}(\ket{\psi})=\begin{pmatrix}
 \mathbb{I}_2 && 0 \\
 0 && 0
-\end{pmatrix}$$.
+\end{pmatrix}.$$
 
 We want to show $rank(M_{B \otimes B'}(\ket{\psi}))=rank(M(\ket{\psi})=2$ by finding two $3\  \times 3$ invertible matrices P,Q such that $PM_{B \otimes B'}(\ket{\psi})Q^{-1}=M(\ket{\psi})$.
 Let
@@ -223,11 +220,11 @@ Next we will show that our "rank test" for entanglement can capture the correlat
 % If the rank being 1 implies the joint quantum state is not entangled, what if the coefficent matrix has full rank? We now may make the following definition and proceed to classify the strength of entanglement in terms of the rank of the coefficient matrix. Here by strength, we mean how much information Bob has about Alice once Alice measures on her part of the composite system.
 
 \begin{definition} \label{def: maximally entangled}
- Let $\ket{\psi}$ be a state in ${\mathbb{C}}^{(n^2)}$.  Then, the entanglement degree of $\ket{\psi}$ is $rank(M(\ket{\psi}))$.  If the entanglement degree of $\ket{\psi}$ is $n$, we say $\ket{\psi}$ is maximally entangled \footnote{This is not the standard definition of maximal entanglement.  More commonly, a maximally entangled states are ones with maximum von Neumann entropy for each bipartition. This is equivalent to saying that the reduced density matrix $\rho_A, \rho_B$ are both a multiple of the identity matrix}.
+ Let $\ket{\psi}$ be a state in ${\mathbb{C}}^{(n^2)}$.  Then, the entanglement degree of $\ket{\psi}$ is $rank(M(\ket{\psi}))$.  If the entanglement degree of $\ket{\psi}$ is $n$, we say $\ket{\psi}$ is maximally entangled \footnote{This is not the standard definition of maximal entanglement.  More commonly, a maximally entangled states are ones with maximum von Neumann entropy for each bipartition. This is equivalent to saying that the reduced density matrix $\rho_A, \rho_B$ are both a multiple of the identity matrix.}.
 \end{definition}
 
 
-Note that $\ket{\psi}$ is entangled exactly when it's entanglement degree is greater than one.  We now describe the composite system analogue of the situation described in \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{Example \ref{example: non-orthogonal states for measurements}}, where Bob tries to determine which state Alice picks from a known basis. 
+Note that $\ket{\psi}$ is entangled exactly when its entanglement degree is greater than one.  We now describe the composite system analogue of the situation described in \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{Example \ref{example: non-orthogonal states for measurements}}, where Bob tries to determine which state Alice picks from a known basis. 
 
 We now introduce a {\emph{quantum version}} of the task in \textbf{Example \ref{example: orthogonal states for measurements}} and \textbf{Example \ref{example: non-orthogonal states for measurements}}. Alice and Bob now share a composite state which is known to both parties.  This time, instead of Alice {\emph{selecting}} an element of a basis, she {\emph{measures}} her part of the composite state with respect to an orthonormal basis, which is known to Bob (see \textbf{Figure \ref{fig:entanglement}}).  Thus {\emph{Alice's state}} will be her end state post-measurement, which is necessarily an element of the orthonormal basis.  Just like in the previous situation, the goal is for Bob to determine Alice's state with certainty.  
 
@@ -235,7 +232,7 @@ We now introduce a {\emph{quantum version}} of the task in \textbf{Example \ref{
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.8]{"entangled to alice and bob".png}
-    \caption{Alice and Bob sharing an entangled state. Suppose that Alice measures with respect to an orthonormal basis $\{\varphi_i\}$ and obtains an end state $\ket{\varphi}$.  Then, the post-measurement state for Bob after Alice's measurement is $\ket{\theta}$. That is, their composite system has end state $\ket{\varphi}\otimes\ket{\theta}$}
+    \caption{Alice and Bob sharing an entangled state. Suppose that Alice measures with respect to an orthonormal basis $\{\varphi_i\}_{i=1}^n$ and obtains an end state $\ket{\varphi}$.  Then, the post-measurement state for Bob after Alice's measurement is $\ket{\theta}$. That is, their composite system has end state $\ket{\varphi}\otimes\ket{\theta}$}
     \label{fig:entanglement}
 \end{figure}
 % \textcolor{red}{add a tensor in between and a put a measurement sign only next to Alice}
@@ -244,7 +241,7 @@ We now introduce a {\emph{quantum version}} of the task in \textbf{Example \ref{
 We will see that there are two requirements that must be met if Bob is to be able to carry out his task with certainty.
 
 \begin{quote} 
-    {\bf{Requirement 1}} After Alice's measurement there must be a perfect correlation between Alice's end state $\ket{\varphi}$ and Bob's state $\ket{\theta}$.  That is to say, {\emph{if one knows}} $\ket{\theta}$ and Alice and Bob's shared composite state, then one can recover $\ket{\varphi}$.
+    {\bf{Requirement 1}} After Alice's measurement there must be a perfect correlation between Alice's end state $\ket{\varphi}$ and Bob's state $\ket{\theta}$.  That is to say, {\emph{if one knows}} $\ket{\theta}$ in addition to Alice and Bob's shared composite state, then one can recover $\ket{\varphi}$.
     \medskip
     
     {\bf{Requirement 2}} Bob must be able to {\emph{access}} his state without creating additional uncertainty.
@@ -252,7 +249,7 @@ We will see that there are two requirements that must be met if Bob is to be abl
 \end{quote}
 
 
-We address {\bf{Requirement 1}} in this section and {\bf{Requirement 2}} in the next section.  We wish to emphasize that (initially) {\emph{only Alice}} measures her part of their shared state with respect to an orthonormal basis.  Still, because of this measurement, the state of their composite system collapses.  
+We will address {\bf{Requirement 1}} in this section and {\bf{Requirement 2}} in the next section.  We want to emphasize that (initially) {\emph{only Alice}} measures her part of their shared state with respect to an orthonormal basis.  Still, because of this measurement, the state of their composite system collapses.  
 
 Suppose that Alice measures with respect to an orthonormal basis ${\{\ket{\varphi_i}\}}_{i=1}^{n}$.  Then, we know that for some $i_0$, she will observe outcome $i_0$, in which case her system will have $\ket{\varphi_{i_0}}$ as it's end state. Mechanically, we 
 % compute this in the case that she shares a composite state with Bob by 
@@ -286,7 +283,7 @@ Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a composite state sh
 \end{enumerate}
 \end{lemma}
 
-Thus, when Alice's post-measurement state is $\ket{\varphi}$, Bob's is given by left multiplication by $M(\ket{\psi})^T$ up to a global phase and taking conjugates.
+Thus, when Alice's post-measurement state is $\ket{\varphi}$, Bob's end state is given by left multiplication of $M(\ket{\psi})^T$ up to a global phase and taking conjugates.
 
 \begin{proof}
 As was discussed, we work with density matrices.  Thus, we first compute $\rho=\iota(\ket{\psi})=\ket{\psi}\bra{\psi}$.  Let $\ket{\psi}$ be given by 
@@ -324,23 +321,23 @@ By direct computation, this is equal to $\ket{\theta}\bra{\theta}$, where
     \ket{\theta}=\frac{1}{\sqrt{C}} M(\ket{\psi_i})^T \overline{\ket{\varphi}}.
 \end{equation}
 
-Thus, by {\bf{Lemma}} \ref{lemma state into density}, if Alice's end state is $\ket{\varphi}$, then Bob's is determined up to a global phase by multiplying the conjugate of Alice's state by transpose of the coefficient matrix.
+Thus, by {\bf{Lemma} \ref{lemma state into density}}, if Alice's end state is $\ket{\varphi}$, then Bob's is determined up to a global phase by multiplying the conjugate of Alice's state by the transpose of the coefficient matrix.
 
 
 By a similar computation, if instead Bob measures and observes end state $\ket{\varphi}\bra{\varphi}$, then Alice's post-measurement state is $$\ket{\theta}=\frac{1}{\sqrt{C}} M(\ket{\psi_i})^T \overline{\ket{\varphi}}$$.
 \end{proof}
 
 \medskip
-We are now ready to prove \textbf{Proposition \ref{entanglement-rank}}.  Note that {\bf{Proposition}} \ref{entanglement-rank} follows from the following result.  We assume all the notation from the last lemma and proposition.
+We are now ready to prove \textbf{Proposition \ref{entanglement-rank}}, which follows from the following result.  We assume all the notation from the last lemma and proposition.
 \begin{prop}
 \label{correlation}
 Suppose $rank({M(\ket{\psi})}^T)=m$, and let $j_1, j_2, ... j_m$ be the indices of the columns of the reduced row echelon form of $M(\ket{\psi})^T$ that have a leading one.  Suppose further that $\ket{\varphi} \in span\{\ket{e_{j_1}}, ... \ket{e_{j_m}}\}$.  Then if one knows $\ket{\theta}$, one can determine $\ket{\varphi}$ uniquely.  
 \end{prop}
-Thus, {\bf{Proposition}} \ref{correlation} says that if the $\ket{\psi}$ is maximally entangled,$\ket{\varphi}$ and $\ket{\theta}$ are perfectly correlated in the sense that from $\ket{\theta}$ one can {\emph{always}} uniquely determine $\ket{\varphi}$.  If $\ket{\psi}$ is entangled with entanglement degree $m<n$, then given $\ket{\theta}$ one can determine $\ket{\varphi}$ if we suppose first that $\ket{\varphi}$ lies in an $m$-dimensional subspace.  In this sense there is partial correlation between end states but not total correlation.  Note that when $\ket{\psi}$ is separable, {\bf{Proposition}} \ref{correlation} tells us that $\ket{\theta}$ conveys no information about $\ket{\varphi}$.  This is clear, since up to a global phase there is a unique state in the direction of $\ket{e_j}$ for any $j$.
+Thus, {\bf{Proposition} \ref{correlation}} says that if the $\ket{\psi}$ is maximally entangled, $\ket{\varphi}$ and $\ket{\theta}$ are perfectly correlated in the sense that from $\ket{\theta}$ one can {\emph{always}} uniquely determine $\ket{\varphi}$.  If $\ket{\psi}$ is entangled with entanglement degree $m<n$, then given $\ket{\theta}$ one can determine $\ket{\varphi}$ if we suppose first that $\ket{\varphi}$ lies in an $m$-dimensional subspace.  In this sense there is partial correlation between end states but not total correlation.  Note that when $\ket{\psi}$ is separable, {\bf{Proposition} \ref{correlation}} tells us that $\ket{\theta}$ conveys no information about $\ket{\varphi}$.  This is clear, since up to a global phase there is a unique state in the direction of $\ket{e_j}$ for any $j$.
 
 We now prove {\bf{Proposition}} \ref{correlation}.
 \begin{proof}
-As in the proof of {\bf{Lemma}} \ref{end state lemma}, we work with density matrices here.  From {\bf{Lemma}} \ref{end state lemma},
+As in the proof of {\bf{Lemma} \ref{end state lemma}}, we work with density matrices here.  From {\bf{Lemma}} \ref{end state lemma},
 \begin{eqnarray}
 \ket{\theta}\bra{\theta}&=&{M(\ket{\psi})}^T\overline{\ket{\varphi}}\cdot({M(\ket{\psi})}^T\overline{\ket{\varphi}})^\dagger\\
 &=&{M(\ket{\psi})}^T\overline{\ket{\varphi}}\cdot {(\overline{\ket{\psi}})}^\dagger {({M(\ket{\varphi})}^T)}^\dagger \\
@@ -544,7 +541,7 @@ So when $\ket{\theta}$ is non-constant, the rank must be at least 2.\\
 % \textcolor{red}{TODO. Only say there's perfect correlation. Say we will come back to this example in the next subsection.}
 % \end{example}
 
-Thus we have proven {\bf{Propositions}} \ref{entanglement-rank} and \ref{correlation}.  In practice, when a shared state is not maximally entangled, the failure of the correlation between Alice's and Bob's states to be total can be illustrated simply by observing what happens when measuring with respect to an orthonormal basis.  Here is an example showing what may happen when there is only partial correlation.
+Hence we have proven {\bf{Propositions} \ref{entanglement-rank}} and \textbf{\ref{correlation}}. In practice, when a shared state is not maximally entangled, the failure of the correlation between Alice's and Bob's states can be illustrated simply by observing what happens when measuring with respect to an orthonormal basis.  Here is an example showing what may happen when there is only partial correlation.
 \begin{example}
 \label{example rank not full}
 Say Alice and Bob share a state $$\ket{\psi}=\frac{1}{2\sqrt{2}}(\ket{e_1 e_1}+\ket{e_2 e_3}+\ket{e_3 e_1}+\ket{e_3 e_3}).$$
@@ -561,7 +558,7 @@ Suppose Alice makes a measurement with respect to an unspecified orthonormal bas
 \overline{b+c}}
 \end{equation*}
 
- We now suggest a basis.  Say $\ket{\varphi} \in \{ \ket{\varphi}_i\}$, where this basis is given by
+ We now suggest a basis $\{\ket{\psi_1}, \ket{\psi_2}, \ket{\psi_3}\}$, that $\ket{\varphi}$ belongs to:
     \begin{gather}
     \ket{\varphi_1}=\ket{e_1}\\ \ket{\varphi_2}=\frac{1}{\sqrt{2}}(-\ket{e_2}+\ket{e_3})\\
     \ket{\varphi_3}=\frac{1}{\sqrt{2}}(-\ket{e_2}-\ket{e_3}).
@@ -574,9 +571,9 @@ Then,
 \end{itemize}
 
 
-Thus, two different end states for Alice are paired with the same end state for Bob.  Because of this, Bob has no hope of distinguishing between Alice's outcomes $1 (\ket{\varphi_1})$ and $2(\ket{\varphi_2})$.
+Thus, two different end states for Alice are paired with the same end state for Bob.  Because of this, Bob has no hope of distinguishing between Alice's outcomes $1$ (end state $\ket{\varphi_1}$) and $2$ (end state $\ket{\varphi_2}$).
 \end{example} 
-We emphasize that this does not occur for any orthonormal basis. For example, suppose Alice and Bob share the same state $\ket{\psi}$, but now she measures with respect to the standard orthonormal basis.  Then,
+We emphasize that this does not occur for any orthonormal basis. For example, suppose Alice and Bob still share the same state $\ket{\psi}$, but now Alice measures with respect to the standard basis.  Then,
 
 \begin{itemize}
 \item if Alice has end state $\ket{e_1}$, then Bob has end state $\ket{e_1}$
@@ -600,7 +597,7 @@ Thus, when measuring with respect to this orthonormal basis, there is perfect co
 %----------------------------------------------------------------------------------------
 
 
-Next, we take care of "old business" by proving that Bob's post-measurement state in \textbf{Lemma \ref{end state lemma}} is, in fact, a {\emph{legal}} state.  The point is that a priori the conjugate of Alice's post-measurement state could be in the kernel of the transpose of the coefficient matrix $M(\ket{\psi})$. If this were the case, {\bf{Lemma}} \ref{end state lemma} tells us that the post-measurement state would be zero, which of course is not a valid state.  We now show that this occurs with probability zero.
+Next, we take care of "old business" by proving that Bob's post-measurement state in \textbf{Lemma \ref{end state lemma}} is, in fact, a {\emph{legal}} state.  The point is that a priori the conjugate of Alice's post-measurement state could be in the kernel of the transpose of the coefficient matrix $M(\ket{\psi})$. If this were the case, {\bf{Lemma} \ref{end state lemma}} tells us that the post-measurement state would be zero, which of course is not a valid state.  We now show that this occurs with probability zero.
 
 \begin{prop} \label{null space}
 Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^n$ be a composite state shared by Alice and Bob.  Then, Alice's end state after her measurement is not in $Nul(M(\ket{\psi})^T)$.
@@ -673,7 +670,7 @@ We have now described exactly when there exists perfect correlation between Alic
 In the last section we analyzed the extent to which Alice's and Bob's end states are correlated when Alice measures a shared composite state. We now continue with our analysis, focusing on when Bob has {\emph{access}} to his state vector without introducing additional uncertainty. 
 % This situation is similar to that of \textbf{Examples \ref{example: orthogonal states for measurements}} and \textbf{\ref{example: non-orthogonal states for measurements}}, only now instead of Alice {\emph{selecting}} a state, now she {\emph{measures}} and observes an outcome with an end state.  Specifically, in our previous setup, Alice chooses a state from an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$ known to both herself and to Bob. She then gives the state to Bob, whose task is to identify the index of that state. Our task is different. Now, Alice and Bob share a known composite 2-qudit state $\ket{\psi}$ and Alice measures with respect to the orthonormal basis. 
 
-By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M(\ket{\psi_i})$ preserves orthogonality and has full rank, Bob can measure with respect to the basis $\{C_i M(\ket{\psi_i})^T \overline{\ket{\psi_i}}\}_{i=1}^n$, which must be orthonormal ($C_i$ is the scalar that normalizes each vector in the basis). Thus, by measuring with respect to {\emph{this}} orthonormal basis he will be able to infer which end state Alice observed by simply applying the inverse of the transpose of the coefficient matrix to the his end state, and then taking conjugates. This is very much the quantum analogue of {\bf{Example}} \ref{example: orthogonal states for measurements}.
+By \textbf{Lemma \ref{end state lemma}}, if the transpose of the coefficient matrix $M(\ket{\psi_i})$ preserves orthogonality and has full rank, Bob can measure with respect to the basis $\{C_i M(\ket{\psi_i})^T \overline{\ket{\psi_i}}\}_{i=1}^n$, which must be orthonormal ($C_i$ is the scalar that normalizes each vector in the basis). Thus, by measuring with respect to {\emph{this}} orthonormal basis he will be able to infer which end state Alice observed by simply applying the inverse of the transpose of the coefficient matrix to the his end state, and then taking conjugates. This is very much the quantum analogue of {\bf{Example} \ref{example: orthogonal states for measurements}}.
 
 On the other hand, if the transpose of the coefficient matrix does not preserve orthogonality, Bob cannot determine Alice's end state with certainty {\emph{even if their shared state is maximally entangled}}.  Thus, perfect correlation between Alice's and Bob's end states is not enough to guarantee that he knows the results of her measurement.  This is because even though their end states may be perfectly correlated, uncertainty is introduced when Bob tries to {\emph{access}} his end state by measuring, as was the case in {\bf{Example}} \ref{example: non-orthogonal states for measurements}.  The next proposition characterizes exactly when Bob is able to infer Alice's measurement end state with certainty.  
 % \textcolor{red}{I think I had that $\ket{\psi}$ must be maximally entangled in the below proposition. Is that not needed? }
@@ -698,11 +695,11 @@ Let $M$ be a square matrix.  Then $M$ is a nonzero scalar multiple of a unitary 
 
 \begin{proof}
 First, let $M$ be a nonzero scalar multiple of a unitary matrix. Say $M=\lambda U$, where $\lambda \ne 0$, and $U$ is a unitary matrix.  Suppose that $\braket{u|v}=0$.  Then,
-$$\braket{Mu|Mv}=\braket{\lambda Uu|\lambda Uv}={|\lambda|}^2 \braket{u|(U^\dagger U)v}={|\lambda|}^2 \braket{u|\mathbb{I}v}={|\lambda|}^2 \braket{u|v}0,$$ So orthogonality is preserved.  Thus nonzero scalar multiples of unitary matrices preserve orthogonality.
+$$\braket{Mu|Mv}=\braket{\lambda Uu|\lambda Uv}={|\lambda|}^2 \braket{u|(U^\dagger U)v}={|\lambda|}^2 \braket{u|\mathbb{I}v}={|\lambda|}^2 \braket{u|v}0.$$ So orthogonality is preserved.  Thus nonzero scalar multiples of unitary matrices preserve orthogonality.
 
 Now suppose $M\neq0$, and $\braket{Mu|Mv}=0$ when $\braket{u|v}=0$. First, we will show that $M$ must be invertible.  We prove the contrapositive.  That is, if a nonzero $n$ by $n$ matrix $M$ is singular, there exist $\ket{u}, \ket{v} \in \mathbb{C}^n$ such that $\braket{u|v}=0$, but $\braket{Mu|Mv} \ne 0$.
 
-Say $\{\ket{x_1}, \ket{x_2},\hdots, \ket{x_m}\}$ is a basis for $ker(M)$, and extend to $\{\ket{x_1}, \ket{x_2},\hdots, \ket{x_m}, \hdots, \ket{x_n}\}$ a basis for ${\mathbb{C}}^n$.  By hypothesis on $M$, $1 \leq m <n$, and by Gram-Schmidt we may assume that this basis is orthonormal.  Let
+Say $\{\ket{x_1}, \ket{x_2},\hdots, \ket{x_m}\}$ is a basis for $ker(M)$, and extend to $\{\ket{x_1}, \ket{x_2},\hdots, \ket{x_m}, \hdots, \ket{x_n}\}$, a basis for ${\mathbb{C}}^n$.  By hypothesis on $M$, $1 \leq m <n$, and by Gram-Schmidt we may assume that this basis is orthonormal.  Let
 \begin{gather*}
     \ket{u}=\ket{x_1}+\ket{x_n}\\
     \ket{v}=\ket{x_1}-\ket{x_n}
@@ -752,8 +749,8 @@ so $M$ is a scalar multiple of a unitary matrix as required.
 
 Thus, after Alice has made her measurement with respect to an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$, Bob is guaranteed to be able to measure with respect to the basis $\{C_iM(\ket{\psi})^T {\overline{\ket{\varphi_i}}}\}_{i=1}^n$, only if the transpose of the coefficient matrix $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix. 
 
-For example, say $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix.  Then, if Alice measured her part of the shared system with respect to a basis $\{\ket{u}, \ket{v}\}$, then 
-Bob can measure his part with respect to the orthonormal basis $\{C_u M(\ket{\psi})^T\overline{\ket{u}}, C_v M(\ket{\psi})^T\overline{\ket{v}}\}$. In this situation, not only is the state of Bob's system perfectly correlated with Alice's by \textbf{Proposition \ref{entanglement-rank}}, but Bob can measure with respect to an orthonormal basis consisting of all of his possible end states.  Therefore, by measuring his system with respect to $\{C_u M(\ket{\psi})^T\overline{\ket{u}}, C_v M(\ket{\psi})^T\overline{\ket{v}}\}$, Bob can infer Alice's end state is either $\ket{u}$, or $\ket{v}$.
+For example, say $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix.  Then, if Alice measures her part of the shared system with respect to a basis $\{\ket{u}, \ket{v}\}$, then 
+Bob can measure his part with respect to the orthonormal basis $\{C_u M(\ket{\psi})^T\overline{\ket{u}}, C_v M(\ket{\psi})^T\overline{\ket{v}}\}$. In this situation, not only is the state of Bob's system perfectly correlated with Alice's by \textbf{Proposition \ref{entanglement-rank}}, but Bob can also measure with respect to an orthonormal basis consisting of all of his possible end states.  Therefore, by measuring his system with respect to $\{C_u M(\ket{\psi})^T\overline{\ket{u}}, C_v M(\ket{\psi})^T\overline{\ket{v}}\}$, Bob can infer Alice's end state is either $\ket{u}$, or $\ket{v}$.
 % Therefore, Bob can infer Alice's measured outcome once he knows which specific basis Alice picked.
 
 On the other hand, if $\ket{\psi}$ is maximally entangled, but it's coefficient matrix doesn't have the desired form, Bob may have to measure with respect to an orthonormal basis of the form $\{C_u M(\ket{\psi})^T\overline{\ket{u}}, C_{u'}(M(\ket{\psi})^T\overline{\ket{u})}^\perp \}$.  In this case, Bob cannot infer Alice's outcome perfectly, even though prior to {\emph{his}} measurement, there was perfect correlation between his and Alice's end states.  
@@ -774,18 +771,13 @@ Therefore, by \textbf{Proposition \ref{prop: ultimate}}, Bob can determine Alice
 \{\left(\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}\right)\ket{0}, \left(\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}\right)\ket{1}\}=\{\ket{1}, \ket{0}\}=\{\ket{\theta_1},\ket{\theta_2}\}.
 \end{equation*}
 
-By Lemma \ref{end state lemma} after Alice's measurement, if Alice observes outcome $1$, her end state is $\ket{0}$, in which case the composite system is in state $\ket{\varphi}\otimes \ket{\theta}=\ket{0}\otimes\ket{1}=\ket{01}$.  The key point, is that when Bob measures the post-measurement system, he observes the outcome $1$ and end state $\ket{1}$ with probability one.  Since he knows both Alice's basis and the state $\ket{\psi}$, he can determine her outcome by multiplying by the inverse of transpose of the coefficient matrix and taking conjugates, and then picking the outcome which matches that state.  Thus, in this case, he multiplies his end state by $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ and gets $\ket{0}$, so he knows that she observed outcome $1$  and had end state $\ket{0}$.
+By \textbf{Lemma \ref{end state lemma}}, after Alice's measurement, if Alice observes outcome $1$, her end state is $\ket{0}$, in which case the composite system is in state $\ket{\varphi}\otimes \ket{\theta}=\ket{0}\otimes\ket{1}=\ket{01}$.  The key point is that when Bob measures the post-measurement system, he observes the outcome $1$ and end state $\ket{1}$ with probability one.  Since he knows both Alice's basis and the state $\ket{\psi}$, he can determine her outcome by multiplying by the inverse of transpose of the coefficient matrix and taking conjugates, and then picking the outcome which matches that state.  Thus, in this case, he multiplies his end state by $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ and gets $\ket{0}$, so he knows that she observed outcome $1$  and had end state $\ket{0}$.
 
-Similarly, if Alice observes outcome $2$, her end state is $\ket{1}$, in which case the composite system is in state $\ket{\varphi}\otimes\ket{\theta}=\ket{1}\otimes \ket{0}=\ket{10}$.  In this situation, when Bob measures he observes $2$ and has end state $\ket{0}$ with probability one.  Again, by multiplying his end state by the inverse of the transpose of the coefficient matrix, he can determine Alice's end state, and hence her outcome with certainty.
+Similarly, if Alice observes outcome $2$, her end state is $\ket{1}$, in which case the composite system is in state $\ket{\varphi}\otimes\ket{\theta}=\ket{1}\otimes \ket{0}=\ket{10}$.  In this situation, when Bob measures, he observes $2$ and has end state $\ket{0}$ with probability one.  Again, by multiplying his end state by the inverse of the transpose of the coefficient matrix, he can determine Alice's end state, and hence her outcome with certainty.
 \end{example}
 
 
-
-
 We now consider another example.
-
-
-
 
 \begin{example}
 \label{example bad}
@@ -795,25 +787,25 @@ M(\ket{\psi})={M(\ket{\psi})}^T=\frac{1}{\sqrt{3}}\left(\begin{smallmatrix}1 & 1
 \end{equation*}
  Unfortunately, the image of this basis under ${M(\ket{\psi})}^T$ is not orthogonal, exactly because ${M(\ket{\psi})}^T$ is not a scalar multiple of a unitary matrix.
  
- By Lemma \ref{end state lemma} after Alice's measurement, if Alice observes outcome $1$, her end state is $\ket{0}$, in which case the composite system is in state $\ket{\varphi}\otimes \ket{\theta}=\ket{0}\otimes\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$.  If Alice observes outcome $2$, her end state is $\ket{1}$, in which case the composite system is in state $\ket{\varphi}\otimes \ket{\theta}=\ket{1}\otimes \ket{0}$.
+By \textbf{Lemma \ref{end state lemma}}, after Alice's measurement, if Alice observes outcome $1$, her end state is $\ket{0}$, in which case the composite system is in state $\ket{\varphi}\otimes \ket{\theta}=\ket{0}\otimes\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$.  If Alice observes outcome $2$, her end state is $\ket{1}$, in which case the composite system is in state $\ket{\varphi}\otimes \ket{\theta}=\ket{1}\otimes \ket{0}$.
  
  The main point is that even though Bob's potential end states
  \begin{equation*}
  \{\ket{\theta_1},\ket{\theta_2}\}=\{\frac{1}{\sqrt{2}}(\ket{0}+\ket{1}),\ket{0} \}
  \end{equation*}
- are a basis, they are not orthogonal.  Thus Bob cannot access his end states by measuring without introducing error as in {\bf{Example}} \ref{example: non-orthogonal states for measurements}.  Note that Bob can "keep" one of the end states and use Gram-Schmidt to complete to an orthonormal basis, for example $\{\ket{0}^\perp, \ket{0}\}=\{\ket{1},\ket{0}\}$.  If Bob measures with respect to this basis, then if Alice observes outcome $2$, the composite system has end state $\ket{1}\otimes \ket{0}$, in which case Bob correctly measures outcome $2$ and end state $\ket{0}$.  On the other hand, if Alice observes outcome $1$, the composite system has end state $\ket{0}\otimes\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, in which case Bob observes outcomes $1$ and $2$ each with equal probability.  Because of this, Bob cannot determine Alice's outcome with certainty.  It's worth noting that in the case when he observes the outcome $1$, he will always correctly determine Alice's outcome.
+ are a basis, they are not orthogonal.  Thus Bob cannot access his end states by measuring without introducing error as in {\bf{Example} \ref{example: non-orthogonal states for measurements}}.  Note that Bob can "keep" one of the end states and use Gram-Schmidt to complete to an orthonormal basis, for example $\{\ket{0}^\perp, \ket{0}\}=\{\ket{1},\ket{0}\}$.  If Bob measures with respect to this basis, then if Alice observes outcome $2$, the composite system has end state $\ket{1}\otimes \ket{0}$, in which case Bob correctly measures outcome $2$ and end state $\ket{0}$.  On the other hand, if Alice observes outcome $1$, the composite system has end state $\ket{0}\otimes\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, in which case Bob observes outcomes $1$ and $2$ each with equal probability.  Because of this, Bob cannot determine Alice's outcome with certainty.  It's worth noting that in the case when he observes the outcome $1$, he will always correctly determine Alice's outcome.
 
 
 \end{example}
 
 
 
-With {\bf{Examples}} \ref{example good} and \ref{example bad} in mind, we now characterize all composite qubit states that allow Bob to determine Alice's measurement end state with certainty.  
+With {\bf{Examples} \ref{example good}} and \textbf{\ref{example bad}} in mind, we now characterize all composite qubit states that allow Bob to determine Alice's measurement end state with certainty.  
 \begin{prop}
 \label{classification}
 Let $\ket{\psi} \in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$ be a composite state shared by Alice and Bob.  Then, Bob can determine Alice's measurement outcome with certainty if and only if $\ket{\psi}=\frac{1}{\sqrt{2}}(a\ket{00}+(-e^{i\theta})\Bar{b}\ket{01}+b\ket{10}+e^{i\theta}\Bar{a}\ket{11})$, where $a, b \in \mathbb{C}$ with $|a|^2+|b|^2=1$.
 \end{prop}
-{\bf{Proposition}} \ref{classification} follows from {\bf{Proposition}} \ref{prop: ultimate} and the well known characterization of all $2$ by $2$ unitary matrices.
+Note that this proposition follows from {\bf{Proposition} \ref{prop: ultimate}} and the well-known characterization of all $2$ by $2$ unitary matrices.
 
 
 %----------------------------------------------------------------------------------------
@@ -824,7 +816,7 @@ Let $\ket{\psi} \in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$ be a composite state 
 \section{Application to a One-time Pad}\label{section: application to a one-time pad}
 
 
-We now use our results to construct a one-time pad (see \textbf{Definition \ref{def: classical one-time pad scheme}}). This protocol is similar to BB84 and E91 (discussed in \textbf{Section \ref{section: e91}}).  One difference is that now, by using the results in {\bf{Sections}} \ref{Section 6.1} and \ref{Section 6.2}, Alice and Bob may use {\emph{any state}} whose coefficient matrix is orthogonal, instead of the specific state used in BB91.  
+We now use our results to construct a one-time pad (see \textbf{Definition \ref{def: classical one-time pad scheme}}). This protocol is similar to BB84 and E91 (discussed in \textbf{Section \ref{section: e91}}).  One difference is that now, by using the results in {\bf{Section} \ref{Section 6.1}} and \textbf{\ref{Section 6.2}}, Alice and Bob may use {\emph{any state}} whose coefficient matrix is orthogonal, instead of the specific state used in BB91.  
 
 %As always, recall that if Alice wants to transmit an $m$-digits long message to Bob, she will need to create a one-time pad that is also $m$-digits long.
 
@@ -836,12 +828,12 @@ We now use our results to construct a one-time pad (see \textbf{Definition \ref{
 \end{figure}
 \end{comment}
 
-In this protocol, Alice has two (disjoint) orthonormal bases, $B_1$ and $B_2$ and a machine which emits a composite state $\ket{\psi}$, where $M(\ket{\psi})^T$ a scalar multiple of a unitary matrix.  Bob will have bases for measurement which he constructs from information passed on to him from Alice.
+In this protocol, Alice has two (disjoint) orthonormal bases, $B_1$ and $B_2$ and a machine which emits a composite state $\ket{\psi}$, where $M(\ket{\psi})^T$ is a scalar multiple of a unitary matrix.  Bob will have bases for measurement which he constructs from information passed on to him from Alice.
 
 In the first phase, Alice emits a large number of copies of the entangled state $\ket{\psi}$.  She "keeps" her half of the composite system, and sends the other half to Bob through a quantum channel.  Then, Alice measures each one of her states with a basis chosen randomly from $B_1$ and $B_2$, and records the outcome as a character from $1$ to $n$ (or a bit, if $\ket{\psi}\in {\mathbb{C}}^2 \otimes {\mathbb{C}}^2$).  
 
 
 
-In the second phase, Alice calls Bob through a classical channel and tells him the two bases $B_1$ and $B_2$, as well as the the identity of $\ket{\psi}$.  Then, Bob begins to measure his states, by randomly measuring in the "complementary" bases for $B_1$ and $B_2$ as describe in {\bf{Sections}} \ref{Section 6.1} and \ref{Section 6.2}.  That is, Bob selects randomly from bases consisting of the conjugates of Alice's basis elements multiplied by the transpose of the coefficient matrix (up to a scalar).  Bob writes down all the outcomes he observes to form a string.  After he is done, Alice and Bob tell each other which bases they used for their measurements.  As in BB84 and E91, they "keep" the substring of characters where they measured in "complementary" bases.  By {\bf{Proposition}} \ref{prop: ultimate}, when this was the case, they have the same outcomes, unless a third party intercepted their quantum transmission.  Part of this list will be used for a one-time pad.  As in BB84, to check security, they pick a subset of the string on which they measured with complementary bases, and conduct a statistical test.
+In the second phase, Alice calls Bob through a classical channel and tells him the two bases $B_1$ and $B_2$, as well as the the identity of $\ket{\psi}$.  Then, Bob begins to measure his states, by randomly measuring in the "complementary" bases for $B_1$ and $B_2$ as describe in {\bf{Section} \ref{Section 6.1}} and \textbf{\ref{Section 6.2}}.  That is, Bob selects randomly from bases consisting of the conjugates of Alice's basis elements multiplied by the transpose of the coefficient matrix (up to a scalar).  Bob writes down all the outcomes he observes to form a string.  After he is done, Alice and Bob tell each other which bases they used for their measurements.  As in BB84 and E91, they "keep" the substring of characters where they measured in "complementary" bases.  By {\bf{Proposition} \ref{prop: ultimate}}, they ought to have the same outcomes, unless a third party intercepted their quantum transmission.  Part of this substring will be used for a one-time pad.  As in BB84, to check security, they pick a subset of the string on which they measured with complementary bases, and conduct a statistical test.
 
 

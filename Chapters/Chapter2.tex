@@ -13,7 +13,7 @@
 
 
 
-Mathematically, a {\emph{qubit}} is a unit vector in a two-dimensional complex vector space.  In the same way that the bit is the fundamental unit of classical computation and information, the quantum bit, or qubit is the basic unit of quantum information.  With this motivation in mind, we sometimes write $\ket{0} = \icol{1\\0}$, and $\ket{1} = \icol{0\\1}$. Note that the symbols "$\ket{0}$" and "$\ket{1}$" are read "ket one" and "ket two".\footnote{We are using so-called Bra-ket notation common in quantum mechanics}  While bits may only take the values $0$ or $1$, a qubit is a complex linear combination, or \textit{superposition} of $\ket{0}$ and $\ket{1}$ with norm equal to one. 
+Mathematically, a {\emph{qubit}} is a unit vector in a two-dimensional complex vector space.  In the same way that the bit is the fundamental unit of classical computation and information, the quantum bit, or qubit is the basic unit of quantum information.  With this motivation in mind, we sometimes write $\ket{0} = \icol{1\\0}$, and $\ket{1} = \icol{0\\1}$. Note that the symbols "$\ket{0}$" and "$\ket{1}$" are read "ket zero" and "ket one".\footnote{We are using so-called Bra-ket notation common in quantum mechanics}  While bits may only take the values $0$ or $1$, a qubit is a complex linear combination, or \textit{superposition} of $\ket{0}$ and $\ket{1}$ with norm equal to one. 
 
 Thus, formally we have the following definitions:
 \begin{definition}
@@ -25,7 +25,7 @@ More generally, a qudit is a unit vector in ${\mathbb{C}}^d$.
 
 
 
-As we have seen in ${\mathbb{C}}^2$, in ${\mathbb{C}}^d$ the standard basis $\{\ket{e_1}, \ket{e_2}, ... \ket{e_d} \}$ is sometimes written $\{\ket{0}, \ket{1}, ...\ket{d\textrm{-}1}\}$.  In what follows we will pass freely between both these two notations.
+As we have seen in ${\mathbb{C}}^2$, in ${\mathbb{C}}^d$ the standard basis $\{\ket{e_1}, \ket{e_2}, ... \ket{e_d} \}$ is sometimes written $\{\ket{0}, \ket{1}, ...\ket{d\textrm{-}1}\}$.  In what follows we will pass freely between these two notations.
 
 
 
@@ -56,7 +56,7 @@ Note that in the equation above, the inner product on the left is taken in $W$, 
 \begin{equation}
 \bra{v}\cdot \ket{w}=\sum_i \overline{v_i}w_i=\langle \ket{v},\ket{w}\rangle,
 \end{equation}
-where the dot on the left-hand side is just matrix multiplication.  Since the inner product agrees with matrix multiplication using this notation, as is customary we will write the inner product of $\ket{v}$ and $\ket{w}$ as $\braket{v|w}$, and refer to the inner product as the "bra-ket" of v and w.
+where the dot on the left-hand side is just matrix multiplication.  Since the inner product agrees with matrix multiplication using this notation, as is customary we will write the inner product of $\ket{v}$ and $\ket{w}$ as $\braket{v|w}$, and refer to the inner product as the "bra-ket" of $v$ and $w$.
 
 Below are a few easily checked properties of adjoints:
 \begin{enumerate}
@@ -83,7 +83,7 @@ The \textit{length} or \textit{norm} of a vector $\ket{v}$ in an inner product s
 \begin{equation}
     |\ket{v}|=\sqrt{\braket{v|v}},
 \end{equation}
-and we say two vectors $\ket{w}, \ket{v}$ are \textit{orthogonal} if their inner product is 0.  We say that a collection of vectors $\{\ket{v_1},\hdots,\ket{v_d}\}$  are \textit{orthonormal} if $\braket{v_i | v_j}={\delta}_{i,j}$ where 
+and we say two vectors $\ket{w}, \ket{v}$ are \textit{orthogonal} if their inner product is $0$.  We say that a collection of vectors $\{\ket{v_1},\hdots,\ket{v_d}\}$  are \textit{orthonormal} if $\braket{v_i | v_j}={\delta}_{i,j}$ where 
 $${\delta}_{i,j}=
 \begin{cases} 0 & \textrm{ if }i\neq j\\
 1 & \textrm{ if } i=j.
@@ -102,43 +102,10 @@ Moreover, orthonormal vectors satisfy the \textit{completeness relation}.  That 
     &=&\ket{v}.
 \end{eqnarray*}
 
-
-Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=\mathbb{I}$.
-
-
-% by defining
-% \begin{equation*}
-%     \ket{v_1}=\frac{\ket{w_1}}{||\ket{w_1}||}
-% \end{equation*}
-% and for $1 \le k \le d-1$ define $\ket{v_{k+1}}$ inductively by
-% \begin{equation*}
-%     \ket{v_{k+1}}=\frac{\ket{w_{k+1}}-\sum_{i=1}^k \}{}
-% \end{equation*}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
-Conventionally, for a ket $\ket{v}$, there is a corresponding dual vector \textit{"bra"} $\bra{v}$ such that
-\begin{equation} \label{bra defn}
-    \bra{v}(\ket{w}):=\braket{v|w}:=(\ket{v}, \ket{w})
+Since the above holds for any $\ket{v}$, 
+\begin{equation} \label{eqn: orthonormal basis satisfies completion relation}
+    \sum\limits_i \ket{u_i}\bra{u_i}=\mathbb{I}
 \end{equation}
-It turns out that the matrix representation of dual vectors is just a row vector as illustrated below:\\
-Let $\{\ket{u_i}\}_{i=1}^{i=n}$ be some orthonormal basis of an inner product space V. Let $ \ket{v}=\sum_j v_j \ket{u_j}, \ket{w}=\sum_i w_i \ket{u_i}$. Since $(\ket{u_i},\ket{u_j})=\delta_{ij}$, using \eqref{inner product defn} and \eqref{bra defn}, we get
-\begin{equation} \label{eqn: braket}
-    \braket{v|w}=(\sum_j v_j \ket{u_j}, \sum_i w_i \ket{u_i})=\sum_i \sum_j v_i^* w_j \delta_{ij} = \sum_i v_i^* w_i = (v_1^*,\hdots, v_n^*)
-    \icol{w_1\\ \vdots \\ w_n }
-\end{equation}
-
-As we can see, the bra vector $\bra{v}$ can be interpreted as the conjugate transpose of $\ket{v}$. 
-
-In addition, a useful way of representing linear operators which makes use of the inner product is called the \textit{outer product} representation. Suppose $\ket{v} \in V, \ket{w} \in W$, where $V, W$ are both inner product space. Define $\ket{w}, \ket{v}$ to be the linear operator from V to W such that
-\begin{equation}
-    (\ket{w}\ket{v})(\ket{v'}):=\ket{w}\braket{v|v'}=\braket{v|v'}\ket{w}
-\end{equation}
-
-In other words, the bra-ket notation convention allows us to interpret $\ket{w}\braket{v|v'}$ in two ways: the operator $\ket{w}\bra{v}$ acting on $\ket{v'}$, or multiplying $\ket{w}$ by the complex number $\braket{v|v'}$.
-\end{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 One can show that any Hermitian operator $M \in M_{k,k}(\mathbb{C})$ is diagonalizable, with real eigenvalues \footnote{This result is known as the Spectral Theorem}.  Also, two eigenvectors corresponding to different eigenvalues are necessarily orthogonal.  Thus, there exists an orthonormal basis $\{\ket{v_1},...\ket{v_k}\}$ for $\mathbb{C}^k$ where $\ket{v_i}$ is an eigenvector corresponding to eigenvalue $\lambda_i$  Then, the matrix $\sum\limits_j \lambda_j \ket{v_j}\bra{v_j}$ satisfies
 
@@ -154,7 +121,7 @@ Since left multiplication by the two matrices agrees on a basis,
 M=\sum\limits_j \lambda_j \ket{v_j}\bra{v_j}.    
 \end{equation}
 
-This says that {\emph{any}} hermitian matrix can be written in the above form. We call it the \textit{diagonal representation} or \textit{orthonormal decomposition} of M.
+This says that {\emph{any}} Hermitian matrix can be written in the above form. We call it the \textit{diagonal representation} or \textit{orthonormal decomposition} of $M$.
 \begin{example} \label{example-pauli z diagonal rep}
 This matrix $Z=\left(\begin{smallmatrix}
     1 & 0\\
@@ -167,19 +134,18 @@ This matrix $Z=\left(\begin{smallmatrix}
 $Z$ is called the Pauli-$Z$ matrix.
 \end{example}
 
-One important class of hermitian operators are the \textit{projectors}. Suppose W is a k-dimensional vector subspace of the d-dimensional vector space V. By Gram-Schmidt, we may choose an orthonormal basis $\{\ket{u_1}, \hdots, \ket{u_d}\}$ for V such that $\{\ket{u_1}, \hdots, \ket{u_k}\}$ is a basis for W.  
+One important class of Hermitian operators are the \textit{projectors}. Suppose W is a k-dimensional vector subspace of the $d$-dimensional vector space $V$. By Gram-Schmidt, we may choose an orthonormal basis $\{\ket{u_1}, \hdots, \ket{u_d}\}$ for $V$ such that $\{\ket{u_1}, \hdots, \ket{u_k}\}$ is a basis for $W$.  
 \begin{definition}
 The matrix $P=\sum\limits_{i=1}^k \ket{u_i} \bra{u_i}$ is the projector onto the subspace $W$.
 \end{definition}
-By inspection, projectors are hermitian.  In addition,
-\begin{eqnarray}
-    P^2&=&\left(\sum_{i=1}^k \ket{u_i} \bra{u_i}\right)\left(\sum_{j=1}^k \ket{u_j} \bra{u_j}\right)\\
-    &=&\sum_{i=1}^k \sum_{j=1}^k \ket{u_i} \braket{u_i|u_j} \bra{u_j}\\
-    &=&\sum_{i=1}^k \sum_{j=1}^k\delta_{i,j}\bra{u_i}\ket{u_j}\\
-    &=&\sum_{i=1}^k \ket{u_i} \bra{u_i}\\
-    &=&P
-    \end{eqnarray}
-
+By inspection, projectors are Hermitian.  In addition,
+\begin{align}
+    P^2&=\left(\sum_{i=1}^k \ket{u_i} \bra{u_i}\right)\left(\sum_{j=1}^k \ket{u_j} \bra{u_j}\right)\\
+    &=\sum_{i=1}^k \sum_{j=1}^k \ket{u_i} \braket{u_i|u_j} \bra{u_j}\\
+    &=\sum_{i=1}^k \sum_{j=1}^k\delta_{i,j}\bra{u_i}\ket{u_j}\\
+    &=\sum_{i=1}^k \ket{u_i} \bra{u_i}\\
+    &=P \label{eqn: projectors square to themselves}
+\end{align}
 Thus, a projector is a projection in the sense of linear algebra, so its eigenvalues are $0$ and $1$.
 
 
@@ -189,7 +155,7 @@ Thus, a projector is a projection in the sense of linear algebra, so its eigenva
 \pagebreak
 \section{Tensor Product}
 
-The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces and their vectors. This will prove useful as the laws of quantum mechanics tell us that the state space of two quantum systems is formed by taking a tensor product. If V and W are inner product spaces of dimension m and n respectively, then their tensor product $V \otimes W$ is an $mn$ dimensional vector space. The elements of $V \otimes W$ are linear combinations of "simple tensors" of the form $\ket{v} \otimes \ket{w}$, where $\ket{v} \in V, \ket{w} \in W$. In particular, if $\{\ket{a_1}, \ket{a_2}...\ket{a_m}\}, \{\ket{b_1},\ket{b_2}, ...\ket{b_n}\}$ are bases for V and W respectively, then the collection $\{\ket{a_i}\otimes\ket{b_j}\}$ is a basis for $V \otimes W$ for $1\leq i \leq m$ and $1 \leq j \leq n$.
+The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces and their vectors. This will prove useful as the laws of quantum mechanics tell us that the state space of two quantum systems is formed by taking a tensor product. If $V$ and $W$ are inner product spaces of dimension $m$ and $n$ respectively, then their tensor product $V \otimes W$ is an $mn$ dimensional vector space. The elements of $V \otimes W$ are linear combinations of "simple tensors" of the form $\ket{v} \otimes \ket{w}$, where $\ket{v} \in V, \ket{w} \in W$. In particular, if $\{\ket{a_1}, \ket{a_2}...\ket{a_m}\}, \{\ket{b_1},\ket{b_2}, ...\ket{b_n}\}$ are bases for $V$ and $W$ respectively, then the collection $\{\ket{a_i}\otimes\ket{b_j}\}$ is a basis for $V \otimes W$ for $1\leq i \leq m$ and $1 \leq j \leq n$.
 
 
 \begin{definition} 
